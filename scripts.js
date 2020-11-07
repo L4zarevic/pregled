@@ -1,7 +1,11 @@
     //Getting value from "ajax.php".
     function fill(Value) {
        //Assigning value to "search" div in "search.php" file.
-       $('#search').val(Value);
+	   var oldValue = Value;
+	   var splitString = oldValue.split("#");
+	   var newValue = splitString[0];
+       $('#search').val(splitString[1]);
+	   $('#id_pacijenta').val(newValue);
        //Hiding "display" div in "search.php" file.
        $('#display').hide();
     }
