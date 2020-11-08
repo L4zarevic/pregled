@@ -95,22 +95,22 @@ include '../pregled/modules/header.php';
           <div class="row1">
             <div class="form-group col-md-8">
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a1" value="Slabije vidi na daljinu">
+                <input type="checkbox" name="a1" class="custom-control-input" id="a1" value="Slabije vidi na daljinu">
                 <label class="custom-control-label" for="a1">Slabije vidi na daljinu</label>
               </div>
 
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a2" value="Slabije vidi na blizinu">
+                <input type="checkbox" name="a2" class="custom-control-input" id="a2" value="Slabije vidi na blizinu">
                 <label class="custom-control-label" for="a2">Slabije vidi na blizinu</label>
               </div>
 
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a3" value="Dupla slika">
+                <input type="checkbox" name="a3" class="custom-control-input" id="a3" value="Dupla slika">
                 <label class="custom-control-label" for="a3">Dupla slika</label>
               </div>
 
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a4" value="Izobličena slika">
+                <input type="checkbox" name="a4" class="custom-control-input" id="a4" value="Izobličena slika">
                 <label class="custom-control-label" for="a4">Izobličena slika</label>
               </div>
             </div>
@@ -120,22 +120,22 @@ include '../pregled/modules/header.php';
           <div class="row2">
             <div class="form-group col-md-8">
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a5" value="Naglo slabi vid">
+                <input type="checkbox" name="a5" class="custom-control-input" id="a5" value="Naglo slabi vid">
                 <label class="custom-control-label" for="a5">Naglo slabi vid</label>
               </div>
 
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a6" value="Glavobolja">
+                <input type="checkbox" name="a6" class="custom-control-input" id="a6" value="Glavobolja">
                 <label class="custom-control-label" for="a6">Glavobolja</label>
               </div>
 
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a7" value="Očni napor">
+                <input type="checkbox" name="a7" class="custom-control-input" id="a7" value="Očni napor">
                 <label class="custom-control-label" for="a7">Očni napor</label>
               </div>
 
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a8" value="Bol u oku">
+                <input type="checkbox" name="a8" class="custom-control-input" id="a8" value="Bol u oku">
                 <label class="custom-control-label" for="a8">Bol u oku</label>
               </div>
             </div>
@@ -145,17 +145,17 @@ include '../pregled/modules/header.php';
           <div class="row3">
             <div class="form-group col-md-8">
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a9" value="Suzenje">
+                <input type="checkbox" name="a9" class="custom-control-input" id="a9" value="Suzenje">
                 <label class="custom-control-label" for="a9">Suzenje</label>
               </div>
 
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a10" value="Slabije vidi noću">
+                <input type="checkbox" name="a10" class="custom-control-input" id="a10" value="Slabije vidi noću">
                 <label class="custom-control-label" for="a10">Slabije vidi noću</label>
               </div>
 
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="a11" value="Oko je suvo i svrbi">
+                <input type="checkbox" name="a11" class="custom-control-input" id="a11" value="Oko je suvo i svrbi">
                 <label class="custom-control-label" for="a11">Oko je suvo i svrbi</label>
               </div>
             </div>
@@ -173,14 +173,14 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-6">
               <strong><label for="exampleFormControlSelect2">VOS:</label> </strong>
-              <input name="datum" title="" type="text" class="form-control" id="vos">
+              <input name="vos" title="" type="text" class="form-control" id="vos">
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col-md-4">
               <strong><label for="exampleFormControlSelect2">MOTELITET:</label> </strong>
-              <input list="motilitet" name="motelitet" title="" type="text" class="form-control" id="motelitet">
+              <input list="motilitet" name="motilitet" title="" type="text" class="form-control" id="motilitet">
               <datalist id="motilitet">
                 <option value="Nalaz uredan">
               </datalist>
@@ -336,24 +336,26 @@ include '../pregled/modules/header.php';
             </div>
           </div>
           <div class="row">
-            <button type='submit' onclick="" id='dugmeDodaj' class='btn btn-success'>Sačuvaj</button>
+            <button type='button' onclick="checkFormExamination()" id='dugmeDodaj' class='btn btn-success'>Sačuvaj</button>
           </div>
         </div>
 
       </div>
-
+      <!-- Footer -->
+      <?php
+      include '../pregled/modules/footer.php';
+      ?>
+      <!-- End of Footer -->
 
       <!-- /.container-fluid -->
     </div>
-    <hr>
-    <hr>
   </div>
 
-  </div> <!-- Footer -->
-  <?php
-  include '../pregled/modules/footer.php';
-  ?>
-  <!-- End of Footer -->
+
+
+
+
+
   <script type="text/javascript">
     $(document).ready(function() {
       // Add minus icon for collapse element which is open by default
