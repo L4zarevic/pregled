@@ -9951,18 +9951,18 @@ div.row3{
 }
 #motilitet{
 	display:inline;
-	width:70%;
+	width:69.5%;
 }
 
 #bms_od{
 	display:inline;
-	width:90%;
+	width:92%;
 }
 
 #bms_os{
 	display:inline;
 	margin-top:1%;
-	width:90%;
+	width:92%;
 }
 
 #tonus_od{
@@ -9997,6 +9997,12 @@ div.row3{
 	margin-top:1%;
 	width:90%;
 }
+
+#terapija{
+	display:inline;
+	width:80%;
+}
+
 #korekcija_od{
 	display:inline;
 	width:90%;
@@ -10077,5 +10083,11 @@ div.row3{
 
 #kontrola{
 	display:inline;
-	width:60%;
+	width:59%;
+}
+
+/* A5 Landscape*/
+@page {
+    size: A5 landscape;
+    margin: 10%;
 }

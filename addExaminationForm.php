@@ -178,7 +178,7 @@ include '../pregled/modules/header.php';
           </div>
 
           <div class="row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-7">
               <strong><label for="exampleFormControlSelect2">MOTELITET:</label> </strong>
               <input list="motilitet" name="motilitet" title="" type="text" class="form-control" id="motilitet">
               <datalist id="motilitet">
@@ -238,6 +238,13 @@ include '../pregled/modules/header.php';
 
               <label for="exampleFormControlSelect2">OS:</label>
               <input name="dijagnoza_os" title="" type="text" class="form-control" id="dijagnoza_os">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-6">
+              <strong><label for="exampleFormControlSelect2">TERAPIJA:</label> </strong>
+              <input  name="terapija" title="" type="text" class="form-control" id="terapija">
             </div>
           </div>
 
@@ -323,7 +330,7 @@ include '../pregled/modules/header.php';
           </div>
 
           <div class="row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-8">
               <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
               <input name="kontrola" title="" type="text" class="form-control" id="kontrola">
             </div>
