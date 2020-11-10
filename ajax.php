@@ -23,9 +23,9 @@ if (isset($_POST['search'])) {
       <!-- Creating unordered list items.
             Calling javascript function named as "fill" found in "script.js" file.
             By passing fetched result as parameter. -->
-      <li onclick='fill("<?php echo $Result['ID'] . "#" . $Result['imePacijenta'] . " " . $Result['prezimePacijenta'] . " " . $Result['godiste']; ?>")'>
+      <li id="ajaxResults" onclick='fill("<?php echo $Result['ID'] . "#" . $Result['imePacijenta'] . " " . $Result['prezimePacijenta'] . " " . $Result['godiste']; ?>")'>
 
-         <a value="<?php echo $Result['ID']; ?>">
+         <a  value="<?php echo $Result['ID']; ?>">
             <!-- Assigning searched result in "Search box" in "search.php" file. -->
             <?php echo $Result['imePacijenta']; ?>
             <?php echo $Result['prezimePacijenta']; ?>

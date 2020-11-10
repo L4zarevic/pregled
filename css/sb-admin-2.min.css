@@ -9925,7 +9925,10 @@ body.sidebar-toggled footer.sticky-footer {
  background:#ec1d25!important
 }
 
-
+#ajaxResults:hover{
+	background:yellow;
+	cursor:pointer;
+}
 
 div.row1{
 	display:inline-block !important;
@@ -9967,51 +9970,51 @@ div.row3{
 
 #tonus_od{
 	display:inline;
-	width:90%;
+	width:92%;
 }
 
 #tonus_os{
 	display:inline;
 	margin-top:1%;
-	width:90%;
+	width:92%;
 }
 
 #fundus_od{
 	display:inline;
-	width:90%;
+	width:92%;
 }
 
 #fundus_os{
 	display:inline;
 	margin-top:1%;
-	width:90%;
+	width:92%;
 }
 
 #dijagnoza_od{
 	display:inline;
-	width:90%;
+	width:92%;
 }
 
 #dijagnoza_os{
 	display:inline;
 	margin-top:1%;
-	width:90%;
+	width:92%;
 }
 
 #terapija{
 	display:inline;
-	width:80%;
+	width:84%;
 }
 
 #korekcija_od{
 	display:inline;
-	width:90%;
+	width:92%;
 }
 
 #korekcija_os{
 	display:inline;
 	margin-top:1%;
-	width:90%;
+	width:92%;
 }
 
 #tip_ks_od{
@@ -10085,9 +10088,47 @@ div.row3{
 	display:inline;
 	width:59%;
 }
-
-/* A5 Landscape*/
-@page {
-    size: A5 landscape;
-    margin: 10%;
+div#grupa1{
+    display:inline-block !important;
+    width: 40% !important;
+	float:left;
 }
+div#grupa2{
+    display:inline-block !important;
+    width: 40% !important;
+	
+}
+div#korekcijas1{
+    display:inline-block !important;
+    width: 40% !important;
+	float:left;
+}
+
+i.fa.fa-print{
+	color:#fff;
+}
+
+#kratkiIspisNaocare{
+	margin-right:1%;
+}
+#kratkiIspisSociva{
+	margin-right:1%;
+}
+div#stampa1{
+    display:inline-block !important;
+    width: 40% !important;
+	float:left;
+	font-family:Nunito;
+}
+div#stampa2{
+    display:inline-block !important;
+    width: 40% !important;
+	margin-bottom:3%;
+	
+}
+
+.labelPrintButton{
+	font-family:"Nunito";
+	display:inline;
+}
+

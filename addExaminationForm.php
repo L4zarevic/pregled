@@ -12,7 +12,7 @@ include '../pregled/modules/header.php';
     margin: 20px;
   }
 
-  .accordion .fa {
+  .accordion .fas {
     margin-right: 0.5rem;
   }
 </style>
@@ -268,7 +268,7 @@ include '../pregled/modules/header.php';
               <div class="card">
                 <div class="card-header" id="headingOne">
                   <h2 class="mb-0">
-                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"><i class="fa fa-plus"></i>Pregled kontaktna sočiva</button>
+                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"><i class="fas fa-plus"></i>Pregled kontaktna sočiva</button>
                   </h2>
                 </div>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -367,14 +367,14 @@ include '../pregled/modules/header.php';
     $(document).ready(function() {
       // Add minus icon for collapse element which is open by default
       $(".collapse.show").each(function() {
-        $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+        $(this).prev(".card-header").find(".fas").addClass("fa-minus").removeClass("fa-plus");
       });
 
       // Toggle plus minus icon on show hide of collapse element
       $(".collapse").on('show.bs.collapse', function() {
-        $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+        $(this).prev(".card-header").find(".fas").removeClass("fa-plus").addClass("fa-minus");
       }).on('hide.bs.collapse', function() {
-        $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+        $(this).prev(".card-header").find(".fas").removeClass("fa-minus").addClass("fa-plus");
       });
     });
   </script>

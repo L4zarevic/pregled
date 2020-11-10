@@ -53,7 +53,7 @@ include '../pregled/modules/header.php';
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800"></h1>
+          <h1 class="h3 mb-4 text-gray-800">Izvještaj pregleda</h1>
 
           <div class='tabelaSpecijala1'>
 
@@ -196,8 +196,9 @@ include '../pregled/modules/header.php';
 
 
 
-            echo " <div class='row'> <strong><label>Ime pacijenta: </label></strong> &nbsp; $ime_prezime_pacijenta</div>";
+            echo " <div class='row'> <strong><label>Pacijent: </label></strong> &nbsp; $ime_prezime_pacijenta</div>";
             echo " <div class='row'> <strong><label>Datum: </label></strong> &nbsp; $datum_pregleda</div>";
+            echo "<hr>";
             echo " <div class='row'> <strong><label>ANAMNEZA: </label></strong> &nbsp; </div>";
             $items = "";
             $separated = explode('$$', $anamneza);
@@ -205,44 +206,71 @@ include '../pregled/modules/header.php';
             foreach ($separated as $value) {
               echo  "<div class='row'>$value</div> </br>";
             }
-            echo " <div class='row'> <strong><label></label></strong> VOD: &nbsp; $vod</div>";
-            echo " <div class='row'> <strong><label></label></strong> VOS: &nbsp; $vos</div>";
-            echo " <div class='row'> <strong><label>MOTILITET: </label></strong> &nbsp; $motilitet</div>";
-            echo " <div class='row'> <strong><label>BMS: </label></strong></div>";
-            echo " <div class='row'> <label>OD: </label></strong> &nbsp; $bms_od</div>";
-            echo " <div class='row'> <label>OS: </label></strong> &nbsp; $bms_os</div>";
-            echo " <div class='row'> <strong><label>TONUS: </label></strong></div>";
-            echo " <div class='row'> <label>OD: </label></strong> &nbsp; $tonus_od</div>";
-            echo " <div class='row'> <label>OS: </label></strong> &nbsp; $tonus_os</div>";
-            echo " <div class='row'> <strong><label>FUNDUS: </label></strong></div>";
-            echo " <div class='row'> <label>OD: </label></strong> &nbsp; $fundus_od</div>";
-            echo " <div class='row'> <label>OS: </label></strong> &nbsp; $fundus_os</div>";
-            echo " <div class='row'> <strong><label>DIJAGNOZA: </label></strong></div>";
-            echo " <div class='row'> <label>OD: </label></strong> &nbsp; $dijagnoza_od</div>";
-            echo " <div class='row'> <label>OS: </label></strong> &nbsp; $dijagnoza_os</div>";
-            echo " <div class='row'> <strong><label>TERAPIJA:</label></strong> $terapija</div>";
-            echo " <div class='row'> <strong><label>KOREKCIJA: </label></strong></div>";
-            echo " <div class='row'> <label>OD: </label></strong> &nbsp; $korekcija_od</div>";
-            echo " <div class='row'> <label>OS: </label></strong> &nbsp; $korekcija_os</div>";
-            echo " <div class='row'> <strong><label>KOREKCIJA (kon. sočiva): </label></strong></div>";
-            echo " <div class='row'> <label>OD:&nbsp; </label></strong></div>";
-            echo " <div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_od</div>";
-            echo " <div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_od</div>";
-            echo " <div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_od</div>";
-            echo " <div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_od</div>";
-            echo " <div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_od</div>";
-            echo " <div class='row'> <label>OS:&nbsp; </label></strong></div>";
-            echo " <div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_os</div>";
-            echo " <div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_os</div>";
-            echo " <div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_os</div>";
-            echo " <div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_os</div>";
-            echo " <div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_os</div>";
-            echo " <div class='row'> <strong><label>PD: &nbsp;</label></strong> $pd</div>";
-            echo " <div class='row'> <strong><label>KONTROLA: &nbsp;</label></strong>  $kontrola</div>";
-            echo " <div class='row'> <strong><label>NAPOMENA: &nbsp;</label></strong>  $napomena_pregleda</div>";
+            echo "<div class='row'> <strong><label>VOD:</label></strong>  &nbsp; $vod</div>";
+            echo "<div class='row'> <strong><label>VOS:</label></strong>  &nbsp; $vos</div>";
+            echo "<hr>";
+            echo "<div class='row'> <strong><label>MOTILITET: </label></strong> &nbsp; $motilitet</div>";
+            echo "<hr>";
+            echo "<div id='grupa1'>";
+            echo "<div class='row'> <strong><label>BMS: </label></strong></div>";
+            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $bms_od</div>";
+            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $bms_os</div>";
+            echo "<div class='row'> <strong><label>TONUS: </label></strong></div>";
+            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $tonus_od</div>";
+            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $tonus_os</div>";
+            echo "</div>";
+            echo "<div id='grupa2'>";
+            echo "<div class='row'> <strong><label>FUNDUS: </label></strong></div>";
+            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $fundus_od</div>";
+            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $fundus_os</div>";
+            echo "<div class='row'> <strong><label>DIJAGNOZA: </label></strong></div>";
+            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $dijagnoza_od</div>";
+            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $dijagnoza_os</div>";
+            echo "</div>";
+            echo "<hr>";
+            echo "<div class='row'> <strong><label>TERAPIJA:</label></strong> $terapija</div>";
+            echo "<hr>";
+            echo "<div class='row'> <strong><label>KOREKCIJA: </label></strong></div>";
+            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $korekcija_od</div>";
+            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $korekcija_os</div>";
+            echo "<hr>";
+            echo "<div class='row'> <strong><label>KOREKCIJA (kon. sočiva): </label></strong></div>";
+            echo "<div id='korekcijas1'>";
+            echo "<div class='row'> <label>OD:&nbsp; </label></strong></div>";
+            echo "<div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_od</div>";
+            echo "<div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_od</div>";
+            echo "<div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_od</div>";
+            echo "<div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_od</div>";
+            echo "<div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_od</div>";
+            echo "</div>";
+            echo "<div id='korekcijas2'>";
+            echo "<div class='row'> <label>OS:&nbsp; </label></strong></div>";
+            echo "<div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_os</div>";
+            echo "<div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_os</div>";
+            echo "<div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_os</div>";
+            echo "<div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_os</div>";
+            echo "<div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_os</div>";
+            echo "</div>";
+            echo "<hr>";
+            echo "<div class='row'> <strong><label>PD: &nbsp;</label></strong> $pd</div>";
+            echo "<hr>";
+            echo "<div class='row'> <strong><label>KONTROLA: &nbsp;</label></strong>  $kontrola</div>";
+            echo "<hr>";
+            echo "<div class='row'> <strong><label>NAPOMENA: &nbsp;</label></strong>  $napomena_pregleda</div>";
+            echo "<hr>";
+            echo "<br>";
+            echo "<br>";
+            echo "<div id='stampa1'>";
+            echo "<h4>Pregled za naočare</h4>";
+            echo "<button id='kratkiIspisNaocare' title='Kratki izvještaj pregleda za naočare (A5 landscape)' class='btn btn-primary' onClick='openPrintDialogue()'><i class='fa fa-print' ></i>&nbsp;<label class='labelPrintButton'>Kratki ispis</label></button>";
+            echo "<button id='dugiIspisNaocare' title='Dugi izvještaj pregleda za naočare (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Dugi ispis</label></button>";
+            echo "</div>";
+            echo "<div id='stampa2'>";
+            echo "<h4>Pregled za sočiva</h4>";
+            echo "<button id='kratkiIspisSociva' title='Kratki izvještaj pregleda za sočiva (A5 landscape)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Kratki ispis</label></button>";
+            echo "<button id='dugiIspisSociva' title='Dugi izvještaj pregleda za sočiva (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Kratki ispis</label></button>";
+            echo "</div>";
 
-
-            echo "<button onClick='openPrintDialogue()'>Print</button>";
             ?>
 
           </div>
@@ -275,12 +303,27 @@ include '../pregled/modules/header.php';
             .logo{
               margin:3%;
               display:inline;
-              width:100%;
+              width:65%;
               float:left;
             }
+            .kontaktPodaciRadnje{
+              display:inline;
+              margin-top:5%;
+              margin-right:5%;
+              width:20%;
+              float:right;
+            }
+            #linija{
+              display:block;
+              width:90%;
+              margin-left:3%;
+              margin-right:3%;
+            }
+
+          
             #logo{
-              width:30%;
-              heigt:30%;
+              width:51%;
+              heigt:51%;
             }
             .generalije{
               display:inline-block;
@@ -291,7 +334,7 @@ include '../pregled/modules/header.php';
               float:right;
               display:inline-block;
               margin-top:5%;
-              margin-right:3%;
+              margin-right:10%;
             }
             .anamneza{
               display:block;
@@ -313,14 +356,16 @@ include '../pregled/modules/header.php';
               margin-top:2%;
               margin-left:3%;
             }
-            
-            
-
+            .pd{
+              display:block;
+              margin-top:2%;
+              margin-left:3%;
+            }
             </style>
             <body>
-            
-   
-            <div class='logo'><img id='logo' src='../pregled/images/mo.png' /></div>
+            <div class='logo'><img id='logo' src='../pregled/images/MO.png' /></div>
+            <div class='kontaktPodaciRadnje'><label>Adresa:</label></br><label>Tel:</label></br><label>www.mojaoptika.com</label></div>
+            <hr id='linija'>
             <div class='generalije'><label>Pacijent:</label>&nbsp;<?php echo $ime_prezime_pacijenta; ?></div>
             <div class='datum'><label>Datum:</label>&nbsp;<?php echo $datum_pregleda; ?></div>
             <div class='anamneza'><label>ANAMNEZA:</label>&nbsp;</div>
@@ -335,6 +380,7 @@ include '../pregled/modules/header.php';
             <div class='korekcija'><label>KOREKCIJA:</label>&nbsp;</div>
             <div class='korekcijaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_od; ?></div>
             <div class='korekcijaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_os; ?></div>
+            <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div>
     
     
             </body>
@@ -349,7 +395,7 @@ include '../pregled/modules/header.php';
           }, 1000);
         };
 
-        $('button').on('click', openPrintDialogue);
+        //$('button#kratkiIspisNaocare').on('click', openPrintDialogue);
       </script>
 
 
