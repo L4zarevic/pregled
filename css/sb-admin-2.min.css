@@ -10010,9 +10010,12 @@ body.sidebar-toggled footer.sticky-footer {
 
 /*Pregled*/
 
+#id_pacijenta{
+	width:1%;
+}
 #ispis_napomene_pacijenta{
-	border:none;
 	word-wrap: break-word;
+	font-weight:700;
 }
 div.row1{
 	display:inline-block !important;
@@ -10036,9 +10039,31 @@ div.row3{
 	display:inline;
 	width:90%;
 }
+.motilitetGrupa{
+	display:inline-block;
+	width:45%;
+	float:left;
+}
+.tonusGrupa{
+	display:inline-block;
+	width:45%;
+	float:right;
+}
 #motilitet{
 	display:inline;
-	width:69.5%;
+	width:60%;
+	
+}
+
+#tonus_od{
+	display:inline;
+	width:30%;
+}
+
+#tonus_os{
+	display:inline;
+	margin-top:1%;
+	width:30%;
 }
 
 #bms_od{
@@ -10046,22 +10071,14 @@ div.row3{
 	width:92%;
 }
 
+
 #bms_os{
 	display:inline;
 	margin-top:1%;
 	width:92%;
 }
 
-#tonus_od{
-	display:inline;
-	width:92%;
-}
 
-#tonus_os{
-	display:inline;
-	margin-top:1%;
-	width:92%;
-}
 
 #fundus_od{
 	display:inline;

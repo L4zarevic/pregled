@@ -94,7 +94,7 @@ include '../pregled/modules/header.php';
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="exampleFormControlSelect2">Napomena</label>
-                  <textarea name="napomena_pacijenta" placeholder="Unesite napomenu vezanu za pacijenta pacijenta" class="form-control" type="text" title="Unesite napomenu vezanu za pacijenta" id="napomena_pacijenta" row="4"></textarea>
+                  <textarea name="napomena_pacijenta" placeholder="Unesite napomenu vezanu za pacijenta" class="form-control" type="text" title="Unesite napomenu vezanu za pacijenta" id="napomena_pacijenta" row="4"></textarea>
                 </div>
 
               </div>

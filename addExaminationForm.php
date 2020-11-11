@@ -9,7 +9,7 @@ include '../pregled/modules/header.php';
 <!-- Including CSS file. -->
 <style>
   .bs-example {
-    margin: 20px;
+    margin-bottom: 20px;
   }
 
   .accordion .fas {
@@ -82,10 +82,10 @@ include '../pregled/modules/header.php';
             <div class="form-group col-md-1">
               <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-5">
               <label for="exampleFormControlSelect2">Napomena o pacijentu:</label>
               <div>
-                <input class="form-control" id="ispis_napomene_pacijenta">
+                <input class="form-control" id="ispis_napomene_pacijenta" disabled>
               </div>
             </div>
           </div>
@@ -167,29 +167,55 @@ include '../pregled/modules/header.php';
             </div>
           </div>
 
+          <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Dodatna anamneza
+          </button>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <label for="exampleFormControlSelect2">Upišite dodatnu anamnezu ukoliko nema u ponuđenim opcijama</label>
+              <input name="a_dodatna" title="" type="text" class="form-control" id="a_dodatna">
+            </div>
+          </div>
 
 
           <div class="row">
+            <strong> <label for="exampleFormControlSelect2">VIDNA OŠTRINA</label></strong>
+          </div>
+          <div class="row">
             <div class="form-group col-md-6">
-              <strong><label for="exampleFormControlSelect2">VOD:</label></strong>
+              <label for="exampleFormControlSelect2">VOD:</label>
               <input name="vod" title="" type="text" class="form-control" id="vod">
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col-md-6">
-              <strong><label for="exampleFormControlSelect2">VOS:</label> </strong>
+              <label for="exampleFormControlSelect2">VOS:</label>
               <input name="vos" title="" type="text" class="form-control" id="vos">
             </div>
           </div>
 
           <div class="row">
-            <div class="form-group col-md-7">
-              <strong><label for="exampleFormControlSelect2">MOTELITET:</label> </strong>
-              <input list="motilitet2" name="motilitet" title="" type="text" class="form-control" id="motilitet">
-              <datalist id="motilitet2">
-                <option value="Nalaz uredan">
-              </datalist>
+            <div class="motilitetGrupa">
+              <div class="form-group col-md-12">
+                <strong><label for="exampleFormControlSelect2">MOTELITET:</label> </strong>
+                <input list="motilitet2" name="motilitet" title="" type="text" class="form-control" id="motilitet">
+                <datalist id="motilitet2">
+                  <option value="Nalaz uredan">
+                </datalist>
+              </div>
+            </div>
+
+            <div class="tonusGrupa">
+              <div class="form-group col-md-10">
+                <strong><label for="exampleFormControlSelect2">TONUS:</label></strong>
+                &nbsp;<label for="exampleFormControlSelect2">OD:</label>
+                <input name="tonus_od" title="" type="text" class="form-control" id="tonus_od">
+
+                &nbsp;<label for="exampleFormControlSelect2">OS:</label>
+                <input name="tonus_os" title="" type="text" class="form-control" id="tonus_os">
+              </div>
             </div>
           </div>
 
@@ -208,19 +234,6 @@ include '../pregled/modules/header.php';
           </div>
 
           <div class="row">
-            <strong><label for="exampleFormControlSelect2">TONUS:</label></strong>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label for="exampleFormControlSelect2">OD:</label>
-              <input name="tonus_od" title="" type="text" class="form-control" id="tonus_od">
-
-              <label for="exampleFormControlSelect2">OS:</label>
-              <input name="tonus_os" title="" type="text" class="form-control" id="tonus_os">
-            </div>
-          </div>
-
-          <div class="row">
             <strong><label for="exampleFormControlSelect2">FUNDUS:</label></strong>
           </div>
           <div class="row">
@@ -234,8 +247,7 @@ include '../pregled/modules/header.php';
           </div>
 
           <div class="row">
-            <strong><label for="exampleFormControlSelect2">DIJAGNOZA:</label>
-            </strong>
+            <strong><label for="exampleFormControlSelect2">DIJAGNOZA:</label></strong>
           </div>
           <div class="row">
             <div class="form-group col-md-6">
@@ -268,6 +280,9 @@ include '../pregled/modules/header.php';
           </div>
 
           <hr>
+
+
+
 
           <div class="bs-example">
             <div class="accordion" id="accordionExample">
