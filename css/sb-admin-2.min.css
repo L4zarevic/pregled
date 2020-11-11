@@ -9913,6 +9913,8 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 /*Custom css*/
+
+/*Pocetna*/
 .companyInfo {
  display:block;
  margin-left:auto;
@@ -9924,12 +9926,94 @@ body.sidebar-toggled footer.sticky-footer {
 .navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion {
  background:#ec1d25!important
 }
+/***********************/
 
+/*Dodaj novog pacijenta*/
+
+.generalijePacijenta{
+	width:100%;
+}
+
+.generalije1{
+	display:inline;
+	width:50%;
+	float:left;
+}
+
+.generalije2{
+	display:inline;
+	width:45%;
+	float:right;
+	margin-right:5%;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #e6e6e6;
+            opacity: 1; /* Firefox */
+}
+
+.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: #e6e6e6;
+}
+
+.form-control::-ms-input-placeholder { /* Microsoft Edge */
+            color: #e6e6e6;
+ }
+ 
+.obavezna_polja{
+	font-size:11pt;
+	color:#ff0000;
+	margin-left:1%;
+	font-weight:700;
+}
+
+#naocare_blizina_od{
+	display: inline;
+    width: 74%;
+}
+
+#naocare_blizina_os{
+	display: inline;
+    width: 75%;
+}
+
+#naocare_daljina_od{
+	display: inline;
+    width: 73%;
+}
+
+#naocare_daljina_os{
+	display: inline;
+    width: 75%;
+}
+
+#sociva_od{
+	display: inline;
+    width: 75%;
+}
+
+#sociva_os{
+	display: inline;
+    width: 75%;
+}
+
+#dodajNovogPacijenta{
+	margin-bottom:5%;
+}
+
+
+/***********************/
 #ajaxResults:hover{
 	background:yellow;
 	cursor:pointer;
 }
 
+/*Pregled*/
+
+#ispis_napomene_pacijenta{
+	border:none;
+	word-wrap: break-word;
+}
 div.row1{
 	display:inline-block !important;
 	width:30% !important;
@@ -10130,5 +10214,18 @@ div#stampa2{
 .labelPrintButton{
 	font-family:"Nunito";
 	display:inline;
+}
+.labelPrintButton:hover{
+	cursor:pointer;
+}
+#dugmeDodaj{
+	margin-bottom:3%;
+}
+.labelSaveButton{
+	font-family:"Nunito";
+	display:inline;
+}
+.labelSaveButton:hover{
+	cursor:pointer;
 }
 

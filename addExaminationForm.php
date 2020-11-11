@@ -75,12 +75,18 @@ include '../pregled/modules/header.php';
               <input name="name" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
             </div>
 
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2">
               <label for="exampleFormControlSelect2">Današnji datum</label>
               <input name="datum_pregleda" title="" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-1">
               <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="exampleFormControlSelect2">Napomena o pacijentu:</label>
+              <div>
+                <input class="form-control" id="ispis_napomene_pacijenta">
+              </div>
             </div>
           </div>
 
@@ -180,8 +186,8 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-7">
               <strong><label for="exampleFormControlSelect2">MOTELITET:</label> </strong>
-              <input list="motilitet" name="motilitet" title="" type="text" class="form-control" id="motilitet">
-              <datalist id="motilitet">
+              <input list="motilitet2" name="motilitet" title="" type="text" class="form-control" id="motilitet">
+              <datalist id="motilitet2">
                 <option value="Nalaz uredan">
               </datalist>
             </div>
@@ -244,7 +250,7 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-6">
               <strong><label for="exampleFormControlSelect2">TERAPIJA:</label> </strong>
-              <input  name="terapija" title="" type="text" class="form-control" id="terapija">
+              <input name="terapija" title="" type="text" class="form-control" id="terapija">
             </div>
           </div>
 
@@ -343,7 +349,7 @@ include '../pregled/modules/header.php';
             </div>
           </div>
           <div class="row">
-            <button type='button' onclick="checkFormExamination()" id='dugmeDodaj' class='btn btn-success'>Sačuvaj</button>
+            <button type='button' onclick="checkFormExamination()" id='dugmeDodaj' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
           </div>
         </div>
 

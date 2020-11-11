@@ -13,7 +13,7 @@ echo "</footer>"; ?></div>
                 <h5 class="modal-title" id="exampleModalLabel">Odjava</h5> <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
             </div>
             <div class="modal-body">Izaberite "Odjava" da bi završili trenutnu sesiju.</div>
-            <div class="modal-footer"> <button class="btn btn-secondary" type="button" data-dismiss="modal">Prekini</button> <a class="btn btn-primary" href="../narudzbenica/odjava.php">Odjava</a> </div>
+            <div class="modal-footer"> <button class="btn btn-secondary" type="button" data-dismiss="modal">Prekini</button> <a class="btn btn-primary" href="../pregled/odjava.php">Odjava</a> </div>
         </div>
     </div>
 </div>

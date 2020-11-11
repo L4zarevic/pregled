@@ -10,7 +10,7 @@
           
         <a class="nav-link collapsed" href="addPatientForm.php" d data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fas fa-user-plus"></i> <span>Dodaj novog pacijenta</span> </a>
         <a class="nav-link collapsed" href="addExaminationForm.php" d data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fas fa-glasses"></i> <span>Pregled</span> </a>
-        <a class="nav-link collapsed" href="" d data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fas fa-folder-open"></i> <span>Karton pacijenta</span> </a>
+        <a class="nav-link collapsed" href="patientRecords.php" d data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fas fa-folder-open"></i> <span>Karton pacijenta</span> </a>
 
     </li>
     <hr class="sidebar-divider">

@@ -10,7 +10,7 @@ if (isset($_POST['search'])) {
    //Search box value assigning to $Name variable.
    $Name = $_POST['search'];
    //Search query.
-   $Query = "SELECT ID,imePacijenta,prezimePacijenta,godiste FROM pacijenti WHERE imePacijenta LIKE '%$Name%' OR prezimePacijenta LIKE '%$Name%' OR godiste LIKE '%$Name%' LIMIT 5";
+   $Query = "SELECT ID,generalije_pacijenta,napomena FROM pacijenti WHERE generalije_pacijenta LIKE '%$Name%'";
    //Query execution
    $ExecQuery = MySQLi_query($conn, $Query);
    //Creating unordered list to display result.
@@ -23,13 +23,11 @@ if (isset($_POST['search'])) {
       <!-- Creating unordered list items.
             Calling javascript function named as "fill" found in "script.js" file.
             By passing fetched result as parameter. -->
-      <li id="ajaxResults" onclick='fill("<?php echo $Result['ID'] . "#" . $Result['imePacijenta'] . " " . $Result['prezimePacijenta'] . " " . $Result['godiste']; ?>")'>
+      <li id="ajaxResults" onclick='fill("<?php echo $Result['ID'] . "#" . $Result['generalije_pacijenta'] . "#" . $Result['napomena']; ?>")'>
 
          <a  value="<?php echo $Result['ID']; ?>">
             <!-- Assigning searched result in "Search box" in "search.php" file. -->
-            <?php echo $Result['imePacijenta']; ?>
-            <?php echo $Result['prezimePacijenta']; ?>
-            <?php echo $Result['godiste']; ?>
+            <?php echo $Result['generalije_pacijenta']; ?>
       </li></a>
       <!-- Below php code is just for closing parenthesis. Don't be confused. -->
 <?php

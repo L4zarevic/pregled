@@ -54,63 +54,141 @@ include '../pregled/modules/header.php';
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Dodaj novog pacijenta</h1>
-
-          <div class='tabelaSpecijala1'>
-            <form action="../pregled/addPatientDB.php">
-              <div class="rowSpec">
-                <div class="form-group col-md-3">
-                  <label for="exampleFormControlSelect2">Ime </label>
-                  <input name="imePacijenta" title="Unesite ime pacijenta" type="text" class="form-control" id="imePacijenta" required>
+          <div class="generalijePacijenta">
+            <div class='generalije1'>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="exampleFormControlSelect2">Ime </label><label class="obavezna_polja" for="exampleFormControlSelect2">*</label>
+                  <input name="ime_pacijenta" placeholder="Unesite ime pacijenta" title="Unesite ime pacijenta" type="text" class="form-control" id="ime_pacijenta">
                 </div>
               </div>
 
-              <div class="rowSpec">
-                <div class="form-group col-md-3">
-                  <label for="exampleFormControlSelect2">Prezime</label>
-                  <input name="prezimePacijenta" title="Unesite prezime pacijenta" type="text" class="form-control" id="prezimePacijenta" required>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="exampleFormControlSelect2">Ime oca</label><label class="obavezna_polja" for="exampleFormControlSelect2">*</label>
+                  <input name="ime_oca_pacijenta" placeholder="Unesite ime oca pacijenta" title="Unesite ime oca pacijenta" type="text" class="form-control" id="ime_oca_pacijenta">
                 </div>
               </div>
 
-              <div class="rowSpec">
-                <div class="form-group col-md-3">
-                  <label for="exampleFormControlSelect2">Godina rođenja</label>
-                  <input name="godistePacijenta" title="Unesite godinu rođenja pacijenta" type="text" class="form-control" id="godištePacijenta" required>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="exampleFormControlSelect2">Prezime</label><label class="obavezna_polja" for="exampleFormControlSelect2">*</label>
+                  <input name="prezime_pacijenta" placeholder="Unesite prezime pacijenta" title="Unesite prezime pacijenta" type="text" class="form-control" id="prezime_pacijenta">
                 </div>
               </div>
 
-              <div class="rowSpec">
-                <div class="form-group col-md-3">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="exampleFormControlSelect2">Godina rođenja</label><label class="obavezna_polja" for="exampleFormControlSelect2">*</label>
+                  <input name="godiste_pacijenta" placeholder="Unesite godinu rođenja pacijenta" title="Unesite godinu rođenja pacijenta" type="text" class="form-control" id="godiste_pacijenta">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6">
                   <label for="exampleFormControlSelect2">Kontakt</label>
-                  <input name="kontaktPacijenta" title="Unesite kontakt podatak pacijenta (telefon ili email)" type="text" class="form-control" id="kontaktPacijenta">
+                  <input name="kontakt_pacijenta" placeholder="Unesite kontakt pacijenta" title="Unesite kontakt podatak pacijenta (telefon ili email)" type="text" class="form-control" id="kontakt_pacijenta">
                 </div>
               </div>
 
-              <div class="rowSpec">
-                <div class="form-group col-md-3">
+              <div class="row">
+                <div class="form-group col-md-6">
                   <label for="exampleFormControlSelect2">Napomena</label>
-                  <textarea name="napomenaPacijenta" class="form-control" type="text" title="Unesite napomenu vezanu za pacijenta" id="napomenaPacijenta" row="4"></textarea>
+                  <textarea name="napomena_pacijenta" placeholder="Unesite napomenu vezanu za pacijenta pacijenta" class="form-control" type="text" title="Unesite napomenu vezanu za pacijenta" id="napomena_pacijenta" row="4"></textarea>
+                </div>
+
+              </div>
+
+            </div>
+            <div class='generalije2'>
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2"><strong><u>Naočare - postojeće</u></strong></label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2">Daljina: </label>
+                  &nbsp; <label for="exampleFormControlSelect2">OD: </label>
+                  <input name="naocare_daljina_od" title="" type="text" class="form-control" id="naocare_daljina_od">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2"></label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label id="daljinaOS" for="exampleFormControlSelect2">OS:</label>
+                  <input name="naocare_daljina_os" type="text" class="form-control" id="naocare_daljina_os">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2">Blizina: </label>
+                  &nbsp; <label for="exampleFormControlSelect2">OD: </label>
+                  <input name="naocare_blizina_od" title="" type="text" class="form-control" id="naocare_blizina_od">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2"></label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label id="blizinaOS" for="exampleFormControlSelect2">OS:</label>
+                  <input name="naocare_blizina_os" title="" type="text" class="form-control" id="naocare_blizina_os">
                 </div>
               </div>
 
 
-              <button type='submit' onclick="" id='dugmeDodaj' class='btn btn-success'>Sačuvaj</button>
-            </form>
 
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2"><strong><u>Kontaktna sočiva:</u></strong></label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2">OD: </label>
+                  <input name="sociva_od" title="" type="text" class="form-control" id="sociva_od">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label id="blizinaOS" for="exampleFormControlSelect2">OS: </label>
+                  <input name="sociva_os" title="" type="text" class="form-control" id="sociva_os">
+                </div>
+              </div>
+              <hr>
+              <button type='button' onclick="addPatientCheckForm()" id="dodajNovogPacijenta" title="Kreiraj karton pacijenta" class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj pacijenta</label></button>
+            </div>
+            <label class="obavezna_polja" for="exampleFormControlSelect2">* Obavezna polja za unos</label>
           </div>
 
-
-
+          <?php
+          if (isset($_REQUEST['msg'])) {
+            if ($_REQUEST['msg'] == '1') {
+              echo "<script src=\"js/alertify.min.js\"></script>";
+              echo "<script type=\"text/javascript\"> alertify.error('Greška prilikom sačuvavanja');</script>";
+              echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
+            } else if ($_REQUEST['msg'] == '0') {
+              echo "<script src=\"js/alertify.min.js\"></script>";
+              echo "<script type=\"text/javascript\">alertify.success('Pacijent je dodat u bazu');</script>";
+              echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
+            }
+          }
+          ?>
 
           <!-- /.container-fluid -->
         </div>
 
-      </div <!-- Footer -->
+      </div> <!-- Footer -->
       <?php
       include '../pregled/modules/footer.php';
       ?>
       <!-- End of Footer -->
-
-  
 
 </body>
 
