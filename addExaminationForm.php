@@ -71,8 +71,8 @@ include '../pregled/modules/header.php';
 
           <div class="row">
             <div class="form-group col-md-3">
-              <label for="exampleFormControlSelect2">Pretraga pacijenta</label>
-              <input name="name" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
+              <label for=#search">Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
+              <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
             </div>
 
             <div class="form-group col-md-2">
@@ -97,111 +97,105 @@ include '../pregled/modules/header.php';
             <strong> <label for="exampleFormControlSelect2">ANAMNEZA</label></strong>
           </div>
 
-          <!-- Default unchecked -->
-          <div class="row1">
+          <div class="row">
             <div class="form-group col-md-8">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a1" class="custom-control-input" id="a1" value="Slabije vidi na daljinu">
-                <label class="custom-control-label" for="a1">Slabije vidi na daljinu</label>
-              </div>
-
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a2" class="custom-control-input" id="a2" value="Slabije vidi na blizinu">
-                <label class="custom-control-label" for="a2">Slabije vidi na blizinu</label>
-              </div>
-
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a3" class="custom-control-input" id="a3" value="Dupla slika">
-                <label class="custom-control-label" for="a3">Dupla slika</label>
-              </div>
-
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a4" class="custom-control-input" id="a4" value="Izobličena slika">
-                <label class="custom-control-label" for="a4">Izobličena slika</label>
-              </div>
+              <input list="listaAnamneza" name="anamneza" title="" type="text" class="form-control" id="anamneza">
+              <datalist id="listaAnamneza">
+                <option value="Slabije vidi na daljinu">
+                <option value="Slabije vidi na blizinu">
+                <option value="Dupla slika">
+                <option value="Izobličena slika">
+                <option value="Naglo slabi vid">
+                <option value="Glavobolja">
+                <option value="Očni napor">
+                <option value="Bol u oku">
+                <option value="Suzenje">
+                <option value="Slabije vidi noću">
+                <option value="Oko je suvo i svrbi">
+              </datalist>
             </div>
+
           </div>
 
 
-          <div class="row2">
-            <div class="form-group col-md-8">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a5" class="custom-control-input" id="a5" value="Naglo slabi vid">
-                <label class="custom-control-label" for="a5">Naglo slabi vid</label>
-              </div>
 
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a6" class="custom-control-input" id="a6" value="Glavobolja">
-                <label class="custom-control-label" for="a6">Glavobolja</label>
-              </div>
-
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a7" class="custom-control-input" id="a7" value="Očni napor">
-                <label class="custom-control-label" for="a7">Očni napor</label>
-              </div>
-
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a8" class="custom-control-input" id="a8" value="Bol u oku">
-                <label class="custom-control-label" for="a8">Bol u oku</label>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="row3">
-            <div class="form-group col-md-8">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a9" class="custom-control-input" id="a9" value="Suzenje">
-                <label class="custom-control-label" for="a9">Suzenje</label>
-              </div>
-
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a10" class="custom-control-input" id="a10" value="Slabije vidi noću">
-                <label class="custom-control-label" for="a10">Slabije vidi noću</label>
-              </div>
-
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="a11" class="custom-control-input" id="a11" value="Oko je suvo i svrbi">
-                <label class="custom-control-label" for="a11">Oko je suvo i svrbi</label>
-              </div>
-            </div>
-          </div>
-
-          <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Dodatna anamneza
-          </button>
-          </p>
-          <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-              <label for="exampleFormControlSelect2">Upišite dodatnu anamnezu ukoliko nema u ponuđenim opcijama</label>
-              <input name="a_dodatna" title="" type="text" class="form-control" id="a_dodatna">
-            </div>
-          </div>
-
-
+          <br>
           <div class="row">
             <strong> <label for="exampleFormControlSelect2">VIDNA OŠTRINA</label></strong>
           </div>
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label for="exampleFormControlSelect2">VOD:</label>
-              <input name="vod" title="" type="text" class="form-control" id="vod">
+
+          <div class="vidnaOstrina">
+            <div class="vidnaOstrina_grupa1">
+              <div class="vod1">
+                <div class="form-group col-md-8">
+                  <label id="label_vod">VOD:</label>
+                  <input list="listaVod" name="vod" title="" type="text" class="form-control" id="vod">
+                  <datalist id="listaVod">
+                    <option value="0.1">
+                    <option value="0.2">
+                    <option value="0.3">
+                    <option value="0.4">
+                    <option value="0.5">
+                    <option value="0.6">
+                    <option value="0.7">
+                    <option value="0.8">
+                    <option value="0.9">
+                    <option value="1.0">
+                  </datalist>
+                </div>
+              </div>
+
+              <div class="vos1">
+                <div class="form-group col-md-8">
+                  <label id="label_vos">VOS:</label>
+                  <input list="listaVos" name="vos" title="" type="text" class="form-control" id="vos">
+                  <datalist id="listaVos">
+                    <option value="0.1">
+                    <option value="0.2">
+                    <option value="0.3">
+                    <option value="0.4">
+                    <option value="0.5">
+                    <option value="0.6">
+                    <option value="0.7">
+                    <option value="0.8">
+                    <option value="0.9">
+                    <option value="1.0">
+                  </datalist>
+                </div>
+              </div>
             </div>
+
+            <div class="vidnaOstrina_grupa2">
+              <div class="sa_cc">
+                <label id="sa_cc">sa cc:</label>
+              </div>
+            </div>
+
+            <div class="vidnaOstrina_grupa3">
+              <div class="form-group col-md-3">
+                <input name="vod" title="" type="text" class="form-control" id="vod1">
+              </div>
+
+
+
+              <div class="form-group col-md-3">
+                <input name="vos" title="" type="text" class="form-control" id="vos1">
+              </div>
+
+            </div>
+
+
           </div>
 
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label for="exampleFormControlSelect2">VOS:</label>
-              <input name="vos" title="" type="text" class="form-control" id="vos">
-            </div>
-          </div>
+
+
 
           <div class="row">
             <div class="motilitetGrupa">
               <div class="form-group col-md-12">
                 <strong><label for="exampleFormControlSelect2">MOTELITET:</label> </strong>
-                <input list="motilitet2" name="motilitet" title="" type="text" class="form-control" id="motilitet">
-                <datalist id="motilitet2">
+                <input list="listaMotiliteta" name="motilitet" title="" type="text" class="form-control" id="motilitet">
+                <datalist id="listaMotiliteta">
                   <option value="Nalaz uredan">
                 </datalist>
               </div>
@@ -219,50 +213,53 @@ include '../pregled/modules/header.php';
             </div>
           </div>
 
+          <br>
           <div class="row">
-            <strong><label for="exampleFormControlSelect2">BMS:</label></strong>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-6">
+            <div class="bmsGrupa">
+              <strong><label for="exampleFormControlSelect2">BMS:</label></strong>
+              <div class="form-group col-md-8">
 
-              <label for="exampleFormControlSelect2">OD:</label>
-              <input name="bms_od" title="" type="text" class="form-control" id="bms_od">
+                <label for="exampleFormControlSelect2">OD:</label>
+                <input name="bms_od" title="" type="text" class="form-control" id="bms_od">
 
-              <label id="bms_os_label" for="exampleFormControlSelect2">OS:</label>
-              <input name="bms_os" title="" type="text" class="form-control" id="bms_os">
+                <label id="bms_os_label" for="exampleFormControlSelect2">OS:</label>
+                <input name="bms_os" title="" type="text" class="form-control" id="bms_os">
+              </div>
+            </div>
+
+            <div class="fundusGrupa">
+              <strong><label for="exampleFormControlSelect2">FUNDUS:</label></strong>
+              <div class="form-group col-md-8">
+                <label for="exampleFormControlSelect2">OD:</label>
+                <input name="fundus_od" title="" type="text" class="form-control" id="fundus_od">
+
+                <label for="exampleFormControlSelect2">OS:</label>
+                <input name="fundus_os" title="" type="text" class="form-control" id="fundus_os">
+              </div>
             </div>
           </div>
 
-          <div class="row">
-            <strong><label for="exampleFormControlSelect2">FUNDUS:</label></strong>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label for="exampleFormControlSelect2">OD:</label>
-              <input name="fundus_od" title="" type="text" class="form-control" id="fundus_od">
-
-              <label for="exampleFormControlSelect2">OS:</label>
-              <input name="fundus_os" title="" type="text" class="form-control" id="fundus_os">
-            </div>
-          </div>
-
+          <br>
           <div class="row">
             <strong><label for="exampleFormControlSelect2">DIJAGNOZA:</label></strong>
           </div>
           <div class="row">
-            <div class="form-group col-md-6">
-              <label for="exampleFormControlSelect2">OD:</label>
-              <input name="dijagnoza_od" title="" type="text" class="form-control" id="dijagnoza_od">
-
-              <label for="exampleFormControlSelect2">OS:</label>
-              <input name="dijagnoza_os" title="" type="text" class="form-control" id="dijagnoza_os">
+            <div class="form-group col-md-5">
+              <input name="dijagnoza" title="" type="text" class="form-control" id="dijagnoza">
             </div>
           </div>
 
           <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-5">
               <strong><label for="exampleFormControlSelect2">TERAPIJA:</label> </strong>
               <input name="terapija" title="" type="text" class="form-control" id="terapija">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-7">
+              <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
+              <input name="kontrola" title="" type="text" class="form-control" id="kontrola">
             </div>
           </div>
 
@@ -270,69 +267,71 @@ include '../pregled/modules/header.php';
             <strong> <label for="exampleFormControlSelect2">KOREKCIJA:</label></strong>
           </div>
           <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-5">
               <label for="exampleFormControlSelect2">OD:</label>
               <input name="korekcija_od" title="" type="text" class="form-control" id="korekcija_od">
 
               <label for="exampleFormControlSelect2">OS:</label>
               <input name="korekcija_os" title="" type="text" class="form-control" id="korekcija_os">
             </div>
+            <div class="form-group col-md-3">
+              <strong><label for="exampleFormControlSelect2">PD:</label> </strong>
+              <input name="pd" title="" type="text" class="form-control" id="pd">
+            </div>
           </div>
+          <br>
 
-          <hr>
+          <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+            <i class="fas fa-angle-down">&nbsp;</i>Pregled kontaktna sočiva
+          </button>
+          </p>
+          <div class="collapse" id="collapseExample2">
+            <div class="card card-body">
+              <div class="row">
+                <strong> <label for="exampleFormControlSelect2">KOREKCIJA (kon. sočiva):</label></strong>
+              </div>
+              <div class="row">
+                <label for="exampleFormControlSelect2">OD:</label>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-8">
 
+                  <label for="exampleFormControlSelect2">Tip/vrsta:</label>
+                  <input name="tip_ks_od" title="" type="text" class="form-control" id="tip_ks_od">
 
+                  <label for="exampleFormControlSelect2">Jačina:</label>
+                  <input name="jacina_ks_od" title="" type="text" class="form-control" id="jacina_ks_od">
 
+                  <label for="exampleFormControlSelect2">BC:</label>
+                  <input name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od">
 
-          <div class="bs-example">
-            <div class="accordion" id="accordionExample">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h2 class="mb-0">
-                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"><i class="fas fa-plus"></i>Pregled kontaktna sočiva</button>
-                  </h2>
+                  <label for="exampleFormControlSelect2">Veličina:</label>
+                  <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od">
+
+                  <label for="exampleFormControlSelect2">Boja:</label>
+                  <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od">
                 </div>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div class="card-body">
-                    <div class="row">
-                      <strong> <label for="exampleFormControlSelect2">KOREKCIJA (kon. sočiva):</label></strong>
-                    </div>
-                    <div class="row">
-                      <div class="form-group col-md-8">
-                        <label for="exampleFormControlSelect2">OD:</label>
-                        <label for="exampleFormControlSelect2">Tip/vrsta:</label>
-                        <input name="tip_ks_od" title="" type="text" class="form-control" id="tip_ks_od">
+              </div>
+              <div class="row">
+                <label for="exampleFormControlSelect2">OS:</label>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-8">
 
-                        <label for="exampleFormControlSelect2">Jačina:</label>
-                        <input name="jacina_ks_od" title="" type="text" class="form-control" id="jacina_ks_od">
+                  <label for="exampleFormControlSelect2">Tip/vrsta:</label>
+                  <input name="tip_ks_os" title="" type="text" class="form-control" id="tip_ks_os">
 
-                        <label for="exampleFormControlSelect2">BC:</label>
-                        <input name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od">
+                  <label for="exampleFormControlSelect2">Jačina:</label>
+                  <input name="jacina_ks_os" title="" type="text" class="form-control" id="jacina_ks_os">
 
-                        <label for="exampleFormControlSelect2">Veličina:</label>
-                        <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od">
+                  <label for="exampleFormControlSelect2">BC:</label>
+                  <input name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os">
 
-                        <label for="exampleFormControlSelect2">Boja:</label>
-                        <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od">
+                  <label for="exampleFormControlSelect2">Veličina:</label>
+                  <input name="velicina_ks_os" title="" type="text" class="form-control" id="velicina_ks_os">
 
-                        <label for="exampleFormControlSelect2">OS:</label>
-                        <label for="exampleFormControlSelect2">Tip/vrsta:</label>
-                        <input name="tip_ks_os" title="" type="text" class="form-control" id="tip_ks_os">
-
-                        <label for="exampleFormControlSelect2">Jačina:</label>
-                        <input name="jacina_ks_os" title="" type="text" class="form-control" id="jacina_ks_os">
-
-                        <label for="exampleFormControlSelect2">BC:</label>
-                        <input name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os">
-
-                        <label for="exampleFormControlSelect2">Veličina:</label>
-                        <input name="velicina_ks_os" title="" type="text" class="form-control" id="velicina_ks_os">
-
-                        <label for="exampleFormControlSelect2">Boja:</label>
-                        <input name="boja_ks_os" title="" type="text" class="form-control" id="boja_ks_os">
-                      </div>
-                    </div>
-                  </div>
+                  <label for="exampleFormControlSelect2">Boja:</label>
+                  <input name="boja_ks_os" title="" type="text" class="form-control" id="boja_ks_os">
                 </div>
               </div>
             </div>
@@ -343,19 +342,9 @@ include '../pregled/modules/header.php';
           <hr>
 
 
-          <div class="row">
-            <div class="form-group col-md-3">
-              <strong><label for="exampleFormControlSelect2">PD:</label> </strong>
-              <input name="pd" title="" type="text" class="form-control" id="pd">
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="form-group col-md-8">
-              <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
-              <input name="kontrola" title="" type="text" class="form-control" id="kontrola">
-            </div>
-          </div>
+
+
 
           <div class="row">
             <div class="form-group col-md-7">
@@ -363,8 +352,9 @@ include '../pregled/modules/header.php';
               <textarea name="napomena_pregleda" class="form-control" type="text" title="Unesite napomenu vezanu za pregled" id="napomena_pregleda" row="9"></textarea>
             </div>
           </div>
+          <hr>
           <div class="row">
-            <button type='button' onclick="checkFormExamination()" id='dugmeDodaj' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
+            <button type='button' onclick="checkFormExamination()" id='dugmeDodajPregled' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
           </div>
         </div>
 
@@ -385,6 +375,21 @@ include '../pregled/modules/header.php';
 
 
   <script type="text/javascript">
+    $(document).ready(function() {
+      $('#vod').on('change', function(e) {
+        var oldValue = document.getElementById('vod').value;
+        var splitString = oldValue.split("cc:");
+        var newValue = splitString[1];
+        $('#korekcija_od').val(newValue);
+      });
+      $('#vos').on('change', function(e) {
+        var oldValue = document.getElementById('vos').value;
+        var splitString = oldValue.split("cc:");
+        var newValue = splitString[1];
+        $('#korekcija_os').val(newValue);
+      });
+    });
+
     $(document).ready(function() {
       // Add minus icon for collapse element which is open by default
       $(".collapse.show").each(function() {

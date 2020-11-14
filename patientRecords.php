@@ -64,11 +64,13 @@ include '../pregled/modules/header.php';
             </div>
 
             <div class="form-group col-md-2">
-              <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
+              <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta" onchange="showUser(this.value)">
             </div>
           </div>
 
           <div id="display"></div>
+
+
 
           <table class="table table-hover">
             <thead>
@@ -78,24 +80,16 @@ include '../pregled/modules/header.php';
                 <th scope="col">Radnja:</th>
               </tr>
             </thead>
-            <tbody>
-              <?php
+            <tbody id="table">
 
 
-
-              ?>
-              <tr>
-                <th scope="row">1</th>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td></td>
-                <td></td>
-              </tr>
             </tbody>
           </table>
+
+
+       
+
+
 
 
 
@@ -112,7 +106,11 @@ include '../pregled/modules/header.php';
     </div>
   </div>
   <script type="text/javascript" src="../pregled/scripts.js"></script>
-  
+
+  <script type="text/javascript">
+   
+  </script>
+
 
 
 

@@ -196,43 +196,67 @@ include '../pregled/modules/header.php';
 
 
 
-            echo " <div class='row'> <strong><label>Pacijent: </label></strong> &nbsp; $ime_prezime_pacijenta</div>";
+            echo " <div class='row'> <strong><label>Ime, prezime i godina rođenja: </label></strong> &nbsp; $ime_prezime_pacijenta</div>";
             echo " <div class='row'> <strong><label>Datum: </label></strong> &nbsp; $datum_pregleda</div>";
             echo "<hr>";
             echo " <div class='row'> <strong><label>ANAMNEZA: </label></strong> &nbsp; </div>";
             $items = "";
             $separated = explode('$$', $anamneza);
-
+            $stringAnemneza = "";
             foreach ($separated as $value) {
-              echo  "<div class='row'>$value</div> </br>";
+              $stringAnemneza .= $value . "; ";
             }
-            echo "<div class='row'> <strong><label>VOD:</label></strong>  &nbsp; $vod</div>";
-            echo "<div class='row'> <strong><label>VOS:</label></strong>  &nbsp; $vos</div>";
+            if ($stringAnemneza == "; ") {
+              $stringAnemneza = "";
+            }
+
+
+            $cutString = substr_replace($stringAnemneza, "", -1);
+
+            echo "<div class='row'> $cutString</div>";
+            echo "<br>";
+            echo "<div class='row'> <strong><label>VIDNA OŠTRINA: </label></strong></div>";
+            echo "<div class='row'> <label>VOD:</label> &nbsp; $vod</div>";
+            echo "<div class='row'> <label>VOS:</label> &nbsp; $vos</div>";
             echo "<hr>";
+            echo "<div class='motelitetTonusGrupa'>";
+            echo "<div class='motilitetGrupa'>";
             echo "<div class='row'> <strong><label>MOTILITET: </label></strong> &nbsp; $motilitet</div>";
-            echo "<hr>";
-            echo "<div id='grupa1'>";
-            echo "<div class='row'> <strong><label>BMS: </label></strong></div>";
-            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $bms_od</div>";
-            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $bms_os</div>";
+            echo "</div>";
+            echo "<div class='tonusGrupa'>";
             echo "<div class='row'> <strong><label>TONUS: </label></strong></div>";
             echo "<div class='row'> <label>OD: </label></strong> &nbsp; $tonus_od</div>";
             echo "<div class='row'> <label>OS: </label></strong> &nbsp; $tonus_os</div>";
             echo "</div>";
+            echo "</div>";
+            echo "<br>";
+            echo "<div id='grupa1'>";
+            echo "<div class='row'> <strong><label>BMS: </label></strong></div>";
+            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $bms_od</div>";
+            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $bms_os</div>";
+            echo "</div>";
+
             echo "<div id='grupa2'>";
             echo "<div class='row'> <strong><label>FUNDUS: </label></strong></div>";
             echo "<div class='row'> <label>OD: </label></strong> &nbsp; $fundus_od</div>";
             echo "<div class='row'> <label>OS: </label></strong> &nbsp; $fundus_os</div>";
+
+            echo "</div>";
+            echo "<hr>";
             echo "<div class='row'> <strong><label>DIJAGNOZA: </label></strong></div>";
             echo "<div class='row'> <label>OD: </label></strong> &nbsp; $dijagnoza_od</div>";
             echo "<div class='row'> <label>OS: </label></strong> &nbsp; $dijagnoza_os</div>";
-            echo "</div>";
-            echo "<hr>";
             echo "<div class='row'> <strong><label>TERAPIJA:</label></strong> $terapija</div>";
+            echo "<div class='row'> <strong><label>KONTROLA: &nbsp;</label></strong>  $kontrola</div>";
             echo "<hr>";
             echo "<div class='row'> <strong><label>KOREKCIJA: </label></strong></div>";
             echo "<div class='row'> <label>OD: </label></strong> &nbsp; $korekcija_od</div>";
+
             echo "<div class='row'> <label>OS: </label></strong> &nbsp; $korekcija_os</div>";
+
+            echo "<div class='row'> <strong><label>PD: &nbsp;</label></strong> $pd</div></br>";
+
+
             echo "<hr>";
             echo "<div class='row'> <strong><label>KOREKCIJA (kon. sočiva): </label></strong></div>";
             echo "<div id='korekcijas1'>";
@@ -252,23 +276,22 @@ include '../pregled/modules/header.php';
             echo "<div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_os</div>";
             echo "</div>";
             echo "<hr>";
-            echo "<div class='row'> <strong><label>PD: &nbsp;</label></strong> $pd</div>";
-            echo "<hr>";
-            echo "<div class='row'> <strong><label>KONTROLA: &nbsp;</label></strong>  $kontrola</div>";
-            echo "<hr>";
+
+
+
             echo "<div class='row'> <strong><label>NAPOMENA: &nbsp;</label></strong>  $napomena_pregleda</div>";
             echo "<hr>";
             echo "<br>";
             echo "<br>";
             echo "<div id='stampa1'>";
             echo "<h4>Pregled za naočare</h4>";
-            echo "<button id='kratkiIspisNaocare' title='Kratki izvještaj pregleda za naočare (A5 landscape)' class='btn btn-primary' onClick='openPrintDialogue()'><i class='fa fa-print' ></i>&nbsp;<label class='labelPrintButton'>Kratki ispis</label></button>";
-            echo "<button id='dugiIspisNaocare' title='Dugi izvještaj pregleda za naočare (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Dugi ispis</label></button>";
+            echo "<button id='kratkiIspisNaocare' title='Kratki izvještaj pregleda za naočare (A5 landscape)' class='btn btn-primary' onClick='openPrintDialogue()'><i class='fa fa-print' ></i>&nbsp;<label class='labelPrintButton'>Štampa kratki ispis</label></button>";
+            echo "<button id='dugiIspisNaocare' title='Dugi izvještaj pregleda za naočare (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa dugi ispis</label></button>";
             echo "</div>";
             echo "<div id='stampa2'>";
             echo "<h4>Pregled za sočiva</h4>";
-            echo "<button id='kratkiIspisSociva' title='Kratki izvještaj pregleda za sočiva (A5 landscape)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Kratki ispis</label></button>";
-            echo "<button id='dugiIspisSociva' title='Dugi izvještaj pregleda za sočiva (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Kratki ispis</label></button>";
+            echo "<button id='kratkiIspisSociva' title='Kratki izvještaj pregleda za sočiva (A5 landscape)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa kratki ispis</label></button>";
+            echo "<button id='dugiIspisSociva' title='Dugi izvještaj pregleda za sočiva (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa dugi ispis</label></button>";
             echo "</div>";
 
             ?>
@@ -315,12 +338,10 @@ include '../pregled/modules/header.php';
             }
             #linija{
               display:block;
-              width:90%;
+              width:94%;
               margin-left:3%;
               margin-right:3%;
             }
-
-          
             #logo{
               width:51%;
               heigt:51%;
@@ -334,12 +355,28 @@ include '../pregled/modules/header.php';
               float:right;
               display:inline-block;
               margin-top:5%;
-              margin-right:10%;
+              margin-right:3%;
             }
-            .anamneza{
+            .anamnezaIspis{
               display:block;
               margin-top:2%;
               margin-left:3%;
+              margin-right:3%;
+            }
+            .vidna_ostrina{
+              display:block;
+              margin-top:2%;
+              margin-left:3%;
+            }
+            .vidna_ostrina_vod{
+              display:inline;
+	            width:100%;
+            }
+            .vidna_ostrina_vos{
+              display:inline;
+              margin-left:18.4%;
+              margin-top:2%;
+	           
             }
             .korekcija{
               display:block;
@@ -347,19 +384,30 @@ include '../pregled/modules/header.php';
               margin-left:3%;
             }
             .korekcijaOD{
-              display:block;
-              margin-top:2%;
-              margin-left:3%;
+              display:inline;
+	            width:100%;
             }
             .korekcijaOS{
-              display:block;
+              display:inline;
+              margin-left:13.5%;
               margin-top:2%;
-              margin-left:3%;
             }
             .pd{
+              display:inline;
+              margin-left:13.5%;
+              margin-top:2%;
+            }
+            .kontrolaIspis{
               display:block;
               margin-top:2%;
               margin-left:3%;
+              margin-right:3%;
+            }
+            .napomenaIspis{
+              display:block;
+              margin-top:2%;
+              margin-left:3%;
+              margin-right:3%;
             }
             </style>
             <body>
@@ -368,19 +416,26 @@ include '../pregled/modules/header.php';
             <hr id='linija'>
             <div class='generalije'><label>Pacijent:</label>&nbsp;<?php echo $ime_prezime_pacijenta; ?></div>
             <div class='datum'><label>Datum:</label>&nbsp;<?php echo $datum_pregleda; ?></div>
-            <div class='anamneza'><label>ANAMNEZA:</label>&nbsp;</div>
+            <div class='anamnezaIspis'><label>ANAMNEZA:</label>&nbsp;</div>
             <?php
-            $separated = explode('$$', $anamneza);
-            echo  "<div class='anamneza'>";
-            foreach ($separated as $value) {
-              echo  "<label>$value</label></br>";
-            }
+            //  $separated = explode('$$', $anamneza);
+            echo  "<div class='anamnezaIspis'>";
+            // foreach ($separated as $value) {
+            echo  "<label>$stringAnemneza</label>";
+            //  }
             echo  "</div>";
             ?>
-            <div class='korekcija'><label>KOREKCIJA:</label>&nbsp;</div>
+            <div class='vidna_ostrina'><label>VIDNA OŠTRINA:</label>&nbsp;
+            <div class='vidna_ostrina_vod'><label>VOD:</label>&nbsp;<?php echo $vod; ?></div></br>
+            <div class='vidna_ostrina_vos'><label>VOS:</label>&nbsp;<?php echo $vos; ?></div>
+            </div>
+            <div class='korekcija'><label>KOREKCIJA:</label>&nbsp;
             <div class='korekcijaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_od; ?></div>
+            <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>
             <div class='korekcijaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_os; ?></div>
-            <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div>
+            </div>
+            <div class='kontrolaIspis'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
+            <div class='napomenaIspis'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
     
     
             </body>

@@ -6,7 +6,7 @@
 	   var newValue = splitString[0];
        $('#search').val(splitString[1]);
 	   $('#id_pacijenta').val(newValue);
-	   document.getElementById('ispis_napomene_pacijenta').innerHTML = $('#ispis_napomene_pacijenta').val(splitString[2]);
+	   $('#ispis_napomene_pacijenta').val(splitString[2]);
 	   
        //Hiding "display" div in "search.php" file.
        $('#display').hide();
