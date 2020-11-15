@@ -70,7 +70,7 @@ include '../pregled/modules/header.php';
 
 
           <div class="row">
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-4">
               <label for=#search">Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
               <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
             </div>
@@ -93,12 +93,11 @@ include '../pregled/modules/header.php';
           <div id="display"></div>
 
 
-          <div class="row">
-            <strong> <label for="exampleFormControlSelect2">ANAMNEZA</label></strong>
-          </div>
+
 
           <div class="row">
             <div class="form-group col-md-8">
+              <strong> <label id="labelAnamneza">ANAMNEZA:</label></strong>
               <input list="listaAnamneza" name="anamneza" title="" type="text" class="form-control" id="anamneza">
               <datalist id="listaAnamneza">
                 <option value="Slabije vidi na daljinu">
@@ -172,13 +171,11 @@ include '../pregled/modules/header.php';
             </div>
 
             <div class="vidnaOstrina_grupa3">
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-12">
                 <input name="vod" title="" type="text" class="form-control" id="vod1">
               </div>
 
-
-
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-12">
                 <input name="vos" title="" type="text" class="form-control" id="vos1">
               </div>
 
@@ -240,11 +237,10 @@ include '../pregled/modules/header.php';
           </div>
 
           <br>
-          <div class="row">
-            <strong><label for="exampleFormControlSelect2">DIJAGNOZA:</label></strong>
-          </div>
+
           <div class="row">
             <div class="form-group col-md-5">
+              <strong><label id="labelDijagnoza">DIJAGNOZA:</label></strong>
               <input name="dijagnoza" title="" type="text" class="form-control" id="dijagnoza">
             </div>
           </div>
@@ -376,17 +372,13 @@ include '../pregled/modules/header.php';
 
   <script type="text/javascript">
     $(document).ready(function() {
-      $('#vod').on('change', function(e) {
-        var oldValue = document.getElementById('vod').value;
-        var splitString = oldValue.split("cc:");
-        var newValue = splitString[1];
-        $('#korekcija_od').val(newValue);
+      $('#vod1').on('change', function(e) {
+        var splitVod = document.getElementById('vod1').value;
+        $('#korekcija_od').val(splitVod);
       });
-      $('#vos').on('change', function(e) {
-        var oldValue = document.getElementById('vos').value;
-        var splitString = oldValue.split("cc:");
-        var newValue = splitString[1];
-        $('#korekcija_os').val(newValue);
+      $('#vos1').on('change', function(e) {
+        var splitVos = document.getElementById('vos1').value;
+        $('#korekcija_os').val(splitVos);
       });
     });
 

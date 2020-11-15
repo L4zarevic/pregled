@@ -92,45 +92,38 @@ include '../pregled/modules/header.php';
 
             $success = $_REQUEST['success'];
 
-            $ar = explode("@@@", $success, 30);
+            $ar = explode("@@@", $success, 29);
             $ar[1] = rtrim($ar[1], "@@@");
 
             if (isset($ar[0])) {
               $ime_prezime_pacijenta = $ar[0];
             }
-
             if (isset($ar[1])) {
               $datum_pregleda = $ar[1];
             }
-
-
             if (isset($ar[2])) {
               $anamneza = $ar[2];
             }
-
             if (isset($ar[3])) {
               $vod = $ar[3];
             }
-
             if (isset($ar[4])) {
               $vos = $ar[4];
             }
-
             if (isset($ar[5])) {
               $motilitet = $ar[5];
             }
-
             if (isset($ar[6])) {
-              $bms_od = $ar[6];
+              $tonus_od = $ar[6];
             }
             if (isset($ar[7])) {
-              $bms_os = $ar[7];
+              $tonus_os = $ar[7];
             }
             if (isset($ar[8])) {
-              $tonus_od = $ar[8];
+              $bms_od = $ar[8];
             }
             if (isset($ar[9])) {
-              $tonus_os = $ar[9];
+              $bms_os = $ar[9];
             }
             if (isset($ar[10])) {
               $fundus_od = $ar[10];
@@ -142,10 +135,10 @@ include '../pregled/modules/header.php';
               $dijagnoza_od = $ar[12];
             }
             if (isset($ar[13])) {
-              $dijagnoza_os = $ar[13];
+              $terapija = $ar[13];
             }
             if (isset($ar[14])) {
-              $terapija = $ar[14];
+              $kontrola = $ar[14];
             }
             if (isset($ar[15])) {
               $korekcija_od = $ar[15];
@@ -154,43 +147,40 @@ include '../pregled/modules/header.php';
               $korekcija_os = $ar[16];
             }
             if (isset($ar[17])) {
-              $tip_ks_od = $ar[17];
+              $pd = $ar[17];
             }
             if (isset($ar[18])) {
-              $jacina_ks_od = $ar[18];
+              $tip_ks_od = $ar[18];
             }
             if (isset($ar[19])) {
-              $bc_ks_od  = $ar[19];
+              $jacina_ks_od = $ar[19];
             }
             if (isset($ar[20])) {
-              $velicina_ks_od  = $ar[20];
+              $bc_ks_od  = $ar[20];
             }
             if (isset($ar[21])) {
-              $boja_ks_od = $ar[21];
+              $velicina_ks_od  = $ar[21];
             }
             if (isset($ar[22])) {
-              $tip_ks_os = $ar[22];
+              $boja_ks_od = $ar[22];
             }
             if (isset($ar[23])) {
-              $jacina_ks_os = $ar[23];
+              $tip_ks_os = $ar[23];
             }
             if (isset($ar[24])) {
-              $bc_ks_os = $ar[24];
+              $jacina_ks_os = $ar[24];
             }
             if (isset($ar[25])) {
-              $velicina_ks_os  = $ar[25];
+              $bc_ks_os = $ar[25];
             }
             if (isset($ar[26])) {
-              $boja_ks_os = $ar[26];
+              $velicina_ks_os  = $ar[26];
             }
             if (isset($ar[27])) {
-              $pd = $ar[27];
+              $boja_ks_os = $ar[27];
             }
             if (isset($ar[28])) {
-              $kontrola = $ar[28];
-            }
-            if (isset($ar[29])) {
-              $napomena_pregleda  = $ar[29];
+              $napomena_pregleda  = $ar[28];
             }
 
 
@@ -199,21 +189,8 @@ include '../pregled/modules/header.php';
             echo " <div class='row'> <strong><label>Ime, prezime i godina rođenja: </label></strong> &nbsp; $ime_prezime_pacijenta</div>";
             echo " <div class='row'> <strong><label>Datum: </label></strong> &nbsp; $datum_pregleda</div>";
             echo "<hr>";
-            echo " <div class='row'> <strong><label>ANAMNEZA: </label></strong> &nbsp; </div>";
-            $items = "";
-            $separated = explode('$$', $anamneza);
-            $stringAnemneza = "";
-            foreach ($separated as $value) {
-              $stringAnemneza .= $value . "; ";
-            }
-            if ($stringAnemneza == "; ") {
-              $stringAnemneza = "";
-            }
-
-
-            $cutString = substr_replace($stringAnemneza, "", -1);
-
-            echo "<div class='row'> $cutString</div>";
+            echo " <div class='row'> <div class='ispisAnamneze'><strong><label>ANAMNEZA: </label></strong> &nbsp; </div>";
+            echo "$anamneza</div>";
             echo "<br>";
             echo "<div class='row'> <strong><label>VIDNA OŠTRINA: </label></strong></div>";
             echo "<div class='row'> <label>VOD:</label> &nbsp; $vod</div>";
@@ -357,7 +334,7 @@ include '../pregled/modules/header.php';
               margin-top:5%;
               margin-right:3%;
             }
-            .anamnezaIspis{
+            .ispisAnamneze{
               display:block;
               margin-top:2%;
               margin-left:3%;
@@ -375,7 +352,7 @@ include '../pregled/modules/header.php';
             .vidna_ostrina_vos{
               display:inline;
               margin-left:18.4%;
-              margin-top:2%;
+              margin-top:4%;
 	           
             }
             .korekcija{
@@ -416,22 +393,22 @@ include '../pregled/modules/header.php';
             <hr id='linija'>
             <div class='generalije'><label>Pacijent:</label>&nbsp;<?php echo $ime_prezime_pacijenta; ?></div>
             <div class='datum'><label>Datum:</label>&nbsp;<?php echo $datum_pregleda; ?></div>
-            <div class='anamnezaIspis'><label>ANAMNEZA:</label>&nbsp;</div>
+            <div class='ispisAnamneze'><label>ANAMNEZA:</label>&nbsp;
             <?php
             //  $separated = explode('$$', $anamneza);
-            echo  "<div class='anamnezaIspis'>";
+            //echo  "<div class='anamnezaIspis'>";
             // foreach ($separated as $value) {
-            echo  "<label>$stringAnemneza</label>";
+            echo  "<label>$anamneza</label>";
             //  }
             echo  "</div>";
             ?>
             <div class='vidna_ostrina'><label>VIDNA OŠTRINA:</label>&nbsp;
-            <div class='vidna_ostrina_vod'><label>VOD:</label>&nbsp;<?php echo $vod; ?></div></br>
+            <div class='vidna_ostrina_vod'><label>VOD:</label>&nbsp;<?php echo $vod; ?></div></br></br>
             <div class='vidna_ostrina_vos'><label>VOS:</label>&nbsp;<?php echo $vos; ?></div>
             </div>
             <div class='korekcija'><label>KOREKCIJA:</label>&nbsp;
             <div class='korekcijaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_od; ?></div>
-            <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>
+            <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br></br>
             <div class='korekcijaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_os; ?></div>
             </div>
             <div class='kontrolaIspis'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>

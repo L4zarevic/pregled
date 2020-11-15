@@ -10010,33 +10010,32 @@ body.sidebar-toggled footer.sticky-footer {
 
 /*Pregled*/
 #datum_pregleda{
-	width:60%;
+	width:70%;
 	text-align:center;
 }
 #id_pacijenta{
 	width:1%;
 	display:inline;
+	margin:0 0;
 }
 #ispis_napomene_pacijenta{
 	word-wrap: break-word;
 	font-weight:700;
+	
 }
-div.row1{
-	display:inline-block !important;
-	width:30% !important;
+#labelAnamneza{
+	display:inline-block;
+	width:10%;
+	margin-right:4%;
 }
-div.row2{
-	display:inline-block !important;
-	width:30% !important;
-}
-div.row3{
-	display:inline-block !important;
-	width:30% !important;
-}
+#anamneza{
+	 display:inline-block;
+	 width:80%;
+ }
 
 .vidnaOstrina_grupa1{
 	display:inline-block;
-	width:20%;
+	width:30%;
 }
 .vod1{
 	display:inline-block;
@@ -10072,7 +10071,7 @@ div.row3{
 .vidnaOstrina_grupa2{
 	display:inline-block;
 	width:10%;
-	margin-left:-5%;
+	margin-left:-10%;
 	
 }
 .sa_cc{
@@ -10085,7 +10084,15 @@ div.row3{
 }
 .vidnaOstrina_grupa3{
 	display:inline-block;
-	width:20%;
+	width:40%;
+	margin-left:-5%;
+}
+
+#vod1{
+	width:100%;
+}
+#vos1{
+	width:100%;
 }
 
 
@@ -10153,20 +10160,19 @@ div.row3{
 	width:94%;
 }
 
-#dijagnoza_od{
+#labelDijagnoza{
 	display:inline;
-	width:93%;
+	width:5%;
 }
-
-#dijagnoza_os{
+#dijagnoza{
 	display:inline;
-	margin-top:1%;
-	width:93%;
+	width:75%;
 }
 
 #terapija{
 	display:inline;
 	width:78%;
+	
 }
 
 #korekcija_od{
