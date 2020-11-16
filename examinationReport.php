@@ -2,7 +2,24 @@
 <html lang="en">
 
 <?php
+
 include '../pregled/modules/header.php';
+require_once 'connection.php';
+$korisnik = $_SESSION['prijavljen'];
+$ar = explode("#", $korisnik, 2);
+$ar[1] = rtrim($ar[1], "#");
+$ID_korisnika = $ar[0];
+$conn = OpenCon();
+
+$upit = "SELECT adresa,telefon FROM korisnici WHERE ID=$ID_korisnika";
+$rezultat = mysqli_query($conn, $upit);
+if (!$rezultat) die(mysqli_error($conn));
+while ($red = mysqli_fetch_object($rezultat)) {
+  $adresa = $red->adresa;
+  $telefon = $red->telefon;
+}
+CloseCon($conn);
+
 ?>
 
 <body id="page-top">
@@ -71,11 +88,12 @@ include '../pregled/modules/header.php';
             $tonus_os = "";
             $fundus_od = "";
             $fundus_os = "";
-            $dijagnoza_od = "";
-            $dijagnoza_os = "";
+            $dijagnoza = "";
             $terapija = "";
-            $korekcija_od = "";
-            $korekcija_os = "";
+            $korekcija_daljina_od = "";
+            $korekcija_daljina_os = "";
+            $korekcija_blizina_od = "";
+            $korekcija_blizina_os = "";
             $tip_ks_od = "";
             $jacina_ks_od = "";
             $bc_ks_od  = "";
@@ -92,7 +110,7 @@ include '../pregled/modules/header.php';
 
             $success = $_REQUEST['success'];
 
-            $ar = explode("@@@", $success, 29);
+            $ar = explode("@@@", $success, 31);
             $ar[1] = rtrim($ar[1], "@@@");
 
             if (isset($ar[0])) {
@@ -132,7 +150,7 @@ include '../pregled/modules/header.php';
               $fundus_os = $ar[11];
             }
             if (isset($ar[12])) {
-              $dijagnoza_od = $ar[12];
+              $dijagnoza = $ar[12];
             }
             if (isset($ar[13])) {
               $terapija = $ar[13];
@@ -141,46 +159,52 @@ include '../pregled/modules/header.php';
               $kontrola = $ar[14];
             }
             if (isset($ar[15])) {
-              $korekcija_od = $ar[15];
+              $korekcija_daljina_od = $ar[15];
             }
             if (isset($ar[16])) {
-              $korekcija_os = $ar[16];
+              $korekcija_daljina_os = $ar[16];
             }
             if (isset($ar[17])) {
-              $pd = $ar[17];
+              $korekcija_blizina_od = $ar[17];
             }
             if (isset($ar[18])) {
-              $tip_ks_od = $ar[18];
+              $korekcija_blizina_os = $ar[18];
             }
             if (isset($ar[19])) {
-              $jacina_ks_od = $ar[19];
+              $pd = $ar[19];
             }
             if (isset($ar[20])) {
-              $bc_ks_od  = $ar[20];
+              $tip_ks_od = $ar[20];
             }
             if (isset($ar[21])) {
-              $velicina_ks_od  = $ar[21];
+              $jacina_ks_od = $ar[21];
             }
             if (isset($ar[22])) {
-              $boja_ks_od = $ar[22];
+              $bc_ks_od  = $ar[22];
             }
             if (isset($ar[23])) {
-              $tip_ks_os = $ar[23];
+              $velicina_ks_od  = $ar[23];
             }
             if (isset($ar[24])) {
-              $jacina_ks_os = $ar[24];
+              $boja_ks_od = $ar[24];
             }
             if (isset($ar[25])) {
-              $bc_ks_os = $ar[25];
+              $tip_ks_os = $ar[25];
             }
             if (isset($ar[26])) {
-              $velicina_ks_os  = $ar[26];
+              $jacina_ks_os = $ar[26];
             }
             if (isset($ar[27])) {
-              $boja_ks_os = $ar[27];
+              $bc_ks_os = $ar[27];
             }
             if (isset($ar[28])) {
-              $napomena_pregleda  = $ar[28];
+              $velicina_ks_os  = $ar[28];
+            }
+            if (isset($ar[29])) {
+              $boja_ks_os = $ar[29];
+            }
+            if (isset($ar[30])) {
+              $napomena_pregleda  = $ar[30];
             }
 
 
@@ -221,16 +245,22 @@ include '../pregled/modules/header.php';
             echo "</div>";
             echo "<hr>";
             echo "<div class='row'> <strong><label>DIJAGNOZA: </label></strong></div>";
-            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $dijagnoza_od</div>";
-            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $dijagnoza_os</div>";
+            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $dijagnoza</div>";
             echo "<div class='row'> <strong><label>TERAPIJA:</label></strong> $terapija</div>";
             echo "<div class='row'> <strong><label>KONTROLA: &nbsp;</label></strong>  $kontrola</div>";
             echo "<hr>";
-            echo "<div class='row'> <strong><label>KOREKCIJA: </label></strong></div>";
-            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $korekcija_od</div>";
-
-            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $korekcija_os</div>";
-
+            echo "<div class='korekcijaDaljina'>";
+            echo "<div class='row'> <strong><label>KOREKCIJA - daljina: </label></strong></div>";
+            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $korekcija_daljina_od</div>";
+            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $korekcija_daljina_os</div>";
+            echo "</div>";
+            echo "<div class='korekcijaBlizina'>";
+            echo "<div class='row'> <strong><label>KOREKCIJA - blizina: </label></strong></div>";
+            echo "<div class='row'> <label>OD: </label></strong> &nbsp; $korekcija_blizina_od</div>";
+            echo "<div class='row'> <label>OS: </label></strong> &nbsp; $korekcija_blizina_os</div>";
+            echo "</div>";
+            echo "<br>";
+            echo "<br>";
             echo "<div class='row'> <strong><label>PD: &nbsp;</label></strong> $pd</div></br>";
 
 
@@ -270,7 +300,6 @@ include '../pregled/modules/header.php';
             echo "<button id='kratkiIspisSociva' title='Kratki izvještaj pregleda za sočiva (A5 landscape)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa kratki ispis</label></button>";
             echo "<button id='dugiIspisSociva' title='Dugi izvještaj pregleda za sočiva (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa dugi ispis</label></button>";
             echo "</div>";
-
             ?>
 
           </div>
@@ -389,7 +418,7 @@ include '../pregled/modules/header.php';
             </style>
             <body>
             <div class='logo'><img id='logo' src='../pregled/images/MO.png' /></div>
-            <div class='kontaktPodaciRadnje'><label>Adresa:</label></br><label>Tel:</label></br><label>www.mojaoptika.com</label></div>
+            <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label>www.mojaoptika.com</label></div>";
             <hr id='linija'>
             <div class='generalije'><label>Pacijent:</label>&nbsp;<?php echo $ime_prezime_pacijenta; ?></div>
             <div class='datum'><label>Datum:</label>&nbsp;<?php echo $datum_pregleda; ?></div>

@@ -126,7 +126,7 @@ include '../pregled/modules/header.php';
           <div class="vidnaOstrina">
             <div class="vidnaOstrina_grupa1">
               <div class="vod1">
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-5">
                   <label id="label_vod">VOD:</label>
                   <input list="listaVod" name="vod" title="" type="text" class="form-control" id="vod">
                   <datalist id="listaVod">
@@ -145,7 +145,7 @@ include '../pregled/modules/header.php';
               </div>
 
               <div class="vos1">
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-5">
                   <label id="label_vos">VOS:</label>
                   <input list="listaVos" name="vos" title="" type="text" class="form-control" id="vos">
                   <datalist id="listaVos">
@@ -190,7 +190,7 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="motilitetGrupa">
               <div class="form-group col-md-12">
-                <strong><label for="exampleFormControlSelect2">MOTELITET:</label> </strong>
+                <strong><label for="exampleFormControlSelect2">MOTILITET:</label> </strong>
                 <input list="listaMotiliteta" name="motilitet" title="" type="text" class="form-control" id="motilitet">
                 <datalist id="listaMotiliteta">
                   <option value="Nalaz uredan">
@@ -260,16 +260,40 @@ include '../pregled/modules/header.php';
           </div>
 
           <div class="row">
-            <strong> <label for="exampleFormControlSelect2">KOREKCIJA:</label></strong>
+
           </div>
           <div class="row">
-            <div class="form-group col-md-5">
-              <label for="exampleFormControlSelect2">OD:</label>
-              <input name="korekcija_od" title="" type="text" class="form-control" id="korekcija_od">
-
-              <label for="exampleFormControlSelect2">OS:</label>
-              <input name="korekcija_os" title="" type="text" class="form-control" id="korekcija_os">
+            <div class="korekcijaDaljina">
+              <strong> <label for="exampleFormControlSelect2">KOREKCIJA - daljina:</label></strong>
+              <div class="form-group col-md-7">
+                <div class="kor1">
+                  <label id="labelKorDaljOd">OD:</label>
+                  <input name="korekcija_daljina_od" title="" type="text" class="form-control" id="korekcija_daljina_od">
+                </div>
+                <div class="kor2">
+                  <label id="labelKorDaljOd">OS:</label>
+                  <input name="korekcija_daljina_os" title="" type="text" class="form-control" id="korekcija_daljina_os">
+                </div>
+              </div>
             </div>
+
+
+            <div class="korekcijaBlizina">
+              <strong> <label for="exampleFormControlSelect2">KOREKCIJA - blizina:</label></strong>
+              <div class="form-group col-md-7">
+                <div class="kor3">
+                  <label id="labelKorBlizOd">OD:</label>
+                  <input name="korekcija_blizina_od" title="" type="text" class="form-control" id="korekcija_blizina_od">
+                </div>
+                <div class="kor4">
+                  <label id="labelKorBlizOs">OS:</label>
+                  <input name="korekcija_blizina_os" title="" type="text" class="form-control" id="korekcija_blizina_os">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
             <div class="form-group col-md-3">
               <strong><label for="exampleFormControlSelect2">PD:</label> </strong>
               <input name="pd" title="" type="text" class="form-control" id="pd">
@@ -374,11 +398,11 @@ include '../pregled/modules/header.php';
     $(document).ready(function() {
       $('#vod1').on('change', function(e) {
         var splitVod = document.getElementById('vod1').value;
-        $('#korekcija_od').val(splitVod);
+        $('#korekcija_daljina_od').val(splitVod);
       });
       $('#vos1').on('change', function(e) {
         var splitVos = document.getElementById('vos1').value;
-        $('#korekcija_os').val(splitVos);
+        $('#korekcija_daljina_os').val(splitVos);
       });
     });
 

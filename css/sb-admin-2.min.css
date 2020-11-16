@@ -10013,6 +10013,12 @@ body.sidebar-toggled footer.sticky-footer {
 	width:70%;
 	text-align:center;
 }
+@media only screen and (min-width: 720px) {
+  #datum_pregleda{
+	width:80%;
+	text-align:center;
+}
+}
 #id_pacijenta{
 	width:1%;
 	display:inline;
@@ -10035,7 +10041,7 @@ body.sidebar-toggled footer.sticky-footer {
 
 .vidnaOstrina_grupa1{
 	display:inline-block;
-	width:30%;
+	width:32%;
 }
 .vod1{
 	display:inline-block;
@@ -10050,7 +10056,7 @@ body.sidebar-toggled footer.sticky-footer {
 #vod{
 	margin-top:2%;
 	display:inline;
-	width:70%;
+	width:60%;
 }
 #label_vos{
 	display:inline;
@@ -10064,14 +10070,14 @@ body.sidebar-toggled footer.sticky-footer {
 
 #vos{
 	display:inline;
-	width:70%;
+	width:60%;
 }
 
 
 .vidnaOstrina_grupa2{
 	display:inline-block;
-	width:10%;
-	margin-left:-10%;
+	width:9%;
+	margin-left:-18%;
 	
 }
 .sa_cc{
@@ -10174,16 +10180,73 @@ body.sidebar-toggled footer.sticky-footer {
 	width:78%;
 	
 }
-
+.korekcijaDaljina{
+	display:inline-block;
+	width:47%;
+	float:left;
+}
+#labelKorDaljOd{
+	display:inline;
+	width:5%;
+}
 #korekcija_od{
 	display:inline;
-	width:92%;
+	width:85%;
 }
 
+#labelKorDaljOs{
+	display:inline;
+	width:5%;
+}
 #korekcija_os{
 	display:inline;
 	margin-top:1%;
-	width:92%;
+	width:85%;
+}
+
+.kor1{
+	display:inline-block;
+	width:100%;
+}
+.kor2{
+	margin-top:5%;
+	display:inline-block;
+	width:100%;
+}
+.kor3{
+	display:inline-block;
+	width:100%;
+}
+.kor4{
+	margin-top:5%;
+	display:inline-block;
+	width:100%;
+}
+
+.korekcijaBlizina{
+	display:inline-block;
+	width:47%;
+	
+}
+
+#labelKorBlizOd{
+	display:inline;
+	width:5%;
+}
+#korekcija_blizina_od{
+	display:inline;
+	width:85%;
+}
+
+#labelKorBlizOs{
+	display:inline;
+	width:5%;
+}
+
+#korekcija_blizina_os{
+	display:inline;
+	margin-top:1%;
+	width:85%;
 }
 
 #tip_ks_od{
