@@ -397,12 +397,12 @@ include '../pregled/modules/header.php';
   <script type="text/javascript">
     $(document).ready(function() {
       $('#vod1').on('change', function(e) {
-        var splitVod = document.getElementById('vod1').value;
-        $('#korekcija_daljina_od').val(splitVod);
+        var valueVod = document.getElementById('vod1').value;
+        $('#korekcija_daljina_od').val(valueVod);
       });
       $('#vos1').on('change', function(e) {
-        var splitVos = document.getElementById('vos1').value;
-        $('#korekcija_daljina_os').val(splitVos);
+        var valueVos = document.getElementById('vos1').value;
+        $('#korekcija_daljina_os').val(valueVos);
       });
     });
 
@@ -420,7 +420,7 @@ include '../pregled/modules/header.php';
       });
     });
   </script>
-  <script type="text/javascript" src="../pregled/scripts.js"></script>
+  
 
 
 

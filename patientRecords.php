@@ -64,35 +64,13 @@ include '../pregled/modules/header.php';
             </div>
 
             <div class="form-group col-md-2">
-              <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta" onchange="showUser(this.value)">
+              <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
             </div>
+
           </div>
 
           <div id="display"></div>
-
-
-
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Datum pregleda:</th>
-                <th scope="col">Radnja:</th>
-              </tr>
-            </thead>
-            <tbody id="table">
-
-
-            </tbody>
-          </table>
-
-
-       
-
-
-
-
-
+          <div id="responsecontainer"></div>
         </div>
 
       </div>
@@ -105,10 +83,36 @@ include '../pregled/modules/header.php';
       <!-- /.container-fluid -->
     </div>
   </div>
-  <script type="text/javascript" src="../pregled/scripts.js"></script>
 
-  <script type="text/javascript">
-   
+
+  <script>
+    // document.getElementById("id_pacijenta").addEventListener("input", getPatientRecord());
+    // function getPatientRecords() {
+    //   var id_pacijenta = id_pacijenta = $('input[name="id_pacijenta"]').val();
+    //   document.getElementById("demo").innerHTML = "You wrote: " + id_pacijenta;
+    // }
+    // window.onload = function() {
+    //   /* event listener */
+    //   document.getElementsByName("id_pacijenta")[].addEventListener('change', doThing);
+
+    //   /* function */
+    //   function doThing() {
+    //     alert('Horray! Someone wrote "' + this.value + '"!');
+    //   }
+    // }
+
+    // $(document).ready(function() {
+    //   $("#search").on('change', function() {
+    //     $.ajax({ //create an ajax request to display.php
+    //       type: "POST",
+    //       url: "datePatientRecord.php",
+    //       dataType: "html", //expect html to be returned    
+    //       success: function(response) {
+    //         $("#responsecontainer").html(response);
+    //       }
+    //     });
+    //   });
+    // });
   </script>
 
 
