@@ -46,7 +46,14 @@ include '../pregled/modules/header.php';
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao <b><?php echo $imeKorisnika; ?></b> <i class="fas fa-user"></i></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao
+                  <b>
+                    <?php $korisnik = $_SESSION['prijavljen'];
+                    $ar = explode("#", $korisnik, 3);
+                    $ar[1] = rtrim($ar[1], "#");
+                    echo $imeKorisnika = $ar[1];
+                    ?>
+                  </b> <i class="fas fa-user"></i></span>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -66,7 +73,12 @@ include '../pregled/modules/header.php';
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Pregled</h1>
-
+          <div class="row">
+            <div class="form-group col-md-2">
+              <label for="exampleFormControlSelect2">ID korisnika:</label>
+              <input name="pregled_uradio" class="form-control" type="text" title="Unesite svoj ID" id="pregled_uradio" />
+            </div>
+          </div>
 
 
           <div class="row">
@@ -248,14 +260,28 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-5">
               <strong><label for="exampleFormControlSelect2">TERAPIJA:</label> </strong>
-              <input name="terapija" title="" type="text" class="form-control" id="terapija">
+              <input list="listaTerapija" name="terapija" title="" type="text" class="form-control" id="terapija">
+              <datalist id="listaTerapija">
+                <option>Korekcija naočarima</option>
+                <option>Korekcija kontaktnim sočivima</option>
+                <option>Vještačke suze</option>
+              </datalist>
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col-md-7">
               <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
-              <input name="kontrola" title="" type="text" class="form-control" id="kontrola">
+              <input list="listaKontrola" name="kontrola" title="" type="text" class="form-control" id="kontrola">
+              <datalist id="listaKontrola">
+                <option>Kontrola za 7 dana</option>
+                <option>Kontrola za 1 mjesec</option>
+                <option>Kontrola za 3 mjeseca</option>
+                <option>Kontrola za 6 mjeseci</option>
+                <option>Kontrola za 1 godinu</option>
+                <option>Kontrola za 3 godine</option>
+                <option>Kontrola po potrebi</option>
+              </datalist>
             </div>
           </div>
 
@@ -356,15 +382,7 @@ include '../pregled/modules/header.php';
               </div>
             </div>
           </div>
-
-
-
           <hr>
-
-
-
-
-
 
           <div class="row">
             <div class="form-group col-md-7">
@@ -372,6 +390,7 @@ include '../pregled/modules/header.php';
               <textarea name="napomena_pregleda" class="form-control" type="text" title="Unesite napomenu vezanu za pregled" id="napomena_pregleda" row="9"></textarea>
             </div>
           </div>
+
           <hr>
           <div class="row">
             <button type='button' onclick="checkFormExamination()" id='dugmeDodajPregled' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
@@ -420,7 +439,7 @@ include '../pregled/modules/header.php';
       });
     });
   </script>
-  
+
 
 
 

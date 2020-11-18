@@ -4,7 +4,11 @@ if (is_null($_SESSION['prijavljen'])) {
    header('Location: ../pregled/login.php');
 }
 include 'connection.php';
-$conn = OpenCon();
+$korisnik = $_SESSION['prijavljen'];
+$ar = explode("#", $korisnik, 3);
+$ar[1] = rtrim($ar[1], "#");
+$dataBaseName = $ar[2];
+$conn = OpenStoreCon($dataBaseName);
 //Getting value of "search" variable from "script.js".
 if (isset($_POST['search'])) {
    //Search box value assigning to $Name variable.

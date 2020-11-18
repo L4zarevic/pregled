@@ -3,15 +3,17 @@
 
 <body>
 
-    <?php
-    //$q = intval($_GET['q']);
-    require_once 'connection.php';
-    // $korisnik = $_SESSION['prijavljen'];
-    // $ar = explode("#", $korisnik, 2);
-    // $ar[1] = rtrim($ar[1], "#");
-    // $ID_korisnika = $ar[0];
+    <?php session_start();
+    if (is_null($_SESSION['prijavljen'])) {
+        header('Location: ../pregled/login.php');
+    }
 
-    $conn = OpenCon();
+    require_once 'connection.php';
+    $korisnik = $_SESSION['prijavljen'];
+    $ar = explode("#", $korisnik, 3);
+    $ar[1] = rtrim($ar[1], "#");
+    $dataBaseName = $ar[2];
+    $conn = OpenStoreCon($dataBaseName);
 
     $id_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['id_pacijenta']);
 

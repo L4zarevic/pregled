@@ -6,12 +6,14 @@
 include '../pregled/modules/header.php';
 require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode("#", $korisnik, 2);
+$ar = explode("#", $korisnik, 3);
 $ar[1] = rtrim($ar[1], "#");
 $ID_korisnika = $ar[0];
-$conn = OpenCon();
+$imeKorisnika = $ar[1];
+$dataBaseName = $ar[2];
+$conn = OpenStoreCon($dataBaseName);
 
-$upit = "SELECT adresa,telefon FROM korisnici WHERE ID=$ID_korisnika";
+$upit = "SELECT adresa,telefon FROM optike.korisnici WHERE ID=$ID_korisnika";
 $rezultat = mysqli_query($conn, $upit);
 if (!$rezultat) die(mysqli_error($conn));
 while ($red = mysqli_fetch_object($rezultat)) {
@@ -51,7 +53,14 @@ CloseCon($conn);
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao <b><?php echo $imeKorisnika; ?></b> <i class="fas fa-user"></i></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao
+                  <b>
+                    <?php $korisnik = $_SESSION['prijavljen'];
+                    $ar = explode("#", $korisnik, 3);
+                    $ar[1] = rtrim($ar[1], "#");
+                    echo $imeKorisnika = $ar[1];
+                    ?>
+                  </b> <i class="fas fa-user"></i></span>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -392,45 +401,44 @@ CloseCon($conn);
               margin-left:3%;
               margin-right:3%;
             }
+            .korekcijaDaljina_R{
+              display:inline-block;
+	            width:45%;
+            }
             #korDaljinaLabel{
               margin:0 auto;
               display:inline-block;
-	            width:13%;
+	            width:100%;
             }
-            .korekcijaDaljina{
-              display:inline-block;
-	            width:30%;
-            }
+           
             .korDaljinaOD{
               display:inline-block;
               margin-bottom:2%;
-              font-size: 10pt;
               width:100%;
             }
             .korDaljinaOS{
               display:inline-block;
-              font-size: 10pt;
               width:100%;
             }
 
+            .korekcijaBlizina_R{
+              display:inline-block;
+	            width:45%;
+            }
             #korBlizinaLabel{
               margin:0 auto;
               display:inline-block;
-	            width:13%;
-            }
-            .korekcijaBlizina{
-              display:inline-block;
-	            width:30%;
+	            width:100%;
             }
             .korBlizinaOD{
               display:inline-block;
               margin-bottom:2%;
-              font-size: 10pt;
+              
               width:100%;
             }
             .korBlizinaOS{
               display:inline-block;
-              font-size: 10pt;
+              
               width:100%;
             }
             .pd{
@@ -470,15 +478,18 @@ CloseCon($conn);
             <div class='vidna_ostrina_vos'><label>VOS:</label>&nbsp;<?php echo $vos; ?></div>
             </div>
             <div class='korekcija'>
-            <div id='korDaljinaLabel'><label>KOREKCIJA (daljina):</label></div>
-            <div class='korekcijaDaljina'>
+            <div class='korekcijaDaljina_R'>
+            <div id='korDaljinaLabel'><label>KOREKCIJA - daljina:</label></div>
+            
             <div class='korDaljinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_daljina_od; ?></div>
             <div class='korDaljinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_daljina_os; ?></div>
             </div>
-            <div id='korBlizinaLabel'><label>KOREKCIJA (blizina):</label></div>
-            <div class='korekcijaBlizina'>
-            <div class='korBlizinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_daljina_od; ?></div>
-            <div class='korBlizinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_daljina_os; ?></div>
+
+           
+            <div class='korekcijaBlizina_R'>
+            <div id='korBlizinaLabel'><label>KOREKCIJA - blizina:</label></div>
+            <div class='korBlizinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_blizina_od; ?></div>
+            <div class='korBlizinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_blizina_os; ?></div>
             </div>
             </div></br>
             <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>

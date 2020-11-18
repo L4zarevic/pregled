@@ -3,11 +3,14 @@ if (is_null($_SESSION['prijavljen'])) {
     header('Location: ../pregled/login.php');
 }
 include 'connection.php';
-$conn = OpenCon();
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode("#", $korisnik, 2);
+$ar = explode("#", $korisnik, 3);
 $ar[1] = rtrim($ar[1], "#");
 $id_korisnika = $ar[0];
+$imeKorisnika = $ar[1];
+$dataBaseName = $ar[2];
+$conn = OpenStoreCon($dataBaseName);
+
 $ime_prezime_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['ime_prezime_pacijenta']);
 $id_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['id_pacijenta']);
 $datum_pregleda = mysqli_real_escape_string($conn, $_REQUEST['datum_pregleda']);

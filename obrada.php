@@ -15,6 +15,7 @@ while ($red = mysqli_fetch_object($rezultat)) {
     $user = $red->korisnicko_ime;
     $pass = $red->lozinka;
     $imeKorisnika = $red->naziv;
+    $dataBaseName = $red->db;
 }
 if (!$korisnickoIme && !$lozinka) {
     $error = 1;
@@ -33,6 +34,6 @@ if ($error == 1) {
     header("Location:login.php?msg=1");
     exit;
 } else {
-    $_SESSION['prijavljen'] = $idKorisnika . "#" . $imeKorisnika;
+    $_SESSION['prijavljen'] = $idKorisnika . "#" . $imeKorisnika . "#" . $dataBaseName;
     die(header("Location:index.php"));
 }
