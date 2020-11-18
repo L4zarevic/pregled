@@ -75,11 +75,12 @@ include '../pregled/modules/header.php';
           <h1 class="h3 mb-4 text-gray-800">Pregled</h1>
           <div class="row">
             <div class="form-group col-md-2">
-              <label for="exampleFormControlSelect2">ID korisnika:</label>
-              <input name="pregled_uradio" class="form-control" type="text" title="Unesite svoj ID" id="pregled_uradio" />
+              <label for="exampleFormControlSelect2">ID radnika:</label>
+              <input name="id_radnika" class="form-control" type="password" title="Unesite svoj ID" id="id_radnika" />
             </div>
+            
           </div>
-
+          <div id="responsecontainer"></div>
 
           <div class="row">
             <div class="form-group col-md-4">
@@ -414,6 +415,8 @@ include '../pregled/modules/header.php';
 
 
   <script type="text/javascript">
+    document.getElementById('id_radnika').focus();
+
     $(document).ready(function() {
       $('#vod1').on('change', function(e) {
         var valueVod = document.getElementById('vod1').value;
@@ -426,18 +429,37 @@ include '../pregled/modules/header.php';
     });
 
     $(document).ready(function() {
-      // Add minus icon for collapse element which is open by default
-      $(".collapse.show").each(function() {
-        $(this).prev(".card-header").find(".fas").addClass("fa-minus").removeClass("fa-plus");
-      });
+      $("#id_radnika").on('change', function(e) {
+        var id_radnika = document.getElementById('id_radnika').value;
+        $.ajax({ //create an ajax request to display.php
+          type: "POST",
+          url: "getWorkersID.php",
+          dataType: "html", //expect html to be returned 
+          data: {
+            id_radnika: id_radnika
+          },
+          success: function(response) {
+            $("#responsecontainer").html(response);
+            //alert(response);
+          }
 
-      // Toggle plus minus icon on show hide of collapse element
-      $(".collapse").on('show.bs.collapse', function() {
-        $(this).prev(".card-header").find(".fas").removeClass("fa-plus").addClass("fa-minus");
-      }).on('hide.bs.collapse', function() {
-        $(this).prev(".card-header").find(".fas").removeClass("fa-minus").addClass("fa-plus");
+        });
       });
     });
+
+    // $(document).ready(function() {
+    //   // Add minus icon for collapse element which is open by default
+    //   $(".collapse.show").each(function() {
+    //     $(this).prev(".card-header").find(".fas").addClass("fa-minus").removeClass("fa-plus");
+    //   });
+
+    //   // Toggle plus minus icon on show hide of collapse element
+    //   $(".collapse").on('show.bs.collapse', function() {
+    //     $(this).prev(".card-header").find(".fas").removeClass("fa-plus").addClass("fa-minus");
+    //   }).on('hide.bs.collapse', function() {
+    //     $(this).prev(".card-header").find(".fas").removeClass("fa-minus").addClass("fa-plus");
+    //   });
+    // });
   </script>
 
 

@@ -34,7 +34,13 @@ include '../pregled/modules/header.php';
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao <b><?php echo $imeKorisnika; ?></b> <i class="fas fa-user"></i></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao <b>
+                    <?php $korisnik = $_SESSION['prijavljen'];
+                    $ar = explode("#", $korisnik, 3);
+                    $ar[1] = rtrim($ar[1], "#");
+                    echo $imeKorisnika = $ar[1];
+                    ?>
+                  </b> <i class="fas fa-user"></i></span>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -69,8 +69,8 @@ include '../pregled/modules/header.php';
               <div class="examinationHistory">
 
                 <div class="form-group col-md-7">
-                  <label>Pretraga pacijenta</label>
-                  <input name="name" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
+                  <label>Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
+                  <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
                 </div>
                 <div class="form-group col-md-2">
                   <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
@@ -93,10 +93,25 @@ include '../pregled/modules/header.php';
                   <label>Napomena:</label>
                   <input name="notePatientRecords" type="text" class="form-control" id="notePatientRecords">
                 </div>
+                <hr>
+                <button type='button' onclick="updatePatientCheckForm()" id="updatePatient" title="Uredi karton pacijenta" class='btn btn-success'><i class="fas fa-edit"></i>&nbsp;<label class="labelSaveButton">Uredi pacijenta</label></button>
               </div>
             </div>
           </div>
 
+          <?php
+          if (isset($_REQUEST['msg'])) {
+            if ($_REQUEST['msg'] == '1') {
+              echo "<script src=\"js/alertify.min.js\"></script>";
+              echo "<script type=\"text/javascript\"> alertify.error('Greška prilikom ažuriranja');</script>";
+              echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
+            } else if ($_REQUEST['msg'] == '0') {
+              echo "<script src=\"js/alertify.min.js\"></script>";
+              echo "<script type=\"text/javascript\">alertify.success('Podaci o pacijentu su ažurirani');</script>";
+              echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
+            }
+          }
+          ?>
 
 
         </div>
@@ -114,33 +129,7 @@ include '../pregled/modules/header.php';
 
 
   <script>
-    // document.getElementById("id_pacijenta").addEventListener("input", getPatientRecord());
-    // function getPatientRecords() {
-    //   var id_pacijenta = id_pacijenta = $('input[name="id_pacijenta"]').val();
-    //   document.getElementById("demo").innerHTML = "You wrote: " + id_pacijenta;
-    // }
-    // window.onload = function() {
-    //   /* event listener */
-    //   document.getElementsByName("id_pacijenta")[].addEventListener('change', doThing);
-
-    //   /* function */
-    //   function doThing() {
-    //     alert('Horray! Someone wrote "' + this.value + '"!');
-    //   }
-    // }
-
-    // $(document).ready(function() {
-    //   $("#search").on('change', function() {
-    //     $.ajax({ //create an ajax request to display.php
-    //       type: "POST",
-    //       url: "datePatientRecord.php",
-    //       dataType: "html", //expect html to be returned    
-    //       success: function(response) {
-    //         $("#responsecontainer").html(response);
-    //       }
-    //     });
-    //   });
-    // });
+    document.getElementById('search').focus();
   </script>
 
 
