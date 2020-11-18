@@ -59,24 +59,46 @@ include '../pregled/modules/header.php';
         <div class="container-fluid">
 
           <!-- Page Heading -->
+
           <h1 class="h3 mb-4 text-gray-800">Karton pacijenta</h1>
 
 
 
           <div class="row">
-            <div class="form-group col-md-3">
-              <label for="exampleFormControlSelect2">Pretraga pacijenta</label>
-              <input name="name" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
-            </div>
+            <div class="records">
+              <div class="examinationHistory">
 
-            <div class="form-group col-md-2">
-              <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
-            </div>
+                <div class="form-group col-md-7">
+                  <label>Pretraga pacijenta</label>
+                  <input name="name" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
+                </div>
+                <div class="form-group col-md-2">
+                  <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
+                </div>
+                <div id="display"></div>
+                <div id="responsecontainer"></div>
+              </div>
+              <div class="patientGenerals">
+                <h5 id="secondTitle" class="h5 mb-4 text-gray-800">Podaci o pacijentu</h5>
 
+                <div class="form-group col-md-8">
+                  <label>Ime (Ime oca) prezime, godina rođenja:</label>
+                  <input name="patientGeneralsRecords" type="text" class="form-control" id="patientGeneralsRecords">
+                </div>
+                <div class="form-group col-md-5">
+                  <label>Kontakt:</label>
+                  <input name="contactPatientRecords" type="text" class="form-control" id="contactPatientRecords">
+                </div>
+                <div class="form-group col-md-8">
+                  <label>Napomena:</label>
+                  <input name="notePatientRecords" type="text" class="form-control" id="notePatientRecords">
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div id="display"></div>
-          <div id="responsecontainer"></div>
+
+
         </div>
 
       </div>

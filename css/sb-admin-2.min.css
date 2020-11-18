@@ -10389,3 +10389,24 @@ div#stampa2{
 	cursor:pointer;
 }
 
+/*Patient records*/
+
+.records{
+	display:block;
+	width:100%;
+}
+.examinationHistory{
+	display:inline-block;
+	width:45%;
+	float:left;
+}
+.patientGenerals{
+	display:inline-block;
+	width:45%;
+	
+}
+.generalije{
+	display:inline-block;
+	width:100%;
+}
+
