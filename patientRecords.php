@@ -94,7 +94,7 @@ include '../pregled/modules/header.php';
                   <input name="notePatientRecords" type="text" class="form-control" id="notePatientRecords">
                 </div>
                 <hr>
-                <button type='button' onclick="updatePatientCheckForm()" id="updatePatient" title="Uredi karton pacijenta" class='btn btn-success'><i class="fas fa-edit"></i>&nbsp;<label class="labelSaveButton">Uredi pacijenta</label></button>
+                <button type='button' onclick="updatePatientCheckForm()" id="updatePatient" title="Uredi karton pacijenta" class='btn btn-success'><i class="fas fa-edit"></i>&nbsp;<label class="labelSaveButton">Ažuriraj podatke o pacijentu</label></button>
               </div>
             </div>
           </div>

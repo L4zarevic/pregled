@@ -18,7 +18,6 @@ $kontaktPacijenta = mysqli_real_escape_string($conn, $_REQUEST['kontakt_pacijent
 $napomenaPacijenta = mysqli_real_escape_string($conn, $_REQUEST['napomena_pacijenta']);
 
 
-//$upit = "INSERT INTO pacijenti (IDKorisnika,generalije_pacijenta,kontakt,napomena,naocare_blizina_od,naocare_blizina_os,naocare_daljina_od,naocare_daljina_os,sociva_od,sociva_os) VALUES ('$id_korisnika','$generalije_pacijenta','$kontaktPacijenta','$napomenaPacijenta','$naocare_blizina_od','$naocare_blizina_os','$naocare_daljina_od','$naocare_daljina_os','$sociva_od','$sociva_os')";
 $upit = "UPDATE pacijenti SET generalije_pacijenta='$generalije_pacijenta',kontakt='$kontaktPacijenta',napomena='$napomenaPacijenta' WHERE ID='$id_pacijenta'";
 $rezultat = mysqli_query($conn, $upit);
 if (mysqli_error($conn)) {

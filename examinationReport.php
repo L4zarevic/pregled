@@ -85,6 +85,7 @@ CloseCon($conn);
 
             <?php
 
+            $radnik = "";
             $ime_prezime_pacijenta = "";
             $datum_pregleda = "";
             $anamneza = "";
@@ -119,108 +120,109 @@ CloseCon($conn);
 
             $success = $_REQUEST['success'];
 
-            $ar = explode("@@@", $success, 31);
+            $ar = explode("@@@", $success, 32);
             $ar[1] = rtrim($ar[1], "@@@");
 
             if (isset($ar[0])) {
-              $ime_prezime_pacijenta = $ar[0];
+              $radnik = $ar[0];
             }
             if (isset($ar[1])) {
-              $datum_pregleda = $ar[1];
+              $ime_prezime_pacijenta = $ar[1];
             }
             if (isset($ar[2])) {
-              $anamneza = $ar[2];
+              $datum_pregleda = $ar[2];
             }
             if (isset($ar[3])) {
-              $vod = $ar[3];
+              $anamneza = $ar[3];
             }
             if (isset($ar[4])) {
-              $vos = $ar[4];
+              $vod = $ar[4];
             }
             if (isset($ar[5])) {
-              $motilitet = $ar[5];
+              $vos = $ar[5];
             }
-
             if (isset($ar[6])) {
-              $bms_od = $ar[6];
+              $motilitet = $ar[6];
             }
             if (isset($ar[7])) {
-              $bms_os = $ar[7];
+              $bms_od = $ar[7];
             }
-
             if (isset($ar[8])) {
-              $tonus_od = $ar[8];
+              $bms_os = $ar[8];
             }
             if (isset($ar[9])) {
-              $tonus_os = $ar[9];
+              $tonus_od = $ar[9];
             }
             if (isset($ar[10])) {
-              $fundus_od = $ar[10];
+              $tonus_os = $ar[10];
             }
             if (isset($ar[11])) {
-              $fundus_os = $ar[11];
+              $fundus_od = $ar[11];
             }
             if (isset($ar[12])) {
-              $dijagnoza = $ar[12];
+              $fundus_os = $ar[12];
             }
             if (isset($ar[13])) {
-              $terapija = $ar[13];
+              $dijagnoza = $ar[13];
             }
             if (isset($ar[14])) {
-              $kontrola = $ar[14];
+              $terapija = $ar[14];
             }
             if (isset($ar[15])) {
-              $korekcija_daljina_od = $ar[15];
+              $kontrola = $ar[15];
             }
             if (isset($ar[16])) {
-              $korekcija_daljina_os = $ar[16];
+              $korekcija_daljina_od = $ar[16];
             }
             if (isset($ar[17])) {
-              $korekcija_blizina_od = $ar[17];
+              $korekcija_daljina_os = $ar[17];
             }
             if (isset($ar[18])) {
-              $korekcija_blizina_os = $ar[18];
+              $korekcija_blizina_od = $ar[18];
             }
             if (isset($ar[19])) {
-              $pd = $ar[19];
+              $korekcija_blizina_os = $ar[19];
             }
             if (isset($ar[20])) {
-              $tip_ks_od = $ar[20];
+              $pd = $ar[20];
             }
             if (isset($ar[21])) {
-              $jacina_ks_od = $ar[21];
+              $tip_ks_od = $ar[21];
             }
             if (isset($ar[22])) {
-              $bc_ks_od  = $ar[22];
+              $jacina_ks_od = $ar[22];
             }
             if (isset($ar[23])) {
-              $velicina_ks_od  = $ar[23];
+              $bc_ks_od  = $ar[23];
             }
             if (isset($ar[24])) {
-              $boja_ks_od = $ar[24];
+              $velicina_ks_od  = $ar[24];
             }
             if (isset($ar[25])) {
-              $tip_ks_os = $ar[25];
+              $boja_ks_od = $ar[25];
             }
             if (isset($ar[26])) {
-              $jacina_ks_os = $ar[26];
+              $tip_ks_os = $ar[26];
             }
             if (isset($ar[27])) {
-              $bc_ks_os = $ar[27];
+              $jacina_ks_os = $ar[27];
             }
             if (isset($ar[28])) {
-              $velicina_ks_os  = $ar[28];
+              $bc_ks_os = $ar[28];
             }
             if (isset($ar[29])) {
-              $boja_ks_os = $ar[29];
+              $velicina_ks_os  = $ar[29];
             }
             if (isset($ar[30])) {
-              $napomena_pregleda  = $ar[30];
+              $boja_ks_os = $ar[30];
+            }
+            if (isset($ar[31])) {
+              $napomena_pregleda  = $ar[31];
             }
 
 
 
-
+            echo " <div class='row'> <strong><label>Pregled uradio: </label></strong> &nbsp; $radnik</div>";
             echo " <div class='row'> <strong><label>Ime, prezime i godina rođenja: </label></strong> &nbsp; $ime_prezime_pacijenta</div>";
             echo " <div class='row'> <strong><label>Datum: </label></strong> &nbsp; $datum_pregleda</div>";
             echo "<hr>";
@@ -466,11 +468,7 @@ CloseCon($conn);
             <div class='datum'><label>Datum:</label>&nbsp;<?php echo $datum_pregleda; ?></div>
             <div class='ispisAnamneze'><label>ANAMNEZA:</label>&nbsp;
             <?php
-            //  $separated = explode('$$', $anamneza);
-            //echo  "<div class='anamnezaIspis'>";
-            // foreach ($separated as $value) {
             echo  "<label>$anamneza</label>";
-            //  }
             echo  "</div>";
             ?></br>
             <div class='vidna_ostrina'><label>VIDNA OŠTRINA:</label>&nbsp;

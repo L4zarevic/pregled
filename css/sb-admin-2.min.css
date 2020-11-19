@@ -10009,6 +10009,21 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 /*Pregled*/
+.workersLog{
+	display:block;
+	width:100%;
+}
+.workers{
+	display:inline-block;
+	
+	float:left;
+}
+input#id_radnika.form-control{
+	width:100%;
+}
+#ime_radnika{
+	display:inline;
+}
 #datum_pregleda{
 	width:70%;
 	text-align:center;
@@ -10410,3 +10425,19 @@ div#stampa2{
 	width:100%;
 }
 
+/*examinations Reports*/
+
+.anamnezaReport{
+	display:block;
+	width:100%;
+}
+
+#labelAnamnezaReport{
+	display:inline;
+	width:4%;
+}
+
+#inputAnamenzaReport{
+	display:inline;
+	width:80%;
+}

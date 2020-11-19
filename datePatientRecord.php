@@ -32,7 +32,7 @@
     while ($row = mysqli_fetch_object($result)) {
         echo "<tr>";
         echo "<td>" . ($rb = $rb + 1) . "</td>";
-        echo "<td><a href='examinationReport.php?$row->ID'>$row->datum_pregleda</a></td>";
+        echo "<td><a href='examinationReportEdit.php?id=$row->ID'>$row->datum_pregleda</a></td>";
         echo "<td>$row->ID_korisnika</td>";
         echo "</tr>";
     }

@@ -74,13 +74,20 @@ include '../pregled/modules/header.php';
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Pregled</h1>
           <div class="row">
-            <div class="form-group col-md-2">
-              <label for="exampleFormControlSelect2">ID radnika:</label>
-              <input name="id_radnika" class="form-control" type="password" title="Unesite svoj ID" id="id_radnika" />
+            <div class="workersLog">
+              <div class="workers">
+                <div class="form-group col-md-7">
+                  <label><strong>ID radnika:</strong></label>
+                  <input name="id_radnika" class="form-control" type="password" title="Unesite svoj ID" id="id_radnika" />
+                </div>
+              </div>
+              <div class="form-group col-md-7">
+                <label>Pregled obavlja:</br></label>
+                <div id="ime_radnika"></div>
+              </div>
             </div>
-            
           </div>
-          <div id="responsecontainer"></div>
+
 
           <div class="row">
             <div class="form-group col-md-4">
@@ -89,7 +96,7 @@ include '../pregled/modules/header.php';
             </div>
 
             <div class="form-group col-md-2">
-              <label for="exampleFormControlSelect2">Današnji datum</label>
+              <label>Današnji datum</label>
               <input name="datum_pregleda" title="" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
             </div>
             <div class="form-group col-md-1">
@@ -415,6 +422,7 @@ include '../pregled/modules/header.php';
 
 
   <script type="text/javascript">
+    //When page load set focus on field
     document.getElementById('id_radnika').focus();
 
     $(document).ready(function() {
@@ -439,13 +447,19 @@ include '../pregled/modules/header.php';
             id_radnika: id_radnika
           },
           success: function(response) {
-            $("#responsecontainer").html(response);
+            $("#ime_radnika").html(response);
             //alert(response);
           }
 
         });
       });
     });
+
+    // function clearText(cntId) {
+    //   var cnt = document.getElementById(cntId);
+    //   cnt.value = "";
+    //   return false;
+    // }
 
     // $(document).ready(function() {
     //   // Add minus icon for collapse element which is open by default
