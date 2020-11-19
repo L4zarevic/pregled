@@ -10441,3 +10441,73 @@ div#stampa2{
 	display:inline;
 	width:80%;
 }
+
+.vidnaOstrinaReport{
+	display:block;
+	width:100%;
+}
+.vodReport{
+	display:block;
+	width:100%;
+}
+#labelVodReport{
+	display:inline;
+	width:4%;
+}
+#inputVodReport{
+	display:inline;
+	width:80%;
+}
+.vosReport{
+	display:block;
+	width:100%;
+}
+#labelVosReport{
+	display:inline;
+	width:4%;
+}
+#inputVosReport{
+	display:inline;
+	width:80%;
+}
+.motilitetTonusReport{
+	display:block;
+	width:100%;
+}
+.motilitetReport{
+	display:inline-block;
+	float:left;
+	width:40%;
+}
+#labelMotilitetReport{
+	display:inline;
+	width:4%;
+}
+#inputMotilitetReport{
+	display:inline;
+	width:65%;
+}
+.tonusReport{
+	display:inline-block;
+	width:60%;
+}
+#labelTonusReport{
+	display:inline;
+	width:5%;
+}
+#labelTonusOdReport{
+	display:inline;
+	width:5%;
+}
+#inputTonusOdReport{
+	display:inline;
+	width:25%;
+}
+#labelTonusOsReport{
+	display:inline;
+	width:5%;
+}
+#inputTonusOsReport{
+	display:inline;
+	width:25%;
+}

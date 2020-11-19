@@ -88,10 +88,10 @@ include '../pregled/modules/header.php';
             </div>
           </div>
 
-
+          <hr>
           <div class="row">
             <div class="form-group col-md-4">
-              <label for=#search">Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
+              <label for="#search">Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
               <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
             </div>
 
