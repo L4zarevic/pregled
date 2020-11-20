@@ -99,9 +99,9 @@ include '../pregled/modules/header.php';
               <label>Današnji datum</label>
               <input name="datum_pregleda" title="" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
             </div>
-            <div class="form-group col-md-1">
-              <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
-            </div>
+
+            <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
+
             <div class="form-group col-md-5">
               <label for="exampleFormControlSelect2">Napomena o pacijentu:</label>
               <div>
@@ -116,7 +116,7 @@ include '../pregled/modules/header.php';
 
 
           <div class="row">
-            <div class="form-group col-md-8">
+            <div class="form-group col-md-7">
               <strong> <label id="labelAnamneza">ANAMNEZA:</label></strong>
               <input list="listaAnamneza" name="anamneza" title="" type="text" class="form-control" id="anamneza">
               <datalist id="listaAnamneza">
@@ -394,7 +394,7 @@ include '../pregled/modules/header.php';
 
           <div class="row">
             <div class="form-group col-md-7">
-              <label for="exampleFormControlSelect2">Napomena</label>
+              <label>Napomena</label>
               <textarea name="napomena_pregleda" class="form-control" type="text" title="Unesite napomenu vezanu za pregled" id="napomena_pregleda" row="9"></textarea>
             </div>
           </div>

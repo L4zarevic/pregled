@@ -17,10 +17,10 @@
 
     $id_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['id_pacijenta']);
 
-    $sql = "SELECT ID,datum_pregleda,ID_korisnika FROM pregledi WHERE ID_pacijenta = '" . $id_pacijenta . "'";
+    $sql = "SELECT ID,datum_pregleda,ID_korisnika FROM pregledi WHERE ID_pacijenta = '" . $id_pacijenta . "' ORDER BY datum_pregleda DESC";
     $result = mysqli_query($conn, $sql);
 
-    echo " <table class='table table-hover'>";
+    echo " <table id='dtDynamicVerticalScrollExample' class='table table-hover  table-sm'>";
     echo "<thead>";
     echo "<tr>";
     echo "<th scope='col'>#</th>";
@@ -32,8 +32,14 @@
     while ($row = mysqli_fetch_object($result)) {
         echo "<tr>";
         echo "<td>" . ($rb = $rb + 1) . "</td>";
-        echo "<td><a href='examinationReportEdit.php?id=$row->ID'>$row->datum_pregleda</a></td>";
-        echo "<td>$row->ID_korisnika</td>";
+        echo "<td><a target='_blank' href='examinationReportEdit.php?id=$row->ID'>$row->datum_pregleda</a></td>";
+        $sql1 = "SELECT optike.korisnici.naziv FROM optike.korisnici WHERE optike.korisnici.ID =$row->ID_korisnika";
+        $result1 = mysqli_query($conn, $sql1);
+        while ($row1 = mysqli_fetch_object($result1)) {
+            echo "<td>$row1->naziv</td>";
+        }
+
+        //echo "<td>$row->ID_korisnika</td>";
         echo "</tr>";
     }
     echo "</table>";

@@ -10047,11 +10047,11 @@ input#id_radnika.form-control{
 #labelAnamneza{
 	display:inline-block;
 	width:10%;
-	margin-right:4%;
+	
 }
 #anamneza{
 	 display:inline-block;
-	 width:80%;
+	 width:70%;
  }
 
 .vidnaOstrina_grupa1{
@@ -10423,6 +10423,12 @@ div#stampa2{
 .generalije{
 	display:inline-block;
 	width:100%;
+}
+
+h5#secondTitle{
+	color:#ff0000 !important;
+	font-weight:700;
+	
 }
 
 /*examinations Reports*/

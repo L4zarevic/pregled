@@ -17,16 +17,62 @@ $conn = OpenStoreCon($dataBaseName);
 
 $id_pregleda = mysqli_real_escape_string($conn, $_REQUEST['id']);
 
-$upit = "SELECT ID_korisnika FROM pregledi WHERE ID=$id_pregleda";
-$result = mysqli_query($conn, $upit);
+$sql1 = "SELECT * FROM pregledi WHERE ID=$id_pregleda";
+$result = mysqli_query($conn, $sql1);
 if (!$result) die(mysqli_error($conn));
 while ($row = mysqli_fetch_object($result)) {
+  $ID_pacijenta = $row->ID_pacijenta;
   $ID_korisnika = $row->ID_korisnika;
+  $ID_radnika = $row->ID_radnika;
+  $datum_pregleda = $row->datum_pregleda;
+  $anamneza = $row->anamneza;
+  $vod = $row->vod;
+  $vos = $row->vos;
+  $motilitet = $row->motilitet;
+  $bms_od = $row->bms_od;
+  $bms_os = $row->bms_os;
+  $tonus_od = $row->tonus_od;
+  $tonus_os = $row->tonus_os;
+  $fundus_od = $row->fundus_od;
+  $fundus_os = $row->fundus_os;
+  $dijagnoza = $row->dijagnoza;
+  $terapija = $row->terapija;
+  $korekcija_daljina_od = $row->korekcija_daljina_od;
+  $korekcija_daljina_os = $row->korekcija_daljina_os;
+  $korekcija_blizina_od = $row->korekcija_blizina_od;
+  $korekcija_blizina_os = $row->korekcija_blizina_os;
+  $tip_ks_od = $row->tip_ks_od;
+  $jacina_ks_od = $row->jacina_ks_od;
+  $bc_ks_od  = $row->bc_ks_od;
+  $velicina_ks_od  = $row->velicina_ks_od;
+  $boja_ks_od = $row->boja_ks_od;
+  $tip_ks_os = $row->tip_ks_os;
+  $jacina_ks_os = $row->jacina_ks_os;
+  $bc_ks_os = $row->bc_ks_os;
+  $velicina_ks_os  = $row->velicina_ks_os;
+  $boja_ks_os = $row->boja_ks_os;
+  $pd = $row->pd;
+  $kontrola = $row->kontrola;
+  $napomena_pregleda  = $row->napomena_pregleda;
+}
+
+$sql2 = "SELECT generalije_pacijenta FROM pacijenti WHERE ID=$ID_pacijenta";
+$result = mysqli_query($conn, $sql2);
+if (!$result) die(mysqli_error($conn));
+while ($row = mysqli_fetch_object($result)) {
+  $generalije_pacijenta = $row->generalije_pacijenta;
+}
+
+$sql3 = "SELECT imePrezimeRadnika FROM radnici WHERE id_radnika=$ID_radnika";
+$result = mysqli_query($conn, $sql3);
+if (!$result) die(mysqli_error($conn));
+while ($row = mysqli_fetch_object($result)) {
+  $imePrezimeRadnika = $row->imePrezimeRadnika;
 }
 
 $con = OpenCon();
-$upit = "SELECT naziv,adresa,telefon FROM optike.korisnici WHERE ID=$ID_korisnika";
-$result = mysqli_query($con, $upit);
+$sql4 = "SELECT naziv,adresa,telefon FROM optike.korisnici WHERE ID=$ID_korisnika";
+$result = mysqli_query($con, $sql4);
 if (!$result) die(mysqli_error($con));
 while ($row = mysqli_fetch_object($result)) {
   $naziv = $row->naziv;
@@ -99,44 +145,14 @@ CloseCon($conn);
 
             <?php
 
-            $radnik = "";
-            $ime_prezime_pacijenta = "";
-            $datum_pregleda = "";
-            $anamneza = "";
-            $vod = "";
-            $vos = "";
-            $motilitet = "";
-            $bms_od = "";
-            $bms_os = "";
-            $tonus_od = "";
-            $tonus_os = "";
-            $fundus_od = "";
-            $fundus_os = "";
-            $dijagnoza = "";
-            $terapija = "";
-            $korekcija_daljina_od = "";
-            $korekcija_daljina_os = "";
-            $korekcija_blizina_od = "";
-            $korekcija_blizina_os = "";
-            $tip_ks_od = "";
-            $jacina_ks_od = "";
-            $bc_ks_od  = "";
-            $velicina_ks_od  = "";
-            $boja_ks_od = "";
-            $tip_ks_os = "";
-            $jacina_ks_os = "";
-            $bc_ks_os = "";
-            $velicina_ks_os  = "";
-            $boja_ks_os = "";
-            $pd = "";
-            $kontrola = "";
-            $napomena_pregleda  = "";
 
 
+            echo " <div class='row'> <strong><label>Ime, prezime i godina rođenja: </label></strong> &nbsp; $generalije_pacijenta</div>";
             echo " <div class='row'> <strong><label>Pregled urađen u: </label></strong> &nbsp; $naziv</div>";
-            echo " <div class='row'> <strong><label>Radnik: </label></strong> &nbsp; $radnik</div>";
-            echo " <div class='row'> <strong><label>Ime, prezime i godina rođenja: </label></strong> &nbsp; $ime_prezime_pacijenta</div>";
             echo " <div class='row'> <strong><label>Datum: </label></strong> &nbsp; $datum_pregleda</div>";
+            echo " <div class='row'> <strong><label>Radnik: </label></strong> &nbsp; $imePrezimeRadnika</div>";
+           
+          
             echo "<hr>";
             echo " <div class='row'> <div class='anamnezaReport'> <div class='form-group col-md-9'><strong><label id='labelAnamnezaReport'>ANAMNEZA: </label></strong> &nbsp; ";
             echo "<input name='inputAnamenzaReport' title='' type='text' class='form-control' id='inputAnamenzaReport' value='$anamneza'></div> </div></div>";
@@ -212,7 +228,7 @@ CloseCon($conn);
 
 
 
-            echo "<div class='row'> <div class='form-group col-md-2'><strong><label>NAPOMENA: &nbsp;</label></strong> <input name='' title='' type='text' class='form-control' id='' value='$napomena_pregleda'></div></div>";
+            echo "<div class='row'> <div class='form-group col-md-6'><strong><label>NAPOMENA: &nbsp;</label></strong> <textarea name='' title='' type='text' class='form-control' id='napomenaPregledaReport' value='$napomena_pregleda'></textarea></div></div>";
             echo "<hr>";
             echo "<br>";
             echo "<br>";
@@ -354,13 +370,11 @@ CloseCon($conn);
             }
             .korBlizinaOS{
               display:inline-block;
-              
               width:100%;
             }
             .pd{
               display:block;
               margin-left:3%;
-            
             }
             .kontrolaIspis{
               display:block;
@@ -378,7 +392,7 @@ CloseCon($conn);
             <div class='logo'><img id='logo' src='../pregled/images/MO.png' /></div>
             <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label>www.mojaoptika.com</label></div>
             <hr id='linija'>
-            <div class='generalije'><label></label>&nbsp;<?php echo $ime_prezime_pacijenta; ?></div>
+            <div class='generalije'><label></label>&nbsp;<?php echo $generalije_pacijenta; ?></div>
             <div class='datum'><label>Datum:</label>&nbsp;<?php echo $datum_pregleda; ?></div>
             <div class='ispisAnamneze'><label>ANAMNEZA:</label>&nbsp;
             <?php

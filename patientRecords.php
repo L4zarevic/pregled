@@ -79,13 +79,13 @@ include '../pregled/modules/header.php';
                 <div id="responsecontainer"></div>
               </div>
               <div class="patientGenerals">
-                <h5 id="secondTitle" class="h5 mb-4 text-gray-800">Podaci o pacijentu</h5>
+                <h5 id="secondTitle" class="h5 mb-4 text-gray-800">Podaci o pacijentu - promjena podataka</h5>
 
                 <div class="form-group col-md-8">
                   <label>Ime (Ime oca) prezime, godina rođenja:</label>
                   <input name="patientGeneralsRecords" type="text" class="form-control" id="patientGeneralsRecords">
                 </div>
-                <div class="form-group col-md-5">
+                <div class="form-group col-md-8">
                   <label>Kontakt:</label>
                   <input name="contactPatientRecords" type="text" class="form-control" id="contactPatientRecords">
                 </div>
@@ -93,6 +93,66 @@ include '../pregled/modules/header.php';
                   <label>Napomena:</label>
                   <input name="notePatientRecords" type="text" class="form-control" id="notePatientRecords">
                 </div>
+                <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2"><strong><u>Naočare - postojeće</u></strong></label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2">Daljina: </label>
+                  &nbsp; <label for="exampleFormControlSelect2">OD: </label>
+                  <input name="naocare_daljina_od" title="" type="text" class="form-control" id="naocare_daljina_od">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2"></label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label id="daljinaOS" for="exampleFormControlSelect2">OS:</label>
+                  <input name="naocare_daljina_os" type="text" class="form-control" id="naocare_daljina_os">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2">Blizina: </label>
+                  &nbsp; <label for="exampleFormControlSelect2">OD: </label>
+                  <input name="naocare_blizina_od" title="" type="text" class="form-control" id="naocare_blizina_od">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2"></label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label id="blizinaOS" for="exampleFormControlSelect2">OS:</label>
+                  <input name="naocare_blizina_os" title="" type="text" class="form-control" id="naocare_blizina_os">
+                </div>
+              </div>
+
+
+
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2"><strong><u>Kontaktna sočiva:</u></strong></label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label for="exampleFormControlSelect2">OD: </label>
+                  <input name="sociva_od" title="" type="text" class="form-control" id="sociva_od">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-11">
+                  <label id="blizinaOS" for="exampleFormControlSelect2">OS: </label>
+                  <input name="sociva_os" title="" type="text" class="form-control" id="sociva_os">
+                </div>
+              </div>
                 <hr>
                 <button type='button' onclick="updatePatientCheckForm()" id="updatePatient" title="Uredi karton pacijenta" class='btn btn-success'><i class="fas fa-edit"></i>&nbsp;<label class="labelSaveButton">Ažuriraj podatke o pacijentu</label></button>
               </div>
@@ -130,6 +190,8 @@ include '../pregled/modules/header.php';
 
   <script>
     document.getElementById('search').focus();
+
+    
   </script>
 
 
