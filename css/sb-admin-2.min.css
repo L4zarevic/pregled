@@ -10018,6 +10018,19 @@ body.sidebar-toggled footer.sticky-footer {
 	
 	float:left;
 }
+.patientSearch{
+	display:inline-block;
+	width:35%;
+	float:left;
+}
+.todayDate{
+	display:inline-block;
+	width:20%;
+}
+.noteAboutPatient{
+	display:inline-block;
+	width:40%;
+}
 input#id_radnika.form-control{
 	width:100%;
 }
@@ -10025,6 +10038,7 @@ input#id_radnika.form-control{
 	display:inline;
 }
 #datum_pregleda{
+	display:inline;
 	width:70%;
 	text-align:center;
 }
@@ -10040,8 +10054,12 @@ input#id_radnika.form-control{
 	margin:0 0;
 }
 #ispis_napomene_pacijenta{
+	display:inline;
 	word-wrap: break-word;
-	font-weight:700;
+	
+	height:200px;
+	text-align:top;
+	font-size:9pt;
 	
 }
 #labelAnamneza{

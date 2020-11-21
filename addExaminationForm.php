@@ -90,31 +90,40 @@ include '../pregled/modules/header.php';
 
           <hr>
           <div class="row">
-            <div class="form-group col-md-4">
-              <label for="#search">Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
-              <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
+            <div class="patientSearch">
+              <div class="form-group col-md-10">
+                <label for="#search">Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
+                <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
+              </div>
+              <div id="display"></div>
             </div>
 
-            <div class="form-group col-md-2">
-              <label>Današnji datum</label>
-              <input name="datum_pregleda" title="" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
+            <div class="todayDate">
+              <div class="form-group col-md-10">
+                <label>Današnji datum</label>
+                <input name="datum_pregleda" title="" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
+              </div>
+
+              <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
             </div>
 
-            <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
 
-            <div class="form-group col-md-5">
-              <label for="exampleFormControlSelect2">Napomena o pacijentu:</label>
-              <div>
-                <input class="form-control" id="ispis_napomene_pacijenta" disabled>
+            <div class="noteAboutPatient">
+              <div class="form-group col-md-10">
+                <label for="exampleFormControlSelect2">Podaci o pacijentu:</label>
+                <div>
+                  <textarea class="form-control" id="ispis_napomene_pacijenta" disabled> </textarea>
+                </div>
               </div>
             </div>
           </div>
 
-          <div id="display"></div>
 
 
 
 
+
+          <hr>
           <div class="row">
             <div class="form-group col-md-7">
               <strong> <label id="labelAnamneza">ANAMNEZA:</label></strong>
