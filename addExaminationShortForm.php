@@ -5,7 +5,6 @@
 include '../pregled/modules/header.php';
 ?>
 
-
 <!-- Including CSS file. -->
 <style>
   .bs-example {
@@ -36,8 +35,6 @@ include '../pregled/modules/header.php';
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-
-
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -72,7 +69,7 @@ include '../pregled/modules/header.php';
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Pregled</h1>
+          <h1 class="h3 mb-4 text-gray-800">Kratki pregled</h1>
           <div class="row">
             <div class="workersLog">
               <div class="workers">
@@ -107,7 +104,6 @@ include '../pregled/modules/header.php';
               <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
             </div>
 
-
             <div class="noteAboutPatient">
               <div class="form-group col-md-10">
                 <label for="exampleFormControlSelect2">Podaci o pacijentu:</label>
@@ -117,11 +113,6 @@ include '../pregled/modules/header.php';
               </div>
             </div>
           </div>
-
-
-
-
-
 
           <hr>
           <div class="row">
@@ -144,8 +135,6 @@ include '../pregled/modules/header.php';
             </div>
 
           </div>
-
-
 
           <br>
           <div class="row">
@@ -210,83 +199,9 @@ include '../pregled/modules/header.php';
 
             </div>
 
-
           </div>
 
-
-
-
-          <div class="row">
-            <div class="motilitetGrupa">
-              <div class="form-group col-md-12">
-                <strong><label for="exampleFormControlSelect2">MOTILITET:</label> </strong>
-                <input list="listaMotiliteta" name="motilitet" title="" type="text" class="form-control" id="motilitet">
-                <datalist id="listaMotiliteta">
-                  <option value="Nalaz uredan">
-                </datalist>
-              </div>
-            </div>
-
-            <div class="tonusGrupa">
-              <div class="form-group col-md-10">
-                <strong><label for="exampleFormControlSelect2">TONUS:</label></strong>
-                &nbsp;<label for="exampleFormControlSelect2">OD:</label>
-                <input name="tonus_od" title="" type="text" class="form-control" id="tonus_od">
-
-                &nbsp;<label for="exampleFormControlSelect2">OS:</label>
-                <input name="tonus_os" title="" type="text" class="form-control" id="tonus_os">
-              </div>
-            </div>
-          </div>
-
-          <br>
-          <div class="row">
-            <div class="bmsGrupa">
-              <strong><label for="exampleFormControlSelect2">BMS:</label></strong>
-              <div class="form-group col-md-8">
-
-                <label for="exampleFormControlSelect2">OD:</label>
-                <input name="bms_od" title="" type="text" class="form-control" id="bms_od">
-
-                <label id="bms_os_label" for="exampleFormControlSelect2">OS:</label>
-                <input name="bms_os" title="" type="text" class="form-control" id="bms_os">
-              </div>
-            </div>
-
-            <div class="fundusGrupa">
-              <strong><label for="exampleFormControlSelect2">FUNDUS:</label></strong>
-              <div class="form-group col-md-8">
-                <label for="exampleFormControlSelect2">OD:</label>
-                <input name="fundus_od" title="" type="text" class="form-control" id="fundus_od">
-
-                <label for="exampleFormControlSelect2">OS:</label>
-                <input name="fundus_os" title="" type="text" class="form-control" id="fundus_os">
-              </div>
-            </div>
-          </div>
-
-          <br>
-
-          <div class="row">
-            <div class="form-group col-md-5">
-              <strong><label id="labelDijagnoza">DIJAGNOZA:</label></strong>
-              <input name="dijagnoza" title="" type="text" class="form-control" id="dijagnoza">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="form-group col-md-5">
-              <strong><label for="exampleFormControlSelect2">TERAPIJA:</label> </strong>&nbsp;&nbsp;
-              <input list="listaTerapija" name="terapija" title="" type="text" class="form-control" id="terapija">
-              <datalist id="listaTerapija">
-                <option>Korekcija naočarima</option>
-                <option>Korekcija kontaktnim sočivima</option>
-                <option>Vještačke suze</option>
-              </datalist>
-            </div>
-          </div>
-
-          
+         
 
           <div class="row">
 
@@ -305,7 +220,6 @@ include '../pregled/modules/header.php';
                 </div>
               </div>
             </div>
-
 
             <div class="korekcijaBlizina">
               <strong> <label for="exampleFormControlSelect2">KOREKCIJA - blizina:</label></strong>
@@ -329,7 +243,6 @@ include '../pregled/modules/header.php';
             </div>
           </div>
           <br>
-          
 
           <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
             <i class="fas fa-angle-down">&nbsp;</i>Pregled kontaktna sočiva
@@ -386,8 +299,8 @@ include '../pregled/modules/header.php';
               </div>
             </div>
           </div>
-          <br>
-          <div class="row">
+         <br>
+         <div class="row">
             <div class="form-group col-md-7">
               <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
               <input list="listaKontrola" name="kontrola" title="" type="text" class="form-control" id="kontrola">
@@ -427,11 +340,6 @@ include '../pregled/modules/header.php';
     </div>
   </div>
 
-
-
-
-
-
   <script type="text/javascript">
     //When page load set focus on field
     document.getElementById('sifra_radnika').focus();
@@ -459,32 +367,10 @@ include '../pregled/modules/header.php';
           },
           success: function(response) {
             $("#ime_radnika").html(response);
-            //alert(response);
           }
-
         });
       });
     });
-
-    // function clearText(cntId) {
-    //   var cnt = document.getElementById(cntId);
-    //   cnt.value = "";
-    //   return false;
-    // }
-
-    // $(document).ready(function() {
-    //   // Add minus icon for collapse element which is open by default
-    //   $(".collapse.show").each(function() {
-    //     $(this).prev(".card-header").find(".fas").addClass("fa-minus").removeClass("fa-plus");
-    //   });
-
-    //   // Toggle plus minus icon on show hide of collapse element
-    //   $(".collapse").on('show.bs.collapse', function() {
-    //     $(this).prev(".card-header").find(".fas").removeClass("fa-plus").addClass("fa-minus");
-    //   }).on('hide.bs.collapse', function() {
-    //     $(this).prev(".card-header").find(".fas").removeClass("fa-minus").addClass("fa-plus");
-    //   });
-    // });
   </script>
 
 

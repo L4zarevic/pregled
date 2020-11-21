@@ -11,12 +11,13 @@ $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
 
-$id_radnika = mysqli_real_escape_string($conn, $_REQUEST['id_radnika']);
+$sifra_radnika = mysqli_real_escape_string($conn, $_REQUEST['sifra_radnika']);
 
-$upit = "SELECT * FROM radnici WHERE id_radnika='$id_radnika'";
+$upit = "SELECT * FROM radnici WHERE sifra_radnika='$sifra_radnika'";
 $result = mysqli_query($conn, $upit);
 
 while ($row = mysqli_fetch_object($result)) {
+    echo "<label id='id_radnika' hidden><strong>$row->ID</strong></label>";
     echo "<label id='radnik'><strong>$row->imePrezimeRadnika</strong></label>";
 }
 

@@ -10031,7 +10031,7 @@ body.sidebar-toggled footer.sticky-footer {
 	display:inline-block;
 	width:40%;
 }
-input#id_radnika.form-control{
+input#sifra_radnika.form-control{
 	width:100%;
 }
 #ime_radnika{
@@ -10057,18 +10057,18 @@ input#id_radnika.form-control{
 	display:inline;
 	word-wrap: break-word;
 	
-	height:200px;
+	height:180px;
 	text-align:top;
 	font-size:9pt;
 	
 }
 #labelAnamneza{
-	display:inline-block;
-	width:10%;
+	display:inline;
+	width:18%;
 	
 }
 #anamneza{
-	 display:inline-block;
+	 display:inline;
 	 width:70%;
  }
 
@@ -10210,7 +10210,7 @@ input#id_radnika.form-control{
 
 #terapija{
 	display:inline;
-	width:78%;
+	width:76%;
 	
 }
 .korekcijaDaljina{

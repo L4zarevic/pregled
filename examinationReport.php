@@ -454,9 +454,15 @@ CloseCon($conn);
               margin-right:3%;
             }
             .napomenaIspis{
-              display:block;
+              display:inline-block;
               margin-top:2%;
               margin-left:3%;
+              margin-right:3%;
+            }
+            .imeRadnika{
+              float:right;
+              display:inline-block;
+              margin-top:2%;
               margin-right:3%;
             }
             </style>
@@ -493,6 +499,7 @@ CloseCon($conn);
             <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>
             <div class='kontrolaIspis'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
             <div class='napomenaIspis'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
+            <div class='imeRadnika'><label>Pregled uradio:</label>&nbsp;<?php echo $imePrezimeRadnika; ?></div>
     
     
             </body>

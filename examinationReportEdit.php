@@ -63,7 +63,7 @@ while ($row = mysqli_fetch_object($result)) {
   $generalije_pacijenta = $row->generalije_pacijenta;
 }
 
-$sql3 = "SELECT imePrezimeRadnika FROM radnici WHERE id_radnika=$ID_radnika";
+$sql3 = "SELECT imePrezimeRadnika FROM radnici WHERE ID=$ID_radnika";
 $result = mysqli_query($conn, $sql3);
 if (!$result) die(mysqli_error($conn));
 while ($row = mysqli_fetch_object($result)) {
@@ -189,7 +189,6 @@ CloseCon($conn);
             echo "<hr>";
             echo "<div class='row'> <div class='form-group col-md-4'><strong><label>DIJAGNOZA: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='$dijagnoza'></div></div>";
             echo "<div class='row'><div class='form-group col-md-4'> <strong><label>TERAPIJA:&nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='$terapija'></div></div>";
-            echo "<div class='row'><div class='form-group col-md-4'> <strong><label>KONTROLA: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='$kontrola'></div></div>";
             echo "<hr>";
             echo "<div class='korekcijaDaljina'>";
             echo "<div class='row'> <strong><label>KOREKCIJA - daljina: </label></strong></div>";
@@ -224,6 +223,7 @@ CloseCon($conn);
             echo "<div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_os</div>";
             echo "<div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_os</div>";
             echo "</div>";
+            echo "<div class='row'><div class='form-group col-md-4'> <strong><label>KONTROLA: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='$kontrola'></div></div>";
             echo "<hr>";
 
 
@@ -382,9 +382,15 @@ CloseCon($conn);
               margin-right:3%;
             }
             .napomenaIspis{
-              display:block;
+              display:inline-block;
               margin-top:2%;
               margin-left:3%;
+              margin-right:3%;
+            }
+            .imeRadnika{
+              float:right;
+              display:inline-block;
+              margin-top:2%;
               margin-right:3%;
             }
             </style>
@@ -421,8 +427,7 @@ CloseCon($conn);
             <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>
             <div class='kontrolaIspis'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
             <div class='napomenaIspis'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
-    
-    
+            <div class='imeRadnika'><label>Pregled uradio:</label>&nbsp;<?php echo $imePrezimeRadnika; ?></div>
             </body>
             </html>
     `);

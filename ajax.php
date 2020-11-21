@@ -21,13 +21,16 @@ if (isset($_POST['search'])) {
    echo '
     <ul>
        ';
+
+       $numRow = 0;
    //Fetching result from database.
    while ($Result = MySQLi_fetch_array($ExecQuery)) {
+      $numRow = 1;
 ?>
       <!-- Creating unordered list items.
             Calling javascript function named as "fill" found in "script.js" file.
             By passing fetched result as parameter. -->
-      <li id="ajaxResults" onclick='fill("<?php echo $Result['ID'] . "#" . $Result['generalije_pacijenta'] . "#" . $Result['kontakt'] . "#" . $Result['napomena'] . "#" . $Result['naocare_daljina_od'] . "#" . $Result['naocare_daljina_os'] . "#" . $Result['naocare_blizina_od'] . "#" . $Result['naocare_blizina_os']. "#" . $Result['sociva_od'] . "#" . $Result['sociva_os']; ?>")'>
+      <li id="ajaxResults" onclick='fill("<?php echo $Result['ID'] . "#" . $Result['generalije_pacijenta'] . "#" . $Result['kontakt'] . "#" . $Result['napomena'] . "#" . $Result['naocare_daljina_od'] . "#" . $Result['naocare_daljina_os'] . "#" . $Result['naocare_blizina_od'] . "#" . $Result['naocare_blizina_os'] . "#" . $Result['sociva_od'] . "#" . $Result['sociva_os']; ?>")'>
 
          <a value="<?php echo $Result['ID']; ?>">
             <!-- Assigning searched result in "Search box" in "search.php" file. -->
@@ -35,6 +38,9 @@ if (isset($_POST['search'])) {
       </li></a>
       <!-- Below php code is just for closing parenthesis. Don't be confused. -->
 <?php
+   }
+   if ($numRow == 0) {
+      echo "Nema rezultata pretrage";
    }
 }
 ?>

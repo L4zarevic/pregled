@@ -64,35 +64,35 @@ include '../pregled/modules/header.php';
             <div class='generalije1'>
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="exampleFormControlSelect2">Ime </label><label class="obavezna_polja" for="exampleFormControlSelect2">*</label>
+                  <label for="exampleFormControlSelect2">Ime </label><label class="obavezna_polja">*</label>
                   <input name="ime_pacijenta" placeholder="Unesite ime pacijenta" title="Unesite ime pacijenta" type="text" class="form-control" id="ime_pacijenta">
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="exampleFormControlSelect2">Ime oca</label><label class="obavezna_polja" for="exampleFormControlSelect2">*</label>
+                  <label for="exampleFormControlSelect2">Ime oca</label><label class="obavezna_polja">*</label>
                   <input name="ime_oca_pacijenta" placeholder="Unesite ime oca pacijenta" title="Unesite ime oca pacijenta" type="text" class="form-control" id="ime_oca_pacijenta">
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="exampleFormControlSelect2">Prezime</label><label class="obavezna_polja" for="exampleFormControlSelect2">*</label>
+                  <label for="exampleFormControlSelect2">Prezime</label><label class="obavezna_polja" >*</label>
                   <input name="prezime_pacijenta" placeholder="Unesite prezime pacijenta" title="Unesite prezime pacijenta" type="text" class="form-control" id="prezime_pacijenta">
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="exampleFormControlSelect2">Godina rođenja</label><label class="obavezna_polja" for="exampleFormControlSelect2">*</label>
+                  <label for="exampleFormControlSelect2">Godina rođenja</label><label class="obavezna_polja">*</label>
                   <input name="godiste_pacijenta" placeholder="Unesite godinu rođenja pacijenta" title="Unesite godinu rođenja pacijenta" type="text" class="form-control" id="godiste_pacijenta">
                 </div>
               </div>
 
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="exampleFormControlSelect2">Kontakt</label>
+                  <label for="exampleFormControlSelect2">Kontakt</label><label class="obavezna_polja">*</label>
                   <input name="kontakt_pacijenta" placeholder="Unesite kontakt pacijenta" title="Unesite kontakt podatak pacijenta (telefon ili email)" type="text" class="form-control" id="kontakt_pacijenta">
                 </div>
               </div>
@@ -170,7 +170,7 @@ include '../pregled/modules/header.php';
               <hr>
               <button type='button' onclick="addPatientCheckForm()" id="dodajNovogPacijenta" title="Kreiraj karton pacijenta" class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj pacijenta</label></button>
             </div>
-            <label class="obavezna_polja" for="exampleFormControlSelect2">* Obavezna polja za unos</label>
+            <label class="obavezna_polja">* Obavezna polja za unos</label>
           </div>
 
           <?php
