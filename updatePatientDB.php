@@ -13,7 +13,7 @@ $conn = OpenStoreCon($dataBaseName);
 
 
 $id_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['id_pacijenta']);
-$generalije_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['generalije']);
+$generalije_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['generalije_pacijenta']);
 $kontaktPacijenta = mysqli_real_escape_string($conn, $_REQUEST['kontakt_pacijenta']);
 $napomenaPacijenta = mysqli_real_escape_string($conn, $_REQUEST['napomena_pacijenta']);
 $naocare_daljina_od = mysqli_real_escape_string($conn, $_REQUEST['naocare_daljina_od']);
