@@ -293,7 +293,7 @@ include '../pregled/modules/header.php';
           </div>
           <div class="row">
             <div class="korekcijaDaljina">
-              <strong> <label for="exampleFormControlSelect2">KOREKCIJA - daljina:</label></strong>
+              <strong> <label for="exampleFormControlSelect2">DALJINA - korekcija:</label></strong>
               <div class="form-group col-md-7">
                 <div class="kor1">
                   <label id="labelKorDaljOd">OD:</label>
@@ -308,7 +308,7 @@ include '../pregled/modules/header.php';
 
 
             <div class="korekcijaBlizina">
-              <strong> <label for="exampleFormControlSelect2">KOREKCIJA - blizina:</label></strong>
+              <strong> <label for="exampleFormControlSelect2">BLIZINA - korekcija:</label></strong>
               <div class="form-group col-md-7">
                 <div class="kor3">
                   <label id="labelKorBlizOd">OD:</label>

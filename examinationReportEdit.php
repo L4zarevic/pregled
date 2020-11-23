@@ -63,11 +63,12 @@ while ($row = mysqli_fetch_object($result)) {
   $generalije_pacijenta = $row->generalije_pacijenta;
 }
 
-$sql3 = "SELECT imePrezimeRadnika FROM radnici WHERE ID=$ID_radnika";
+$sql3 = "SELECT imePrezimeRadnika,sifra_radnika FROM radnici WHERE ID=$ID_radnika";
 $result = mysqli_query($conn, $sql3);
 if (!$result) die(mysqli_error($conn));
 while ($row = mysqli_fetch_object($result)) {
   $imePrezimeRadnika = $row->imePrezimeRadnika;
+  $sifra_radnika = $row->sifra_radnika;
 }
 
 $con = OpenCon();
@@ -143,109 +144,158 @@ CloseCon($conn);
 
           <div class='tabelaSpecijala1'>
 
-            <?php
+            <div class='row'> <strong><label>Ime, prezime i godina rođenja: </label></strong> &nbsp;<?php echo $generalije_pacijenta; ?></div>
+            <div class='row'> <strong><label>Pregled urađen u: </label></strong> &nbsp;<?php echo $naziv; ?></div>
+            <div class='row'> <strong><label>Datum: </label></strong> &nbsp;<?php echo $datum_pregleda; ?></div>
+            <div class='row'> <strong><label>Radnik: </label></strong> &nbsp;<?php echo $imePrezimeRadnika; ?></div>
+
+
+            <hr>
+            <div class='row'>
+              <div class='anamnezaReport'>
+                <div class='form-group col-md-9'><strong><label id='labelAnamnezaReport'>ANAMNEZA: </label></strong> &nbsp;
+                  <input name='inputAnamenzaReport' title='' type='text' class='form-control' id='inputAnamenzaReport' value='<?php echo $anamneza; ?>'></div>
+              </div>
+            </div>
+            <br>
+            <div class='row'> <strong><label>VIDNA OŠTRINA: </label></strong></div>
+            <div class='row'>
+              <div class='vidnaOstrinaReport'>
+                <div class='vodReport'>
+                  <div class='form-group col-md-6'> <label>VOD:</label id='labelVodReport'> &nbsp;<input name='inputVodReport' title='' type='text' class='form-control' id='inputVodReport' value='<?php echo $vod; ?>'></div>
+                  <div class='vosReport'>
+                    <div class='form-group col-md-6'><label id='labelVosReport'>VOS:</label> &nbsp; <input name='inputVosReport' title='' type='text' class='form-control' id='inputVosReport' value='<?php echo $vos; ?>'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+            <div class='row'>
+              <div class='motilitetTonusReport'>
+                <div class='motilitetReport'>
+                  <div class='form-group col-md-12'> <strong><label id='labelMotilitetReport'>MOTILITET: </label></strong> &nbsp; <input name='inputMotilitetReport' title='' type='text' class='form-control' id='inputMotilitetReport' value='<?php echo $motilitet; ?>'></div>
+                </div>
+
+                <div class='tonusReport'>
+                  <div class='form-group col-md-10'><strong><label id='labelTonusReport'>TONUS: </label></strong>
+                    <label id='labelTonusOdReport'>OD: </label></strong> &nbsp; <input name='inputTonusOdReport' title='' type='text' class='form-control' id='inputTonusOdReport' value='<?php echo $tonus_od; ?>'>
+                    &nbsp;<label id='labelTonusOsReport'>OS: </label></strong> &nbsp; <input name='inputTonusOsReport' title='' type='text' class='form-control' id='inputTonusOsReport' value='<?php echo $tonus_os; ?>'></div>
+                </div>
+
+              </div>
+
+            </div>
+            <br>
+            <div id='grupa1'>
+              <div class='row'><strong><label>BMS: </label></strong></div>
+              <div class='row'>
+                <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $bms_od; ?>'></div>
+              </div>
+              <div class=' row'>
+                <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $bms_os; ?>'></div>
+              </div>
+            </div>
+
+            <div id='grupa2'>
+              <div class='row'> <strong><label>FUNDUS: </label></strong></div>
+              <div class='row'>
+                <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $fundus_od; ?>'></div>
+              </div>
+              <div class='row'>
+                <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $fundus_os; ?>'></div>
+              </div>
+
+            </div>
+
+            <hr>
+            <div class='row'>
+              <div class='form-group col-md-4'><strong><label>DIJAGNOZA: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='<?php echo $dijagnoza; ?>'></div>
+            </div>
+            <div class='row'>
+              <div class='form-group col-md-4'> <strong><label>TERAPIJA:&nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='<?php echo $terapija; ?>'></div>
+            </div>
+
+            <hr>
+            <div class='korekcijaDaljina'>
+              <div class='row'> <strong><label>DALJINA - korekcija: </label></strong></div>
+              <div class='row'>
+                <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $korekcija_daljina_od; ?>'></div>
+              </div>
+              <div class='row'>
+                <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $korekcija_daljina_os; ?>'></div>
+              </div>
+
+            </div>
+            <div class='korekcijaBlizina'>
+              <div class='row'> <strong><label>BLIZINA - korekcija: </label></strong></div>
+              <div class='row'>
+                <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $korekcija_blizina_od; ?>'></div>
+              </div>
+              <div class='row'>
+                <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $korekcija_blizina_os; ?>'></div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class='row'>
+              <div class='form-group col-md-2'><strong><label>PD: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='<?php echo $pd; ?>'></div>
+            </div></br>
 
 
 
-            echo " <div class='row'> <strong><label>Ime, prezime i godina rođenja: </label></strong> &nbsp; $generalije_pacijenta</div>";
-            echo " <div class='row'> <strong><label>Pregled urađen u: </label></strong> &nbsp; $naziv</div>";
-            echo " <div class='row'> <strong><label>Datum: </label></strong> &nbsp; $datum_pregleda</div>";
-            echo " <div class='row'> <strong><label>Radnik: </label></strong> &nbsp; $imePrezimeRadnika</div>";
-           
-          
-            echo "<hr>";
-            echo " <div class='row'> <div class='anamnezaReport'> <div class='form-group col-md-9'><strong><label id='labelAnamnezaReport'>ANAMNEZA: </label></strong> &nbsp; ";
-            echo "<input name='inputAnamenzaReport' title='' type='text' class='form-control' id='inputAnamenzaReport' value='$anamneza'></div> </div></div>";
-            echo "<br>";
-            echo "<div class='row'> <strong><label>VIDNA OŠTRINA: </label></strong></div>";
-            echo "<div class='row'> <div class='vidnaOstrinaReport'><div class='vodReport'><div class='form-group col-md-6'> <label>VOD:</label id='labelVodReport'> &nbsp;<input name='inputVodReport' title='' type='text' class='form-control' id='inputVodReport' value='$vod'></div>";
-            echo "<div class='vosReport'><div class='form-group col-md-6'><label id='labelVosReport'>VOS:</label> &nbsp; <input name='inputVosReport' title='' type='text' class='form-control' id='inputVosReport' value='$vos'></div></div></div></div></div>";
-            echo "<hr>";
-            echo "<div class='row'>";
-            echo "<div class='motilitetTonusReport'>";
-            echo "<div class='motilitetReport'>";
-            echo "<div class='form-group col-md-12'> <strong><label id='labelMotilitetReport'>MOTILITET: </label></strong> &nbsp; <input name='inputMotilitetReport' title='' type='text' class='form-control' id='inputMotilitetReport' value='$motilitet'></div></div>";
+            <hr>
+            <div class='row'> <strong><label>KOREKCIJA (kon. sočiva): </label></strong></div>
+            <div id='korekcijas1'>
+              <div class='row'> <label>OD:&nbsp; </label></strong></div>
+              <div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_od</div>
+              <div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_od</div>
+              <div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_od</div>
+              <div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_od</div>
+              <div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_od</div>
 
-            echo "<div class='tonusReport'>";
-            echo "<div class='form-group col-md-10'><strong><label id='labelTonusReport'>TONUS: </label></strong>";
-            echo "<label id='labelTonusOdReport'>OD: </label></strong> &nbsp;  <input name='inputTonusOdReport' title='' type='text' class='form-control' id='inputTonusOdReport' value='$tonus_od'>";
-            echo "&nbsp;<label id='labelTonusOsReport'>OS: </label></strong> &nbsp; <input name='inputTonusOsReport' title='' type='text' class='form-control' id='inputTonusOsReport' value='$tonus_os'></div>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
-            echo "<br>";
-            echo "<div id='grupa1'>";
-            echo "<div class='row'><strong><label>BMS: </label></strong></div>";
-            echo "<div class='row'> <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='$bms_od'></div></div>";
-            echo "<div class='row'> <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='$bms_os'></div></div>";
-            echo "</div>";
-
-            echo "<div id='grupa2'>";
-            echo "<div class='row'> <strong><label>FUNDUS: </label></strong></div>";
-            echo "<div class='row'>  <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='$fundus_od'></div></div>";
-            echo "<div class='row'>  <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='$fundus_os'></div></div>";
-
-            echo "</div>";
-            echo "<hr>";
-            echo "<div class='row'> <div class='form-group col-md-4'><strong><label>DIJAGNOZA: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='$dijagnoza'></div></div>";
-            echo "<div class='row'><div class='form-group col-md-4'> <strong><label>TERAPIJA:&nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='$terapija'></div></div>";
-            echo "<hr>";
-            echo "<div class='korekcijaDaljina'>";
-            echo "<div class='row'> <strong><label>KOREKCIJA - daljina: </label></strong></div>";
-            echo "<div class='row'> <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='$korekcija_daljina_od'></div></div>";
-            echo "<div class='row'> <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='$korekcija_daljina_os'></div></div>";
-            echo "</div>";
-            echo "<div class='korekcijaBlizina'>";
-            echo "<div class='row'> <strong><label>KOREKCIJA - blizina: </label></strong></div>";
-            echo "<div class='row'> <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='$korekcija_blizina_od'></div></div>";
-            echo "<div class='row'> <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='$korekcija_blizina_os'></div></div>";
-            echo "</div>";
-            echo "<br>";
-            echo "<br>";
-            echo "<div class='row'> <div class='form-group col-md-2'><strong><label>PD: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='$pd'></div></div></br>";
-
-
-            echo "<hr>";
-            echo "<div class='row'> <strong><label>KOREKCIJA (kon. sočiva): </label></strong></div>";
-            echo "<div id='korekcijas1'>";
-            echo "<div class='row'> <label>OD:&nbsp; </label></strong></div>";
-            echo "<div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_od</div>";
-            echo "<div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_od</div>";
-            echo "<div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_od</div>";
-            echo "<div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_od</div>";
-            echo "<div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_od</div>";
-            echo "</div>";
-            echo "<div id='korekcijas2'>";
-            echo "<div class='row'> <label>OS:&nbsp; </label></strong></div>";
-            echo "<div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_os</div>";
-            echo "<div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_os</div>";
-            echo "<div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_os</div>";
-            echo "<div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_os</div>";
-            echo "<div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_os</div>";
-            echo "</div>";
-            echo "<div class='row'><div class='form-group col-md-4'> <strong><label>KONTROLA: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='$kontrola'></div></div>";
-            echo "<hr>";
+            </div>
+            <div id='korekcijas2'>
+              <div class='row'> <label>OS:&nbsp; </label></strong></div>
+              <div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_os</div>
+              <div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_os</div>
+              <div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_os</div>
+              <div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_os</div>
+              <div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_os</div>
+            </div>
+            <div class='row'>
+              <div class='form-group col-md-4'> <strong><label>KONTROLA: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='<?php echo $kontrola; ?>'></div>
+            </div>
+            <hr>
+            <div class='row'>
+              <div class='form-group col-md-6'><strong><label>NAPOMENA: &nbsp;</label></strong> <textarea name='' title='' type='text' class='form-control' id='napomenaPregledaReport' value='<?php echo $napomena_pregleda; ?>'></textarea></div>
+            </div>
+            <hr>
+            <br>
 
 
 
-            echo "<div class='row'> <div class='form-group col-md-6'><strong><label>NAPOMENA: &nbsp;</label></strong> <textarea name='' title='' type='text' class='form-control' id='napomenaPregledaReport' value='$napomena_pregleda'></textarea></div></div>";
-            echo "<hr>";
-            echo "<br>";
-            echo "<br>";
-            echo "<div id='stampa1'>";
-            echo "<h4>Pregled za naočare</h4>";
-            echo "<button id='kratkiIspisNaocare' title='Kratki izvještaj pregleda za naočare (A5 landscape)' class='btn btn-primary' onClick='openPrintDialogue()'><i class='fa fa-print' ></i>&nbsp;<label class='labelPrintButton'>Štampa kratki ispis</label></button>";
-            echo "<button id='dugiIspisNaocare' title='Dugi izvještaj pregleda za naočare (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa dugi ispis</label></button>";
-            echo "</div>";
-            echo "<div id='stampa2'>";
-            echo "<h4>Pregled za sočiva</h4>";
-            echo "<button id='kratkiIspisSociva' title='Kratki izvještaj pregleda za sočiva (A5 landscape)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa kratki ispis</label></button>";
-            echo "<button id='dugiIspisSociva' title='Dugi izvještaj pregleda za sočiva (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa dugi ispis</label></button>";
-            echo "</div>";
-            ?>
+            <div class="row">
+              <div class='form-group col-md-4'>
+                <button id="updateButton" class="btn btn-success" onclick="worker()"><i class="fas fa-edit"></i>&nbsp;<label class="labelSaveButton">Uredi izvještaj pregleda</label></button>
+              </div>
+            </div>
 
+
+
+            <br>
+            <br>
+            <div id='stampa1'>
+              <h4>Pregled za naočare</h4>
+              <button id='kratkiIspisNaocare' title='Kratki izvještaj pregleda za naočare (A5 landscape)' class='btn btn-primary' onClick='openPrintDialogue()'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa kratki ispis</label></button>
+              <button id='dugiIspisNaocare' title='Dugi izvještaj pregleda za naočare (A4 portrait)' class='btn btn-primary' onClick='openPrintDialogueA4()'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa dugi ispis</label></button>
+            </div>
+            <div id='stampa2'>
+              <h4>Pregled za sočiva</h4>
+              <button id='kratkiIspisSociva' title='Kratki izvještaj pregleda za sočiva (A5 landscape)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa kratki ispis</label></button>
+              <button id='dugiIspisSociva' title='Dugi izvještaj pregleda za sočiva (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa dugi ispis</label></button>
+            </div>
           </div>
-
 
 
 
@@ -260,6 +310,7 @@ CloseCon($conn);
 
       <script>
         function openPrintDialogue() {
+
           $('<iframe>', {
               name: 'myiframe',
               class: 'printFrame'
@@ -270,7 +321,7 @@ CloseCon($conn);
 
             <html>
             <style>
-            @page { size: A5 landscape;  margin: 0mm; }
+            @media print{@page{ size: A5 landscape;margin: 0mm; }}
             .logo{
               margin:3%;
               display:inline;
@@ -304,7 +355,7 @@ CloseCon($conn);
               float:right;
               display:inline-block;
               margin-top:5%;
-              margin-right:3%;
+              margin-right:14%;
             }
             .ispisAnamneze{
               display:block;
@@ -335,7 +386,7 @@ CloseCon($conn);
             }
             .korekcijaDaljina_R{
               display:inline-block;
-	            width:45%;
+	            width:50%;
             }
             #korDaljinaLabel{
               margin:0 auto;
@@ -376,12 +427,21 @@ CloseCon($conn);
               display:block;
               margin-left:3%;
             }
-            .kontrolaIspis{
+           
+            .kontrolaPregledao{
               display:block;
               margin-left:3%;
-              margin-right:3%;
+              margin-right:5.5%;
             }
-            .napomenaIspis{
+            .kontrolaReport{
+              display:inline-block;
+              width:45%;
+            }
+            .pregledao{
+              display:inline-block;
+              float:right;
+            }
+            .napomenaReport{
               display:inline-block;
               margin-top:2%;
               margin-left:3%;
@@ -391,7 +451,7 @@ CloseCon($conn);
               float:right;
               display:inline-block;
               margin-top:2%;
-              margin-right:3%;
+              margin-right:5.5%;
             }
             </style>
             <body>
@@ -411,7 +471,7 @@ CloseCon($conn);
             </div>
             <div class='korekcija'>
             <div class='korekcijaDaljina_R'>
-            <div id='korDaljinaLabel'><label>KOREKCIJA - daljina:</label></div>
+            <div id='korDaljinaLabel'><label>DALJINA - korekcija:</label></div>
             
             <div class='korDaljinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_daljina_od; ?></div>
             <div class='korDaljinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_daljina_os; ?></div>
@@ -419,15 +479,20 @@ CloseCon($conn);
 
            
             <div class='korekcijaBlizina_R'>
-            <div id='korBlizinaLabel'><label>KOREKCIJA - blizina:</label></div>
+            <div id='korBlizinaLabel'><label>BLIZINA - korekcija:</label></div>
             <div class='korBlizinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_blizina_od; ?></div>
             <div class='korBlizinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_blizina_os; ?></div>
             </div>
             </div></br>
             <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>
-            <div class='kontrolaIspis'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
-            <div class='napomenaIspis'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
-            <div class='imeRadnika'><label>Pregled uradio:</label>&nbsp;<?php echo $imePrezimeRadnika; ?></div>
+            <div class='kontrolaPregledao'>
+            <div class='kontrolaReport'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
+            <div class='pregledao'><label>Pregledao:</label></div>
+            </div>
+            <div class='napomenaImeRadnika'>
+            <div class='napomenaReport'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
+            <div class='imeRadnika'><?php echo $imePrezimeRadnika; ?></div>
+            </div>
             </body>
             </html>
     `);
@@ -440,7 +505,319 @@ CloseCon($conn);
           }, 1000);
         };
 
-        //$('button#kratkiIspisNaocare').on('click', openPrintDialogue);
+        function openPrintDialogueA4() {
+
+          $('<iframe>', {
+              name: 'myiframe',
+              class: 'printFrame'
+            })
+            .appendTo('body')
+            .contents().find('body')
+            .append(`
+
+            <html>
+            <style>
+           
+            @media print{@page{ size: A4 portrait;margin: 0mm; }}
+            .logo{
+              margin:3%;
+              display:inline;
+              width:55%;
+              float:left;
+            }
+            .kontaktPodaciRadnje{
+              display:inline;
+              margin-top:5%;
+              margin-right:5%;
+              width:25%;
+              float:right;
+            }
+            #linija{
+              display:block;
+              width:94%;
+              margin-left:3%;
+              margin-right:3%;
+            }
+            #logo{
+              display:inline;
+              width:51%;
+              heigt:51%;
+            }
+            .generalije{
+              display:inline-block;
+              margin-top:5%;
+              margin-left:3%;
+            }
+            .datum{
+              float:right;
+              display:inline-block;
+              margin-top:5%;
+              margin-right:14%;
+            }
+            .ispisAnamneze{
+              display:block;
+              margin-top:2%;
+              margin-left:3%;
+              margin-right:3%;
+            }
+            .vidna_ostrina{
+              display:block;
+              margin-top:2%;
+              margin-left:3%;
+            }
+            .vidna_ostrina_vod{
+              display:inline;
+	            width:100%;
+            }
+            .vidna_ostrina_vos{
+              display:inline;
+              margin-left:18.4%;
+              margin-top:2%;
+	           
+            }
+            .motilitetTonusReport{
+              display:block;
+              margin-top:2%;
+              margin-left:3%;
+              margin-right:3%;
+            }
+            .motilitetReport{
+              display:inline-block;
+	            width:50%;
+            }
+            .tonusReport{
+              display:inline-block;
+	            width:45%;
+            }
+            #labelTonusOsReport{
+              margin-left:10%;
+            }
+            .bmsFundus{
+              display:block;
+              margin-top:2%;
+              margin-left:3%;
+              margin-right:3%;
+            }
+            .bmsReport{
+              display:inline-block;
+	            width:50%;
+            }
+            #labelBmsReport{
+              margin:0 auto;
+              display:inline-block;
+	            width:100%;
+            }
+            #labelBmsOdReport{
+              display:inline-block;
+              margin-bottom:2%;
+              width:100%;
+            }
+            #labelBmsOsReport{
+              display:inline-block;
+              width:100%;
+            }
+
+            .fundusReport{
+              display:inline-block;
+	            width:45%;
+            }
+            #labelFundusReport{
+              margin:0 auto;
+              display:inline-block;
+	            width:100%;
+            }
+            #labelFundusOdReport{
+              display:inline-block;
+              margin-bottom:2%;
+              width:100%;
+            }
+            #labelFundusOsReport{
+              display:inline-block;
+              width:100%;
+            }
+            .korekcija{
+              display:block;
+              margin-top:2%;
+              margin-left:3%;
+              margin-right:3%;
+            }
+            .korekcijaDaljina_R{
+              display:inline-block;
+	            width:50%;
+            }
+            #korDaljinaLabel{
+              margin:0 auto;
+              display:inline-block;
+	            width:100%;
+            }
+           
+            .korDaljinaOD{
+              display:inline-block;
+              margin-bottom:2%;
+              width:100%;
+            }
+            .korDaljinaOS{
+              display:inline-block;
+              width:100%;
+            }
+
+            .korekcijaBlizina_R{
+              display:inline-block;
+	            width:45%;
+            }
+            #korBlizinaLabel{
+              margin:0 auto;
+              display:inline-block;
+	            width:100%;
+            }
+            .korBlizinaOD{
+              display:inline-block;
+              margin-bottom:2%;
+              width:100%;
+            }
+            .korBlizinaOS{
+              display:inline-block;
+              width:100%;
+            }
+            .pd{
+              display:block;
+              margin-left:3%;
+            }
+            .dijagnozaReport{
+              display:block;
+              margin-left:3%;
+              margin-right:3%;
+            }
+            .terapijaReport{
+              display:block;
+              margin-left:3%;
+              margin-right:3%;
+            }
+
+            .kontrolaPregledao{
+              display:block;
+              margin-left:3%;
+              margin-right:5.5%;
+            }
+            .kontrolaReport{
+              display:inline-block;
+              width:45%;
+            }
+            .pregledao{
+              display:inline-block;
+              float:right;
+            }
+            .napomenaReport{
+              display:inline-block;
+              margin-top:2%;
+              margin-left:3%;
+              margin-right:3%;
+            }
+            .imeRadnika{
+              float:right;
+              display:inline-block;
+              margin-top:2%;
+              margin-right:5.5%;
+            }
+            </style>
+            <body>
+            <div class='logo'><img id='logo' src='../pregled/images/MO.png' /></div>
+            <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label>www.mojaoptika.com</label></div>
+            <hr id='linija'>
+            <div class='generalije'><label></label>&nbsp;<?php echo $generalije_pacijenta; ?></div>
+            <div class='datum'><label>Datum:</label>&nbsp;<?php echo $datum_pregleda; ?></div>
+            <div class='ispisAnamneze'><label>ANAMNEZA:</label>&nbsp;
+            <?php
+            echo  "<label>$anamneza</label>";
+            echo  "</div>";
+            ?></br>
+            <div class='vidna_ostrina'><label>VIDNA OŠTRINA:</label>&nbsp;
+            <div class='vidna_ostrina_vod'><label>VOD:</label>&nbsp;<?php echo $vod; ?></div></br>
+            <div class='vidna_ostrina_vos'><label>VOS:</label>&nbsp;<?php echo $vos; ?></div>
+            </div>
+
+            <div class="motilitetTonusReport">
+            <div class="motilitetReport"><label>MOTILITET:</label>&nbsp;<?php echo $motilitet; ?></div>
+            <div class="tonusReport"><label>TONUS:</label>&nbsp;<label id='labelTonusOdReport'>OD:</label>&nbsp;<?php echo $tonus_od; ?>&nbsp;<label id='labelTonusOsReport'>OS:</label>&nbsp;<?php echo $tonus_os; ?></div>
+            </div>
+
+            <div class='bmsFundus'>
+            <div class='bmsReport'>
+              <label id='labelBmsReport'>BMS:</label>
+                <label id='labelBmsOdReport'>OD:&nbsp;<?php echo $bms_od; ?></label>
+                <label id='labelBmsOsReport'>OS:&nbsp;<?php echo $bms_os; ?></label>
+            </div>
+
+            <div class='fundusReport'>
+              <label id='labelFundusReport'>FUNDUS:</label>
+                <label id='labelFundusOdReport'>OD:&nbsp;<?php echo $fundus_od; ?></label>
+                <label id='labelFundusOsReport'>OS:&nbsp;<?php echo $fundus_os; ?></label>
+              </div>
+            </div>
+            </div>
+            </br>
+            <div class='dijagnozaReport'><label>DIJAGNOZA:</label>&nbsp;<?php echo $dijagnoza; ?></div>
+            </br>
+            <div class='terapijaReport'><label>TERAPIJA:</label>&nbsp;<?php echo $terapija; ?></div>
+          
+            <div class='korekcija'>
+            <div class='korekcijaDaljina_R'>
+            <div id='korDaljinaLabel'><label>DALJINA - korekcija:</label></div>
+            <div class='korDaljinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_daljina_od; ?></div>
+            <div class='korDaljinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_daljina_os; ?></div>
+            </div>
+            <div class='korekcijaBlizina_R'>
+            <div id='korBlizinaLabel'><label>BLIZINA - korekcija:</label></div>
+            <div class='korBlizinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_blizina_od; ?></div>
+            <div class='korBlizinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_blizina_os; ?></div>
+            </div>
+            </div>
+            </br>
+            <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>
+            <div class='kontrolaPregledao'>
+            <div class='kontrolaReport'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
+            <div class='pregledao'><label>Pregledao:</label></div>
+            </div>
+            <div class='napomenaImeRadnika'>
+            <div class='napomenaReport'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
+            <div class='imeRadnika'><?php echo $imePrezimeRadnika; ?></div>
+            </div>
+            </body>
+            </html>
+    `);
+
+          window.frames['myiframe'].focus();
+          window.frames['myiframe'].print();
+
+          setTimeout(() => {
+            $(".printFrame").remove();
+          }, 1000);
+
+        };
+
+        function worker() {
+          var sifra_radnika = "<?php echo $sifra_radnika; ?>";
+          var id_pregleda = "<?php echo $id_pregleda; ?>";
+          checkUser(sifra_radnika, id_pregleda);
+        }
+
+
+        // $(document).ready(function() {
+        //   $("#sifra_radnika").on('change', function(e) {
+        //     var sifra_radnika = document.getElementById('sifra_radnika').value;
+        //     $.ajax({ //create an ajax request to display.php
+        //       type: "POST",
+        //       url: "getWorkersID.php",
+        //       dataType: "html", //expect html to be returned 
+        //       data: {
+        //         sifra_radnika: sifra_radnika
+        //       },
+        //       success: function(response) {
+        //         $("#ime_radnika").html(response);
+        //       }
+        //     });
+        //   });
+        // });
       </script>
 
 

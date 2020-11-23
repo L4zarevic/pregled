@@ -10535,3 +10535,19 @@ h5#secondTitle{
 	display:inline;
 	width:25%;
 }
+
+/*Report edit*/
+
+#labelIDR{
+	margin-top:0.5%;
+	display:inline;
+	width:8%;
+}
+#input_sifra_radnika{
+	display:inline;
+	width:30%;
+}
+#updateButton{
+	margin-left:3%;
+	display:inline;
+}
