@@ -3,7 +3,7 @@
     $dbhost = 'localhost';
     $dbuser = 'mojaopt_moptic';
     $dbpass = 'mP9!1&plTK$sE%aB8DdM';
-    $db = 'optike';
+    $db = 'mojaopt_optike';
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $db);
     if (!$conn) {
         die(header("Location:../pregled/login.php?msg=2"));
