@@ -13,7 +13,7 @@ $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
 
-$upit = "SELECT adresa,telefon FROM optike.korisnici WHERE ID=$ID_korisnika";
+$upit = "SELECT adresa,telefon FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
 $rezultat = mysqli_query($conn, $upit);
 if (!$rezultat) die(mysqli_error($conn));
 while ($red = mysqli_fetch_object($rezultat)) {

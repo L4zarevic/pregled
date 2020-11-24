@@ -8,7 +8,6 @@ require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
 $ar = explode("#", $korisnik, 3);
 $ar[1] = rtrim($ar[1], "#");
-//$ID_korisnika = $ar[0];
 $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
@@ -72,7 +71,7 @@ while ($row = mysqli_fetch_object($result)) {
 }
 
 $con = OpenCon();
-$sql4 = "SELECT naziv,adresa,telefon FROM optike.korisnici WHERE ID=$ID_korisnika";
+$sql4 = "SELECT naziv,adresa,telefon FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
 $result = mysqli_query($con, $sql4);
 if (!$result) die(mysqli_error($con));
 while ($row = mysqli_fetch_object($result)) {
