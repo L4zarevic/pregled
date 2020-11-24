@@ -11,8 +11,7 @@ $ar[1] = rtrim($ar[1], "#");
 $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-
-
+mysqli_set_charset($conn,"utf8");
 
 $id_pregleda = mysqli_real_escape_string($conn, $_REQUEST['id']);
 

@@ -10,6 +10,7 @@ $id_korisnika = $ar[0];
 $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
+mysqli_set_charset($conn,"utf8");
 
 $id_radnika = mysqli_real_escape_string($conn, $_REQUEST['id_radnika']);
 $ime_prezime_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['ime_prezime_pacijenta']);

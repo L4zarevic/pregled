@@ -9,6 +9,7 @@ $ar = explode("#", $korisnik, 3);
 $ar[1] = rtrim($ar[1], "#");
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
+mysqli_set_charset($conn,"utf8");
 //Getting value of "search" variable from "script.js".
 if (isset($_POST['search'])) {
    //Search box value assigning to $Name variable.

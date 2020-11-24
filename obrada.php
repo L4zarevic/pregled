@@ -4,6 +4,8 @@ if (is_null($_SESSION['prijavljen'])) {
 }
 include 'connection.php';
 $conn = OpenCon();
+mysqli_set_charset($conn,"utf8");
+
 $korisnickoIme = mysqli_real_escape_string($conn, $_POST['korisnicko_ime']);
 $lozinka = mysqli_real_escape_string($conn, $_POST['lozinka']);
 $hash_password = md5($lozinka);

@@ -12,6 +12,7 @@ $ID_korisnika = $ar[0];
 $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
+mysqli_set_charset($conn,"utf8");
 
 $upit = "SELECT adresa,telefon FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
 $rezultat = mysqli_query($conn, $upit);
