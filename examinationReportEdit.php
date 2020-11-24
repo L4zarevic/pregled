@@ -346,7 +346,7 @@ CloseCon($conn);
 
             <html>
             <style>
-            @media print{@page{ size: A5 landscape;margin: 0mm; }}
+            @media print{@page{ size: A5 landscape !important; margin: 0mm !important; }}
             .logo{
               margin:3%;
               display:inline;
@@ -543,7 +543,7 @@ CloseCon($conn);
             <html>
             <style>
            
-            @media print{@page{ size: A4 portrait;margin: 0mm; }}
+            @media print{@page{ size: A4 portrait !important; margin: 0mm !important; }}
             .logo{
               margin:3%;
               display:inline;

@@ -341,7 +341,7 @@ CloseCon($conn);
 
             <html>
             <style>
-            @page { size: A5 landscape;  margin: 0mm; }
+            @page { size: A5 landscape !important;  margin: 0mm !important; }
             .logo{
               margin:3%;
               display:inline;
@@ -534,7 +534,7 @@ CloseCon($conn);
 
             <html>
             <style>
-            @page { size: A4 portrait;  margin: 0mm; }
+            @page { size: A4 portrait !important; margin: 0mm !important; }
             .logo{
               margin:3%;
               display:inline;
