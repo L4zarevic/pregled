@@ -2,6 +2,7 @@
 if (is_null($_SESSION['prijavljen'])) {
     header('Location: ../pregled/login.php');
 }
+header('Content-Type: text/html; charset=utf-8');
 include 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
 $ar = explode("#", $korisnik, 3);
