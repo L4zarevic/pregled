@@ -190,98 +190,125 @@ CloseCon($conn);
             <div id='grupa1'>
               <div class='row'><strong><label>BMS: </label></strong></div>
               <div class='row'>
-                <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $bms_od; ?>'></div>
+                <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='inputBmsOdReport' type='text' class='form-control' id='inputBmsOdReport' value='<?php echo $bms_od; ?>'></div>
               </div>
               <div class=' row'>
-                <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $bms_os; ?>'></div>
+                <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='inputBmsOsReport' type='text' class='form-control' id='inputBmsOsReport' value='<?php echo $bms_os; ?>'></div>
               </div>
             </div>
 
             <div id='grupa2'>
               <div class='row'> <strong><label>FUNDUS: </label></strong></div>
               <div class='row'>
-                <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $fundus_od; ?>'></div>
+                <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='inputFundusOdReport' type='text' class='form-control' id='inputFundusOdReport' value='<?php echo $fundus_od; ?>'></div>
               </div>
               <div class='row'>
-                <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $fundus_os; ?>'></div>
+                <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='inputFundusOsReport' type='text' class='form-control' id='inputFundusOsReport' value='<?php echo $fundus_os; ?>'></div>
               </div>
 
             </div>
 
             <hr>
             <div class='row'>
-              <div class='form-group col-md-4'><strong><label>DIJAGNOZA: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='<?php echo $dijagnoza; ?>'></div>
+              <div class='form-group col-md-5'><strong><label>DIJAGNOZA: &nbsp;</label></strong><input name='inputDiagnoseReport' type='text' class='form-control' id='inputDiagnoseReport' value='<?php echo $dijagnoza; ?>'></div>
             </div>
             <div class='row'>
-              <div class='form-group col-md-4'> <strong><label>TERAPIJA:&nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='<?php echo $terapija; ?>'></div>
+              <div class='form-group col-md-5'> <strong><label>TERAPIJA:&nbsp;</label></strong><input name='inputTherapyReport' type='text' class='form-control' id='inputTherapyReport' value='<?php echo $terapija; ?>'></div>
             </div>
 
             <hr>
             <div class='korekcijaDaljina'>
               <div class='row'> <strong><label>DALJINA - korekcija: </label></strong></div>
               <div class='row'>
-                <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $korekcija_daljina_od; ?>'></div>
+                <div class='form-group col-md-8'><label>OD: </label></strong> &nbsp; <input name='inputDistanceCorrectionOdReport' type='text' class='form-control' id='inputDistanceCorrectionOdReport' value='<?php echo $korekcija_daljina_od; ?>'></div>
               </div>
               <div class='row'>
-                <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $korekcija_daljina_os; ?>'></div>
+                <div class='form-group col-md-8'><label>OS: </label></strong> &nbsp; <input name='inputDistanceCorrectionOsReport' type='text' class='form-control' id='inputDistanceCorrectionOsReport' value='<?php echo $korekcija_daljina_os; ?>'></div>
               </div>
 
             </div>
             <div class='korekcijaBlizina'>
               <div class='row'> <strong><label>BLIZINA - korekcija: </label></strong></div>
               <div class='row'>
-                <div class='form-group col-md-4'><label>OD: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $korekcija_blizina_od; ?>'></div>
+                <div class='form-group col-md-8'><label>OD: </label></strong> &nbsp; <input name='inputProximityCorrectionOdReport' type='text' class='form-control' id='inputProximityCorrectionOdReport' value='<?php echo $korekcija_blizina_od; ?>'></div>
               </div>
               <div class='row'>
-                <div class='form-group col-md-4'><label>OS: </label></strong> &nbsp; <input name='' title='' type='text' class='form-control' id='' value='<?php echo $korekcija_blizina_os; ?>'></div>
+                <div class='form-group col-md-8'><label>OS: </label></strong> &nbsp; <input name='inputProximityCorrectionOsReport' type='text' class='form-control' id='inputProximityCorrectionOsReport' value='<?php echo $korekcija_blizina_os; ?>'></div>
               </div>
             </div>
             <br>
             <br>
             <div class='row'>
-              <div class='form-group col-md-2'><strong><label>PD: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='<?php echo $pd; ?>'></div>
+              <div class='form-group col-md-2'><strong><label>PD: &nbsp;</label></strong><input name='inputPdReport' type='text' class='form-control' id='inputPdReport' value='<?php echo $pd; ?>'></div>
             </div></br>
 
 
 
             <hr>
-            <div class='row'> <strong><label>KOREKCIJA (kon. sočiva): </label></strong></div>
-            <div id='korekcijas1'>
-              <div class='row'> <label>OD:&nbsp; </label></strong></div>
-              <div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_od</div>
-              <div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_od</div>
-              <div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_od</div>
-              <div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_od</div>
-              <div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_od</div>
+            <div class="row">
+              <strong> <label for="exampleFormControlSelect2">KOREKCIJA (kon. sočiva):</label></strong>
+            </div>
+            <div class="row">
+              <label for="exampleFormControlSelect2">OD:</label>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-8">
 
+                <label for="exampleFormControlSelect2">Tip/vrsta:</label>
+                <input name="tip_ks_od" title="" type="text" class="form-control" id="tip_ks_od" value="<?php echo $tip_ks_od; ?>">
+
+                <label for="exampleFormControlSelect2">Jačina:</label>
+                <input name="jacina_ks_od" title="" type="text" class="form-control" id="jacina_ks_od" value="<?php echo $jacina_ks_od; ?>">
+
+                <label for="exampleFormControlSelect2">BC:</label>
+                <input name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od" value="<?php echo $bc_ks_od; ?>">
+
+                <label for="exampleFormControlSelect2">Veličina:</label>
+                <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od" value="<?php echo $velicina_ks_od; ?>">
+
+                <label for="exampleFormControlSelect2">Boja:</label>
+                <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od" value="<?php echo $boja_ks_od; ?>">
+              </div>
             </div>
-            <div id='korekcijas2'>
-              <div class='row'> <label>OS:&nbsp; </label></strong></div>
-              <div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_os</div>
-              <div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_os</div>
-              <div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_os</div>
-              <div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_os</div>
-              <div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_os</div>
+            <div class="row">
+              <label for="exampleFormControlSelect2">OS:</label>
             </div>
-            <div class='row'>
-              <div class='form-group col-md-4'> <strong><label>KONTROLA: &nbsp;</label></strong><input name='' title='' type='text' class='form-control' id='' value='<?php echo $kontrola; ?>'></div>
-            </div>
-            <hr>
-            <div class='row'>
-              <div class='form-group col-md-6'><strong><label>NAPOMENA: &nbsp;</label></strong> <textarea name='' title='' type='text' class='form-control' id='napomenaPregledaReport' value='<?php echo $napomena_pregleda; ?>'></textarea></div>
+            <div class="row">
+              <div class="form-group col-md-8">
+
+                <label for="exampleFormControlSelect2">Tip/vrsta:</label>
+                <input name="tip_ks_os" type="text" class="form-control" id="tip_ks_os" value="<?php echo $tip_ks_os; ?>">
+
+                <label for="exampleFormControlSelect2">Jačina:</label>
+                <input name="jacina_ks_os" type="text" class="form-control" id="jacina_ks_os" value="<?php echo $jacina_ks_os; ?>">
+
+                <label for="exampleFormControlSelect2">BC:</label>
+                <input name="bc_ks_os" type="text" class="form-control" id="bc_ks_os" value="<?php echo $bc_ks_os; ?>">
+
+                <label for="exampleFormControlSelect2">Veličina:</label>
+                <input name="velicina_ks_os" type="text" class="form-control" id="velicina_ks_os" value="<?php echo $velicina_ks_os; ?>">
+
+                <label for="exampleFormControlSelect2">Boja:</label>
+                <input name="boja_ks_os" type="text" class="form-control" id="boja_ks_os" value="<?php echo $boja_ks_os; ?>">
+              </div>
             </div>
             <hr>
             <br>
-
-
+            <div class='row'>
+              <div class='form-group col-md-4'> <strong><label>KONTROLA: &nbsp;</label></strong><input name='inputControlReport' type='text' class='form-control' id='inputControlReport' value='<?php echo $kontrola; ?>'></div>
+            </div>
+            <hr>
+            <div class='row'>
+              <div class='form-group col-md-6'><strong><label>NAPOMENA: &nbsp;</label></strong> <textarea name='inputNoteExaminationReport' type='text' class='form-control' id='inputNoteExaminationReport'><?php echo $napomena_pregleda; ?></textarea></div>
+            </div>
+            <hr>
+            <br>
 
             <div class="row">
               <div class='form-group col-md-4'>
                 <button id="updateButton" class="btn btn-success" onclick="worker()"><i class="fas fa-edit"></i>&nbsp;<label class="labelSaveButton">Uredi izvještaj pregleda</label></button>
               </div>
             </div>
-
-
 
             <br>
             <br>

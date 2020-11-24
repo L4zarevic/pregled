@@ -177,11 +177,11 @@ include '../pregled/modules/header.php';
           if (isset($_REQUEST['msg'])) {
             if ($_REQUEST['msg'] == '1') {
               echo "<script src=\"js/alertify.min.js\"></script>";
-              echo "<script type=\"text/javascript\"> alertify.error('Greška prilikom sačuvavanja');</script>";
+              echo "<script type=\"text/javascript\"> alertify.error('Greška! Pokušajte ponovo dodati pacijenta');</script>";
               echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
             } else if ($_REQUEST['msg'] == '0') {
               echo "<script src=\"js/alertify.min.js\"></script>";
-              echo "<script type=\"text/javascript\">alertify.success('Pacijent je dodat u bazu');</script>";
+              echo "<script type=\"text/javascript\">alertify.success('Pacijent je dodat u karton');</script>";
               echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
             }
           }

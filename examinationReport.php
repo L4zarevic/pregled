@@ -374,7 +374,7 @@ CloseCon($conn);
               float:right;
               display:inline-block;
               margin-top:5%;
-              margin-right:3%;
+              margin-right:14%;
             }
             .ispisAnamneze{
               display:block;
@@ -405,7 +405,7 @@ CloseCon($conn);
             }
             .korekcijaDaljina_R{
               display:inline-block;
-	            width:45%;
+	            width:50%;
             }
             #korDaljinaLabel{
               margin:0 auto;
@@ -435,12 +435,10 @@ CloseCon($conn);
             .korBlizinaOD{
               display:inline-block;
               margin-bottom:2%;
-              
               width:100%;
             }
             .korBlizinaOS{
               display:inline-block;
-              
               width:100%;
             }
             .pd{
@@ -448,12 +446,20 @@ CloseCon($conn);
               margin-left:3%;
             
             }
-            .kontrolaIspis{
+            .kontrolaPregledao{
               display:block;
               margin-left:3%;
-              margin-right:3%;
+              margin-right:5.5%;
             }
-            .napomenaIspis{
+            .kontrolaReport{
+              display:inline-block;
+              width:45%;
+            }
+            .pregledao{
+              display:inline-block;
+              float:right;
+            }
+            .napomenaReport{
               display:inline-block;
               margin-top:2%;
               margin-left:3%;
@@ -463,7 +469,7 @@ CloseCon($conn);
               float:right;
               display:inline-block;
               margin-top:2%;
-              margin-right:3%;
+              margin-right:5.5%;
             }
             </style>
             <body>
@@ -484,22 +490,26 @@ CloseCon($conn);
             </div>
             <div class='korekcija'>
             <div class='korekcijaDaljina_R'>
-            <div id='korDaljinaLabel'><label>KOREKCIJA - daljina:</label></div>
-            
+            <div id='korDaljinaLabel'><label>DALJINA - korekcija:</label></div>
             <div class='korDaljinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_daljina_od; ?></div>
             <div class='korDaljinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_daljina_os; ?></div>
             </div>
 
             <div class='korekcijaBlizina_R'>
-            <div id='korBlizinaLabel'><label>KOREKCIJA - blizina:</label></div>
+            <div id='korBlizinaLabel'><label>BLIZINA - korekcija:</label></div>
             <div class='korBlizinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_blizina_od; ?></div>
             <div class='korBlizinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_blizina_os; ?></div>
             </div>
             </div></br>
             <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>
-            <div class='kontrolaIspis'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
-            <div class='napomenaIspis'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
-            <div class='imeRadnika'><label>Pregled uradio:</label>&nbsp;<?php echo $radnik; ?></div>
+            <div class='kontrolaPregledao'>
+            <div class='kontrolaReport'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
+            <div class='pregledao'><label>Pregledao:</label></div>
+            </div>
+            <div class='napomenaImeRadnika'>
+            <div class='napomenaReport'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
+            <div class='imeRadnika'><?php echo $radnik; ?></div>
+            </div>
             </body>
             </html>
     `);
@@ -557,7 +567,7 @@ CloseCon($conn);
               float:right;
               display:inline-block;
               margin-top:5%;
-              margin-right:3%;
+              margin-right:14%;
             }
             .ispisAnamneze{
               display:block;
@@ -588,7 +598,7 @@ CloseCon($conn);
             }
             .motilitetReport{
               display:inline-block;
-	            width:45%;
+	            width:50%;
             }
             .tonusReport{
               display:inline-block;
@@ -605,7 +615,7 @@ CloseCon($conn);
             }
             .bmsReport{
               display:inline-block;
-	            width:45%;
+	            width:50%;
             }
             #labelBmsReport{
               margin:0 auto;
@@ -648,7 +658,7 @@ CloseCon($conn);
             }
             .korekcijaDaljina_R{
               display:inline-block;
-	            width:45%;
+	            width:50%;
             }
             #korDaljinaLabel{
               margin:0 auto;
@@ -678,6 +688,7 @@ CloseCon($conn);
             .korBlizinaOD{
               display:inline-block;
               margin-bottom:2%;
+              
               width:100%;
             }
             .korBlizinaOS{
@@ -698,10 +709,18 @@ CloseCon($conn);
               margin-left:3%;
               margin-right:3%;
             }
-            .kontrolaReport{
+            .kontrolaPregledao{
               display:block;
               margin-left:3%;
-              margin-right:3%;
+              margin-right:5.5%;
+            }
+            .kontrolaReport{
+              display:inline-block;
+              width:45%;
+            }
+            .pregledao{
+              display:inline-block;
+              float:right;
             }
             .napomenaReport{
               display:inline-block;
@@ -713,7 +732,7 @@ CloseCon($conn);
               float:right;
               display:inline-block;
               margin-top:2%;
-              margin-right:3%;
+              margin-right:5.5%;
             }
             </style>
             <body>
@@ -772,9 +791,14 @@ CloseCon($conn);
             </div>
             </br>
             <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>
+            <div class='kontrolaPregledao'>
             <div class='kontrolaReport'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
+            <div class='pregledao'><label>Pregledao:</label></div>
+            </div>
+            <div class='napomenaImeRadnika'>
             <div class='napomenaReport'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
-            <div class='imeRadnika'><label>Pregled uradio:</label>&nbsp;<?php echo $radnik; ?></div>
+            <div class='imeRadnika'><?php echo $radnik; ?></div>
+            </div>
             </body>
             </html>
     `);
