@@ -9,13 +9,13 @@ $ar = explode("#", $korisnik, 3);
 $ar[1] = rtrim($ar[1], "#");
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn,"utf8");
+mysqli_set_charset($conn, "utf8");
 //Getting value of "search" variable from "script.js".
 if (isset($_POST['search'])) {
    //Search box value assigning to $Name variable.
    $Name = $_POST['search'];
    //Search query.
-   $Query = "SELECT ID,generalije_pacijenta,kontakt,napomena,naocare_daljina_od,naocare_daljina_os,naocare_blizina_od,naocare_blizina_os,sociva_od,sociva_os FROM pacijenti WHERE generalije_pacijenta LIKE '%$Name%' LIMIT 10";
+   $Query = "SELECT ID,generalije_pacijenta,kontakt,napomena,naocare_daljina_od,naocare_daljina_os,naocare_blizina_od,naocare_blizina_os,sociva_od,sociva_os FROM pacijenti WHERE generalije_pacijenta LIKE '%$Name%' OR  generalije_pacijenta LIKE '_$Name%' LIMIT 10";
    //Query execution
    $ExecQuery = MySQLi_query($conn, $Query);
    //Creating unordered list to display result.
@@ -23,7 +23,7 @@ if (isset($_POST['search'])) {
     <ul>
        ';
 
-      $numRow = 0;
+   $numRow = 0;
    //Fetching result from database.
    while ($Result = MySQLi_fetch_array($ExecQuery)) {
       $numRow = 1;

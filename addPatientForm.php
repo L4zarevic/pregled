@@ -59,7 +59,7 @@ include '../pregled/modules/header.php';
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Dodaj novog pacijenta</h1>
+          <h1 class="h3 mb-4 text-gray-800">Dodaj novog pacijenta <i class="fas fa-user-plus"></i></h1>
           <div class="generalijePacijenta">
             <div class='generalije1'>
               <div class="row">
@@ -71,7 +71,7 @@ include '../pregled/modules/header.php';
 
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="exampleFormControlSelect2">Ime oca</label><label class="obavezna_polja">*</label>
+                  <label for="exampleFormControlSelect2">Ime oca</label>
                   <input name="ime_oca_pacijenta" placeholder="Unesite ime oca pacijenta" title="Unesite ime oca pacijenta" type="text" class="form-control" id="ime_oca_pacijenta">
                 </div>
               </div>

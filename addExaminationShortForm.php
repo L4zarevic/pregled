@@ -69,7 +69,7 @@ include '../pregled/modules/header.php';
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Kratki pregled</h1>
+          <h1 class="h3 mb-4 text-gray-800">Kratki pregled - naočare <i class="fas fa-glasses"></i></h1>
           <div class="row">
             <div class="workersLog">
               <div class="workers">
@@ -78,9 +78,16 @@ include '../pregled/modules/header.php';
                   <input name="sifra_radnika" class="form-control" type="password" title="Unesite svoj ID" id="sifra_radnika" />
                 </div>
               </div>
-              <div class="form-group col-md-7">
-                <label>Pregled obavlja:</br></label>
-                <div id="ime_radnika"></div>
+              <div class="nameWorker">
+                <div class="form-group col-md-7">
+                  <label>Pregled obavlja:</br></label>
+                  <div id="ime_radnika"></div>
+                </div>
+              </div>
+              <div class='lenses'>
+                <div class="form-group col-md-7">
+                  <button class="btn btn-danger" type="button" onclick=""><i class="fas fa-eye"></i>&nbsp;Kratki pregled - kontaktna sočiva</button>
+                </div>
               </div>
             </div>
           </div>
@@ -90,7 +97,7 @@ include '../pregled/modules/header.php';
             <div class="patientSearch">
               <div class="form-group col-md-10">
                 <label for="#search">Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
-                <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
+                <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search" autocomplete="off" />
               </div>
               <div id="display"></div>
             </div>
@@ -98,7 +105,7 @@ include '../pregled/modules/header.php';
             <div class="todayDate">
               <div class="form-group col-md-10">
                 <label>Današnji datum</label>
-                <input name="datum_pregleda" title="" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
+                <input name="datum_pregleda" title="" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?>>
               </div>
 
               <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
@@ -196,16 +203,9 @@ include '../pregled/modules/header.php';
               <div class="form-group col-md-12">
                 <input name="vos" title="" type="text" class="form-control" id="vos1">
               </div>
-
             </div>
-
           </div>
-
-         
-
-          <div class="row">
-
-          </div>
+          </br>
           <div class="row">
             <div class="korekcijaDaljina">
               <strong> <label for="exampleFormControlSelect2">DALJINA - korekcija:</label></strong>
@@ -235,72 +235,16 @@ include '../pregled/modules/header.php';
               </div>
             </div>
           </div>
-
+          </br>
           <div class="row">
             <div class="form-group col-md-3">
               <strong><label for="exampleFormControlSelect2">PD:</label> </strong>
               <input name="pd" title="" type="text" class="form-control" id="pd">
             </div>
           </div>
-          <br>
+          </br>
 
-          <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-            <i class="fas fa-angle-down">&nbsp;</i>Pregled kontaktna sočiva
-          </button>
-          </p>
-          <div class="collapse" id="collapseExample2">
-            <div class="card card-body">
-              <div class="row">
-                <strong> <label for="exampleFormControlSelect2">KOREKCIJA (kon. sočiva):</label></strong>
-              </div>
-              <div class="row">
-                <label for="exampleFormControlSelect2">OD:</label>
-              </div>
-              <div class="row">
-                <div class="form-group col-md-8">
-
-                  <label for="exampleFormControlSelect2">Tip/vrsta:</label>
-                  <input name="tip_ks_od" title="" type="text" class="form-control" id="tip_ks_od">
-
-                  <label for="exampleFormControlSelect2">Jačina:</label>
-                  <input name="jacina_ks_od" title="" type="text" class="form-control" id="jacina_ks_od">
-
-                  <label for="exampleFormControlSelect2">BC:</label>
-                  <input name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od">
-
-                  <label for="exampleFormControlSelect2">Veličina:</label>
-                  <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od">
-
-                  <label for="exampleFormControlSelect2">Boja:</label>
-                  <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od">
-                </div>
-              </div>
-              <div class="row">
-                <label for="exampleFormControlSelect2">OS:</label>
-              </div>
-              <div class="row">
-                <div class="form-group col-md-8">
-
-                  <label for="exampleFormControlSelect2">Tip/vrsta:</label>
-                  <input name="tip_ks_os" title="" type="text" class="form-control" id="tip_ks_os">
-
-                  <label for="exampleFormControlSelect2">Jačina:</label>
-                  <input name="jacina_ks_os" title="" type="text" class="form-control" id="jacina_ks_os">
-
-                  <label for="exampleFormControlSelect2">BC:</label>
-                  <input name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os">
-
-                  <label for="exampleFormControlSelect2">Veličina:</label>
-                  <input name="velicina_ks_os" title="" type="text" class="form-control" id="velicina_ks_os">
-
-                  <label for="exampleFormControlSelect2">Boja:</label>
-                  <input name="boja_ks_os" title="" type="text" class="form-control" id="boja_ks_os">
-                </div>
-              </div>
-            </div>
-          </div>
-         <br>
-         <div class="row">
+          <div class="row">
             <div class="form-group col-md-7">
               <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
               <input list="listaKontrola" name="kontrola" title="" type="text" class="form-control" id="kontrola">
@@ -327,6 +271,7 @@ include '../pregled/modules/header.php';
           <div class="row">
             <button type='button' onclick="checkFormExamination()" id='dugmeDodajPregled' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
           </div>
+          </br>
         </div>
 
       </div>

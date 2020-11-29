@@ -12,7 +12,7 @@ $ID_korisnika = $ar[0];
 $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn,"utf8");
+mysqli_set_charset($conn, "utf8");
 
 $upit = "SELECT adresa,telefon FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
 $rezultat = mysqli_query($conn, $upit);
@@ -105,23 +105,13 @@ CloseCon($conn);
             $korekcija_daljina_os = "";
             $korekcija_blizina_od = "";
             $korekcija_blizina_os = "";
-            $tip_ks_od = "";
-            $jacina_ks_od = "";
-            $bc_ks_od  = "";
-            $velicina_ks_od  = "";
-            $boja_ks_od = "";
-            $tip_ks_os = "";
-            $jacina_ks_os = "";
-            $bc_ks_os = "";
-            $velicina_ks_os  = "";
-            $boja_ks_os = "";
             $pd = "";
             $kontrola = "";
             $napomena_pregleda  = "";
 
             $success = $_REQUEST['success'];
 
-            $ar = explode("@@@", $success, 32);
+            $ar = explode("@@@", $success, 22);
             $ar[1] = rtrim($ar[1], "@@@");
 
             if (isset($ar[0])) {
@@ -169,58 +159,28 @@ CloseCon($conn);
             if (isset($ar[14])) {
               $terapija = $ar[14];
             }
+           
             if (isset($ar[15])) {
-              $kontrola = $ar[15];
+              $korekcija_daljina_od = $ar[15];
             }
             if (isset($ar[16])) {
-              $korekcija_daljina_od = $ar[16];
+              $korekcija_daljina_os = $ar[16];
             }
             if (isset($ar[17])) {
-              $korekcija_daljina_os = $ar[17];
+              $korekcija_blizina_od = $ar[17];
             }
             if (isset($ar[18])) {
-              $korekcija_blizina_od = $ar[18];
+              $korekcija_blizina_os = $ar[18];
             }
             if (isset($ar[19])) {
-              $korekcija_blizina_os = $ar[19];
+              $pd = $ar[19];
             }
             if (isset($ar[20])) {
-              $pd = $ar[20];
+              $kontrola = $ar[20];
             }
             if (isset($ar[21])) {
-              $tip_ks_od = $ar[21];
+              $napomena_pregleda  = $ar[21];
             }
-            if (isset($ar[22])) {
-              $jacina_ks_od = $ar[22];
-            }
-            if (isset($ar[23])) {
-              $bc_ks_od  = $ar[23];
-            }
-            if (isset($ar[24])) {
-              $velicina_ks_od  = $ar[24];
-            }
-            if (isset($ar[25])) {
-              $boja_ks_od = $ar[25];
-            }
-            if (isset($ar[26])) {
-              $tip_ks_os = $ar[26];
-            }
-            if (isset($ar[27])) {
-              $jacina_ks_os = $ar[27];
-            }
-            if (isset($ar[28])) {
-              $bc_ks_os = $ar[28];
-            }
-            if (isset($ar[29])) {
-              $velicina_ks_os  = $ar[29];
-            }
-            if (isset($ar[30])) {
-              $boja_ks_os = $ar[30];
-            }
-            if (isset($ar[31])) {
-              $napomena_pregleda  = $ar[31];
-            }
-
 
 
             echo " <div class='row'> <strong><label>Pregled uradio: </label></strong> &nbsp; $radnik</div>";
@@ -260,7 +220,7 @@ CloseCon($conn);
             echo "<hr>";
             echo "<div class='row'> <strong><label>DIJAGNOZA: &nbsp;</label></strong>$dijagnoza</div>";
             echo "<div class='row'> <strong><label>TERAPIJA:&nbsp;</label></strong> $terapija</div>";
-           
+
             echo "<hr>";
             echo "<div class='korekcijaDaljina'>";
             echo "<div class='row'> <strong><label>KOREKCIJA - daljina: </label></strong></div>";
@@ -276,27 +236,9 @@ CloseCon($conn);
             echo "<br>";
             echo "<div class='row'> <strong><label>PD: &nbsp;</label></strong> $pd</div></br>";
             echo "<hr>";
-            echo "<div class='row'> <strong><label>KOREKCIJA (kon. sočiva): </label></strong></div>";
-            echo "<div id='korekcijas1'>";
-            echo "<div class='row'> <label>OD:&nbsp; </label></strong></div>";
-            echo "<div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_od</div>";
-            echo "<div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_od</div>";
-            echo "<div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_od</div>";
-            echo "<div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_od</div>";
-            echo "<div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_od</div>";
-            echo "</div>";
-            echo "<div id='korekcijas2'>";
-            echo "<div class='row'> <label>OS:&nbsp; </label></strong></div>";
-            echo "<div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_os</div>";
-            echo "<div class='row'> <label></label></strong>Jacina: &nbsp; $jacina_ks_os</div>";
-            echo "<div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_os</div>";
-            echo "<div class='row'> <label></label></strong>Veličina: &nbsp; $velicina_ks_os</div>";
-            echo "<div class='row'> <label></label></strong>Boja: &nbsp; $boja_ks_os</div>";
-            echo "</div>";
-            echo "<hr>";
-            
+
             echo "<div class='row'> <strong><label>KONTROLA: &nbsp;</label></strong>  $kontrola</div>";
-        
+
 
 
             echo "<div class='row'> <strong><label>NAPOMENA: &nbsp;</label></strong>  $napomena_pregleda</div>";
@@ -304,15 +246,13 @@ CloseCon($conn);
             echo "<br>";
             echo "<br>";
             echo "<div id='stampa1'>";
-            echo "<h4>Pregled za naočare</h4>";
+            echo "<h4></h4>";
             echo "<button id='kratkiIspisNaocare' title='Kratki izvještaj pregleda za naočare (A5 landscape)' class='btn btn-primary' onClick='openPrintDialogue()'><i class='fa fa-print' ></i>&nbsp;<label class='labelPrintButton'>Štampa kratki ispis</label></button>";
             echo "<button id='dugiIspisNaocare' title='Dugi izvještaj pregleda za naočare (A4 portrait)' class='btn btn-primary' onClick='openPrintDialogueA4()'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa dugi ispis</label></button>";
+            echo "<br>";
+            echo "<br>";
             echo "</div>";
-            echo "<div id='stampa2'>";
-            echo "<h4>Pregled za sočiva</h4>";
-            echo "<button id='kratkiIspisSociva' title='Kratki izvještaj pregleda za sočiva (A5 landscape)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa kratki ispis</label></button>";
-            echo "<button id='dugiIspisSociva' title='Dugi izvještaj pregleda za sočiva (A4 portrait)' class='btn btn-primary'><i class='fa fa-print'></i>&nbsp;<label class='labelPrintButton'>Štampa dugi ispis</label></button>";
-            echo "</div>";
+           
             ?>
 
           </div>
@@ -342,6 +282,18 @@ CloseCon($conn);
             <html>
             <style>
             @page { size: A5 landscape !important;  margin: 0mm !important; }
+            @media print{@page{ size: A5 landscape !important; margin: 0mm !important; }}
+            @-moz-document url-prefix() {
+              @page { size: A5 landscape; margin: 0mm;}
+
+              body {
+              font-size: 50pt;
+            }
+            }
+            body {
+              font-size: 12pt;
+              
+            }
             .logo{
               margin:3%;
               display:inline;
@@ -355,24 +307,35 @@ CloseCon($conn);
               width:25%;
               float:right;
             }
-            #linija{
-              display:block;
-              width:94%;
-              margin-left:3%;
-              margin-right:3%;
-            }
             #logo{
               display:inline;
               width:51%;
               heigt:51%;
             }
+            hr#linija{
+              display:block;
+              width:94%;
+              margin-left:3%;
+              margin-right:3%;
+              border: 1px solid #fff;
+            }
+            
+            .generalijeDatum{
+              display:block;
+              width:94%;
+              margin-left:3%;
+              margin-right:3%;
+            }
             .generalije{
               display:inline-block;
+              width:78%;
               margin-top:5%;
               margin-left:3%;
+              float:left;
             }
             .datum{
-              float:right;
+              
+              width:5%;
               display:inline-block;
               margin-top:5%;
               margin-right:14%;
@@ -380,27 +343,38 @@ CloseCon($conn);
             .ispisAnamneze{
               display:block;
               margin-top:2%;
-              margin-left:3%;
+              width:70%;
+              margin-left:17%;
               margin-right:3%;
             }
             .vidna_ostrina{
               display:block;
               margin-top:2%;
               margin-left:3%;
+              margin-right:3%;
+            }
+            .labelVidnaOstrina{
+              display:inline-block;
+              float:left;
+              width:18%;
+            }
+            .labelVodVos{
+              display:inline-block;
+              margin-left:25%;
+              width:70%;
             }
             .vidna_ostrina_vod{
-              display:inline;
+              display:inline-block;
 	            width:100%;
             }
             .vidna_ostrina_vos{
-              display:inline;
-              margin-left:18.4%;
               margin-top:2%;
-	           
+              display:inline-block;
+              width:100%;
             }
             .korekcija{
               display:block;
-              margin-top:2%;
+              margin-top:5%;
               margin-left:3%;
               margin-right:3%;
             }
@@ -417,10 +391,12 @@ CloseCon($conn);
             .korDaljinaOD{
               display:inline-block;
               margin-bottom:2%;
+              margin-left:7%;
               width:100%;
             }
             .korDaljinaOS{
               display:inline-block;
+              margin-left:7%;
               width:100%;
             }
 
@@ -436,17 +412,19 @@ CloseCon($conn);
             .korBlizinaOD{
               display:inline-block;
               margin-bottom:2%;
+              margin-left:8%;
               width:100%;
             }
             .korBlizinaOS{
               display:inline-block;
+              margin-left:8%;
               width:100%;
             }
             .pd{
               display:block;
-              margin-left:3%;
-            
+              margin-left:7%;
             }
+           
             .kontrolaPregledao{
               display:block;
               margin-left:3%;
@@ -454,6 +432,7 @@ CloseCon($conn);
             }
             .kontrolaReport{
               display:inline-block;
+              margin-left:14%;
               width:45%;
             }
             .pregledao{
@@ -463,7 +442,7 @@ CloseCon($conn);
             .napomenaReport{
               display:inline-block;
               margin-top:2%;
-              margin-left:3%;
+              margin-left:16%;
               margin-right:3%;
             }
             .imeRadnika{
@@ -474,42 +453,42 @@ CloseCon($conn);
             }
             </style>
             <body>
-            <div class='logo'><img id='logo' src='../pregled/images/MO.png' /></div>
+            <div class='logo'><img id='logo' /></div>
             <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label>www.mojaoptika.com</label></div>
             <hr id='linija'>
+            <div class='generalijeDatum'>
             <div class='generalije'><label></label>&nbsp;<?php echo $generalije_pacijenta; ?></div>
-            <div class='datum'><label>Datum:</label>&nbsp;<?php echo $datum_pregleda; ?></div>
-            <div class='ispisAnamneze'><label>ANAMNEZA:</label>&nbsp;
-            <?php
-            echo  "<label>$anamneza</label>";
-            ?>
-            </div>
+            <div class='datum'><label></label>&nbsp;<?php echo $datum_pregleda; ?></div></div>
+            <div class='ispisAnamneze'><label></label>&nbsp;<label><?php echo $anamneza; ?></label></div>
             </br>
-            <div class='vidna_ostrina'><label>VIDNA OŠTRINA:</label>&nbsp;
-            <div class='vidna_ostrina_vod'><label>VOD:</label>&nbsp;<?php echo $vod; ?></div></br>
-            <div class='vidna_ostrina_vos'><label>VOS:</label>&nbsp;<?php echo $vos; ?></div>
-            </div>
+            <div class='vidna_ostrina'><div class='labelVidnaOstrina'><label></label></div>
+            <div class='labelVodVos'>
+            <div class='vidna_ostrina_vod'><label></label>&nbsp;<?php echo $vod; ?></div>
+            <div class='vidna_ostrina_vos'><label></label>&nbsp;<?php echo $vos; ?></div>
+            </div></div>
             <div class='korekcija'>
             <div class='korekcijaDaljina_R'>
-            <div id='korDaljinaLabel'><label>DALJINA - korekcija:</label></div>
-            <div class='korDaljinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_daljina_od; ?></div>
-            <div class='korDaljinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_daljina_os; ?></div>
+            <div id='korDaljinaLabel'><label></label></div>
+            
+            <div class='korDaljinaOD'><label></label>&nbsp;<?php echo $korekcija_daljina_od; ?></div>
+            <div class='korDaljinaOS'><label></label>&nbsp;<?php echo $korekcija_daljina_os; ?></div>
             </div>
 
+           
             <div class='korekcijaBlizina_R'>
-            <div id='korBlizinaLabel'><label>BLIZINA - korekcija:</label></div>
-            <div class='korBlizinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_blizina_od; ?></div>
-            <div class='korBlizinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_blizina_os; ?></div>
+            <div id='korBlizinaLabel'><label></label></div>
+            <div class='korBlizinaOD'><label></label>&nbsp;<?php echo $korekcija_blizina_od; ?></div>
+            <div class='korBlizinaOS'><label></label>&nbsp;<?php echo $korekcija_blizina_os; ?></div>
             </div>
             </div></br>
-            <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>
+            <div class='pd'><label></label>&nbsp;<?php echo $pd; ?></div></br>
             <div class='kontrolaPregledao'>
-            <div class='kontrolaReport'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
-            <div class='pregledao'><label>Pregledao:</label></div>
+            <div class='kontrolaReport'><label></label>&nbsp;<?php echo $kontrola; ?></div>
+            <div class='pregledao'><label></label></div>
             </div>
             <div class='napomenaImeRadnika'>
-            <div class='napomenaReport'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
-            <div class='imeRadnika'><?php echo $radnik; ?></div>
+            <div class='napomenaReport'><label></label>&nbsp;<?php echo $napomena_pregleda; ?></div>
+            <div class='imeRadnika'></div>
             </div>
             </body>
             </html>
@@ -798,7 +777,7 @@ CloseCon($conn);
             </div>
             <div class='napomenaImeRadnika'>
             <div class='napomenaReport'><label>NAPOMENA:</label>&nbsp;<?php echo $napomena_pregleda; ?></div>
-            <div class='imeRadnika'><?php echo $radnik; ?></div>
+            <div class='imeRadnika'></div>
             </div>
             </body>
             </html>

@@ -58,7 +58,7 @@ include '../pregled/modules/header.php';
 
           <!-- Page Heading -->
 
-          <h1 class="h3 mb-4 text-gray-800">Karton pacijenta</h1>
+          <h1 class="h3 mb-4 text-gray-800">Karton pacijenta <i class="fas fa-folder-open"></i></h1>
 
           <div class="row">
             <div class="records">
@@ -66,7 +66,7 @@ include '../pregled/modules/header.php';
 
                 <div class="form-group col-md-7">
                   <label>Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
-                  <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search">
+                  <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search" autocomplete="off"/>
                 </div>
                 <div class="form-group col-md-2">
                   <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
