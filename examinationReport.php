@@ -281,19 +281,15 @@ CloseCon($conn);
 
             <html>
             <style>
-            @page { size: A5 landscape !important;  margin: 0mm !important; }
             @media print{@page{ size: A5 landscape !important; margin: 0mm !important; }}
             @-moz-document url-prefix() {
               @page { size: A5 landscape; margin: 0mm;}
 
-              body {
-              font-size: 50pt;
+              label {
+              font-size: 19pt;
             }
             }
-            body {
-              font-size: 12pt;
-              
-            }
+            
             .logo{
               margin:3%;
               display:inline;
@@ -337,7 +333,7 @@ CloseCon($conn);
               
               width:5%;
               display:inline-block;
-              margin-top:5%;
+              margin-top:6.5%;
               margin-right:14%;
             }
             .ispisAnamneze{
@@ -383,7 +379,6 @@ CloseCon($conn);
 	            width:50%;
             }
             #korDaljinaLabel{
-              margin:0 auto;
               display:inline-block;
 	            width:100%;
             }
@@ -405,7 +400,6 @@ CloseCon($conn);
 	            width:45%;
             }
             #korBlizinaLabel{
-              margin:0 auto;
               display:inline-block;
 	            width:100%;
             }

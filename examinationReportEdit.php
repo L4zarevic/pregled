@@ -390,14 +390,11 @@ CloseCon($conn);
             @-moz-document url-prefix() {
               @page { size: A5 landscape; margin: 0mm;}
 
-              body {
-              font-size: 50pt;
+              label {
+              font-size: 19pt;
             }
             }
-            body {
-              font-size: 12pt;
-              
-            }
+            
             .logo{
               margin:3%;
               display:inline;
@@ -441,7 +438,7 @@ CloseCon($conn);
               
               width:5%;
               display:inline-block;
-              margin-top:5%;
+              margin-top:6.5%;
               margin-right:14%;
             }
             .ispisAnamneze{
@@ -487,7 +484,6 @@ CloseCon($conn);
 	            width:50%;
             }
             #korDaljinaLabel{
-              margin:0 auto;
               display:inline-block;
 	            width:100%;
             }
@@ -509,7 +505,6 @@ CloseCon($conn);
 	            width:45%;
             }
             #korBlizinaLabel{
-              margin:0 auto;
               display:inline-block;
 	            width:100%;
             }
@@ -558,40 +553,40 @@ CloseCon($conn);
             </style>
             <body>
             <div class='logo'><img id='logo' /></div>
-            <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label>www.mojaoptika.com</label></div>
+            <div class='kontaktPodaciRadnje'><label>Adresa:</label><label><?php echo $adresa; ?></label></br><label>Tel:</label><label><?php echo $telefon; ?></label></br><label>www.mojaoptika.com</label></div>
             <hr id='linija'>
             <div class='generalijeDatum'>
-            <div class='generalije'><label></label>&nbsp;<?php echo $generalije_pacijenta; ?></div>
-            <div class='datum'><label></label>&nbsp;<?php echo $datum_pregleda; ?></div></div>
+            <div class='generalije'><label></label>&nbsp;<label><?php echo $generalije_pacijenta; ?></label></div>
+            <div class='datum'><label></label>&nbsp;<label><?php echo $datum_pregleda; ?></label></div></div>
             <div class='ispisAnamneze'><label></label>&nbsp;<label><?php echo $anamneza; ?></label></div>
             </br>
             <div class='vidna_ostrina'><div class='labelVidnaOstrina'><label></label></div>
             <div class='labelVodVos'>
-            <div class='vidna_ostrina_vod'><label></label>&nbsp;<?php echo $vod; ?></div>
-            <div class='vidna_ostrina_vos'><label></label>&nbsp;<?php echo $vos; ?></div>
+            <div class='vidna_ostrina_vod'><label></label>&nbsp;<label><?php echo $vod; ?></label></div>
+            <div class='vidna_ostrina_vos'><label></label>&nbsp;<label><?php echo $vos; ?></label></div>
             </div></div>
             <div class='korekcija'>
             <div class='korekcijaDaljina_R'>
             <div id='korDaljinaLabel'><label></label></div>
             
-            <div class='korDaljinaOD'><label></label>&nbsp;<?php echo $korekcija_daljina_od; ?></div>
-            <div class='korDaljinaOS'><label></label>&nbsp;<?php echo $korekcija_daljina_os; ?></div>
+            <div class='korDaljinaOD'><label></label>&nbsp;<label><?php echo $korekcija_daljina_od; ?></label></div>
+            <div class='korDaljinaOS'><label></label>&nbsp;<label><?php echo $korekcija_daljina_os; ?></label></div>
             </div>
 
            
             <div class='korekcijaBlizina_R'>
             <div id='korBlizinaLabel'><label></label></div>
-            <div class='korBlizinaOD'><label></label>&nbsp;<?php echo $korekcija_blizina_od; ?></div>
-            <div class='korBlizinaOS'><label></label>&nbsp;<?php echo $korekcija_blizina_os; ?></div>
+            <div class='korBlizinaOD'><label></label>&nbsp;<label><?php echo $korekcija_blizina_od; ?></label></div>
+            <div class='korBlizinaOS'><label></label>&nbsp;<label><?php echo $korekcija_blizina_os; ?></label></div>
             </div>
             </div></br>
-            <div class='pd'><label></label>&nbsp;<?php echo $pd; ?></div></br>
+            <div class='pd'><label></label>&nbsp;<label><?php echo $pd; ?></label></div></br>
             <div class='kontrolaPregledao'>
-            <div class='kontrolaReport'><label></label>&nbsp;<?php echo $kontrola; ?></div>
+            <div class='kontrolaReport'><label></label>&nbsp;<label><?php echo $kontrola; ?></label></div>
             <div class='pregledao'><label></label></div>
             </div>
             <div class='napomenaImeRadnika'>
-            <div class='napomenaReport'><label></label>&nbsp;<?php echo $napomena_pregleda; ?></div>
+            <div class='napomenaReport'><label></label>&nbsp;<label><?php echo $napomena_pregleda; ?></label></div>
             <div class='imeRadnika'></div>
             </div>
             </body>
