@@ -27,28 +27,29 @@ function lensesManufactured($conn)
     echo "</select>";
 }
 
+
 function lensesType($conn)
 {
-    $sql = "SELECT DISTINCT tip,ID_proizvodjaca FROM sociva";
+    $sql = "SELECT tip,ID_proizvodjaca FROM sociva";
     $result = mysqli_query($conn, $sql);
 
     while ($row = mysqli_fetch_object($result)) {
-        $lensesType = $row->tip;
-        $newValue = explode("#", $lensesType, 2);
-        $newValue[1] = rtrim($newValue[1], "#");
-        $type = $newValue[0];
-        $bc = $newValue[1];
-        echo "<option id='$row->ID_proizvodjaca' value='$row->ID_proizvodjaca'>$type</option>";
+        echo "<option id='$row->tip' value='$row->ID_proizvodjaca'>$row->tip</option>";
     }
 }
 
 function lensesBc($conn)
 {
-    $sql = "SELECT ID_proizvodjaca,bc FROM sociva";
+    $sql = "SELECT tip,bc FROM sociva";
     $result = mysqli_query($conn, $sql);
 
     while ($row = mysqli_fetch_object($result)) {
-        echo "<option value='$row->ID_proizvodjaca'>$row->bc</option>";
+        $bcValue = $row->bc;
+        $bcNewValue = explode("|", $bcValue);
+        foreach ($bcValue as $bcNewValue) {
+            $bcNewValue = trim($bcNewValue);
+            echo "<option value='$row->tip'>$bcNewValue</option>";
+        }
     }
 }
 
@@ -322,7 +323,7 @@ function lensesBc($conn)
                                     <div class="tip">
                                         <label id='labelType'>Tip/vrsta:</label>
                                         <select name="tip_ks_os" title="" type="text" class="form-control" id="tip_ks_os">
-                                        </select>
+                                        </select
                                     </div>
 
                                     <div class="jacina">

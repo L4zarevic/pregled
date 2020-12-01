@@ -373,6 +373,20 @@ CloseCon($conn);
       ?>
       <!-- End of Footer -->
 
+      <?php
+      if (isset($_REQUEST['msg'])) {
+        if ($_REQUEST['msg'] == '1') {
+          echo "<script src=\"js/alertify.min.js\"></script>";
+          echo "<script type=\"text/javascript\"> alertify.error('Greška prilikom ažuriranja');</script>";
+          echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
+        } else if ($_REQUEST['msg'] == '0') {
+          echo "<script src=\"js/alertify.min.js\"></script>";
+          echo "<script type=\"text/javascript\">alertify.success('Izvještaj je uspiješno ažuriran');</script>";
+          echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
+        }
+      }
+      ?>
+
       <script>
         function openPrintDialogue() {
 
