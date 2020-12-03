@@ -249,7 +249,6 @@ function lensesManufactured($conn)
                                         <label id='labelType'>Tip/vrsta:</label>
                                         <select name="tip_ks_od" title="" class="form-control" id="tip_ks_od">
                                             <option default></option>
-
                                         </select>
                                     </div>
 
@@ -261,15 +260,12 @@ function lensesManufactured($conn)
                                     <div class="bc">
                                         <label id='labelBc'>BC:</label>
                                         <input list="ispisBc_od" name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od">
-                                        <datalist id="ispisBc_od">
-
-                                        </datalist>
+                                        <datalist id="ispisBc_od"></datalist>
                                     </div>
 
                                     <div class="velicina">
                                         <label id='labelSize'>TD:</label>
                                         <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od" />
-
                                     </div>
 
                                     <div class="boja">
@@ -277,7 +273,6 @@ function lensesManufactured($conn)
                                         <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od">
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
@@ -365,7 +360,7 @@ function lensesManufactured($conn)
 
                     <hr>
                     <div class="row">
-                        <button type='button' onclick="checkFormLensesExamination()" id='dugmeDodajPregledSociva' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
+                        <button type='button' onclick="checkLensesFormExamination()" id='dugmeDodajPregledSociva' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
                     </div>
                 </div>
 
@@ -575,11 +570,6 @@ function lensesManufactured($conn)
             });
         });
     </script>
-
-
-
-
-
 </body>
 
 </html>

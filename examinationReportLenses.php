@@ -102,12 +102,14 @@ CloseCon($conn);
             $dijagnoza = "";
             $terapija = "";
             $proizvodjac_ks_od = "";
+            $period_ks_od = "";
             $tip_ks_od = "";
             $jacina_ks_od = "";
             $bc_ks_od  = "";
             $velicina_ks_od  = "";
             $boja_ks_od = "";
             $proizvodjac_ks_os = "";
+            $period_ks_os = "";
             $tip_ks_os = "";
             $jacina_ks_os = "";
             $bc_ks_os = "";
@@ -118,7 +120,7 @@ CloseCon($conn);
 
             $success = $_REQUEST['success'];
 
-            $ar = explode("@@@", $success, 29);
+            $ar = explode("@@@", $success, 31);
             $ar[1] = rtrim($ar[1], "@@@");
 
             if (isset($ar[0])) {
@@ -170,43 +172,49 @@ CloseCon($conn);
               $proizvodjac_ks_od = $ar[15];
             }
             if (isset($ar[16])) {
-              $tip_ks_od = $ar[16];
+              $period_ks_od = $ar[16];
             }
             if (isset($ar[17])) {
-              $jacina_ks_od = $ar[17];
+              $tip_ks_od = $ar[17];
             }
             if (isset($ar[18])) {
-              $bc_ks_od  = $ar[18];
+              $jacina_ks_od = $ar[18];
             }
             if (isset($ar[19])) {
-              $velicina_ks_od  = $ar[19];
+              $bc_ks_od  = $ar[19];
             }
             if (isset($ar[20])) {
-              $boja_ks_od = $ar[20];
+              $velicina_ks_od  = $ar[20];
             }
             if (isset($ar[21])) {
-              $proizvodjac_ks_os = $ar[21];
+              $boja_ks_od = $ar[21];
             }
             if (isset($ar[22])) {
-              $tip_ks_os = $ar[22];
+              $proizvodjac_ks_os = $ar[22];
             }
             if (isset($ar[23])) {
-              $jacina_ks_os = $ar[23];
+              $period_ks_os = $ar[23];
             }
             if (isset($ar[24])) {
-              $bc_ks_os = $ar[24];
+              $tip_ks_os = $ar[24];
             }
             if (isset($ar[25])) {
-              $velicina_ks_os  = $ar[25];
+              $jacina_ks_os = $ar[25];
             }
             if (isset($ar[26])) {
-              $boja_ks_os = $ar[26];
+              $bc_ks_os = $ar[26];
             }
             if (isset($ar[27])) {
-              $kontrola = $ar[27];
+              $velicina_ks_os  = $ar[27];
             }
             if (isset($ar[28])) {
-              $napomena_pregleda  = $ar[28];
+              $boja_ks_os = $ar[28];
+            }
+            if (isset($ar[29])) {
+              $kontrola = $ar[29];
+            }
+            if (isset($ar[30])) {
+              $napomena_pregleda  = $ar[30];
             }
 
 
@@ -253,6 +261,7 @@ CloseCon($conn);
             echo "<div id='korekcijas1'>";
             echo "<div class='row'> <label>OD:&nbsp; </label></strong></div>";
             echo "<div class='row'> <label></label></strong>Proizvođač: &nbsp; $proizvodjac_ks_od</div>";
+            echo "<div class='row'> <label></label></strong>Period: &nbsp; $period_ks_od</div>";
             echo "<div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_od</div>";
             echo "<div class='row'> <label></label></strong>Jačina: &nbsp; $jacina_ks_od</div>";
             echo "<div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_od</div>";
@@ -262,6 +271,7 @@ CloseCon($conn);
             echo "<div id='korekcijas2'>";
             echo "<div class='row'> <label>OS:&nbsp; </label></strong></div>";
             echo "<div class='row'> <label></label></strong>Proizvođač: &nbsp; $proizvodjac_ks_os</div>";
+            echo "<div class='row'> <label></label></strong>Period: &nbsp; $period_ks_os</div>";
             echo "<div class='row'> <label></label></strong>Tip/vrsta: &nbsp; $tip_ks_os</div>";
             echo "<div class='row'> <label></label></strong>Jačina: &nbsp; $jacina_ks_os</div>";
             echo "<div class='row'> <label></label></strong>BC: &nbsp; $bc_ks_os</div>";
