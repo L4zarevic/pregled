@@ -27,45 +27,7 @@ function lensesManufactured($conn)
     echo "</select>";
 }
 
-
-function lensesType($conn)
-{
-    $sql = "SELECT tip,ID_proizvodjaca FROM sociva";
-    $result = mysqli_query($conn, $sql);
-
-    while ($row = mysqli_fetch_object($result)) {
-        echo "<option id='$row->tip' value='$row->ID_proizvodjaca'>$row->tip</option>";
-    }
-}
-
-function lensesBc($conn)
-{
-    $sql = "SELECT tip,bc FROM sociva";
-    $result = mysqli_query($conn, $sql);
-
-    while ($row = mysqli_fetch_object($result)) {
-        $bcValue = $row->bc;
-        $bcNewValue = explode("|", $bcValue);
-        foreach ($bcValue as $bcNewValue) {
-            $bcNewValue = trim($bcNewValue);
-            echo "<option value='$row->tip'>$bcNewValue</option>";
-        }
-    }
-}
-
-
 ?>
-
-<!-- Including CSS file. -->
-<style>
-    .bs-example {
-        margin-bottom: 20px;
-    }
-
-    .accordion .fas {
-        margin-right: 0.5rem;
-    }
-</style>
 
 <body id="page-top">
 
@@ -272,11 +234,23 @@ function lensesBc($conn)
                                         <?php lensesManufactured($conn); ?>
                                     </div>
 
+                                    <div class="period">
+                                        <label id='labelPeriod'>Period:</label>
+                                        <select name="period_ks_od" title="" type="text" class="form-control" id="period_ks_od">
+                                            <option default></option>
+                                            <option value="dnevna">Dnevna</option>
+                                            <option value="15dana">15 dana</option>
+                                            <option value="mjesec">Mjesec</option>
+                                            <option value="3mjeseca">3 mjeseca</option>
+                                            <option value="godina">Godina</option>
+                                        </select>
+                                    </div>
+
                                     <div class="tip">
                                         <label id='labelType'>Tip/vrsta:</label>
                                         <select name="tip_ks_od" title="" class="form-control" id="tip_ks_od">
                                             <option default></option>
-                                            <?php lensesType($conn); ?>
+
                                         </select>
                                     </div>
 
@@ -289,7 +263,6 @@ function lensesBc($conn)
                                         <label id='labelBc'>BC:</label>
                                         <select name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od">
                                             <option default></option>
-                                            <?php lensesBc($conn); ?>
                                         </select>
                                     </div>
 
@@ -320,10 +293,16 @@ function lensesBc($conn)
                                         </select>
                                     </div>
 
+                                    <div class="period">
+                                        <label id='labelPeriod'>Period:</label>
+                                        <select name="period_ks_os" title="" type="text" class="form-control" id="period_ks_os">
+                                        </select>
+                                    </div>
+
                                     <div class="tip">
                                         <label id='labelType'>Tip/vrsta:</label>
                                         <select name="tip_ks_os" title="" type="text" class="form-control" id="tip_ks_os">
-                                        </select
+                                        </select>
                                     </div>
 
                                     <div class="jacina">
@@ -333,9 +312,7 @@ function lensesBc($conn)
 
                                     <div class="bc">
                                         <label id='labelBc'>BC:</label>
-                                        <select name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os">
-                                            <option default></option>
-                                        </select>
+                                        <input name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os" />
                                     </div>
 
                                     <div class="velicina">
@@ -399,28 +376,99 @@ function lensesBc($conn)
         //When page load set focus on field
         document.getElementById('sifra_radnika').focus();
 
+        $(document).ready(function() {
+            //On pressing a key on "Search box" in "search.php" file. This function will be called.
+            $("#period_ks_od").change(function() {
+                //Assigning search box value to javascript variable named as "name".
+                var period_ks_od = $('#period_ks_od').val();
+                var proizvodjac_ks_od = $('#proizvodjac_ks_od').val();
+
+                //Validating, if is empty.
+                if (period_ks_od == "") {
+                    //Assigning empty value to "display" div in "search.php" file.
+                    //  $("#display").html("");
+                }
+                //If name is not empty.
+                else {
+                    //AJAX is called.
+                    $.ajax({
+                        //AJAX type is "Post".
+                        type: "POST",
+                        //Data will be sent to "ajax.php".
+                        url: "ajaxTypeLenses.php",
+                        //Data, that will be sent to "ajax.php".
+                        data: {
+
+                            period_ks_od: period_ks_od,
+                            proizvodjac_ks_od: proizvodjac_ks_od
+                        },
+                        //If result found, this funtion will be called.
+                        success: function(html) {
+                            $("#tip_ks_od").html(html).show();
+                        }
+                    });
+                }
+            });
+
+            $("#tip_ks_od").change(function() {
+
+                var tip_ks_od = $("#tip_ks_od").val();
+
+                //Validating, if is empty.
+                if (tip_ks_od == "") {
+                    //Assigning empty value to "display" div in "search.php" file.
+                    //  $("#display").html("");
+                }
+                //If name is not empty.
+                else {
+                    //AJAX is called.
+                    $.ajax({
+                        //AJAX type is "Post".
+                        type: "POST",
+                        //Data will be sent to "ajax.php".
+                        url: "ajaxTypeLenses.php",
+                        //Data, that will be sent to "ajax.php".
+                        data: {
+                            tip_ks_od: tip_ks_od
+                        },
+                        //If result found, this funtion will be called.
+                        success: function(html) {
+                            $("#bc_ks_od").html(html).show();
+                            // alert(html.val());
+                        }
+                    });
+                }
+
+            });
+        });
+
 
         var $proizvodjac_ks_od = $('#proizvodjac_ks_od');
-        var $tip_ks_od = $('#tip_ks_od');
-        var $bc_ks_od = $('#bc_ks_od');
-        var $options1 = $tip_ks_od.find('option');
-        var $options2 = $bc_ks_od.find('option');
-        // $options3 = $select15.find('option');
-        // $options4 = $select16.find('option');
-
 
         $proizvodjac_ks_od.on('change', function() {
-            $tip_ks_od.html($options1.filter('[value="' + this.value + '"]'));
-        }).trigger('change');
+            $('#tip_ks_od').find('option').remove().end();
+            $('#period_ks_od').val('');
+            $('#bc_ks_od').find('option').remove().end();
+        });
+
+        var $period_ks_od = $('#period_ks_od');
+        $period_ks_od.on('change', function() {
+
+            $('#bc_ks_od').find('option').remove().end();
+        });
+
+
+        //     $tip_ks_od.html($options1.filter('[value="' + this.value + '"]'));
+        // }).trigger('change');
 
         //   $select2.on('change', function() {
         //     $select4.html($options2.filter('[value="' + this.value + '"]'));
         //   }).trigger('change');
 
-        $tip_ks_od.on('change', function() {
-            var id = $(this).children(":selected").attr("id");
-            $bc_ks_od.html($options2.filter('[value="' + id + '"]'));
-        }).trigger('change');
+        // $tip_ks_od.on('change', function() {
+        //     var id = $(this).children(":selected").attr("id");
+        //     $bc_ks_od.html($options2.filter('[value="' + this.id + '"]'));
+        // }).trigger('change');
 
         //   $select4.on('change', function() {
         //     var id1 = $(this).children(":selected").attr("id");

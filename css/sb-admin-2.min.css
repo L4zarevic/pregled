@@ -10552,6 +10552,22 @@ h5#secondTitle{
 }
 #tip_ks_od{
 	display:inline;
+	width:81%;
+	
+}
+.period{
+	display:block;
+	width:100%;
+	margin-bottom:2%;
+}
+#labelPeriod{
+	display:inline;
+	width:5%;
+	margin-right:5.2%;
+	
+}
+#period_ks_od{
+	display:inline;
 	width:70%;
 	
 }
@@ -10626,6 +10642,10 @@ h5#secondTitle{
 }
 
 #tip_ks_os{
+	display:inline;
+	width:81%;
+}
+#period_ks_os{
 	display:inline;
 	width:70%;
 }
