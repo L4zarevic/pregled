@@ -433,7 +433,12 @@ function lensesManufactured($conn)
                         },
                         //If result found, this funtion will be called.
                         success: function(html) {
-                            $("#bc_ks_od").html(html).show();
+                            var bcTd = html.split('@@@');
+                            $("#bc_ks_od").html(bcTd[0]).show();
+                            //alert(bcTd[1]);
+                            document.getElementById("velicina_ks_od").value = bcTd[1];
+                            //$("#velicina_ks_od").val(bcTd[2]);
+
                             // alert(html.val());
                         }
                     });
