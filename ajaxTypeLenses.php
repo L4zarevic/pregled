@@ -35,6 +35,8 @@ if (isset($_POST['tip_ks_od'])) {
     $ExecQuery = MySQLi_query($conn, $Query);
     //Creating unordered list to display result.
 
+    $bcValue = "";
+    $tdValue = "";
     //Fetching result from database.
     while ($row = mysqli_fetch_object($ExecQuery)) {
         $bcOldValue = $row->bc;

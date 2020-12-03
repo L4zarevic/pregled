@@ -261,9 +261,10 @@ function lensesManufactured($conn)
 
                                     <div class="bc">
                                         <label id='labelBc'>BC:</label>
-                                        <select name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od">
-                                            <option default></option>
-                                        </select>
+                                        <input list="ispisBc_od" name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od">
+                                        <datalist id="ispisBc_od">
+
+                                        </datalist>
                                     </div>
 
                                     <div class="velicina">
@@ -384,13 +385,7 @@ function lensesManufactured($conn)
                 var proizvodjac_ks_od = $('#proizvodjac_ks_od').val();
 
                 //Validating, if is empty.
-                if (period_ks_od == "") {
-                    //Assigning empty value to "display" div in "search.php" file.
-                    //  $("#display").html("");
-                }
-                //If name is not empty.
-                else {
-                    //AJAX is called.
+                if (period_ks_od != "") {
                     $.ajax({
                         //AJAX type is "Post".
                         type: "POST",
@@ -398,7 +393,6 @@ function lensesManufactured($conn)
                         url: "ajaxTypeLenses.php",
                         //Data, that will be sent to "ajax.php".
                         data: {
-
                             period_ks_od: period_ks_od,
                             proizvodjac_ks_od: proizvodjac_ks_od
                         },
@@ -411,16 +405,14 @@ function lensesManufactured($conn)
             });
 
             $("#tip_ks_od").change(function() {
+                document.getElementById("bc_ks_od").value = "";
+                document.getElementById("velicina_ks_od").value = "";
+                $('#ispisBc_od').find('option').remove().end();
 
                 var tip_ks_od = $("#tip_ks_od").val();
 
                 //Validating, if is empty.
-                if (tip_ks_od == "") {
-                    //Assigning empty value to "display" div in "search.php" file.
-                    //  $("#display").html("");
-                }
-                //If name is not empty.
-                else {
+                if (tip_ks_od != "") {
                     //AJAX is called.
                     $.ajax({
                         //AJAX type is "Post".
@@ -434,16 +426,11 @@ function lensesManufactured($conn)
                         //If result found, this funtion will be called.
                         success: function(html) {
                             var bcTd = html.split('@@@');
-                            $("#bc_ks_od").html(bcTd[0]).show();
-                            //alert(bcTd[1]);
+                            $("#ispisBc_od").append(bcTd[0]);
                             document.getElementById("velicina_ks_od").value = bcTd[1];
-                            //$("#velicina_ks_od").val(bcTd[2]);
-
-                            // alert(html.val());
                         }
                     });
                 }
-
             });
         });
 
@@ -453,14 +440,24 @@ function lensesManufactured($conn)
         $proizvodjac_ks_od.on('change', function() {
             $('#tip_ks_od').find('option').remove().end();
             $('#period_ks_od').val('');
-            $('#bc_ks_od').find('option').remove().end();
+            document.getElementById("bc_ks_od").value = "";
+            document.getElementById("velicina_ks_od").value = "";
+            document.getElementById("jacina_ks_od").value = "";
+            document.getElementById("boja_ks_od").value = "";
+            $('#ispisBc_od').find('option').remove().end();
         });
 
         var $period_ks_od = $('#period_ks_od');
         $period_ks_od.on('change', function() {
-
-            $('#bc_ks_od').find('option').remove().end();
+            document.getElementById("bc_ks_od").value = "";
+            document.getElementById("velicina_ks_od").value = "";
+            document.getElementById("jacina_ks_od").value = "";
+            document.getElementById("boja_ks_od").value = "";
+            $('#ispisBc_od').find('option').remove().end();
         });
+
+
+
 
 
         //     $tip_ks_od.html($options1.filter('[value="' + this.value + '"]'));
