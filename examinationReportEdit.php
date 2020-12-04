@@ -70,13 +70,14 @@ while ($row = mysqli_fetch_object($result)) {
 }
 
 $con = OpenCon();
-$sql4 = "SELECT naziv,adresa,telefon FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
+$sql4 = "SELECT naziv,adresa,telefon,website FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
 $result = mysqli_query($con, $sql4);
 if (!$result) die(mysqli_error($con));
 while ($row = mysqli_fetch_object($result)) {
   $naziv = $row->naziv;
   $adresa = $row->adresa;
   $telefon = $row->telefon;
+  $website = $row->website;
 }
 
 CloseCon($conn);
@@ -567,7 +568,7 @@ CloseCon($conn);
             </style>
             <body>
             <div class='logo'><img id='logo' /></div>
-            <div class='kontaktPodaciRadnje'><label>Adresa:</label><label><?php echo $adresa; ?></label></br><label>Tel:</label><label><?php echo $telefon; ?></label></br><label>www.mojaoptika.com</label></div>
+            <div class='kontaktPodaciRadnje'><label>Adresa:</label><label><?php echo $adresa; ?></label></br><label>Tel:</label><label><?php echo $telefon; ?></label></br><label><?php echo $website; ?></label></div>
             <hr id='linija'>
             <div class='generalijeDatum'>
             <div class='generalije'><label></label>&nbsp;<label><?php echo $generalije_pacijenta; ?></label></div>
@@ -835,7 +836,7 @@ CloseCon($conn);
             </style>
             <body>
             <div class='logo'><img id='logo' src='../pregled/images/MO.png' /></div>
-            <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label>www.mojaoptika.com</label></div>
+            <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label><?php echo $website; ?></label></div>
             <hr id='linija'>
             <div class='generalije'><label></label>&nbsp;<?php echo $generalije_pacijenta; ?></div>
             <div class='datum'><label>Datum:</label>&nbsp;<?php echo $datum_pregleda; ?></div>

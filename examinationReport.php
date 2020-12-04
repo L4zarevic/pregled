@@ -14,12 +14,13 @@ $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
 mysqli_set_charset($conn, "utf8");
 
-$upit = "SELECT adresa,telefon FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
-$rezultat = mysqli_query($conn, $upit);
+$sql = "SELECT adresa,telefon,website FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
+$rezultat = mysqli_query($conn, $sql);
 if (!$rezultat) die(mysqli_error($conn));
-while ($red = mysqli_fetch_object($rezultat)) {
-  $adresa = $red->adresa;
-  $telefon = $red->telefon;
+while ($row = mysqli_fetch_object($rezultat)) {
+  $adresa = $row->adresa;
+  $telefon = $row->telefon;
+  $website = $row->website;
 }
 CloseCon($conn);
 
@@ -159,7 +160,7 @@ CloseCon($conn);
             if (isset($ar[14])) {
               $terapija = $ar[14];
             }
-           
+
             if (isset($ar[15])) {
               $korekcija_daljina_od = $ar[15];
             }
@@ -252,7 +253,7 @@ CloseCon($conn);
             echo "<br>";
             echo "<br>";
             echo "</div>";
-           
+
             ?>
 
           </div>
@@ -448,7 +449,7 @@ CloseCon($conn);
             </style>
             <body>
             <div class='logo'><img id='logo' /></div>
-            <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label>www.mojaoptika.com</label></div>
+            <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label><?php echo $website; ?></label></div>
             <hr id='linija'>
             <div class='generalijeDatum'>
             <div class='generalije'><label></label>&nbsp;<?php echo $generalije_pacijenta; ?></div>
@@ -711,7 +712,7 @@ CloseCon($conn);
             </style>
             <body>
             <div class='logo'><img id='logo' src='../pregled/images/MO.png' /></div>
-            <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label>www.mojaoptika.com</label></div>
+            <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label><?php echo $website; ?></label></div>
             <hr id='linija'>
             <div class='generalije'><label></label>&nbsp;<?php echo $generalije_pacijenta; ?></div>
             <div class='datum'><label>Datum:</label>&nbsp;<?php echo $datum_pregleda; ?></div>

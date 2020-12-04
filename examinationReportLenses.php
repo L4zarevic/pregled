@@ -508,18 +508,18 @@ CloseCon($conn);
             <div class='korekcijaDaljina_R'>
             <div id='korDaljinaLabel'><label></label></div>
             
-            <div class='korDaljinaOD'><label></label>&nbsp;<?php echo $korekcija_daljina_od; ?></div>
-            <div class='korDaljinaOS'><label></label>&nbsp;<?php echo $korekcija_daljina_os; ?></div>
+            <div class='korDaljinaOD'><label></label>&nbsp;</div>
+            <div class='korDaljinaOS'><label></label>&nbsp;</div>
             </div>
 
            
             <div class='korekcijaBlizina_R'>
             <div id='korBlizinaLabel'><label></label></div>
-            <div class='korBlizinaOD'><label></label>&nbsp;<?php echo $korekcija_blizina_od; ?></div>
-            <div class='korBlizinaOS'><label></label>&nbsp;<?php echo $korekcija_blizina_os; ?></div>
+            <div class='korBlizinaOD'><label></label>&nbsp;</div>
+            <div class='korBlizinaOS'><label></label>&nbsp;</div>
             </div>
             </div></br>
-            <div class='pd'><label></label>&nbsp;<?php echo $pd; ?></div></br>
+            <div class='pd'><label></label>&nbsp;</div></br>
             <div class='kontrolaPregledao'>
             <div class='kontrolaReport'><label></label>&nbsp;<?php echo $kontrola; ?></div>
             <div class='pregledao'><label></label></div>
@@ -798,17 +798,17 @@ CloseCon($conn);
             <div class='korekcija'>
             <div class='korekcijaDaljina_R'>
             <div id='korDaljinaLabel'><label>DALJINA - korekcija:</label></div>
-            <div class='korDaljinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_daljina_od; ?></div>
-            <div class='korDaljinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_daljina_os; ?></div>
+            <div class='korDaljinaOD'><label>OD:</label>&nbsp;</div>
+            <div class='korDaljinaOS'><label>OS:</label>&nbsp;</div>
             </div>
             <div class='korekcijaBlizina_R'>
             <div id='korBlizinaLabel'><label>BLIZINA - korekcija:</label></div>
-            <div class='korBlizinaOD'><label>OD:</label>&nbsp;<?php echo $korekcija_blizina_od; ?></div>
-            <div class='korBlizinaOS'><label>OS:</label>&nbsp;<?php echo $korekcija_blizina_os; ?></div>
+            <div class='korBlizinaOD'><label>OD:</label>&nbsp;</div>
+            <div class='korBlizinaOS'><label>OS:</label>&nbsp;</div>
             </div>
             </div>
             </br>
-            <div class='pd'><label>PD:</label>&nbsp;<?php echo $pd; ?></div></br>
+            <div class='pd'><label>PD:</label>&nbsp;</div></br>
             <div class='kontrolaPregledao'>
             <div class='kontrolaReport'><label>KONTROLA:</label>&nbsp;<?php echo $kontrola; ?></div>
             <div class='pregledao'><label>Pregledao:</label></div>
