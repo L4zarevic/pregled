@@ -39,11 +39,15 @@ while ($row = mysqli_fetch_object($result)) {
   $korekcija_daljina_os = $row->korekcija_daljina_os;
   $korekcija_blizina_od = $row->korekcija_blizina_od;
   $korekcija_blizina_os = $row->korekcija_blizina_os;
+  $proizvodjac_ks_od = $row->proizvodjac_ks_od;
+  $period_ks_od = $row->period_ks_od;
   $tip_ks_od = $row->tip_ks_od;
   $jacina_ks_od = $row->jacina_ks_od;
   $bc_ks_od  = $row->bc_ks_od;
   $velicina_ks_od  = $row->velicina_ks_od;
   $boja_ks_od = $row->boja_ks_od;
+  $proizvodjac_ks_os = $row->proizvodjac_ks_os;
+  $period_ks_os = $row->period_ks_os;
   $tip_ks_os = $row->tip_ks_os;
   $jacina_ks_os = $row->jacina_ks_os;
   $bc_ks_os = $row->bc_ks_os;
@@ -257,32 +261,37 @@ CloseCon($conn);
 
                   <div class="proizvodjac">
                     <label id='labelManufactured'>Proizvođač:</label>
-                    <input name="proizvodjac_ks_od" title="" class="form-control" id="proizvodjac_ks_od" autocomplete="off" disabled>
+                    <input name="proizvodjac_ks_od" title="" class="form-control" id="proizvodjac_ks_od" autocomplete="off" value="<?php echo $proizvodjac_ks_od; ?>">
+                  </div>
+
+                  <div class="period">
+                    <label id='labelType'>Period:</label>
+                    <input name="period_ks_od" title="" type="text" class="form-control" autocomplete="off" id="period_ks_od" value="<?php echo $period_ks_od; ?>">
                   </div>
 
                   <div class="tip">
                     <label id='labelType'>Tip/vrsta:</label>
-                    <input name="tip_ks_od" title="" class="form-control" id="tip_ks_od" autocomplete="off" value="<?php echo $tip_ks_od; ?>" disabled>
+                    <input name="tip_ks_od" title="" class="form-control" id="tip_ks_od" autocomplete="off" value="<?php echo $tip_ks_od; ?>">
                   </div>
 
                   <div class="jacina">
                     <label id='labelPower'>Jačina:</label>
-                    <input name="jacina_ks_od" title="" type="text" class="form-control" autocomplete="off" id="jacina_ks_od" value="<?php echo $jacina_ks_od; ?>" disabled>
+                    <input name="jacina_ks_od" title="" type="text" class="form-control" autocomplete="off" id="jacina_ks_od" value="<?php echo $jacina_ks_od; ?>">
                   </div>
 
                   <div class="bc">
                     <label id='labelBc'>BC:</label>
-                    <input name="bc_ks_od" title="" type="text" class="form-control" autocomplete="off" id="bc_ks_od" value="<?php echo $bc_ks_od; ?>" disabled>
+                    <input name="bc_ks_od" title="" type="text" class="form-control" autocomplete="off" id="bc_ks_od" value="<?php echo $bc_ks_od; ?>">
                   </div>
 
                   <div class="velicina">
                     <label id='labelSize'>TD:</label>
-                    <input name="velicina_ks_od" title="" type="text" class="form-control" autocomplete="off" id="velicina_ks_od" value="<?php echo $velicina_ks_od; ?>" disabled>
+                    <input name="velicina_ks_od" title="" type="text" class="form-control" autocomplete="off" id="velicina_ks_od" value="<?php echo $velicina_ks_od; ?>">
                   </div>
 
                   <div class="boja">
                     <label id='labelColor'>Boja:</label>
-                    <input name="boja_ks_od" title="" type="text" class="form-control" autocomplete="off" id="boja_ks_od" value="<?php echo $boja_ks_od; ?>" disabled>
+                    <input name="boja_ks_od" title="" type="text" class="form-control" autocomplete="off" id="boja_ks_od" value="<?php echo $boja_ks_od; ?>">
                   </div>
                 </div>
 
@@ -296,34 +305,39 @@ CloseCon($conn);
 
                   <div class="proizvodjac">
                     <label id='labelManufactured'>Proizvođač:</label>
-                    <input name="proizvodjac_ks_os" title="" class="form-control" autocomplete="off" id="proizvodjac_ks_os" disabled>
+                    <input name="proizvodjac_ks_os" title="" class="form-control" autocomplete="off" id="proizvodjac_ks_os" value="<?php echo $proizvodjac_ks_os; ?>">
+                  </div>
+
+                  <div class="period">
+                    <label id='labelType'>Period:</label>
+                    <input name="period_ks_os" title="" type="text" class="form-control" autocomplete="off" id="period_ks_os" value="<?php echo $period_ks_os; ?>">
                   </div>
 
                   <div class="tip">
                     <label id='labelType'>Tip/vrsta:</label>
-                    <input name="tip_ks_os" title="" type="text" class="form-control" autocomplete="off" id="tip_ks_os" value="<?php echo $tip_ks_os; ?>" disabled>
+                    <input name="tip_ks_os" title="" type="text" class="form-control" autocomplete="off" id="tip_ks_os" value="<?php echo $tip_ks_os; ?>">
                   </div>
 
                   <div class="jacina">
                     <label id='labelPower'>Jačina:</label>
-                    <input name="jacina_ks_os" title="" type="text" class="form-control" autocomplete="off" id="jacina_ks_os" value="<?php echo $jacina_ks_os; ?>" disabled>
+                    <input name="jacina_ks_os" title="" type="text" class="form-control" autocomplete="off" id="jacina_ks_os" value="<?php echo $jacina_ks_os; ?>">
                   </div>
 
                   <div class="bc">
                     <label id='labelBc'>BC:</label>
-                    <input name="bc_ks_os" title="" type="text" class="form-control" autocomplete="off" id="bc_ks_os" value="<?php echo $bc_ks_os; ?>" disabled>
+                    <input name="bc_ks_os" title="" type="text" class="form-control" autocomplete="off" id="bc_ks_os" value="<?php echo $bc_ks_os; ?>">
 
                   </div>
 
                   <div class="velicina">
                     <label id='labelSize'>TD:</label>
-                    <input name="velicina_ks_os" title="" type="text" class="form-control" autocomplete="off" id="velicina_ks_os" value="<?php echo $velicina_ks_os; ?>" disabled>
+                    <input name="velicina_ks_os" title="" type="text" class="form-control" autocomplete="off" id="velicina_ks_os" value="<?php echo $velicina_ks_os; ?>">
 
                   </div>
 
                   <div class="boja">
                     <label id='labelColor'>Boja:</label>
-                    <input name="boja_ks_os" title="" type="text" class="form-control" autocomplete="off" id="boja_ks_os" value="<?php echo $boja_ks_os; ?>" disabled>
+                    <input name="boja_ks_os" title="" type="text" class="form-control" autocomplete="off" id="boja_ks_os" value="<?php echo $boja_ks_os; ?>">
                   </div>
                 </div>
               </div>

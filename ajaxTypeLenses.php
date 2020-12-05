@@ -91,8 +91,5 @@ if (isset($_POST['tip_ks_os'])) {
             $bcValue .= "<option>$bc</option>";
         }
     }
-    // if (strlen($bcValue) > 22) {
-    //     echo "<option default></option>";
-    // }
     echo $bcValue . "@@@" . $tdValue;
 }

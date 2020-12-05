@@ -40,30 +40,28 @@ if ($vrsta_pregleda == "naocare") {
     $korekcija_blizina_os = mysqli_real_escape_string($conn, $_REQUEST['korekcija_blizina_os']);
     $pd = mysqli_real_escape_string($conn, $_REQUEST['pd']);
 
-    $upit = "INSERT INTO pregledi (ID_pacijenta,ID_korisnika,ID_radnika,datum_pregleda,anamneza,vod,vos,motilitet,bms_od,bms_os,tonus_od,tonus_os,fundus_od,fundus_os,dijagnoza,terapija,korekcija_daljina_od,korekcija_daljina_os,korekcija_blizina_od,korekcija_blizina_os,pd,kontrola,napomena_pregleda) VALUES ('$id_pacijenta','$id_korisnika','$id_radnika','$datum_pregleda','$anamneza','$vod','$vos','$motilitet','$bms_od','$bms_os','$tonus_od','$tonus_os','$fundus_od','$fundus_os','$dijagnoza','$terapija','$korekcija_daljina_od','$korekcija_daljina_os','$korekcija_blizina_od','$korekcija_blizina_os','$pd','$kontrola','$napomena_pregleda')";
+    $sql = "INSERT INTO pregledi (ID_pacijenta,ID_korisnika,ID_radnika,datum_pregleda,anamneza,vod,vos,motilitet,bms_od,bms_os,tonus_od,tonus_os,fundus_od,fundus_os,dijagnoza,terapija,korekcija_daljina_od,korekcija_daljina_os,korekcija_blizina_od,korekcija_blizina_os,pd,kontrola,napomena_pregleda) VALUES ('$id_pacijenta','$id_korisnika','$id_radnika','$datum_pregleda','$anamneza','$vod','$vos','$motilitet','$bms_od','$bms_os','$tonus_od','$tonus_os','$fundus_od','$fundus_os','$dijagnoza','$terapija','$korekcija_daljina_od','$korekcija_daljina_os','$korekcija_blizina_od','$korekcija_blizina_os','$pd','$kontrola','$napomena_pregleda')";
 } else {
     $proizvodjac_ks_od = mysqli_real_escape_string($conn, $_REQUEST['proizvodjac_ks_od']);
+    $period_ks_od = mysqli_real_escape_string($conn, $_REQUEST['period_ks_od']);
     $tip_ks_od = mysqli_real_escape_string($conn, $_REQUEST['tip_ks_od']);
     $jacina_ks_od = mysqli_real_escape_string($conn, $_REQUEST['jacina_ks_od']);
     $bc_ks_od  = mysqli_real_escape_string($conn, $_REQUEST['bc_ks_od']);
     $velicina_ks_od  = mysqli_real_escape_string($conn, $_REQUEST['velicina_ks_od']);
     $boja_ks_od = mysqli_real_escape_string($conn, $_REQUEST['boja_ks_od']);
     $proizvodjac_ks_os = mysqli_real_escape_string($conn, $_REQUEST['proizvodjac_ks_os']);
+    $period_ks_os = mysqli_real_escape_string($conn, $_REQUEST['period_ks_os']);
     $tip_ks_os = mysqli_real_escape_string($conn, $_REQUEST['tip_ks_os']);
     $jacina_ks_os = mysqli_real_escape_string($conn, $_REQUEST['jacina_ks_os']);
     $bc_ks_os = mysqli_real_escape_string($conn, $_REQUEST['bc_ks_os']);
     $velicina_ks_os  = mysqli_real_escape_string($conn, $_REQUEST['velicina_ks_os']);
     $boja_ks_os = mysqli_real_escape_string($conn, $_REQUEST['boja_ks_os']);
 
-    $upit = "INSERT INTO pregledi (ID_pacijenta,ID_korisnika,ID_radnika,datum_pregleda,anamneza,vod,vos,motilitet,bms_od,bms_os,tonus_od,tonus_os,fundus_od,fundus_os,dijagnoza,terapija,proizvodjac_ks_od,tip_ks_od,jacina_ks_od,bc_ks_od,velicina_ks_od,boja_ks_od,proizvodjac_ks_os,tip_ks_os,jacina_ks_os,bc_ks_os,velicina_ks_os,boja_ks_os,pd,kontrola,napomena_pregleda) VALUES ('$id_pacijenta','$id_korisnika','$id_radnika','$datum_pregleda','$anamneza','$vod','$vos','$motilitet','$bms_od','$bms_os','$tonus_od','$tonus_os','$fundus_od','$fundus_os','$dijagnoza','$terapija','$proizvodjac_ks_od','$tip_ks_od','$jacina_ks_od','$bc_ks_od','$velicina_ks_od','$boja_ks_od','$proizvodjac_ks_os','$tip_ks_os','$jacina_ks_os','$bc_ks_os','$velicina_ks_os','$boja_ks_os','$kontrola','$napomena_pregleda')";
+    $sql = "INSERT INTO pregledi (ID_pacijenta,ID_korisnika,ID_radnika,datum_pregleda,anamneza,vod,vos,motilitet,bms_od,bms_os,tonus_od,tonus_os,fundus_od,fundus_os,dijagnoza,terapija,proizvodjac_ks_od,period_ks_od,tip_ks_od,jacina_ks_od,bc_ks_od,velicina_ks_od,boja_ks_od,proizvodjac_ks_os,period_ks_os,tip_ks_os,jacina_ks_os,bc_ks_os,velicina_ks_os,boja_ks_os,kontrola,napomena_pregleda) VALUES ('$id_pacijenta','$id_korisnika','$id_radnika','$datum_pregleda','$anamneza','$vod','$vos','$motilitet','$bms_od','$bms_os','$tonus_od','$tonus_os','$fundus_od','$fundus_os','$dijagnoza','$terapija','$proizvodjac_ks_od','$period_ks_od','$tip_ks_od','$jacina_ks_od','$bc_ks_od','$velicina_ks_od','$boja_ks_od','$proizvodjac_ks_os','$period_ks_os','$tip_ks_os','$jacina_ks_os','$bc_ks_os','$velicina_ks_os','$boja_ks_os','$kontrola','$napomena_pregleda')";
 }
 
 
-
-
-//$upit = "INSERT INTO pregledi (ID_pacijenta,ID_korisnika,ID_radnika,datum_pregleda,anamneza,vod,vos,motilitet,bms_od,bms_os,tonus_od,tonus_os,fundus_od,fundus_os,dijagnoza,terapija,korekcija_daljina_od,korekcija_daljina_os,korekcija_blizina_od,korekcija_blizina_os,tip_ks_od,jacina_ks_od,bc_ks_od,velicina_ks_od,boja_ks_od,tip_ks_os,jacina_ks_os,bc_ks_os,velicina_ks_os,boja_ks_os,pd,kontrola,napomena_pregleda) VALUES ('$id_pacijenta','$id_korisnika','$id_radnika','$datum_pregleda','$anamneza','$vod','$vos','$motilitet','$bms_od','$bms_os','$tonus_od','$tonus_os','$fundus_od','$fundus_os','$dijagnoza','$terapija','$korekcija_daljina_od','$korekcija_daljina_os','$korekcija_blizina_od','$korekcija_blizina_os','$tip_ks_od','$jacina_ks_od','$bc_ks_od','$velicina_ks_od','$boja_ks_od','$tip_ks_os','$jacina_ks_os','$bc_ks_os','$velicina_ks_os','$boja_ks_os','$pd','$kontrola','$napomena_pregleda')";
-
-$rezultat = mysqli_query($conn, $upit);
+$result = mysqli_query($conn, $sql);
 if (mysqli_error($conn)) {
     die(mysqli_error($conn));
 }

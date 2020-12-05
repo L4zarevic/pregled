@@ -10,7 +10,7 @@ $id_korisnika = $ar[0];
 $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn,"utf8");
+mysqli_set_charset($conn, "utf8");
 
 $id_pregleda = mysqli_real_escape_string($conn, $_REQUEST['id_pregleda']);
 $anamneza = mysqli_real_escape_string($conn, $_REQUEST['anamneza']);
@@ -29,12 +29,16 @@ $korekcija_daljina_od = mysqli_real_escape_string($conn, $_REQUEST['korekcija_da
 $korekcija_daljina_os = mysqli_real_escape_string($conn, $_REQUEST['korekcija_daljina_os']);
 $korekcija_blizina_od = mysqli_real_escape_string($conn, $_REQUEST['korekcija_blizina_od']);
 $korekcija_blizina_os = mysqli_real_escape_string($conn, $_REQUEST['korekcija_blizina_os']);
+$proizvodjac_ks_od = mysqli_real_escape_string($conn, $_REQUEST['proizvodjac_ks_od']);
+$period_ks_od = mysqli_real_escape_string($conn, $_REQUEST['period_ks_od']);
 $tip_ks_od = mysqli_real_escape_string($conn, $_REQUEST['tip_ks_od']);
 $jacina_ks_od = mysqli_real_escape_string($conn, $_REQUEST['jacina_ks_od']);
 $bc_ks_od  = mysqli_real_escape_string($conn, $_REQUEST['bc_ks_od']);
 $velicina_ks_od  = mysqli_real_escape_string($conn, $_REQUEST['velicina_ks_od']);
 $boja_ks_od = mysqli_real_escape_string($conn, $_REQUEST['boja_ks_od']);
 $tip_ks_os = mysqli_real_escape_string($conn, $_REQUEST['tip_ks_os']);
+$proizvodjac_ks_os = mysqli_real_escape_string($conn, $_REQUEST['proizvodjac_ks_os']);
+$period_ks_os = mysqli_real_escape_string($conn, $_REQUEST['period_ks_os']);
 $jacina_ks_os = mysqli_real_escape_string($conn, $_REQUEST['jacina_ks_os']);
 $bc_ks_os = mysqli_real_escape_string($conn, $_REQUEST['bc_ks_os']);
 $velicina_ks_os  = mysqli_real_escape_string($conn, $_REQUEST['velicina_ks_os']);
@@ -44,7 +48,7 @@ $kontrola = mysqli_real_escape_string($conn, $_REQUEST['kontrola']);
 $napomena_pregleda  = mysqli_real_escape_string($conn, $_REQUEST['napomena_pregleda']);
 
 
-$upit = "UPDATE pregledi SET anamneza='$anamneza',vod='$vod',vos='$vos',motilitet='$motilitet',bms_od='$bms_od',bms_os='$bms_os',tonus_od='$tonus_od',tonus_os='$tonus_os',fundus_od='$fundus_od',fundus_os='$fundus_os',dijagnoza='$dijagnoza',terapija='$terapija',korekcija_daljina_od='$korekcija_daljina_od',korekcija_daljina_os='$korekcija_daljina_os',korekcija_blizina_od='$korekcija_blizina_od',korekcija_blizina_os='$korekcija_blizina_os',tip_ks_od='$tip_ks_od',jacina_ks_od='$jacina_ks_od',bc_ks_od='$bc_ks_od',velicina_ks_od='$velicina_ks_od',boja_ks_od='$boja_ks_od',tip_ks_os='$tip_ks_os',jacina_ks_os='$jacina_ks_os',bc_ks_os='$bc_ks_os',velicina_ks_os='$velicina_ks_os',boja_ks_os='$boja_ks_os',pd='$pd',kontrola='$kontrola',napomena_pregleda='$napomena_pregleda' WHERE ID='$id_pregleda'";
+$upit = "UPDATE pregledi SET anamneza='$anamneza',vod='$vod',vos='$vos',motilitet='$motilitet',bms_od='$bms_od',bms_os='$bms_os',tonus_od='$tonus_od',tonus_os='$tonus_os',fundus_od='$fundus_od',fundus_os='$fundus_os',dijagnoza='$dijagnoza',terapija='$terapija',korekcija_daljina_od='$korekcija_daljina_od',korekcija_daljina_os='$korekcija_daljina_os',korekcija_blizina_od='$korekcija_blizina_od',korekcija_blizina_os='$korekcija_blizina_os',proizvodjac_ks_od='$proizvodjac_ks_od',period_ks_od='$period_ks_od',tip_ks_od='$tip_ks_od',jacina_ks_od='$jacina_ks_od',bc_ks_od='$bc_ks_od',velicina_ks_od='$velicina_ks_od',boja_ks_od='$boja_ks_od',proizvodjac_ks_os='$proizvodjac_ks_os',period_ks_os='$period_ks_os',tip_ks_os='$tip_ks_os',jacina_ks_os='$jacina_ks_os',bc_ks_os='$bc_ks_os',velicina_ks_os='$velicina_ks_os',boja_ks_os='$boja_ks_os',pd='$pd',kontrola='$kontrola',napomena_pregleda='$napomena_pregleda' WHERE ID='$id_pregleda'";
 $rezultat = mysqli_query($conn, $upit);
 if (mysqli_error($conn)) {
     die(mysqli_error($conn));

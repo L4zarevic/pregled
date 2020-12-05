@@ -18,7 +18,7 @@
 
     $id_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['id_pacijenta']);
 
-    $sql = "SELECT ID,datum_pregleda,ID_korisnika FROM pregledi WHERE ID_pacijenta = '" . $id_pacijenta . "' ORDER BY datum_pregleda DESC";
+    $sql = "SELECT ID,datum_pregleda,ID_korisnika FROM pregledi WHERE ID_pacijenta = '" . $id_pacijenta . "' ORDER BY ID DESC";
     $result = mysqli_query($conn, $sql);
 
     echo " <table id='dtDynamicVerticalScrollExample' class='table table-hover  table-sm'>";
