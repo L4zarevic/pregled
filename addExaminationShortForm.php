@@ -86,7 +86,7 @@ include '../pregled/modules/header.php';
               </div>
               <div class='lenses'>
                 <div class="form-group col-md-7">
-                  <button class="btn btn-danger" type="button" onclick=""><i class="fas fa-eye"></i>&nbsp;Kratki pregled - kontaktna sočiva</button>
+                  <button class="btn btn-danger" type="button" onclick="window.location.href='../pregled/addLensesExaminationShortForm.php';"><i class="fas fa-eye"></i>&nbsp;Kratki pregled - kontaktna sočiva</button>
                 </div>
               </div>
             </div>
@@ -125,7 +125,7 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-7">
               <strong> <label id="labelAnamneza">ANAMNEZA:</label></strong>
-              <input list="listaAnamneza" name="anamneza" title="" type="text" class="form-control" id="anamneza">
+              <input list="listaAnamneza" name="anamneza" title="" type="text" class="form-control" id="anamneza" autocomplete="off">
               <datalist id="listaAnamneza">
                 <option value="Slabije vidi na daljinu">
                 <option value="Slabije vidi na blizinu">
@@ -153,7 +153,7 @@ include '../pregled/modules/header.php';
               <div class="vod1">
                 <div class="form-group col-md-5">
                   <label id="label_vod">VOD:</label>
-                  <input list="listaVod" name="vod" title="" type="text" class="form-control" id="vod">
+                  <input list="listaVod" name="vod" title="" type="text" class="form-control" id="vod" autocomplete="off">
                   <datalist id="listaVod">
                     <option value="0.1">
                     <option value="0.2">
@@ -172,7 +172,7 @@ include '../pregled/modules/header.php';
               <div class="vos1">
                 <div class="form-group col-md-5">
                   <label id="label_vos">VOS:</label>
-                  <input list="listaVos" name="vos" title="" type="text" class="form-control" id="vos">
+                  <input list="listaVos" name="vos" title="" type="text" class="form-control" id="vos" autocomplete="off">
                   <datalist id="listaVos">
                     <option value="0.1">
                     <option value="0.2">
@@ -197,11 +197,11 @@ include '../pregled/modules/header.php';
 
             <div class="vidnaOstrina_grupa3">
               <div class="form-group col-md-12">
-                <input name="vod" title="" type="text" class="form-control" id="vod1">
+                <input name="vod" title="" type="text" class="form-control" id="vod1" autocomplete="off">
               </div>
 
               <div class="form-group col-md-12">
-                <input name="vos" title="" type="text" class="form-control" id="vos1">
+                <input name="vos" title="" type="text" class="form-control" id="vos1" autocomplete="off">
               </div>
             </div>
           </div>
@@ -212,11 +212,11 @@ include '../pregled/modules/header.php';
               <div class="form-group col-md-7">
                 <div class="kor1">
                   <label id="labelKorDaljOd">OD:</label>
-                  <input name="korekcija_daljina_od" title="" type="text" class="form-control" id="korekcija_daljina_od">
+                  <input name="korekcija_daljina_od" title="" type="text" class="form-control" id="korekcija_daljina_od" autocomplete="off">
                 </div>
                 <div class="kor2">
                   <label id="labelKorDaljOd">OS:</label>
-                  <input name="korekcija_daljina_os" title="" type="text" class="form-control" id="korekcija_daljina_os">
+                  <input name="korekcija_daljina_os" title="" type="text" class="form-control" id="korekcija_daljina_os" autocomplete="off">
                 </div>
               </div>
             </div>
@@ -226,11 +226,11 @@ include '../pregled/modules/header.php';
               <div class="form-group col-md-7">
                 <div class="kor3">
                   <label id="labelKorBlizOd">OD:</label>
-                  <input name="korekcija_blizina_od" title="" type="text" class="form-control" id="korekcija_blizina_od">
+                  <input name="korekcija_blizina_od" title="" type="text" class="form-control" id="korekcija_blizina_od" autocomplete="off">
                 </div>
                 <div class="kor4">
                   <label id="labelKorBlizOs">OS:</label>
-                  <input name="korekcija_blizina_os" title="" type="text" class="form-control" id="korekcija_blizina_os">
+                  <input name="korekcija_blizina_os" title="" type="text" class="form-control" id="korekcija_blizina_os" autocomplete="off">
                 </div>
               </div>
             </div>
@@ -239,7 +239,7 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-3">
               <strong><label for="exampleFormControlSelect2">PD:</label> </strong>
-              <input name="pd" title="" type="text" class="form-control" id="pd">
+              <input name="pd" title="" type="text" class="form-control" id="pd" autocomplete="off">
             </div>
           </div>
           </br>
@@ -247,7 +247,7 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-7">
               <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
-              <input list="listaKontrola" name="kontrola" title="" type="text" class="form-control" id="kontrola">
+              <input list="listaKontrola" name="kontrola" title="" type="text" class="form-control" id="kontrola" autocomplete="off">
               <datalist id="listaKontrola">
                 <option>Kontrola za 7 dana</option>
                 <option>Kontrola za 1 mjesec</option>

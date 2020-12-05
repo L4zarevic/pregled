@@ -3,19 +3,27 @@
 
 <?php
 include '../pregled/modules/header.php';
+
+require_once 'connection.php';
+$korisnik = $_SESSION['prijavljen'];
+$ar = explode("#", $korisnik, 3);
+$ar[1] = rtrim($ar[1], "#");
+$dataBaseName = $ar[2];
+$conn = OpenStoreCon($dataBaseName);
+mysqli_set_charset($conn, "utf8");
+
+
+function lensesManufactured($conn)
+{
+  $sql = "SELECT * FROM proizvodjaci_sociva";
+  $result = mysqli_query($conn, $sql);
+
+  while ($row = mysqli_fetch_object($result)) {
+    echo "<option value='$row->ID'>$row->naziv_proizvodjaca</option>";
+  }
+}
+
 ?>
-
-
-<!-- Including CSS file. -->
-<style>
-  .bs-example {
-    margin-bottom: 20px;
-  }
-
-  .accordion .fas {
-    margin-right: 0.5rem;
-  }
-</style>
 
 <body id="page-top">
 
@@ -36,8 +44,6 @@ include '../pregled/modules/header.php';
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-
-
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -72,7 +78,7 @@ include '../pregled/modules/header.php';
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Pregled - naočare <i class="fas fa-glasses"></i></h1>
+          <h1 class="h3 mb-4 text-gray-800">Pregled - kontaktna sočiva <i class="fas fa-eye"></i></h1>
           <div class="row">
             <div class="workersLog">
               <div class="workers">
@@ -89,7 +95,7 @@ include '../pregled/modules/header.php';
               </div>
               <div class='lenses'>
                 <div class="form-group col-md-7">
-                  <button class="btn btn-danger" type="button" onclick="window.location.href='../pregled/addLensesExaminationForm.php';"><i class="fas fa-eye"></i>&nbsp;Pregled kontaktna sočiva</button>
+                  <button class="btn btn-danger" type="button" onclick="window.location.href='../pregled/addExaminationForm.php';"><i class="fas fa-glasses"></i>&nbsp;Pregled - naočare</button>
                 </div>
               </div>
             </div>
@@ -112,7 +118,6 @@ include '../pregled/modules/header.php';
               </div>
               <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
             </div>
-
 
             <div class="noteAboutPatient">
               <div class="form-group col-md-10">
@@ -143,8 +148,8 @@ include '../pregled/modules/header.php';
                 <option value="Oko je suvo i svrbi">
               </datalist>
             </div>
-          </div>
 
+          </div>
           <br>
           <div class="row">
             <strong> <label for="exampleFormControlSelect2">VIDNA OŠTRINA</label></strong>
@@ -278,46 +283,124 @@ include '../pregled/modules/header.php';
             </div>
           </div>
 
-          </br>
           <div class="row">
-            <div class="korekcijaDaljina">
-              <strong> <label for="exampleFormControlSelect2">DALJINA - korekcija:</label></strong>
-              <div class="form-group col-md-7">
-                <div class="kor1">
-                  <label id="labelKorDaljOd">OD:</label>
-                  <input name="korekcija_daljina_od" title="" type="text" class="form-control" id="korekcija_daljina_od" autocomplete="off">
-                </div>
-                <div class="kor2">
-                  <label id="labelKorDaljOd">OS:</label>
-                  <input name="korekcija_daljina_os" title="" type="text" class="form-control" id="korekcija_daljina_os" autocomplete="off">
+            <strong> <label for="exampleFormControlSelect2">KOREKCIJA (kon. sočiva):</label></strong>
+          </div>
+
+          <div class="lensesCorrection">
+            <div class="lensesCorrectionOd">
+              <label>OD:</label>
+              <div class="row">
+                <div class="form-group col-md-12">
+
+                  <div class="proizvodjac">
+                    <label id='labelManufactured'>Proizvođač:</label>
+                    <select name='proizvodjacOd' class='form-control' id='proizvodjac_ks_od'>
+                      <option default></option>
+                      <?php lensesManufactured($conn); ?>
+                    </select>
+                  </div>
+
+                  <div class="period">
+                    <label id='labelPeriod'>Period:</label>
+                    <select name="period_ks_od" title="" type="text" class="form-control" id="period_ks_od">
+                      <option default></option>
+                      <option value="dnevna">Dnevna</option>
+                      <option value="15dana">15 dana</option>
+                      <option value="mjesec">Mjesec</option>
+                      <option value="3mjeseca">3 mjeseca</option>
+                      <option value="godina">Godina</option>
+                    </select>
+                  </div>
+
+                  <div class="tip">
+                    <label id='labelType'>Tip/vrsta:</label>
+                    <select name="tip_ks_od" title="" class="form-control" id="tip_ks_od">
+                      <option default></option>
+                    </select>
+                  </div>
+
+                  <div class="jacina">
+                    <label id='labelPower'>Jačina:</label>
+                    <input name="jacina_ks_od" title="" type="text" class="form-control" id="jacina_ks_od" autocomplete="off">
+                  </div>
+
+                  <div class="bc">
+                    <label id='labelBc'>BC:</label>
+                    <input list="ispisBc_od" name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od" autocomplete="off">
+                    <datalist id="ispisBc_od"></datalist>
+                  </div>
+
+                  <div class="velicina">
+                    <label id='labelSize'>TD:</label>
+                    <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od" autocomplete="off" />
+                  </div>
+
+                  <div class="boja">
+                    <label id='labelColor'>Boja:</label>
+                    <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od" autocomplete="off">
+                  </div>
                 </div>
               </div>
             </div>
 
+            <div class="lensesCorrectionOs">
+              <label>OS:</label>
+              <div class="row">
+                <div class="form-group col-md-12">
 
-            <div class="korekcijaBlizina">
-              <strong> <label for="exampleFormControlSelect2">BLIZINA - korekcija:</label></strong>
-              <div class="form-group col-md-7">
-                <div class="kor3">
-                  <label id="labelKorBlizOd">OD:</label>
-                  <input name="korekcija_blizina_od" title="" type="text" class="form-control" id="korekcija_blizina_od" autocomplete="off">
-                </div>
-                <div class="kor4">
-                  <label id="labelKorBlizOs">OS:</label>
-                  <input name="korekcija_blizina_os" title="" type="text" class="form-control" id="korekcija_blizina_os" autocomplete="off">
+                  <div class="proizvodjac">
+                    <label id='labelManufactured'>Proizvođač:</label>
+                    <select name="proizvodjacOs" title="" class="form-control" id="proizvodjac_ks_os">
+                      <option default></option>
+                      <?php lensesManufactured($conn); ?>
+                    </select>
+                  </div>
+
+                  <div class="period">
+                    <label id='labelPeriod'>Period:</label>
+                    <select name="period_ks_os" title="" type="text" class="form-control" id="period_ks_os">
+                      <option default></option>
+                      <option value="dnevna">Dnevna</option>
+                      <option value="15dana">15 dana</option>
+                      <option value="mjesec">Mjesec</option>
+                      <option value="3mjeseca">3 mjeseca</option>
+                      <option value="godina">Godina</option>
+                    </select>
+                  </div>
+
+                  <div class="tip">
+                    <label id='labelType'>Tip/vrsta:</label>
+                    <select name="tip_ks_os" title="" type="text" class="form-control" id="tip_ks_os">
+                    </select>
+                  </div>
+
+                  <div class="jacina">
+                    <label id='labelPower'>Jačina:</label>
+                    <input name="jacina_ks_os" title="" type="text" class="form-control" id="jacina_ks_os" autocomplete="off">
+                  </div>
+
+                  <div class="bc">
+                    <label id='labelBc'>BC:</label>
+                    <input list="ispisBc_os" name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os" autocomplete="off" />
+                    <datalist id="ispisBc_os"></datalist>
+                  </div>
+
+                  <div class="velicina">
+                    <label id='labelSize'>TD:</label>
+                    <input name="velicina_ks_os" title="" type="text" class="form-control" id="velicina_ks_os" autocomplete="off" />
+                  </div>
+
+                  <div class="boja">
+                    <label id='labelColor'>Boja:</label>
+                    <input name="boja_ks_os" title="" type="text" class="form-control" id="boja_ks_os" autocomplete="off">
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           </br>
-          <div class="row">
-            <div class="form-group col-md-3">
-              <strong><label for="exampleFormControlSelect2">PD:</label> </strong>
-              <input name="pd" title="" type="text" class="form-control" id="pd" autocomplete="off">
-            </div>
-          </div>
 
-          <br>
           <div class="row">
             <div class="form-group col-md-7">
               <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
@@ -343,7 +426,7 @@ include '../pregled/modules/header.php';
 
           <hr>
           <div class="row">
-            <button type='button' onclick="checkFormExamination()" id='dugmeDodajPregled' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
+            <button type='button' onclick="checkLensesFormExamination()" id='dugmeDodajPregled' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
           </div>
           </br>
         </div>
@@ -359,20 +442,180 @@ include '../pregled/modules/header.php';
     </div>
   </div>
 
+
   <script type="text/javascript">
     //When page load set focus on field
     document.getElementById('sifra_radnika').focus();
 
+    /*******************************************************************************/
     $(document).ready(function() {
-      $('#vod1').on('change', function(e) {
-        var valueVod = document.getElementById('vod1').value;
-        $('#korekcija_daljina_od').val(valueVod);
+      //Funkcija koja se poziva kada se polje za period OD sociva promijeni
+      $("#period_ks_od").change(function() {
+
+        //Parametri potrebni za pretragu tipova sociva (period i ID proizvodjaca sociva) u tabeli sociva
+        var period_ks_od = $('#period_ks_od').val();
+        var proizvodjac_ks_od = $('#proizvodjac_ks_od').val();
+
+        //Validating, if is empty.
+        if (period_ks_od != "") {
+          $.ajax({
+            //AJAX type is "Post".
+            type: "POST",
+            //Data will be sent to "ajax.php".
+            url: "ajaxTypeLenses.php",
+            //Data, that will be sent to "ajax.php".
+            data: {
+              period_ks_od: period_ks_od,
+              proizvodjac_ks_od: proizvodjac_ks_od
+            },
+            //Ako je rezultat pronadjen vrijednosti opcija se smijestaju u izbornik tipova sociva OD
+            success: function(html) {
+              $("#tip_ks_od").html(html).show();
+            }
+          });
+        }
       });
-      $('#vos1').on('change', function(e) {
-        var valueVos = document.getElementById('vos1').value;
-        $('#korekcija_daljina_os').val(valueVos);
+
+      //Funkcija koja se poziva kada se polje za tip sociva OD promijeni
+      $("#tip_ks_od").change(function() {
+
+        //Ciscenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i velicine sociva
+        document.getElementById("bc_ks_od").value = "";
+        document.getElementById("velicina_ks_od").value = "";
+        $('#ispisBc_od').find('option').remove().end();
+
+        //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sociva
+        var tip_ks_od = $("#tip_ks_od").val();
+
+        //Validating, if is empty.
+        if (tip_ks_od != "") {
+          //AJAX is called.
+          $.ajax({
+            //AJAX type is "Post".
+            type: "POST",
+            //Data will be sent to "ajax.php".
+            url: "ajaxTypeLenses.php",
+            //Data, that will be sent to "ajax.php".
+            data: {
+              tip_ks_od: tip_ks_od
+            },
+            //Ako je rezultat pronadjen, promjenljiva koja je vracena iz ajaxTypeLenses.php sadrzi baznu krivinu i velicinu sociva pa je potrebno istu razdvojiti na dva dijela.
+            //Separator je @@@
+            success: function(html) {
+              var bcTd = html.split('@@@');
+              //Prvi element se dodaje kao opcija u datalist bazne krivine OD
+              $("#ispisBc_od").append(bcTd[0]);
+              //Drugi element se dodjeljuje kao vrijednost polja za velicinu sociva OD
+              document.getElementById("velicina_ks_od").value = bcTd[1];
+            }
+          });
+        }
+      });
+
+      //Funkcija koja se poziva kada se polje za period OS sociva promijeni
+      $("#period_ks_os").change(function() {
+
+        //Parametri potrebni za pretragu tipova sociva (period i ID proizvodjaca sociva) u tabeli sociva
+        var period_ks_os = $('#period_ks_os').val();
+        var proizvodjac_ks_os = $('#proizvodjac_ks_os').val();
+
+        //Validating, if is empty.
+        if (period_ks_os != "") {
+          $.ajax({
+            //AJAX type is "Post".
+            type: "POST",
+            //Data will be sent to "ajax.php".
+            url: "ajaxTypeLenses.php",
+            //Data, that will be sent to "ajax.php".
+            data: {
+              period_ks_os: period_ks_os,
+              proizvodjac_ks_os: proizvodjac_ks_os
+            },
+            //Ako je rezultat pronadjen vrijednosti opcija se smijestaju u izbornik tipova sociva OS
+            success: function(html) {
+              $("#tip_ks_os").html(html).show();
+            }
+          });
+        }
+      });
+      //Funkcija koja se poziva kada se polje za tip sociva OS promijeni
+      $("#tip_ks_os").change(function() {
+
+        //Ciscenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i velicine sociva
+        document.getElementById("bc_ks_os").value = "";
+        document.getElementById("velicina_ks_os").value = "";
+        $('#ispisBc_os').find('option').remove().end();
+
+        //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sociva
+        var tip_ks_os = $("#tip_ks_os").val();
+
+        //Validating, if is empty.
+        if (tip_ks_os != "") {
+          //AJAX is called.
+          $.ajax({
+            //AJAX type is "Post".
+            type: "POST",
+            //Data will be sent to "ajax.php".
+            url: "ajaxTypeLenses.php",
+            //Data, that will be sent to "ajax.php".
+            data: {
+              tip_ks_os: tip_ks_os
+            },
+            //Ako je rezultat pronadjen, promjenljiva koja je vracena iz ajaxTypeLenses.php sadrzi baznu krivinu i velicinu sociva pa je potrebno istu razdvojiti na dva dijela.
+            //Separator je @@@
+            success: function(html) {
+              var bcTd = html.split('@@@');
+              //Prvi element se dodaje kao opcija u datalist bazne krivine OD
+              $("#ispisBc_os").append(bcTd[0]);
+              //Drugi element se dodjeljuje kao vrijednost polja za velicinu sociva OD
+              document.getElementById("velicina_ks_os").value = bcTd[1];
+            }
+          });
+        }
       });
     });
+
+
+    var $proizvodjac_ks_od = $('#proizvodjac_ks_od');
+    $proizvodjac_ks_od.on('change', function() {
+      $('#tip_ks_od').find('option').remove().end();
+      $('#period_ks_od').val('');
+      document.getElementById("bc_ks_od").value = "";
+      document.getElementById("velicina_ks_od").value = "";
+      document.getElementById("jacina_ks_od").value = "";
+      document.getElementById("boja_ks_od").value = "";
+      $('#ispisBc_od').find('option').remove().end();
+    });
+
+    var $period_ks_od = $('#period_ks_od');
+    $period_ks_od.on('change', function() {
+      document.getElementById("bc_ks_od").value = "";
+      document.getElementById("velicina_ks_od").value = "";
+      document.getElementById("jacina_ks_od").value = "";
+      document.getElementById("boja_ks_od").value = "";
+      $('#ispisBc_od').find('option').remove().end();
+    });
+
+    var $proizvodjac_ks_os = $('#proizvodjac_ks_os');
+    $proizvodjac_ks_os.on('change', function() {
+      $('#tip_ks_os').find('option').remove().end();
+      $('#period_ks_os').val('');
+      document.getElementById("bc_ks_os").value = "";
+      document.getElementById("velicina_ks_os").value = "";
+      document.getElementById("jacina_ks_os").value = "";
+      document.getElementById("boja_ks_os").value = "";
+      $('#ispisBc_os').find('option').remove().end();
+    });
+
+    var $period_ks_os = $('#period_ks_os');
+    $period_ks_os.on('change', function() {
+      document.getElementById("bc_ks_os").value = "";
+      document.getElementById("velicina_ks_os").value = "";
+      document.getElementById("jacina_ks_os").value = "";
+      document.getElementById("boja_ks_os").value = "";
+      $('#ispisBc_os').find('option').remove().end();
+    });
+    /*******************************************************************************/
 
     $(document).ready(function() {
       $("#sifra_radnika").on('change', function(e) {

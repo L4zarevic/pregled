@@ -84,7 +84,7 @@ function lensesManufactured($conn)
                             <div class="workers">
                                 <div class="form-group col-md-7">
                                     <label><strong>ID radnika:</strong></label>
-                                    <input name="sifra_radnika" class="form-control" type="password" title="Unesite svoj ID" id="sifra_radnika" />
+                                    <input name="sifra_radnika" class="form-control" type="password" title="Unesite svoj ID" id="sifra_radnika" autocomplete="off" />
                                 </div>
                             </div>
                             <div class="nameWorker">
@@ -134,7 +134,7 @@ function lensesManufactured($conn)
                     <div class="row">
                         <div class="form-group col-md-7">
                             <strong> <label id="labelAnamneza">ANAMNEZA:</label></strong>
-                            <input list="listaAnamneza" name="anamneza" title="" type="text" class="form-control" id="anamneza">
+                            <input list="listaAnamneza" name="anamneza" title="" type="text" class="form-control" id="anamneza" autocomplete="off">
                             <datalist id="listaAnamneza">
                                 <option value="Slabije vidi na daljinu">
                                 <option value="Slabije vidi na blizinu">
@@ -162,7 +162,7 @@ function lensesManufactured($conn)
                             <div class="vod1">
                                 <div class="form-group col-md-5">
                                     <label id="label_vod">VOD:</label>
-                                    <input list="listaVod" name="vod" title="" type="text" class="form-control" id="vod">
+                                    <input list="listaVod" name="vod" title="" type="text" class="form-control" id="vod" autocomplete="off">
                                     <datalist id="listaVod">
                                         <option value="0.1">
                                         <option value="0.2">
@@ -181,7 +181,7 @@ function lensesManufactured($conn)
                             <div class="vos1">
                                 <div class="form-group col-md-5">
                                     <label id="label_vos">VOS:</label>
-                                    <input list="listaVos" name="vos" title="" type="text" class="form-control" id="vos">
+                                    <input list="listaVos" name="vos" title="" type="text" class="form-control" id="vos" autocomplete="off">
                                     <datalist id="listaVos">
                                         <option value="0.1">
                                         <option value="0.2">
@@ -206,11 +206,11 @@ function lensesManufactured($conn)
 
                         <div class="vidnaOstrina_grupa3">
                             <div class="form-group col-md-12">
-                                <input name="vod" title="" type="text" class="form-control" id="vod1">
+                                <input name="vod" title="" type="text" class="form-control" id="vod1" autocomplete="off">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <input name="vos" title="" type="text" class="form-control" id="vos1">
+                                <input name="vos" title="" type="text" class="form-control" id="vos1" autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -254,23 +254,23 @@ function lensesManufactured($conn)
 
                                     <div class="jacina">
                                         <label id='labelPower'>Jačina:</label>
-                                        <input name="jacina_ks_od" title="" type="text" class="form-control" id="jacina_ks_od">
+                                        <input name="jacina_ks_od" title="" type="text" class="form-control" id="jacina_ks_od" autocomplete="off">
                                     </div>
 
                                     <div class="bc">
                                         <label id='labelBc'>BC:</label>
-                                        <input list="ispisBc_od" name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od">
+                                        <input list="ispisBc_od" name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od" autocomplete="off">
                                         <datalist id="ispisBc_od"></datalist>
                                     </div>
 
                                     <div class="velicina">
                                         <label id='labelSize'>TD:</label>
-                                        <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od" />
+                                        <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od" autocomplete="off"/>
                                     </div>
 
                                     <div class="boja">
                                         <label id='labelColor'>Boja:</label>
-                                        <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od">
+                                        <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od" autocomplete="off">
                                     </div>
                                 </div>
                             </div>
@@ -309,23 +309,23 @@ function lensesManufactured($conn)
 
                                     <div class="jacina">
                                         <label id='labelPower'>Jačina:</label>
-                                        <input name="jacina_ks_os" title="" type="text" class="form-control" id="jacina_ks_os">
+                                        <input name="jacina_ks_os" title="" type="text" class="form-control" id="jacina_ks_os" autocomplete="off">
                                     </div>
 
                                     <div class="bc">
                                         <label id='labelBc'>BC:</label>
-                                        <input list="ispisBc_os" name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os" />
+                                        <input list="ispisBc_os" name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os" autocomplete="off" />
                                         <datalist id="ispisBc_os"></datalist>
                                     </div>
 
                                     <div class="velicina">
                                         <label id='labelSize'>TD:</label>
-                                        <input name="velicina_ks_os" title="" type="text" class="form-control" id="velicina_ks_os" />
+                                        <input name="velicina_ks_os" title="" type="text" class="form-control" id="velicina_ks_os" autocomplete="off" />
                                     </div>
 
                                     <div class="boja">
                                         <label id='labelColor'>Boja:</label>
-                                        <input name="boja_ks_os" title="" type="text" class="form-control" id="boja_ks_os">
+                                        <input name="boja_ks_os" title="" type="text" class="form-control" id="boja_ks_os" autocomplete="off">
                                     </div>
                                 </div>
                             </div>

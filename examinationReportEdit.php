@@ -153,7 +153,7 @@ CloseCon($conn);
             <div class='row'>
               <div class='anamnezaReport'>
                 <div class='form-group col-md-9'><strong><label id='labelAnamnezaReport'>ANAMNEZA: </label></strong> &nbsp;
-                  <input name='inputAnamenzaReport' title='' type='text' class='form-control' id='inputAnamenzaReport' value='<?php echo $anamneza; ?>'></div>
+                  <input name='inputAnamenzaReport' title='' type='text' class='form-control' id='inputAnamenzaReport' autocomplete="off" value='<?php echo $anamneza; ?>'></div>
               </div>
             </div>
             <br>
@@ -161,9 +161,9 @@ CloseCon($conn);
             <div class='row'>
               <div class='vidnaOstrinaReport'>
                 <div class='vodReport'>
-                  <div class='form-group col-md-6'> <label>VOD:</label id='labelVodReport'> &nbsp;<input name='inputVodReport' title='' type='text' class='form-control' id='inputVodReport' value='<?php echo $vod; ?>'></div>
+                  <div class='form-group col-md-6'> <label>VOD:</label id='labelVodReport'> &nbsp;<input name='inputVodReport' autocomplete="off" type='text' class='form-control' id='inputVodReport' value='<?php echo $vod; ?>'></div>
                   <div class='vosReport'>
-                    <div class='form-group col-md-6'><label id='labelVosReport'>VOS:</label> &nbsp; <input name='inputVosReport' title='' type='text' class='form-control' id='inputVosReport' value='<?php echo $vos; ?>'></div>
+                    <div class='form-group col-md-6'><label id='labelVosReport'>VOS:</label> &nbsp; <input name='inputVosReport' autocomplete="off" type='text' class='form-control' id='inputVosReport' value='<?php echo $vos; ?>'></div>
                   </div>
                 </div>
               </div>
@@ -173,13 +173,13 @@ CloseCon($conn);
             <div class='row'>
               <div class='motilitetTonusReport'>
                 <div class='motilitetReport'>
-                  <div class='form-group col-md-12'> <strong><label id='labelMotilitetReport'>MOTILITET: </label></strong> &nbsp; <input name='inputMotilitetReport' title='' type='text' class='form-control' id='inputMotilitetReport' value='<?php echo $motilitet; ?>'></div>
+                  <div class='form-group col-md-12'> <strong><label id='labelMotilitetReport'>MOTILITET: </label></strong> &nbsp; <input name='inputMotilitetReport' autocomplete="off" type='text' class='form-control' id='inputMotilitetReport' value='<?php echo $motilitet; ?>'></div>
                 </div>
 
                 <div class='tonusReport'>
                   <div class='form-group col-md-10'><strong><label id='labelTonusReport'>TONUS: </label></strong>
-                    <label id='labelTonusOdReport'>OD: </label></strong> &nbsp; <input name='inputTonusOdReport' title='' type='text' class='form-control' id='inputTonusOdReport' value='<?php echo $tonus_od; ?>'>
-                    &nbsp;<label id='labelTonusOsReport'>OS: </label></strong> &nbsp; <input name='inputTonusOsReport' title='' type='text' class='form-control' id='inputTonusOsReport' value='<?php echo $tonus_os; ?>'></div>
+                    <label id='labelTonusOdReport'>OD: </label></strong> &nbsp; <input name='inputTonusOdReport' autocomplete="off" type='text' class='form-control' id='inputTonusOdReport' value='<?php echo $tonus_od; ?>'>
+                    &nbsp;<label id='labelTonusOsReport'>OS: </label></strong> &nbsp; <input name='inputTonusOsReport' autocomplete="off" type='text' class='form-control' id='inputTonusOsReport' value='<?php echo $tonus_os; ?>'></div>
                 </div>
 
               </div>
@@ -189,56 +189,56 @@ CloseCon($conn);
             <div id='grupa1'>
               <div class='row'><strong><label>BMS: </label></strong></div>
               <div class='row'>
-                <div class='form-group col-md-8'><label>OD: </label></strong> &nbsp; <input name='inputBmsOdReport' type='text' class='form-control' id='inputBmsOdReport' value='<?php echo $bms_od; ?>'></div>
+                <div class='form-group col-md-8'><label>OD: </label></strong> &nbsp; <input name='inputBmsOdReport' autocomplete="off" type='text' class='form-control' id='inputBmsOdReport' value='<?php echo $bms_od; ?>'></div>
               </div>
               <div class=' row'>
-                <div class='form-group col-md-8'><label>OS: </label></strong> &nbsp; <input name='inputBmsOsReport' type='text' class='form-control' id='inputBmsOsReport' value='<?php echo $bms_os; ?>'></div>
+                <div class='form-group col-md-8'><label>OS: </label></strong> &nbsp; <input name='inputBmsOsReport' autocomplete="off" type='text' class='form-control' id='inputBmsOsReport' value='<?php echo $bms_os; ?>'></div>
               </div>
             </div>
 
             <div id='grupa2'>
               <div class='row'> <strong><label>FUNDUS: </label></strong></div>
               <div class='row'>
-                <div class='form-group col-md-8'><label>OD: </label></strong> &nbsp; <input name='inputFundusOdReport' type='text' class='form-control' id='inputFundusOdReport' value='<?php echo $fundus_od; ?>'></div>
+                <div class='form-group col-md-8'><label>OD: </label></strong> &nbsp; <input name='inputFundusOdReport' autocomplete="off" type='text' class='form-control' id='inputFundusOdReport' value='<?php echo $fundus_od; ?>'></div>
               </div>
               <div class='row'>
-                <div class='form-group col-md-8'><label>OS: </label></strong> &nbsp; <input name='inputFundusOsReport' type='text' class='form-control' id='inputFundusOsReport' value='<?php echo $fundus_os; ?>'></div>
+                <div class='form-group col-md-8'><label>OS: </label></strong> &nbsp; <input name='inputFundusOsReport' autocomplete="off" type='text' class='form-control' id='inputFundusOsReport' value='<?php echo $fundus_os; ?>'></div>
               </div>
 
             </div>
 
             <hr>
             <div class='row'>
-              <div class='form-group col-md-5'><strong><label>DIJAGNOZA: &nbsp;</label></strong><input name='inputDiagnoseReport' type='text' class='form-control' id='inputDiagnoseReport' value='<?php echo $dijagnoza; ?>'></div>
+              <div class='form-group col-md-5'><strong><label>DIJAGNOZA: &nbsp;</label></strong><input name='inputDiagnoseReport' autocomplete="off" type='text' class='form-control' id='inputDiagnoseReport' value='<?php echo $dijagnoza; ?>'></div>
             </div>
             <div class='row'>
-              <div class='form-group col-md-5'> <strong><label>TERAPIJA:&nbsp;</label></strong><input name='inputTherapyReport' type='text' class='form-control' id='inputTherapyReport' value='<?php echo $terapija; ?>'></div>
+              <div class='form-group col-md-5'> <strong><label>TERAPIJA:&nbsp;</label></strong><input name='inputTherapyReport' autocomplete="off" type='text' class='form-control' id='inputTherapyReport' value='<?php echo $terapija; ?>'></div>
             </div>
 
             <hr>
             <div class='korekcijaDaljina'>
               <div class='row'> <strong><label>DALJINA - korekcija: </label></strong></div>
               <div class='row'>
-                <div class='form-group col-md-8'><label>OD: </label></strong> &nbsp; <input name='inputDistanceCorrectionOdReport' type='text' class='form-control' id='inputDistanceCorrectionOdReport' value='<?php echo $korekcija_daljina_od; ?>'></div>
+                <div class='form-group col-md-8'><label>OD: </label></strong> &nbsp; <input name='inputDistanceCorrectionOdReport' autocomplete="off" type='text' class='form-control' id='inputDistanceCorrectionOdReport' value='<?php echo $korekcija_daljina_od; ?>'></div>
               </div>
               <div class='row'>
-                <div class='form-group col-md-8'><label>OS: </label></strong> &nbsp; <input name='inputDistanceCorrectionOsReport' type='text' class='form-control' id='inputDistanceCorrectionOsReport' value='<?php echo $korekcija_daljina_os; ?>'></div>
+                <div class='form-group col-md-8'><label>OS: </label></strong> &nbsp; <input name='inputDistanceCorrectionOsReport' autocomplete="off" type='text' class='form-control' id='inputDistanceCorrectionOsReport' value='<?php echo $korekcija_daljina_os; ?>'></div>
               </div>
 
             </div>
             <div class='korekcijaBlizina'>
               <div class='row'> <strong><label>BLIZINA - korekcija: </label></strong></div>
               <div class='row'>
-                <div class='form-group col-md-8'><label>OD: </label></strong> &nbsp; <input name='inputProximityCorrectionOdReport' type='text' class='form-control' id='inputProximityCorrectionOdReport' value='<?php echo $korekcija_blizina_od; ?>'></div>
+                <div class='form-group col-md-8'><label>OD: </label></strong> &nbsp; <input name='inputProximityCorrectionOdReport' autocomplete="off" type='text' class='form-control' id='inputProximityCorrectionOdReport' value='<?php echo $korekcija_blizina_od; ?>'></div>
               </div>
               <div class='row'>
-                <div class='form-group col-md-8'><label>OS: </label></strong> &nbsp; <input name='inputProximityCorrectionOsReport' type='text' class='form-control' id='inputProximityCorrectionOsReport' value='<?php echo $korekcija_blizina_os; ?>'></div>
+                <div class='form-group col-md-8'><label>OS: </label></strong> &nbsp; <input name='inputProximityCorrectionOsReport' autocomplete="off" type='text' class='form-control' id='inputProximityCorrectionOsReport' value='<?php echo $korekcija_blizina_os; ?>'></div>
               </div>
             </div>
             <br>
             <br>
             <div class='row'>
-              <div class='form-group col-md-2'><strong><label>PD: &nbsp;</label></strong><input name='inputPdReport' type='text' class='form-control' id='inputPdReport' value='<?php echo $pd; ?>'></div>
+              <div class='form-group col-md-2'><strong><label>PD: &nbsp;</label></strong><input name='inputPdReport' autocomplete="off" type='text' class='form-control' id='inputPdReport' value='<?php echo $pd; ?>'></div>
             </div></br>
 
 
@@ -257,33 +257,32 @@ CloseCon($conn);
 
                   <div class="proizvodjac">
                     <label id='labelManufactured'>Proizvođač:</label>
-
-                    <input name="proizvodjac_ks_od" title="" class="form-control" id="proizvodjac_ks_od" disabled>
+                    <input name="proizvodjac_ks_od" title="" class="form-control" id="proizvodjac_ks_od" autocomplete="off" disabled>
                   </div>
 
                   <div class="tip">
                     <label id='labelType'>Tip/vrsta:</label>
-                    <input name="tip_ks_od" title="" class="form-control" id="tip_ks_od" value="<?php echo $tip_ks_od; ?>" disabled>
+                    <input name="tip_ks_od" title="" class="form-control" id="tip_ks_od" autocomplete="off" value="<?php echo $tip_ks_od; ?>" disabled>
                   </div>
 
                   <div class="jacina">
                     <label id='labelPower'>Jačina:</label>
-                    <input name="jacina_ks_od" title="" type="text" class="form-control" id="jacina_ks_od" value="<?php echo $jacina_ks_od; ?>" disabled>
+                    <input name="jacina_ks_od" title="" type="text" class="form-control" autocomplete="off" id="jacina_ks_od" value="<?php echo $jacina_ks_od; ?>" disabled>
                   </div>
 
                   <div class="bc">
                     <label id='labelBc'>BC:</label>
-                    <input name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od" value="<?php echo $bc_ks_od; ?>" disabled>
+                    <input name="bc_ks_od" title="" type="text" class="form-control" autocomplete="off" id="bc_ks_od" value="<?php echo $bc_ks_od; ?>" disabled>
                   </div>
 
                   <div class="velicina">
                     <label id='labelSize'>TD:</label>
-                    <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od" value="<?php echo $velicina_ks_od; ?>" disabled>
+                    <input name="velicina_ks_od" title="" type="text" class="form-control" autocomplete="off" id="velicina_ks_od" value="<?php echo $velicina_ks_od; ?>" disabled>
                   </div>
 
                   <div class="boja">
                     <label id='labelColor'>Boja:</label>
-                    <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od" value="<?php echo $boja_ks_od; ?>" disabled>
+                    <input name="boja_ks_od" title="" type="text" class="form-control" autocomplete="off" id="boja_ks_od" value="<?php echo $boja_ks_od; ?>" disabled>
                   </div>
                 </div>
 
@@ -297,34 +296,34 @@ CloseCon($conn);
 
                   <div class="proizvodjac">
                     <label id='labelManufactured'>Proizvođač:</label>
-                    <input name="proizvodjac_ks_os" title="" class="form-control" id="proizvodjac_ks_os" disabled>
+                    <input name="proizvodjac_ks_os" title="" class="form-control" autocomplete="off" id="proizvodjac_ks_os" disabled>
                   </div>
 
                   <div class="tip">
                     <label id='labelType'>Tip/vrsta:</label>
-                    <input name="tip_ks_os" title="" type="text" class="form-control" id="tip_ks_os" value="<?php echo $tip_ks_os; ?>" disabled>
+                    <input name="tip_ks_os" title="" type="text" class="form-control" autocomplete="off" id="tip_ks_os" value="<?php echo $tip_ks_os; ?>" disabled>
                   </div>
 
                   <div class="jacina">
                     <label id='labelPower'>Jačina:</label>
-                    <input name="jacina_ks_os" title="" type="text" class="form-control" id="jacina_ks_os" value="<?php echo $jacina_ks_os; ?>" disabled>
+                    <input name="jacina_ks_os" title="" type="text" class="form-control" autocomplete="off" id="jacina_ks_os" value="<?php echo $jacina_ks_os; ?>" disabled>
                   </div>
 
                   <div class="bc">
                     <label id='labelBc'>BC:</label>
-                    <input name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os" value="<?php echo $bc_ks_os; ?>" disabled>
+                    <input name="bc_ks_os" title="" type="text" class="form-control" autocomplete="off" id="bc_ks_os" value="<?php echo $bc_ks_os; ?>" disabled>
 
                   </div>
 
                   <div class="velicina">
                     <label id='labelSize'>TD:</label>
-                    <input name="velicina_ks_os" title="" type="text" class="form-control" id="velicina_ks_os" value="<?php echo $velicina_ks_os; ?>" disabled>
+                    <input name="velicina_ks_os" title="" type="text" class="form-control" autocomplete="off" id="velicina_ks_os" value="<?php echo $velicina_ks_os; ?>" disabled>
 
                   </div>
 
                   <div class="boja">
                     <label id='labelColor'>Boja:</label>
-                    <input name="boja_ks_os" title="" type="text" class="form-control" id="boja_ks_os" value="<?php echo $boja_ks_os; ?>" disabled>
+                    <input name="boja_ks_os" title="" type="text" class="form-control" autocomplete="off" id="boja_ks_os" value="<?php echo $boja_ks_os; ?>" disabled>
                   </div>
                 </div>
               </div>
@@ -334,11 +333,11 @@ CloseCon($conn);
             <hr>
             <br>
             <div class='row'>
-              <div class='form-group col-md-4'> <strong><label>KONTROLA: &nbsp;</label></strong><input name='inputControlReport' type='text' class='form-control' id='inputControlReport' value='<?php echo $kontrola; ?>'></div>
+              <div class='form-group col-md-4'> <strong><label>KONTROLA: &nbsp;</label></strong><input name='inputControlReport' type='text' autocomplete="off" class='form-control' id='inputControlReport' value='<?php echo $kontrola; ?>'></div>
             </div>
             <hr>
             <div class='row'>
-              <div class='form-group col-md-6'><strong><label>NAPOMENA: &nbsp;</label></strong> <textarea name='inputNoteExaminationReport' type='text' class='form-control' id='inputNoteExaminationReport'><?php echo $napomena_pregleda; ?></textarea></div>
+              <div class='form-group col-md-6'><strong><label>NAPOMENA: &nbsp;</label></strong> <textarea name='inputNoteExaminationReport' type='text' autocomplete="off" class='form-control' id='inputNoteExaminationReport'><?php echo $napomena_pregleda; ?></textarea></div>
             </div>
             <hr>
             <br>
