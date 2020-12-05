@@ -4,20 +4,20 @@ if (is_null($_SESSION['prijavljen'])) {
 }
 include 'connection.php';
 $conn = OpenCon();
-mysqli_set_charset($conn,"utf8");
+mysqli_set_charset($conn, "utf8");
 
 $korisnickoIme = mysqli_real_escape_string($conn, $_POST['korisnicko_ime']);
 $lozinka = mysqli_real_escape_string($conn, $_POST['lozinka']);
 $hash_password = md5($lozinka);
-$upit = "select * from korisnici where korisnicko_ime='$korisnickoIme' AND lozinka='$hash_password'";
-$rezultat = mysqli_query($conn, $upit);
-if (!$rezultat) die(mysqli_error($conn));
-while ($red = mysqli_fetch_object($rezultat)) {
-    $idKorisnika = $red->ID;
-    $user = $red->korisnicko_ime;
-    $pass = $red->lozinka;
-    $imeKorisnika = $red->naziv;
-    $dataBaseName = $red->db;
+$sql = "SELECT * FROM korisnici WHERE korisnicko_ime='$korisnickoIme' AND lozinka='$hash_password'";
+$result = mysqli_query($conn, $sql);
+if (!$result) die(mysqli_error($conn));
+while ($row = mysqli_fetch_object($result)) {
+    $idKorisnika = $row->ID;
+    $user = $row->korisnicko_ime;
+    $pass = $row->lozinka;
+    $imeKorisnika = $row->naziv;
+    $dataBaseName = $row->db;
 }
 if (!$korisnickoIme && !$lozinka) {
     $error = 1;

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Moja optika Stanković</title>
+    <title>Moja Optika Stanković</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
@@ -24,17 +24,21 @@
                 <form class="login100-form validate-form flex-sb flex-w" action="../pregled/obrada.php" method="post"><img id="logo" src="../pregled/images/MO.png"><span class="login100-form-title p-b-51"></span>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Niste unijeli korisničko ime"><input class="input100" type="text" name="korisnicko_ime" placeholder="Korisničko ime"><span class="focus-input100"></span></div>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Niste unijeli lozinku"><input class="input100" type="password" name="lozinka" placeholder="Lozinka"><span class="focus-input100"></span></div>
-                    <div class="container-login100-form-btn m-t-17"><button class="login100-form-btn" type="submit">Prijava</button><br /><?php if (isset($_REQUEST['msg'])) {
-                                                                                                                                                if ($_REQUEST['msg'] == '1') {
-                                                                                                                                                    echo "<script src=\"js/alertify.min.js\"></script>";
-                                                                                                                                                    echo "<script type=\"text/javascript\">alertify.error('Neuspiješno logovanje');</script>";
-                                                                                                                                                }
-                                                                                                                                                if ($_REQUEST['msg'] == '2') {
-                                                                                                                                                    echo "<script src=\"js/alertify.min.js\"></script>";
-                                                                                                                                                    echo "<script type=\"text/javascript\">alertify.alert('Prekid konekcije','Provjerite Vašu internet konekciju i pokušajte ponovo da se ulogujete na Vaš korisnički nalog. Ukoliko se problem ponavlja kontaktirajte nas na info@mojaoptika.com');</script>";
-                                                                                                                                                }
-                                                                                                                                            }
-                                                                                                                                            echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>"; ?></div>
+                    <div class="container-login100-form-btn m-t-17"><button class="login100-form-btn" type="submit">Prijava</button><br />
+                        <?php
+                        if (isset($_REQUEST['msg'])) {
+                            if ($_REQUEST['msg'] == '1') {
+                                echo "<script src=\"js/alertify.min.js\"></script>";
+                                echo "<script type=\"text/javascript\">alertify.error('Neuspiješno logovanje');</script>";
+                            }
+                            if ($_REQUEST['msg'] == '2') {
+                                echo "<script src=\"js/alertify.min.js\"></script>";
+                                echo "<script type=\"text/javascript\">alertify.alert('Prekid konekcije','Provjerite Vašu internet konekciju i pokušajte ponovo da se ulogujete na Vaš korisnički nalog. Ukoliko se problem ponavlja kontaktirajte nas na info@mojaoptika.com');</script>";
+                            }
+                        }
+                        echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
+                        ?>
+                    </div>
                 </form>
             </div>
         </div>
@@ -46,5 +50,5 @@
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/alertify.min.js"></script>";
 </body>
-
+<!-- „Ko traži, naći će. Ko kuca, otvoriće mu se.“ -->
 </html>
