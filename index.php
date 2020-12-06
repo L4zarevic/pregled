@@ -42,6 +42,20 @@ function sumLensesExamination($conn, $idKorisnika)
     }
 }
 
+function sumMonthsExamination($conn, $idKorisnika)
+{
+    $todayDate = "" . date("d.m.Y");
+    $dateSplit = explode(".", $todayDate, 3);
+    $dateSplit[1] = rtrim($dateSplit[1], ".");
+    $startDate = "01." . $dateSplit[1] . "." . $dateSplit[2];
+    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN '$startDate' AND '$todayDate' AND ID_korisnika='$idKorisnika'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($row = mysqli_fetch_object($result)) {
+        echo $row->brojPregleda;
+    }
+}
+
 
 
 
@@ -85,8 +99,9 @@ function sumLensesExamination($conn, $idKorisnika)
                     </div>
                     </br>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Statistika</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Statistika obavljenih pregleda</h1>
                     </div>
+                    
                     <div class="statistic">
                         <div class="sumExamination">
                             <div class="col-xl-9 col-md-6 mb-4">
