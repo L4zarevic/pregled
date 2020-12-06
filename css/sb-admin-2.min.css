@@ -9926,6 +9926,27 @@ body.sidebar-toggled footer.sticky-footer {
 .navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion {
  background:#ec1d25!important
 }
+
+.statistic{
+	display:block;
+	width:100%;
+}
+
+.sumExamination{
+	display:inline-block;
+	width:32%;
+	float:left;
+}
+
+.sumGlasses{
+	display:inline-block;
+	width:32%;
+}
+
+.sumLenses{
+	display:inline-block;
+	width:32%;
+}
 /***********************/
 
 /*Dodaj novog pacijenta*/

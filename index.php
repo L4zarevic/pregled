@@ -1,5 +1,52 @@
 <!DOCTYPE html>
-<html lang="en"><?php include '../pregled/modules/header.php'; ?>
+<html lang="en">
+<?php include '../pregled/modules/header.php';
+
+require_once 'connection.php';
+$korisnik = $_SESSION['prijavljen'];
+$ar = explode("#", $korisnik, 3);
+$ar[1] = rtrim($ar[1], "#");
+$idKorisnika = $ar[0];
+$dataBaseName = $ar[2];
+$conn = OpenStoreCon($dataBaseName);
+mysqli_set_charset($conn, "utf8");
+
+
+function sumExamination($conn, $idKorisnika)
+{
+    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika='$idKorisnika'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($row = mysqli_fetch_object($result)) {
+        echo $row->brojPregleda;
+    }
+}
+
+function sumGlassesExamination($conn, $idKorisnika)
+{
+    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika='$idKorisnika' AND vrsta_pregleda='naocare'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($row = mysqli_fetch_object($result)) {
+        echo $row->brojPregleda;
+    }
+}
+
+function sumLensesExamination($conn, $idKorisnika)
+{
+    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika='$idKorisnika' AND vrsta_pregleda='sociva'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($row = mysqli_fetch_object($result)) {
+        echo $row->brojPregleda;
+    }
+}
+
+
+
+
+
+?>
 
 <body id="page-top">
     <div id="wrapper">
@@ -29,20 +76,71 @@
                     </div>
                     <div class="row">
                         <div class="">
-                            <!--<h5>Uputstvo za narudžbenicu</h5>
-                            <p>Da biste kreirali željenu narudžbenicu potrebno je:</p>
-                            <p>U jezičku lijevo izabrati iz ponude Lagerska stakla ili Specijala</p>
-                            <p>Kod Lagerska stakla" dobićete padajuću listu sa indexima i materijalima, nakon čega je potrebno izabrati željeni index.</p>
-                            <p>Da biste definisali potrebnu količinu određene dioptrije, potrebno je u polje grafikona unijeti željenu količinu, nakon čega je potrebno pritisnuti ENTER na tastaturi radi potvrde.</p>
-                            <p><strong>NAPOMENA: Stavke dodavati jednu po jednu</strong></p>
-                            <p>Sve željene stavke koje potvrdite nakon unosa biće prikazane u tabeli NARUDŽBENICA koja se nalazi na dnu stranice.</p>
-                            <p><strong>Unesene količine za stavke u tabeli NARUDŽBENICA nije moguće uređivati.</strong></p>
-                            <p>U slučaju pogrešnog unosa, stavku iz tabele je potrebno ukloniti klikom na ikonicu kantice <i class='fas fa-trash'></i>, a nakon toga izvršiti ponovni unos iz grafikona.</p>
-                            <p>Nakon što kreirate narudžbenicu, potrebno je kliknuti na dugme <i class='fas fa-paper-plane'></i> POŠALJI NARUDŽBU, nakog čega će Vaša narudžbenica biti poslata veleprodaji M-Optic</p>
-                            <p>Za sve dodatne informacije u vezi aplikacije možete nas kontaktirati na email: <a href="mailto:info@mojaoptika.com">info@mojaoptika.com</a></p></br> !-->
+
                         </div>
                         <div class="companyInfo"> <img id="logo" src="../pregled/images/MO.png">
                             <!--<p>“M-Optic” d.o.o.</br> ul. Majevička br. 29, 76300 Bijeljina</br> <strong>Tel:</strong> +387 55 222 999, 222 990, 490 010</br> <strong>Fax:</strong> +387 55 222 998</br> <strong>Email:</strong> <a href="mailto:mopticvp@mojaoptika.com">mopticvp@mojaoptika.com</a></br> <a href="https://mojaoptika.com">www.mojaoptika.com</a></p>!-->
+                        </div>
+
+                    </div>
+                    </br>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Statistika</h1>
+                    </div>
+                    <div class="statistic">
+                        <div class="sumExamination">
+                            <div class="col-xl-9 col-md-6 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Ukupno obavljenih pregleda</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo sumExamination($conn, $idKorisnika); ?></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sumGlasses">
+                            <div class="col-xl-9 col-md-6 mb-6">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pregled - naočare </br></div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo sumGlassesExamination($conn, $idKorisnika); ?></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-glasses fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sumLenses">
+                            <div class="col-xl-9 col-md-6 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pregled - kontaktna sočiva</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo sumLensesExamination($conn, $idKorisnika); ?></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-eye fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

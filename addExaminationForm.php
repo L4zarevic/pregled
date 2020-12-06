@@ -5,18 +5,6 @@
 include '../pregled/modules/header.php';
 ?>
 
-
-<!-- Including CSS file. -->
-<style>
-  .bs-example {
-    margin-bottom: 20px;
-  }
-
-  .accordion .fas {
-    margin-right: 0.5rem;
-  }
-</style>
-
 <body id="page-top">
 
   <!-- Page Wrapper -->
