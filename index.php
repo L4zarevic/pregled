@@ -44,11 +44,39 @@ function sumLensesExamination($conn, $idKorisnika)
 
 function sumMonthsExamination($conn, $idKorisnika)
 {
-    $todayDate = "" . date("d.m.Y");
-    $dateSplit = explode(".", $todayDate, 3);
-    $dateSplit[1] = rtrim($dateSplit[1], ".");
-    $startDate = "01." . $dateSplit[1] . "." . $dateSplit[2];
+    $todayDate = date("Y-m-d");
+    $dateSplit = explode("-", $todayDate, 3);
+    $dateSplit[1] = rtrim($dateSplit[1], "-");
+    $startDate = $dateSplit[0] . "-" . $dateSplit[1] . "-01";
     $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN '$startDate' AND '$todayDate' AND ID_korisnika='$idKorisnika'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($row = mysqli_fetch_object($result)) {
+        echo $row->brojPregleda;
+    }
+}
+
+function sumGlassesMonthsExamination($conn, $idKorisnika)
+{
+    $todayDate = date("Y-m-d");
+    $dateSplit = explode("-", $todayDate, 3);
+    $dateSplit[1] = rtrim($dateSplit[1], "-");
+    $startDate = $dateSplit[0] . "-" . $dateSplit[1] . "-01";
+    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN '$startDate' AND '$todayDate' AND ID_korisnika='$idKorisnika' AND vrsta_pregleda ='naocare'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($row = mysqli_fetch_object($result)) {
+        echo $row->brojPregleda;
+    }
+}
+
+function sumLensesMonthsExamination($conn, $idKorisnika)
+{
+    $todayDate = date("Y-m-d");
+    $dateSplit = explode("-", $todayDate, 3);
+    $dateSplit[1] = rtrim($dateSplit[1], "-");
+    $startDate = $dateSplit[0] . "-" . $dateSplit[1] . "-01";
+    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN '$startDate' AND '$todayDate' AND ID_korisnika='$idKorisnika' AND vrsta_pregleda ='sociva'";
     $result = mysqli_query($conn, $sql);
 
     while ($row = mysqli_fetch_object($result)) {
@@ -93,7 +121,7 @@ function sumMonthsExamination($conn, $idKorisnika)
 
                         </div>
                         <div class="companyInfo"> <img id="logo" src="../pregled/images/MO.png">
-                            <!--<p>“M-Optic” d.o.o.</br> ul. Majevička br. 29, 76300 Bijeljina</br> <strong>Tel:</strong> +387 55 222 999, 222 990, 490 010</br> <strong>Fax:</strong> +387 55 222 998</br> <strong>Email:</strong> <a href="mailto:mopticvp@mojaoptika.com">mopticvp@mojaoptika.com</a></br> <a href="https://mojaoptika.com">www.mojaoptika.com</a></p>!-->
+
                         </div>
 
                     </div>
@@ -101,7 +129,63 @@ function sumMonthsExamination($conn, $idKorisnika)
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Statistika obavljenih pregleda</h1>
                     </div>
-                    
+                    <div class="statistic">
+                        <div class="sumExamination">
+                            <div class="col-xl-9 col-md-6 mb-4">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Obavljenih pregleda (ovaj mjesec)</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo sumMonthsExamination($conn, $idKorisnika); ?></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sumGlasses">
+                            <div class="col-xl-9 col-md-6 mb-6">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pregled - naočare (ovaj mjesec)</br></div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo sumGlassesMonthsExamination($conn, $idKorisnika); ?></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-glasses fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sumLenses">
+                            <div class="col-xl-9 col-md-6 mb-4">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pregled - kontaktna sočiva (ovaj mjesec)</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo sumLensesMonthsExamination($conn, $idKorisnika); ?></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-eye fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </br>
+                    </br>
                     <div class="statistic">
                         <div class="sumExamination">
                             <div class="col-xl-9 col-md-6 mb-4">
