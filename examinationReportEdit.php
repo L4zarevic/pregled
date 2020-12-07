@@ -22,7 +22,7 @@ while ($row = mysqli_fetch_object($result)) {
   $ID_pacijenta = $row->ID_pacijenta;
   $ID_korisnika = $row->ID_korisnika;
   $ID_radnika = $row->ID_radnika;
-  $datum_pregleda = $row->datum_pregleda;
+  $originalDate = $row->datum_pregleda;
   $anamneza = $row->anamneza;
   $vod = $row->vod;
   $vos = $row->vos;
@@ -57,6 +57,9 @@ while ($row = mysqli_fetch_object($result)) {
   $kontrola = $row->kontrola;
   $napomena_pregleda  = $row->napomena_pregleda;
 }
+
+$datum_pregleda = date("d.m.Y", strtotime($originalDate));
+
 
 $sql2 = "SELECT generalije_pacijenta FROM pacijenti WHERE ID=$ID_pacijenta";
 $result = mysqli_query($conn, $sql2);

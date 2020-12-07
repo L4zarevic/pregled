@@ -31,9 +31,11 @@
     echo "</thead>";
     $rb = 0;
     while ($row = mysqli_fetch_object($result)) {
+        $originalDate = $row->datum_pregleda;
+        $datum_pregleda = date("d.m.Y", strtotime($originalDate));
         echo "<tr>";
         echo "<td>" . ($rb = $rb + 1) . "</td>";
-        echo "<td><a target='_blank' href='examinationReportEdit.php?id=$row->ID'>$row->datum_pregleda</a></td>";
+        echo "<td><a target='_blank' href='examinationReportEdit.php?id=$row->ID'>$datum_pregleda</a></td>";
         $sql1 = "SELECT mojaopt_optike.korisnici.naziv FROM mojaopt_optike.korisnici WHERE mojaopt_optike.korisnici.ID =$row->ID_korisnika";
         $result1 = mysqli_query($conn, $sql1);
         while ($row1 = mysqli_fetch_object($result1)) {
