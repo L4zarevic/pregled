@@ -15,9 +15,9 @@ if (isset($_POST['period_ks_od'])) {
     $period_ks_od = $_POST['period_ks_od'];
     $proizvodjac_ks_od = $_POST['proizvodjac_ks_od'];
     //Search query.
-    $Query = "SELECT ID,tip FROM sociva WHERE ID_proizvodjaca='$proizvodjac_ks_od' AND period='$period_ks_od' GROUP BY tip";
+    $sql = "SELECT ID,tip FROM sociva WHERE ID_proizvodjaca='$proizvodjac_ks_od' AND period='$period_ks_od' GROUP BY tip";
     //Query execution
-    $ExecQuery = MySQLi_query($conn, $Query);
+    $ExecQuery = MySQLi_query($conn, $sql);
     //Creating unordered list to display result.
 
     echo "<option default></option>";
@@ -30,9 +30,9 @@ if (isset($_POST['period_ks_od'])) {
 if (isset($_POST['tip_ks_od'])) {
     $tip_ks_od = $_POST['tip_ks_od'];
     //Search query.
-    $Query = "SELECT bc,td FROM sociva WHERE ID='$tip_ks_od'";
+    $sql = "SELECT bc,td FROM sociva WHERE ID='$tip_ks_od'";
     //Query execution
-    $ExecQuery = MySQLi_query($conn, $Query);
+    $ExecQuery = MySQLi_query($conn, $sql);
     //Creating unordered list to display result.
 
     $bcValue = "";
@@ -58,9 +58,9 @@ if (isset($_POST['period_ks_os'])) {
     $period_ks_os = $_POST['period_ks_os'];
     $proizvodjac_ks_os = $_POST['proizvodjac_ks_os'];
     //Search query.
-    $Query = "SELECT ID,tip FROM sociva WHERE ID_proizvodjaca='$proizvodjac_ks_os' AND period='$period_ks_os' GROUP BY tip";
+    $sql = "SELECT ID,tip FROM sociva WHERE ID_proizvodjaca='$proizvodjac_ks_os' AND period='$period_ks_os' GROUP BY tip";
     //Query execution
-    $ExecQuery = MySQLi_query($conn, $Query);
+    $ExecQuery = MySQLi_query($conn, $sql);
     //Creating unordered list to display result.
 
     echo "<option default></option>";
