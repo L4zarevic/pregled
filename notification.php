@@ -4,6 +4,10 @@
  * Provjeravaju se datumi iz kolone notifikacija u tabeli 'pregledi'.
  * Ukoliko je datum u opsegu zadnjih 7 dana, onda se šalje email korisnicima(optikama).
  * U email se nalaze osnovni podaci o pacijentu i sočivima koje su mu propisana na pregledu i na taj način optike mogu kontaktirati pacijenta da treba uzeti nova.
+ * 
+ * 
+ * 
+ * Cron job izvšava skriptu svaki dan u 03:00 
  */
 
 include 'connection.php';
