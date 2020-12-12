@@ -1,4 +1,8 @@
-<?php session_start();
+<?php
+//Skripta za čuvavanje podataka o novom pacijentu pacijenta
+//Ovu skriptu koristi form obrazac za dodavanje novog pacijenta "addPatientForm.php"
+
+session_start();
 if (is_null($_SESSION['prijavljen'])) {
     header('Location: ../pregled/login.php');
 }
@@ -10,7 +14,7 @@ $id_korisnika = $ar[0];
 $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn,"utf8");
+mysqli_set_charset($conn, "utf8");
 
 $imePacijenta = mysqli_real_escape_string($conn, $_REQUEST['ime_pacijenta']);
 $imeOcaPacijenta = mysqli_real_escape_string($conn, $_REQUEST['ime_oca_pacijenta']);
@@ -25,8 +29,10 @@ $naocare_blizina_os = mysqli_real_escape_string($conn, $_REQUEST['naocare_blizin
 $sociva_od = mysqli_real_escape_string($conn, $_REQUEST['sociva_od']);
 $sociva_os = mysqli_real_escape_string($conn, $_REQUEST['sociva_os']);
 
+//Uslov u kome se provjera da li je unijeto ime oca. Ukoliko jeste zapis generalija pacijenta će biti u formatu "Ime (Ime oca) Prezime godište"
 if (strlen($imeOcaPacijenta) > 0) {
     $generalije_pacijenta = $imePacijenta . " (" . $imeOcaPacijenta . ") " . $prezimePacijenta . " " . $godistePacijenta;
+    //Ukoliko nije format će biti "Ime Prezime godište"
 } else {
     $generalije_pacijenta = $imePacijenta . " " . $prezimePacijenta . " " . $godistePacijenta;
 }

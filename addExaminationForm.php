@@ -26,7 +26,6 @@ include '../pregled/modules/header.php';
           </button>
 
 
-
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
             <div class="topbar-divider d-none d-sm-block"></div>
@@ -96,7 +95,7 @@ include '../pregled/modules/header.php';
             <div class="todayDate">
               <div class="form-group col-md-10">
                 <label>Današnji datum</label>
-                <input name="datum_pregleda" title="" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
+                <input name="datum_pregleda" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
               </div>
               <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
             </div>
@@ -116,7 +115,7 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-7">
               <strong> <label id="labelAnamneza">ANAMNEZA:</label></strong>
-              <input list="listaAnamneza" name="anamneza" title="" type="text" class="form-control" id="anamneza" autocomplete="off">
+              <input list="listaAnamneza" name="anamneza" title="Unesite anamnezu" type="text" class="form-control" id="anamneza" autocomplete="off">
               <datalist id="listaAnamneza">
                 <option value="Slabije vidi na daljinu">
                 <option value="Slabije vidi na blizinu">
@@ -143,7 +142,7 @@ include '../pregled/modules/header.php';
               <div class="vod1">
                 <div class="form-group col-md-5">
                   <label id="label_vod">VOD:</label>
-                  <input list="listaVod" name="vod" title="" type="text" class="form-control" id="vod" autocomplete="off">
+                  <input list="listaVod" name="vod" title="Unesite VOD" type="text" class="form-control" id="vod" autocomplete="off">
                   <datalist id="listaVod">
                     <option value="0.1">
                     <option value="0.2">
@@ -162,7 +161,7 @@ include '../pregled/modules/header.php';
               <div class="vos1">
                 <div class="form-group col-md-5">
                   <label id="label_vos">VOS:</label>
-                  <input list="listaVos" name="vos" title="" type="text" class="form-control" id="vos" autocomplete="off">
+                  <input list="listaVos" name="vos" title="Unesite VOS" type="text" class="form-control" id="vos" autocomplete="off">
                   <datalist id="listaVos">
                     <option value="0.1">
                     <option value="0.2">
@@ -187,11 +186,11 @@ include '../pregled/modules/header.php';
 
             <div class="vidnaOstrina_grupa3">
               <div class="form-group col-md-12">
-                <input name="vod" title="" type="text" class="form-control" id="vod1" autocomplete="off">
+                <input name="vod" title="Unesite VOD" type="text" class="form-control" id="vod1" autocomplete="off">
               </div>
 
               <div class="form-group col-md-12">
-                <input name="vos" title="" type="text" class="form-control" id="vos1" autocomplete="off">
+                <input name="vos" title="Unesite VOS" type="text" class="form-control" id="vos1" autocomplete="off">
               </div>
             </div>
           </div>
@@ -200,7 +199,7 @@ include '../pregled/modules/header.php';
             <div class="motilitetGrupa">
               <div class="form-group col-md-12">
                 <strong><label for="exampleFormControlSelect2">MOTILITET:</label> </strong>
-                <input list="listaMotiliteta" name="motilitet" title="" type="text" class="form-control" id="motilitet" autocomplete="off">
+                <input list="listaMotiliteta" name="motilitet" title="Unesite motilitet" type="text" class="form-control" id="motilitet" autocomplete="off">
                 <datalist id="listaMotiliteta">
                   <option value="Nalaz uredan">
                 </datalist>
@@ -211,10 +210,10 @@ include '../pregled/modules/header.php';
               <div class="form-group col-md-10">
                 <strong><label for="exampleFormControlSelect2">TONUS:</label></strong>
                 &nbsp;<label for="exampleFormControlSelect2">OD:</label>
-                <input name="tonus_od" title="" type="text" class="form-control" id="tonus_od" autocomplete="off">
+                <input name="tonus_od" title="Unesite tonus OD" type="text" class="form-control" id="tonus_od" autocomplete="off">
 
                 &nbsp;<label for="exampleFormControlSelect2">OS:</label>
-                <input name="tonus_os" title="" type="text" class="form-control" id="tonus_os" autocomplete="off">
+                <input name="tonus_os" title="Unesite tonus OS" type="text" class="form-control" id="tonus_os" autocomplete="off">
               </div>
             </div>
           </div>
@@ -226,10 +225,10 @@ include '../pregled/modules/header.php';
               <div class="form-group col-md-8">
 
                 <label for="exampleFormControlSelect2">OD:</label>
-                <input name="bms_od" title="" type="text" class="form-control" id="bms_od" autocomplete="off">
+                <input name="bms_od" title="Unesite biomikroskop OD" type="text" class="form-control" id="bms_od" autocomplete="off">
 
                 <label id="bms_os_label" for="exampleFormControlSelect2">OS:</label>
-                <input name="bms_os" title="" type="text" class="form-control" id="bms_os" autocomplete="off">
+                <input name="bms_os" title="Unesite biomikroskop OS" type="text" class="form-control" id="bms_os" autocomplete="off">
               </div>
             </div>
 
@@ -237,10 +236,10 @@ include '../pregled/modules/header.php';
               <strong><label for="exampleFormControlSelect2">FUNDUS:</label></strong>
               <div class="form-group col-md-8">
                 <label for="exampleFormControlSelect2">OD:</label>
-                <input name="fundus_od" title="" type="text" class="form-control" id="fundus_od" autocomplete="off">
+                <input name="fundus_od" title="Unesite fundus OD" type="text" class="form-control" id="fundus_od" autocomplete="off">
 
                 <label for="exampleFormControlSelect2">OS:</label>
-                <input name="fundus_os" title="" type="text" class="form-control" id="fundus_os" autocomplete="off">
+                <input name="fundus_os" title="Unesite fundus OS" type="text" class="form-control" id="fundus_os" autocomplete="off">
               </div>
             </div>
           </div>
@@ -250,14 +249,14 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-5">
               <strong><label id="labelDijagnoza">DIJAGNOZA:</label></strong>
-              <input name="dijagnoza" title="" type="text" class="form-control" id="dijagnoza" autocomplete="off">
+              <input name="dijagnoza" title="Unesite dijagnozu" type="text" class="form-control" id="dijagnoza" autocomplete="off">
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col-md-5">
               <strong><label for="exampleFormControlSelect2">TERAPIJA:</label> </strong>&nbsp;&nbsp;
-              <input list="listaTerapija" name="terapija" title="" type="text" class="form-control" id="terapija" autocomplete="off">
+              <input list="listaTerapija" name="terapija" title="Unesite terapiju" type="text" class="form-control" id="terapija" autocomplete="off">
               <datalist id="listaTerapija">
                 <option>Korekcija naočarima</option>
                 <option>Korekcija kontaktnim sočivima</option>
@@ -273,11 +272,11 @@ include '../pregled/modules/header.php';
               <div class="form-group col-md-7">
                 <div class="kor1">
                   <label id="labelKorDaljOd">OD:</label>
-                  <input name="korekcija_daljina_od" title="" type="text" class="form-control" id="korekcija_daljina_od" autocomplete="off">
+                  <input name="korekcija_daljina_od" title="Unesite korekciju daljine OD" type="text" class="form-control" id="korekcija_daljina_od" autocomplete="off">
                 </div>
                 <div class="kor2">
                   <label id="labelKorDaljOd">OS:</label>
-                  <input name="korekcija_daljina_os" title="" type="text" class="form-control" id="korekcija_daljina_os" autocomplete="off">
+                  <input name="korekcija_daljina_os" title="Unesite korekciju daljine OS" type="text" class="form-control" id="korekcija_daljina_os" autocomplete="off">
                 </div>
               </div>
             </div>
@@ -288,11 +287,11 @@ include '../pregled/modules/header.php';
               <div class="form-group col-md-7">
                 <div class="kor3">
                   <label id="labelKorBlizOd">OD:</label>
-                  <input name="korekcija_blizina_od" title="" type="text" class="form-control" id="korekcija_blizina_od" autocomplete="off">
+                  <input name="korekcija_blizina_od" title="Unesite korekciju blizine OD" type="text" class="form-control" id="korekcija_blizina_od" autocomplete="off">
                 </div>
                 <div class="kor4">
                   <label id="labelKorBlizOs">OS:</label>
-                  <input name="korekcija_blizina_os" title="" type="text" class="form-control" id="korekcija_blizina_os" autocomplete="off">
+                  <input name="korekcija_blizina_os" title="Unesite korekciju blzine OS" type="text" class="form-control" id="korekcija_blizina_os" autocomplete="off">
                 </div>
               </div>
             </div>
@@ -301,7 +300,7 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-3">
               <strong><label for="exampleFormControlSelect2">PD:</label> </strong>
-              <input name="pd" title="" type="text" class="form-control" id="pd" autocomplete="off">
+              <input name="pd" title="Unesite pupilarnu distanu" type="text" class="form-control" id="pd" autocomplete="off">
             </div>
           </div>
 
@@ -309,7 +308,7 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-7">
               <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
-              <input list="listaKontrola" name="kontrola" title="" type="text" class="form-control" id="kontrola" autocomplete="off">
+              <input list="listaKontrola" name="kontrola" title="Unesite period kontrole" type="text" class="form-control" id="kontrola" autocomplete="off">
               <datalist id="listaKontrola">
                 <option>Kontrola za 7 dana</option>
                 <option>Kontrola za 1 mjesec</option>
@@ -351,6 +350,7 @@ include '../pregled/modules/header.php';
     //When page load set focus on field
     document.getElementById('sifra_radnika').focus();
 
+    //Copy text
     $(document).ready(function() {
       $('#vod1').on('change', function(e) {
         var valueVod = document.getElementById('vod1').value;
@@ -362,16 +362,24 @@ include '../pregled/modules/header.php';
       });
     });
 
+    //Traženje imena radnika na osnovu unesenog ID-a
     $(document).ready(function() {
+      //Kada se polje promijeni, aktivira se triger koji poziva AJAX metod
       $("#sifra_radnika").on('change', function(e) {
+        //Uzima se vrijednost iz polja za unos
         var sifra_radnika = document.getElementById('sifra_radnika').value;
-        $.ajax({ //create an ajax request to display.php
+        //Poziva se AJAX
+        $.ajax({
+          //AJAX metod je POST
           type: "POST",
+          //Podaci se šalju prema getWorkersID.php
           url: "getWorkersID.php",
-          dataType: "html", //expect html to be returned 
+          dataType: "html",
+          //Podaci koji se šalju
           data: {
             sifra_radnika: sifra_radnika
           },
+          //Ukoliko je pronađena vrijednost, ime radnika se prikazuje u div elementu ime_radnika
           success: function(response) {
             $("#ime_radnika").html(response);
           }

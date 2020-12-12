@@ -12,7 +12,7 @@ $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
 mysqli_set_charset($conn, "utf8");
 
-
+//Metod za čitanje liste proizvođača sočiva i dodavanje rezultata u opcije select box-a proizvođača
 function lensesManufactured($conn)
 {
   $sql = "SELECT * FROM proizvodjaci_sociva";
@@ -114,7 +114,7 @@ function lensesManufactured($conn)
             <div class="todayDate">
               <div class="form-group col-md-10">
                 <label>Današnji datum</label>
-                <input name="datum_pregleda" title="" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
+                <input name="datum_pregleda" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
               </div>
               <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
             </div>
@@ -133,7 +133,7 @@ function lensesManufactured($conn)
           <div class="row">
             <div class="form-group col-md-7">
               <strong> <label id="labelAnamneza">ANAMNEZA:</label></strong>
-              <input list="listaAnamneza" name="anamneza" title="" type="text" class="form-control" id="anamneza" autocomplete="off">
+              <input list="listaAnamneza" name="anamneza" title="Unesite anamnezu" type="text" class="form-control" id="anamneza" autocomplete="off">
               <datalist id="listaAnamneza">
                 <option value="Slabije vidi na daljinu">
                 <option value="Slabije vidi na blizinu">
@@ -160,7 +160,7 @@ function lensesManufactured($conn)
               <div class="vod1">
                 <div class="form-group col-md-5">
                   <label id="label_vod">VOD:</label>
-                  <input list="listaVod" name="vod" title="" type="text" class="form-control" id="vod" autocomplete="off">
+                  <input list="listaVod" name="vod" title="Unesite VOD" type="text" class="form-control" id="vod" autocomplete="off">
                   <datalist id="listaVod">
                     <option value="0.1">
                     <option value="0.2">
@@ -179,7 +179,7 @@ function lensesManufactured($conn)
               <div class="vos1">
                 <div class="form-group col-md-5">
                   <label id="label_vos">VOS:</label>
-                  <input list="listaVos" name="vos" title="" type="text" class="form-control" id="vos" autocomplete="off">
+                  <input list="listaVos" name="vos" title="Unesite VOS" type="text" class="form-control" id="vos" autocomplete="off">
                   <datalist id="listaVos">
                     <option value="0.1">
                     <option value="0.2">
@@ -204,11 +204,11 @@ function lensesManufactured($conn)
 
             <div class="vidnaOstrina_grupa3">
               <div class="form-group col-md-12">
-                <input name="vod" title="" type="text" class="form-control" id="vod1" autocomplete="off">
+                <input name="vod" title="Unesite VOD" type="text" class="form-control" id="vod1" autocomplete="off">
               </div>
 
               <div class="form-group col-md-12">
-                <input name="vos" title="" type="text" class="form-control" id="vos1" autocomplete="off">
+                <input name="vos" title="Unesite VOS " type="text" class="form-control" id="vos1" autocomplete="off">
               </div>
             </div>
           </div>
@@ -217,7 +217,7 @@ function lensesManufactured($conn)
             <div class="motilitetGrupa">
               <div class="form-group col-md-12">
                 <strong><label for="exampleFormControlSelect2">MOTILITET:</label> </strong>
-                <input list="listaMotiliteta" name="motilitet" title="" type="text" class="form-control" id="motilitet" autocomplete="off">
+                <input list="listaMotiliteta" name="motilitet" title="Unesite motilitet" type="text" class="form-control" id="motilitet" autocomplete="off">
                 <datalist id="listaMotiliteta">
                   <option value="Nalaz uredan">
                 </datalist>
@@ -228,10 +228,10 @@ function lensesManufactured($conn)
               <div class="form-group col-md-10">
                 <strong><label for="exampleFormControlSelect2">TONUS:</label></strong>
                 &nbsp;<label for="exampleFormControlSelect2">OD:</label>
-                <input name="tonus_od" title="" type="text" class="form-control" id="tonus_od" autocomplete="off">
+                <input name="tonus_od" title="Unesite tonus OD" type="text" class="form-control" id="tonus_od" autocomplete="off">
 
                 &nbsp;<label for="exampleFormControlSelect2">OS:</label>
-                <input name="tonus_os" title="" type="text" class="form-control" id="tonus_os" autocomplete="off">
+                <input name="tonus_os" title="Unesite tonus OS" type="text" class="form-control" id="tonus_os" autocomplete="off">
               </div>
             </div>
           </div>
@@ -243,10 +243,10 @@ function lensesManufactured($conn)
               <div class="form-group col-md-8">
 
                 <label for="exampleFormControlSelect2">OD:</label>
-                <input name="bms_od" title="" type="text" class="form-control" id="bms_od" autocomplete="off">
+                <input name="bms_od" title="Unesite biomikroskop OD" type="text" class="form-control" id="bms_od" autocomplete="off">
 
                 <label id="bms_os_label" for="exampleFormControlSelect2">OS:</label>
-                <input name="bms_os" title="" type="text" class="form-control" id="bms_os" autocomplete="off">
+                <input name="bms_os" title="Unesite biomikroskop OS" type="text" class="form-control" id="bms_os" autocomplete="off">
               </div>
             </div>
 
@@ -254,10 +254,10 @@ function lensesManufactured($conn)
               <strong><label for="exampleFormControlSelect2">FUNDUS:</label></strong>
               <div class="form-group col-md-8">
                 <label for="exampleFormControlSelect2">OD:</label>
-                <input name="fundus_od" title="" type="text" class="form-control" id="fundus_od" autocomplete="off">
+                <input name="fundus_od" title="Unesite fundus OD" type="text" class="form-control" id="fundus_od" autocomplete="off">
 
                 <label for="exampleFormControlSelect2">OS:</label>
-                <input name="fundus_os" title="" type="text" class="form-control" id="fundus_os" autocomplete="off">
+                <input name="fundus_os" title="Unesite fundus OS" type="text" class="form-control" id="fundus_os" autocomplete="off">
               </div>
             </div>
           </div>
@@ -267,14 +267,14 @@ function lensesManufactured($conn)
           <div class="row">
             <div class="form-group col-md-5">
               <strong><label id="labelDijagnoza">DIJAGNOZA:</label></strong>
-              <input name="dijagnoza" title="" type="text" class="form-control" id="dijagnoza" autocomplete="off">
+              <input name="dijagnoza" title="Unesite dijagnozu" type="text" class="form-control" id="dijagnoza" autocomplete="off">
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col-md-5">
               <strong><label for="exampleFormControlSelect2">TERAPIJA:</label> </strong>&nbsp;&nbsp;
-              <input list="listaTerapija" name="terapija" title="" type="text" class="form-control" id="terapija" autocomplete="off">
+              <input list="listaTerapija" name="terapija" title="Unesite terapiju" type="text" class="form-control" id="terapija" autocomplete="off">
               <datalist id="listaTerapija">
                 <option>Korekcija naočarima</option>
                 <option>Korekcija kontaktnim sočivima</option>
@@ -295,7 +295,7 @@ function lensesManufactured($conn)
 
                   <div class="proizvodjac">
                     <label id='labelManufactured'>Proizvođač:</label>
-                    <select name='proizvodjacOd' class='form-control' id='proizvodjac_ks_od'>
+                    <select name='proizvodjacOd' title="Izaberite proizvođača kontaktnih sočiva" class='form-control' id='proizvodjac_ks_od'>
                       <option default></option>
                       <?php lensesManufactured($conn); ?>
                     </select>
@@ -303,7 +303,7 @@ function lensesManufactured($conn)
 
                   <div class="period">
                     <label id='labelPeriod'>Period:</label>
-                    <select name="period_ks_od" title="" type="text" class="form-control" id="period_ks_od">
+                    <select name="period_ks_od" title="Izaberite period kontaktnih sočiva" type="text" class="form-control" id="period_ks_od">
                       <option default></option>
                       <option value="dnevna">Dnevna</option>
                       <option value="15dana">15 dana</option>
@@ -315,30 +315,30 @@ function lensesManufactured($conn)
 
                   <div class="tip">
                     <label id='labelType'>Tip/vrsta:</label>
-                    <select name="tip_ks_od" title="" class="form-control" id="tip_ks_od">
+                    <select name="tip_ks_od" title="Izaberite tip kontaktnih sočiva" class="form-control" id="tip_ks_od">
                       <option default></option>
                     </select>
                   </div>
 
                   <div class="jacina">
                     <label id='labelPower'>Jačina:</label>
-                    <input name="jacina_ks_od" title="" type="text" class="form-control" id="jacina_ks_od" autocomplete="off">
+                    <input name="jacina_ks_od" title="Unesite jačinu kontaktnih sočiva" type="text" class="form-control" id="jacina_ks_od" autocomplete="off">
                   </div>
 
                   <div class="bc">
                     <label id='labelBc'>BC:</label>
-                    <input list="ispisBc_od" name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od" autocomplete="off">
+                    <input list="ispisBc_od" name="bc_ks_od" title="Unesite baznu krivinu kontaktnih sočiva" type="text" class="form-control" id="bc_ks_od" autocomplete="off">
                     <datalist id="ispisBc_od"></datalist>
                   </div>
 
                   <div class="velicina">
                     <label id='labelSize'>TD:</label>
-                    <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od" autocomplete="off" />
+                    <input name="velicina_ks_od" title="Unesite veličinu kontaktnih sočiva" type="text" class="form-control" id="velicina_ks_od" autocomplete="off" />
                   </div>
 
                   <div class="boja">
                     <label id='labelColor'>Boja:</label>
-                    <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od" autocomplete="off">
+                    <input name="boja_ks_od" title="Unesite boju kontaktnih sočiva" type="text" class="form-control" id="boja_ks_od" autocomplete="off">
                   </div>
                 </div>
               </div>
@@ -351,7 +351,7 @@ function lensesManufactured($conn)
 
                   <div class="proizvodjac">
                     <label id='labelManufactured'>Proizvođač:</label>
-                    <select name="proizvodjacOs" title="" class="form-control" id="proizvodjac_ks_os">
+                    <select name="proizvodjacOs" title="Izaberite proizvođača kontaktnih sočiva" class="form-control" id="proizvodjac_ks_os">
                       <option default></option>
                       <?php lensesManufactured($conn); ?>
                     </select>
@@ -359,7 +359,7 @@ function lensesManufactured($conn)
 
                   <div class="period">
                     <label id='labelPeriod'>Period:</label>
-                    <select name="period_ks_os" title="" type="text" class="form-control" id="period_ks_os">
+                    <select name="period_ks_os" title="Izaberite period kontaktnih sočiva" type="text" class="form-control" id="period_ks_os">
                       <option default></option>
                       <option value="dnevna">Dnevna</option>
                       <option value="15dana">15 dana</option>
@@ -371,29 +371,29 @@ function lensesManufactured($conn)
 
                   <div class="tip">
                     <label id='labelType'>Tip/vrsta:</label>
-                    <select name="tip_ks_os" title="" type="text" class="form-control" id="tip_ks_os">
+                    <select name="tip_ks_os" title="Izaberite tip kontaktnih sočiva" type="text" class="form-control" id="tip_ks_os">
                     </select>
                   </div>
 
                   <div class="jacina">
                     <label id='labelPower'>Jačina:</label>
-                    <input name="jacina_ks_os" title="" type="text" class="form-control" id="jacina_ks_os" autocomplete="off">
+                    <input name="jacina_ks_os" title="Unesite jačinu kontaktnih sočiva" type="text" class="form-control" id="jacina_ks_os" autocomplete="off">
                   </div>
 
                   <div class="bc">
                     <label id='labelBc'>BC:</label>
-                    <input list="ispisBc_os" name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os" autocomplete="off" />
+                    <input list="ispisBc_os" name="bc_ks_os" title="Unesite baznu krivinu kontaktnih sočiva" type="text" class="form-control" id="bc_ks_os" autocomplete="off" />
                     <datalist id="ispisBc_os"></datalist>
                   </div>
 
                   <div class="velicina">
                     <label id='labelSize'>TD:</label>
-                    <input name="velicina_ks_os" title="" type="text" class="form-control" id="velicina_ks_os" autocomplete="off" />
+                    <input name="velicina_ks_os" title="Unesite veličinu kontaktnih sočiva" type="text" class="form-control" id="velicina_ks_os" autocomplete="off" />
                   </div>
 
                   <div class="boja">
                     <label id='labelColor'>Boja:</label>
-                    <input name="boja_ks_os" title="" type="text" class="form-control" id="boja_ks_os" autocomplete="off">
+                    <input name="boja_ks_os" title="Unesite boju kontaktnih sočiva" type="text" class="form-control" id="boja_ks_os" autocomplete="off">
                   </div>
                 </div>
               </div>
@@ -404,7 +404,7 @@ function lensesManufactured($conn)
           <div class="row">
             <div class="form-group col-md-7">
               <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
-              <input list="listaKontrola" name="kontrola" title="" type="text" class="form-control" id="kontrola" autocomplete="off">
+              <input list="listaKontrola" name="kontrola" title="Unesite period kontrole" type="text" class="form-control" id="kontrola" autocomplete="off">
               <datalist id="listaKontrola">
                 <option>Kontrola za 7 dana</option>
                 <option>Kontrola za 1 mjesec</option>
@@ -444,31 +444,32 @@ function lensesManufactured($conn)
 
 
   <script type="text/javascript">
-    //When page load set focus on field
+    //Postavljanje fokusa na polje za unos šifre radnika kada se stranica učita
     document.getElementById('sifra_radnika').focus();
 
     /*******************************************************************************/
     $(document).ready(function() {
-      //Funkcija koja se poziva kada se polje za period OD sociva promijeni
+      //Funkcija koja se poziva kada se polje za period OD sočiva promijeni
       $("#period_ks_od").change(function() {
 
-        //Parametri potrebni za pretragu tipova sociva (period i ID proizvodjaca sociva) u tabeli sociva
+        //Parametri potrebni za pretragu tipova sočiva (period i ID proizvođača sočiva) u tabeli sočiva
         var period_ks_od = $('#period_ks_od').val();
         var proizvodjac_ks_od = $('#proizvodjac_ks_od').val();
 
         //Validating, if is empty.
         if (period_ks_od != "") {
+          //Poziva se AJAX
           $.ajax({
-            //AJAX type is "Post".
+            //AJAX metod je "Post".
             type: "POST",
-            //Data will be sent to "ajax.php".
+            //Podaci će biti poslati prema "ajaxTypeLenses.php".
             url: "ajaxTypeLenses.php",
-            //Data, that will be sent to "ajax.php".
+            //Podaci koji će biti poslati
             data: {
               period_ks_od: period_ks_od,
               proizvodjac_ks_od: proizvodjac_ks_od
             },
-            //Ako je rezultat pronadjen vrijednosti opcija se smijestaju u izbornik tipova sociva OD
+            //Ako je rezultat pronađen vrijednosti opcija se smiještaju u izbornik tipova sočiva OD.
             success: function(html) {
               $("#tip_ks_od").html(html).show();
             }
@@ -476,96 +477,96 @@ function lensesManufactured($conn)
         }
       });
 
-      //Funkcija koja se poziva kada se polje za tip sociva OD promijeni
+      //Funkcija koja se poziva kada se polje za tip sočiva OD promijeni.
       $("#tip_ks_od").change(function() {
 
-        //Ciscenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i velicine sociva
+        //Čišćenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i velicine sočiva.
         document.getElementById("bc_ks_od").value = "";
         document.getElementById("velicina_ks_od").value = "";
         $('#ispisBc_od').find('option').remove().end();
 
-        //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sociva
+        //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sočiva.
         var tip_ks_od = $("#tip_ks_od").val();
 
-        //Validating, if is empty.
+
         if (tip_ks_od != "") {
-          //AJAX is called.
+          //Poziva se AJAX.
           $.ajax({
-            //AJAX type is "Post".
+            //AJAX metod je "Post".
             type: "POST",
-            //Data will be sent to "ajax.php".
+            //Podaci će biti poslati prema "ajaxTypeLenses.php".
             url: "ajaxTypeLenses.php",
-            //Data, that will be sent to "ajax.php".
+            //Podaci koji će biti poslati
             data: {
               tip_ks_od: tip_ks_od
             },
-            //Ako je rezultat pronadjen, promjenljiva koja je vracena iz ajaxTypeLenses.php sadrzi baznu krivinu i velicinu sociva pa je potrebno istu razdvojiti na dva dijela.
+            //Ako je rezultat pronađen, promjenljiva koja je vraćena iz ajaxTypeLenses.php sadrži baznu krivinu i veličinu sočiva pa je potrebno istu razdvojiti na dva dijela.
             //Separator je @@@
             success: function(html) {
               var bcTd = html.split('@@@');
-              //Prvi element se dodaje kao opcija u datalist bazne krivine OD
+              //Prvi element se dodaje kao opcija u datalist bazne krivine OD.
               $("#ispisBc_od").append(bcTd[0]);
-              //Drugi element se dodjeljuje kao vrijednost polja za velicinu sociva OD
+              //Drugi element se dodjeljuje kao vrijednost polja za veličinu sočiva OD.
               document.getElementById("velicina_ks_od").value = bcTd[1];
             }
           });
         }
       });
 
-      //Funkcija koja se poziva kada se polje za period OS sociva promijeni
+      //Funkcija koja se poziva kada se polje za period OS sočiva promijeni.
       $("#period_ks_os").change(function() {
 
-        //Parametri potrebni za pretragu tipova sociva (period i ID proizvodjaca sociva) u tabeli sociva
+        //Parametri potrebni za pretragu tipova sočiva (period i ID proizvođaca sočiva) u tabeli sočiva
         var period_ks_os = $('#period_ks_os').val();
         var proizvodjac_ks_os = $('#proizvodjac_ks_os').val();
 
-        //Validating, if is empty.
         if (period_ks_os != "") {
+          //Poziva se AJAX
           $.ajax({
-            //AJAX type is "Post".
+            //AJAX metod je "Post".
             type: "POST",
-            //Data will be sent to "ajax.php".
+            //Podaci će biti poslati prema "ajaxTypeLenses.php".
             url: "ajaxTypeLenses.php",
-            //Data, that will be sent to "ajax.php".
+            //Podaci koji će biti poslati.
             data: {
               period_ks_os: period_ks_os,
               proizvodjac_ks_os: proizvodjac_ks_os
             },
-            //Ako je rezultat pronadjen vrijednosti opcija se smijestaju u izbornik tipova sociva OS
+            //Ako je rezultat pronađen vrijednosti opcija se smiještaju u izbornik tipova sočiva OS.
             success: function(html) {
               $("#tip_ks_os").html(html).show();
             }
           });
         }
       });
-      //Funkcija koja se poziva kada se polje za tip sociva OS promijeni
+      //Funkcija koja se poziva kada se polje za tip sočiva OS promijeni.
       $("#tip_ks_os").change(function() {
 
-        //Ciscenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i velicine sociva
+        //čišćenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i veličine sočiva.
         document.getElementById("bc_ks_os").value = "";
         document.getElementById("velicina_ks_os").value = "";
         $('#ispisBc_os').find('option').remove().end();
 
-        //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sociva
+        //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sočiva.
         var tip_ks_os = $("#tip_ks_os").val();
 
-        //Validating, if is empty.
+
         if (tip_ks_os != "") {
-          //AJAX is called.
+          //Poziva se AJAX.
           $.ajax({
-            //AJAX type is "Post".
+            //AJAX metod je "Post".
             type: "POST",
-            //Data will be sent to "ajax.php".
+            //Podaci će biti poslati prema "ajaxTypeLenses.php".
             url: "ajaxTypeLenses.php",
-            //Data, that will be sent to "ajax.php".
+            //Podaci koji će biti poslati.
             data: {
               tip_ks_os: tip_ks_os
             },
-            //Ako je rezultat pronadjen, promjenljiva koja je vracena iz ajaxTypeLenses.php sadrzi baznu krivinu i velicinu sociva pa je potrebno istu razdvojiti na dva dijela.
+            //Ako je rezultat pronađen, promjenljiva koja je vraćena iz ajaxTypeLenses.php sadrži baznu krivinu i veličinu sočiva pa je potrebno istu razdvojiti na dva dijela.
             //Separator je @@@
             success: function(html) {
               var bcTd = html.split('@@@');
-              //Prvi element se dodaje kao opcija u datalist bazne krivine OD
+              //Prvi element se dodaje kao opcija u datalist bazne krivine OD.
               $("#ispisBc_os").append(bcTd[0]);
               //Drugi element se dodjeljuje kao vrijednost polja za velicinu sociva OD
               document.getElementById("velicina_ks_os").value = bcTd[1];
@@ -576,6 +577,7 @@ function lensesManufactured($conn)
     });
 
 
+    //Čišćenje vrijednosti polja ukoliko dođe do promjene select option
     var $proizvodjac_ks_od = $('#proizvodjac_ks_od');
     $proizvodjac_ks_od.on('change', function() {
       $('#tip_ks_od').find('option').remove().end();
@@ -617,16 +619,24 @@ function lensesManufactured($conn)
     });
     /*******************************************************************************/
 
+    //Traženje imena radnika na osnovu unesenog ID-a
     $(document).ready(function() {
+      //Kada se polje promijeni, aktivira se triger koji poziva AJAX metod
       $("#sifra_radnika").on('change', function(e) {
+        //Uzima se vrijednost iz polja za unos
         var sifra_radnika = document.getElementById('sifra_radnika').value;
-        $.ajax({ //create an ajax request to display.php
+        //Poziva se AJAX
+        $.ajax({
+          //AJAX metod je POST
           type: "POST",
+          //Podaci se šalju prema getWorkersID.php
           url: "getWorkersID.php",
-          dataType: "html", //expect html to be returned 
+          dataType: "html",
+          //Podaci koji se šalju
           data: {
             sifra_radnika: sifra_radnika
           },
+          //Ukoliko je pronađena vrijednost, ime radnika se prikazuje u div elementu ime_radnika
           success: function(response) {
             $("#ime_radnika").html(response);
           }

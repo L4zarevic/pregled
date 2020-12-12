@@ -12,7 +12,7 @@ $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
 mysqli_set_charset($conn, "utf8");
 
-
+//Metod za čitanje liste proizvođača sočiva i dodavanje rezultata u opcije select box-a proizvođača
 function lensesManufactured($conn)
 {
     $sql = "SELECT * FROM proizvodjaci_sociva";
@@ -265,7 +265,7 @@ function lensesManufactured($conn)
 
                                     <div class="velicina">
                                         <label id='labelSize'>TD:</label>
-                                        <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od" autocomplete="off"/>
+                                        <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od" autocomplete="off" />
                                     </div>
 
                                     <div class="boja">
@@ -376,32 +376,32 @@ function lensesManufactured($conn)
     </div>
 
     <script type="text/javascript">
-        //When page load set focus on field
+        //Postavljanje fokusa na polje za unos šifre radnika kada se stranica učita
         document.getElementById('sifra_radnika').focus();
 
 
         /*******************************************************************************/
         $(document).ready(function() {
-            //Funkcija koja se poziva kada se polje za period OD sociva promijeni
+            //Funkcija koja se poziva kada se polje za period OD sočiva promijeni
             $("#period_ks_od").change(function() {
 
-                //Parametri potrebni za pretragu tipova sociva (period i ID proizvodjaca sociva) u tabeli sociva
+                //Parametri potrebni za pretragu tipova sočiva (period i ID proizvođača sočiva) u tabeli sočiva
                 var period_ks_od = $('#period_ks_od').val();
                 var proizvodjac_ks_od = $('#proizvodjac_ks_od').val();
 
-                //Validating, if is empty.
                 if (period_ks_od != "") {
+                    //Poziva se AJAX
                     $.ajax({
-                        //AJAX type is "Post".
+                        //AJAX metod je POST.
                         type: "POST",
-                        //Data will be sent to "ajax.php".
+                        //Podaci će biti poslati prema "ajaxTypeLenses.php".
                         url: "ajaxTypeLenses.php",
-                        //Data, that will be sent to "ajax.php".
+                        //Podaci koji će biti poslati
                         data: {
                             period_ks_od: period_ks_od,
                             proizvodjac_ks_od: proizvodjac_ks_od
                         },
-                        //Ako je rezultat pronadjen vrijednosti opcija se smijestaju u izbornik tipova sociva OD
+                        //Ako je rezultat pronađen vrijednosti opcija se smiještaju u izbornik tipova sočiva OD.
                         success: function(html) {
                             $("#tip_ks_od").html(html).show();
                         }
@@ -409,96 +409,96 @@ function lensesManufactured($conn)
                 }
             });
 
-            //Funkcija koja se poziva kada se polje za tip sociva OD promijeni
+            //Funkcija koja se poziva kada se polje za tip sočiva OD promijeni.
             $("#tip_ks_od").change(function() {
 
-                //Ciscenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i velicine sociva
+                //Čišćenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i velicine sočiva.
                 document.getElementById("bc_ks_od").value = "";
                 document.getElementById("velicina_ks_od").value = "";
                 $('#ispisBc_od').find('option').remove().end();
 
-                //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sociva
+                //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sočiva.
                 var tip_ks_od = $("#tip_ks_od").val();
 
-                //Validating, if is empty.
                 if (tip_ks_od != "") {
-                    //AJAX is called.
+                    //Poziva se AJAX.
                     $.ajax({
-                        //AJAX type is "Post".
+                        //AJAX metod je POST.
                         type: "POST",
-                        //Data will be sent to "ajax.php".
+                        //Podaci će biti poslati prema "ajaxTypeLenses.php".
                         url: "ajaxTypeLenses.php",
-                        //Data, that will be sent to "ajax.php".
+                        //Podaci koji će biti poslati
                         data: {
                             tip_ks_od: tip_ks_od
                         },
-                        //Ako je rezultat pronadjen, promjenljiva koja je vracena iz ajaxTypeLenses.php sadrzi baznu krivinu i velicinu sociva pa je potrebno istu razdvojiti na dva dijela.
+                        //Ako je rezultat pronađen, promjenljiva koja je vraćena iz ajaxTypeLenses.php sadrži baznu krivinu i veličinu sočiva pa je potrebno istu razdvojiti na dva dijela.
                         //Separator je @@@
                         success: function(html) {
                             var bcTd = html.split('@@@');
-                            //Prvi element se dodaje kao opcija u datalist bazne krivine OD
+                            //Prvi element se dodaje kao opcija u datalist bazne krivine OD.
                             $("#ispisBc_od").append(bcTd[0]);
-                            //Drugi element se dodjeljuje kao vrijednost polja za velicinu sociva OD
+                            //Drugi element se dodjeljuje kao vrijednost polja za veličinu sočiva OD.
                             document.getElementById("velicina_ks_od").value = bcTd[1];
                         }
                     });
                 }
             });
 
-            //Funkcija koja se poziva kada se polje za period OS sociva promijeni
+            //Funkcija koja se poziva kada se polje za period OS sočiva promijeni.
             $("#period_ks_os").change(function() {
 
-                //Parametri potrebni za pretragu tipova sociva (period i ID proizvodjaca sociva) u tabeli sociva
+                //Parametri potrebni za pretragu tipova sočiva (period i ID proizvođaca sočiva) u tabeli sočiva
                 var period_ks_os = $('#period_ks_os').val();
                 var proizvodjac_ks_os = $('#proizvodjac_ks_os').val();
 
-                //Validating, if is empty.
                 if (period_ks_os != "") {
+                    //Poziva se AJAX
                     $.ajax({
-                        //AJAX type is "Post".
+                        //AJAX metod je POST.
                         type: "POST",
-                        //Data will be sent to "ajax.php".
+                        //Podaci će biti poslati prema "ajaxTypeLenses.php".
                         url: "ajaxTypeLenses.php",
-                        //Data, that will be sent to "ajax.php".
+                        //Podaci koji će biti poslati.
                         data: {
                             period_ks_os: period_ks_os,
                             proizvodjac_ks_os: proizvodjac_ks_os
                         },
-                        //Ako je rezultat pronadjen vrijednosti opcija se smijestaju u izbornik tipova sociva OS
+                        //Ako je rezultat pronađen vrijednosti opcija se smiještaju u izbornik tipova sočiva OS.
                         success: function(html) {
                             $("#tip_ks_os").html(html).show();
                         }
                     });
                 }
             });
-            //Funkcija koja se poziva kada se polje za tip sociva OS promijeni
+
+            //Funkcija koja se poziva kada se polje za tip sočiva OS promijeni.
             $("#tip_ks_os").change(function() {
 
-                //Ciscenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i velicine sociva
+                //Čišćenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i veličine sočiva.
                 document.getElementById("bc_ks_os").value = "";
                 document.getElementById("velicina_ks_os").value = "";
                 $('#ispisBc_os').find('option').remove().end();
 
-                //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sociva
+                //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sočiva.
                 var tip_ks_os = $("#tip_ks_os").val();
 
-                //Validating, if is empty.
+
                 if (tip_ks_os != "") {
-                    //AJAX is called.
+                    //Poziva se AJAX.
                     $.ajax({
-                        //AJAX type is "Post".
+                        //AJAX metod je POST.
                         type: "POST",
-                        //Data will be sent to "ajax.php".
+                        //Podaci će biti poslati prema "ajaxTypeLenses.php".
                         url: "ajaxTypeLenses.php",
-                        //Data, that will be sent to "ajax.php".
+                        //Podaci koji će biti poslati.
                         data: {
                             tip_ks_os: tip_ks_os
                         },
-                        //Ako je rezultat pronadjen, promjenljiva koja je vracena iz ajaxTypeLenses.php sadrzi baznu krivinu i velicinu sociva pa je potrebno istu razdvojiti na dva dijela.
+                        //Ako je rezultat pronađen, promjenljiva koja je vraćena iz ajaxTypeLenses.php sadrži baznu krivinu i veličinu sočiva pa je potrebno istu razdvojiti na dva dijela.
                         //Separator je @@@
                         success: function(html) {
                             var bcTd = html.split('@@@');
-                            //Prvi element se dodaje kao opcija u datalist bazne krivine OD
+                            //Prvi element se dodaje kao opcija u datalist bazne krivine OD.
                             $("#ispisBc_os").append(bcTd[0]);
                             //Drugi element se dodjeljuje kao vrijednost polja za velicinu sociva OD
                             document.getElementById("velicina_ks_os").value = bcTd[1];
@@ -506,12 +506,9 @@ function lensesManufactured($conn)
                     });
                 }
             });
-
-
-
         });
 
-
+        //Čišćenje vrijednosti polja ukoliko dođe do promjene select option
         var $proizvodjac_ks_od = $('#proizvodjac_ks_od');
         $proizvodjac_ks_od.on('change', function() {
             $('#tip_ks_od').find('option').remove().end();
@@ -553,16 +550,24 @@ function lensesManufactured($conn)
         });
         /*******************************************************************************/
 
+        //Traženje imena radnika na osnovu unesenog ID-a
         $(document).ready(function() {
+            //Kada se polje promijeni, aktivira se triger koji poziva AJAX metod
             $("#sifra_radnika").on('change', function(e) {
+                //Uzima se vrijednost iz polja za unos
                 var sifra_radnika = document.getElementById('sifra_radnika').value;
-                $.ajax({ //create an ajax request to display.php
+                //Poziva se AJAX
+                $.ajax({
+                    //AJAX metod je POST
                     type: "POST",
+                    //Podaci se šalju prema getWorkersID.php
                     url: "getWorkersID.php",
-                    dataType: "html", //expect html to be returned 
+                    dataType: "html",
+                    //Podaci koji se šalju
                     data: {
                         sifra_radnika: sifra_radnika
                     },
+                    //Ukoliko je pronađena vrijednost, ime radnika se prikazuje u div elementu ime_radnika
                     success: function(response) {
                         $("#ime_radnika").html(response);
                     }

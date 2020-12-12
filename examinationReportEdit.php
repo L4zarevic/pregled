@@ -1,3 +1,4 @@
+c
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +14,10 @@ $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
 mysqli_set_charset($conn, "utf8");
 
+//Prosljeđen ID pregleda iz patientRecord.php
 $id_pregleda = mysqli_real_escape_string($conn, $_REQUEST['id']);
 
+//Čitanje podataka o pregledu na osnovu ID-a
 $sql1 = "SELECT * FROM pregledi WHERE ID=$id_pregleda";
 $result = mysqli_query($conn, $sql1);
 if (!$result) die(mysqli_error($conn));
@@ -58,9 +61,11 @@ while ($row = mysqli_fetch_object($result)) {
   $napomena_pregleda  = $row->napomena_pregleda;
 }
 
+//Konvertovanje datuma iz Y-m-d u d.m.Y format
 $datum_pregleda = date("d.m.Y", strtotime($originalDate));
 
 
+//Pretraga imena pacijenta na osnovu njegovog ID-a u tabeli pregled
 $sql2 = "SELECT generalije_pacijenta FROM pacijenti WHERE ID=$ID_pacijenta";
 $result = mysqli_query($conn, $sql2);
 if (!$result) die(mysqli_error($conn));
@@ -68,6 +73,7 @@ while ($row = mysqli_fetch_object($result)) {
   $generalije_pacijenta = $row->generalije_pacijenta;
 }
 
+//Čitanje podataka o radniku koji je radio pregled na osnovu ID radnika u tabeli pregled
 $sql3 = "SELECT imePrezimeRadnika,sifra_radnika FROM radnici WHERE ID=$ID_radnika";
 $result = mysqli_query($conn, $sql3);
 if (!$result) die(mysqli_error($conn));
@@ -76,6 +82,7 @@ while ($row = mysqli_fetch_object($result)) {
   $sifra_radnika = $row->sifra_radnika;
 }
 
+//Čitanje podataka o optici(korisniku) u kojoj je urađen pregled na osnovu ID korisnika u tabeli pregled
 $con = OpenCon();
 $sql4 = "SELECT naziv,adresa,telefon,website FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
 $result = mysqli_query($con, $sql4);
@@ -405,6 +412,7 @@ CloseCon($conn);
       ?>
 
       <script>
+        //Metode za štampanje izvještaja pregleda
         function openPrintDialogue() {
 
           $('<iframe>', {
@@ -1447,6 +1455,7 @@ margin-right:5.5%;
 
 
 
+        //Metod koji prosljeđuje unesenu šifru radnika i šifru radnika koji je obavio pregled, metodi za provjeru
         function worker() {
           var sifra_radnika = "<?php echo $sifra_radnika; ?>";
           var id_pregleda = "<?php echo $id_pregleda; ?>";
