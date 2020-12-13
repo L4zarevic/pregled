@@ -1,6 +1,6 @@
 <?php
 
-//Skrtipta za ostvarivanje konekcije sa bazom podataka
+//Skripta za ostvarivanje konekcije sa bazom podataka
 
 /**Metod kojim se osvaruje konekcija za bazom u kojoj se nalaze podaci o korisnicima aplikacije.
  * Svaki korisnik ima zapis naziva svoje baze podataka koju koristi za evidentiranje pregleda.

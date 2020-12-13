@@ -11,7 +11,7 @@ $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
 mysqli_set_charset($conn, "utf8");
 
-
+//Metod za prikaz ukupno obavljenih pregleda
 function sumExamination($conn, $idKorisnika)
 {
     $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika='$idKorisnika'";
@@ -22,6 +22,7 @@ function sumExamination($conn, $idKorisnika)
     }
 }
 
+//Metod za prikaz ukupno obavljenih pregleda naočare
 function sumGlassesExamination($conn, $idKorisnika)
 {
     $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika='$idKorisnika' AND vrsta_pregleda='naocare'";
@@ -32,6 +33,7 @@ function sumGlassesExamination($conn, $idKorisnika)
     }
 }
 
+//Metod za prikaz ukupno obavljenih pregleda sočiva
 function sumLensesExamination($conn, $idKorisnika)
 {
     $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika='$idKorisnika' AND vrsta_pregleda='sociva'";
@@ -42,8 +44,10 @@ function sumLensesExamination($conn, $idKorisnika)
     }
 }
 
+//Metod za prikaz ukupno obavljenih pregleda ovog mjeseca
 function sumMonthsExamination($conn, $idKorisnika)
 {
+    //Na osnovu današnjeg datum, odbijamo dio stringa koji predstavlja dan i dodajemo stringu "-01". Na ovaj način dobijamo prvi datum u ovom mjesecu koji će biti početni datum za opseg u upitu
     $todayDate = date("Y-m-d");
     $dateSplit = explode("-", $todayDate, 3);
     $dateSplit[1] = rtrim($dateSplit[1], "-");
@@ -56,6 +60,7 @@ function sumMonthsExamination($conn, $idKorisnika)
     }
 }
 
+//Metod za prikaz ukupno obavljenih pregleda naočara ovog mjeseca
 function sumGlassesMonthsExamination($conn, $idKorisnika)
 {
     $todayDate = date("Y-m-d");
@@ -70,6 +75,7 @@ function sumGlassesMonthsExamination($conn, $idKorisnika)
     }
 }
 
+//Metod za prikaz ukupno obavljenih pregleda sočiva ovog mjeseca
 function sumLensesMonthsExamination($conn, $idKorisnika)
 {
     $todayDate = date("Y-m-d");
@@ -83,11 +89,6 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
         echo $row->brojPregleda;
     }
 }
-
-
-
-
-
 ?>
 
 <body id="page-top">
@@ -114,16 +115,12 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-
                     </div>
                     <div class="row">
                         <div class="">
-
                         </div>
                         <div class="companyInfo"> <img id="logo" src="../pregled/images/MO.png">
-
                         </div>
-
                     </div>
                     </br>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -147,7 +144,6 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
                                 </div>
                             </div>
                         </div>
-
                         <div class="sumGlasses">
                             <div class="col-xl-9 col-md-6 mb-6">
                                 <div class="card border-left-success shadow h-100 py-2">
@@ -165,7 +161,6 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
                                 </div>
                             </div>
                         </div>
-
                         <div class="sumLenses">
                             <div class="col-xl-9 col-md-6 mb-4">
                                 <div class="card border-left-success shadow h-100 py-2">
@@ -204,7 +199,6 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
                                 </div>
                             </div>
                         </div>
-
                         <div class="sumGlasses">
                             <div class="col-xl-9 col-md-6 mb-6">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -222,7 +216,6 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
                                 </div>
                             </div>
                         </div>
-
                         <div class="sumLenses">
                             <div class="col-xl-9 col-md-6 mb-4">
                                 <div class="card border-left-primary shadow h-100 py-2">
@@ -239,7 +232,6 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
