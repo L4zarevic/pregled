@@ -10,3 +10,6 @@ Add new patient
 
 Glasses short examination
 ![start image](https://github.com/L4zarevic/pregled/blob/main/glasses%20short%20examination.png)
+
+Patient record
+![start image](https://github.com/L4zarevic/pregled/blob/main/patient%20records.png)
