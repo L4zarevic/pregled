@@ -1,4 +1,3 @@
-c
 <!DOCTYPE html>
 <html lang="en">
 
