@@ -4,3 +4,6 @@ Login
 
 Index page
 ![start image](https://github.com/L4zarevic/pregled/blob/main/index.png)
+
+Add new patient
+![start image](https://github.com/L4zarevic/pregled/blob/main/add%20patient.png)
