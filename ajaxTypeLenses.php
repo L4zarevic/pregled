@@ -59,7 +59,7 @@ if (isset($_POST['tip_ks_od'])) {
         foreach ($bcNewValue as $bc) {
             $bcValue .= "<option>$bc</option>";
         }
-    
+    }
     //Bazne krivine , separator "@@@" i veličina sočiva su vrijednosti koje se vraćaju obrascu za pregled sočiva
     //Format ovog zapisa bi izgledao npr. '<option>8.4</option><option>8.8</option>@@@14.3'
     echo $bcValue . "@@@" . $tdValue;
@@ -72,9 +72,9 @@ if (isset($_POST['period_ks_os'])) {
     $proizvodjac_ks_os = $_POST['proizvodjac_ks_os'];
 
     $sql = "SELECT ID,tip FROM sociva WHERE ID_proizvodjaca='$proizvodjac_ks_os' AND period='$period_ks_os' GROUP BY tip";
-   
+
     $result = MySQLi_query($conn, $sql);
-    
+
     echo "<option default></option>";
     while ($row = mysqli_fetch_object($result)) {
         echo "<option value='$row->ID'>$row->tip</option>";
@@ -84,9 +84,9 @@ if (isset($_POST['period_ks_os'])) {
 //Provjera da li je POST metodom poslata vrijednost promjeljive tip sočiva OS
 if (isset($_POST['tip_ks_os'])) {
     $tip_ks_os = $_POST['tip_ks_os'];
-   
+
     $Query = "SELECT bc,td FROM sociva WHERE ID='$tip_ks_os'";
-   
+
     $result = MySQLi_query($conn, $Query);
 
     $bcValue = "";
