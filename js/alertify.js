@@ -3660,101 +3660,820 @@
 } ( typeof window !== 'undefined' ? window : this ) );
 
 
-//Custom JS
- $(document).keypress(function(e) {
-      if (e.which == 13) {
-        var inputVal = 0;
-        for (var i = 1; i <= 2362; i++) {
-          if (document.getElementById(i).value.length != 0) {
-            if (document.getElementById(i).value > 0) {
-              if (!isNaN(document.getElementById(i).value)) {
-                inputVal = document.getElementById(i).value + "#" + i;
-                add(inputVal);
-              }
-            }
-          }
-        }
-      }
+////////////////////////////////////////////////////////////////////
+ function fill(Value) {
+       
+	   var oldValue = Value;
+	   var splitString = oldValue.split("#");
+	   var newValue = splitString[0];
+       $('#search').val(splitString[1]);
+	   $('#id_pacijenta').val(newValue);
+	   $('#ispis_napomene_pacijenta').val("Napomena: "+splitString[3] +'\nNaočare-daljina:\n  OD: '+splitString[4]+'\n  OS: '+splitString[5]+'\nNaočare-blizina:\n  OD: '+splitString[6]+'\n  OS: '+splitString[7]+'\nSočiva:\n  OD: '+splitString[8]+'\n  OS:' );
+	   
+	   $('#patientGeneralsRecords').val(splitString[1]);
+	   $('#contactPatientRecords').val(splitString[2]);
+	   $('#notePatientRecords').val(splitString[3]);
+	   
+	   $('#naocare_daljina_od').val(splitString[4]);
+	   $('#naocare_daljina_os').val(splitString[5]);
+	   $('#naocare_blizina_od').val(splitString[6]);
+	   $('#naocare_blizina_os').val(splitString[7]);
+	   $('#sociva_od').val(splitString[8]);
+	   $('#sociva_os').val(splitString[9]);
+	   
+       $('#display').hide();
+	   getPatientExaminationDate(newValue);
+    }
+	
+    $(document).ready(function() {
+       $("#search").keyup(function() {
+           var name = $('#search').val().replace(/'/g, "\\'");
+           if (name == "") {
+               $("#display").html("");
+           }
+           else {
+               $.ajax({
+                   type: "POST",
+                   url: "ajax.php",
+                   data: {
+                       search: name
+                   },
+                   success: function(html) {
+                       $("#display").html(html).show();
+                   }
+               });
+           }
+       });
     });
 	
-	
-	
-//Metod za azuriranje reda u tabeli naruzbenice
- function getValue() {
-      var row;
-      var fieldValue;
-      var inputVal;
-      if (event.keyCode == 13) {
-        row = event.srcElement.id;
-        fieldValue = document.getElementById(rowID).value;
-        inputVal = rowID + "#" + fieldValue;
-		
-        $.ajax({
-          type: 'POST',
-          url: 'updateRow.php',
-          dataType: 'json',
-          data: ({
-            stavka: inputVal
-          }),
-          success: function() {
-            location.reload();
-          },
-          error: function() {
-            location.reload();
+	function getPatientExaminationDate(id_pacijenta){
+		$.ajax({ 
+          type: "POST",
+          url: "datePatientRecord.php",
+          dataType: "html", 
+          data: {
+			  id_pacijenta:id_pacijenta
+			  },		  
+          success: function(response) {
+            $("#responsecontainer").html(response);
           }
         });
-      }
-    }
-	//Metod za brisanje reda u tabeli narudzbenice
-function deleteRow() {
-      var rowID = event.srcElement.id;
-	  alertify.confirm('Potvrda brisanja', 'Da li želite da uklonite stavku?', function(){  
-	  $.ajax({
-          type: "POST",
-          url: "deleteRow.php",
+	}
+function addPatientCheckForm() {
+	
+	var ime_pacijenta="";
+	var ime_oca_pacijenta="";
+	var prezime_pacijenta="";
+	var godiste_pacijenta="";
+	var kontakt_pacijenta="";
+	var napomena_pacijenta="";
+	var naocare_blizina_od="";
+	var naocare_blizina_os="";
+	var naocare_daljina_od="";
+	var naocare_daljina_os="";
+	var sociva_od="";
+	var sociva_os="";
+	
+	ime_pacijenta = document.getElementById('ime_pacijenta').value;
+	ime_oca_pacijenta = document.getElementById('ime_oca_pacijenta').value;
+	prezime_pacijenta = document.getElementById('prezime_pacijenta').value;
+	godiste_pacijenta = document.getElementById('godiste_pacijenta').value;
+	kontakt_pacijenta = document.getElementById('kontakt_pacijenta').value;
+	napomena_pacijenta = document.getElementById('napomena_pacijenta').value;
+	naocare_daljina_od = document.getElementById('naocare_daljina_od').value;
+	naocare_daljina_os = document.getElementById('naocare_daljina_os').value;
+	naocare_blizina_od = document.getElementById('naocare_blizina_od').value;
+	naocare_blizina_os = document.getElementById('naocare_blizina_os').value;
+	sociva_od = document.getElementById('sociva_od').value;
+	sociva_os = document.getElementById('sociva_os').value;
+	
+	if ((ime_pacijenta.length == 0)|| (prezime_pacijenta.length == 0) || (godiste_pacijenta.length == 0) || (kontakt_pacijenta.length == 0)){
+		alertify.alert('Niste unijeli sve podatke!',"Obavezna polja za unos su: Ime; Prezime; Godina rođenja; Kontakt");
+        return false;
+	}
+		$.ajax({
+          type: 'POST',
+          url: 'addPatientDB.php',
           dataType: 'json',
           data: ({
-            stavka: rowID
+           ime_pacijenta: ime_pacijenta,
+		   ime_oca_pacijenta: ime_oca_pacijenta,
+		   prezime_pacijenta: prezime_pacijenta,
+		   godiste_pacijenta: godiste_pacijenta,
+		   kontakt_pacijenta: kontakt_pacijenta,
+		   napomena_pacijenta: napomena_pacijenta,
+		   naocare_daljina_od: naocare_daljina_od,
+		   naocare_daljina_os: naocare_daljina_os,
+		   naocare_blizina_od: naocare_blizina_od,
+		   naocare_blizina_os: naocare_blizina_os,
+		   sociva_od: sociva_od,
+		   sociva_os: sociva_os
           }),
           success: function() {
-            location.reload();
           },
           error: function() {
-            location.reload();
+             window.location.href = "../pregled/addPatientForm.php?msg=0";
           }
-        }); }
-                , function(){});
+        });
+}
+function updatePatientCheckForm(){
+	var id_pacijenta="";
+	var generalije_pacijenta="";
+	var kontakt_pacijenta="";
+	var napomena_pacijenta="";
+	var naocare_daljina_od="";
+	var naocare_daljina_os="";
+	var naocare_blizina_od="";
+	var naocare_blizina_os="";
+	var sociva_od="";
+	var sociva_os="";
+	
+	id_pacijenta = document.getElementById('id_pacijenta').value;
+	generalije_pacijenta = document.getElementById('patientGeneralsRecords').value;
+	kontakt_pacijenta = document.getElementById('contactPatientRecords').value;
+	napomena_pacijenta = document.getElementById('notePatientRecords').value;
+	naocare_daljina_od = document.getElementById('naocare_daljina_od').value;
+	naocare_daljina_os = document.getElementById('naocare_daljina_os').value;
+	naocare_blizina_od = document.getElementById('naocare_blizina_od').value;
+	naocare_blizina_os = document.getElementById('naocare_blizina_os').value;
+	sociva_od = document.getElementById('sociva_od').value;
+	sociva_os = document.getElementById('sociva_os').value;
+	
+	if (id_pacijenta == 0){
+		alertify.alert('Informacija',"Niste izabrali pacijenta");
+		return false;
+	}
+	if ((generalije_pacijenta.length == 0)){
+		alertify.error('Greška! Obavezno polje je prazno');
+		document.getElementById('patientGeneralsRecords').focus();
+        return false;
+	}
+	if ((kontakt_pacijenta.length == 0)){
+		alertify.error('Greška! Obavezno polje je prazno');
+		document.getElementById('contactPatientRecords').focus();
+        return false;
+	}
+	
+	alertify.confirm("Potvrda","Da li ste sigurni da želite ažurirati podatke o pacijentu?",
+  function(){
 
+	$.ajax({
+          type: 'POST',
+          url: 'updatePatientDB.php',
+          dataType: 'json',
+          data: ({
+		   id_pacijenta: id_pacijenta,
+           generalije_pacijenta: generalije_pacijenta,
+		   kontakt_pacijenta: kontakt_pacijenta,
+		   napomena_pacijenta: napomena_pacijenta,
+		   naocare_daljina_od: naocare_daljina_od,
+		   naocare_daljina_os: naocare_daljina_os,
+		   naocare_blizina_od: naocare_blizina_od,
+		   naocare_blizina_os: naocare_blizina_os,
+		   sociva_od: sociva_od,
+		   sociva_os: sociva_os
+          }),
+          success: function() {
+           window.location.href = "../pregled/patientRecords.php?msg=1";
+          },
+          error: function() {
+             window.location.href = "../pregled/patientRecords.php?msg=0";
+          }
+        });
+  },
+  function(){
+  });
+	
+		
+}
+function checkLensesFormExamination() {
+    var vrsta_pregleda = "sociva";
+    var radnik = null;
+    var id_radnika = null;
+    var sifra_radnika = "";
+    var ime_prezime_pacijenta = "";
+    var id_pacijenta = "";
+    var datum_pregleda = "";
+    var anamneza = "";
+    var vod = "";
+    var vos = "";
+    var vod1 = "";
+    var vos1 = "";
+    var v1 = "";
+    var v2 = "";
+    var v11 = "";
+    var v22 = "";
+    var motilitet = "";
+    var bms_od = "";
+    var bms_os = "";
+    var tonus_od = "";
+    var tonus_os = "";
+    var fundus_od = "";
+    var fundus_os = "";
+    var dijagnoza = "";
+    var terapija = "";
+    var proizvodjac_ks_od = "";
+    var period_ks_od = "";
+    var tip_ks_od = "";
+    var id_sociva = "";
+    var tip_ks_os = "";
+    var jacina_ks_od = "";
+    var bc_ks_od = "";
+    var velicina_ks_od = "";
+    var boja_ks_od = "";
+    var proizvodjac_ks_os = "";
+    var period_ks_os = "";
+    var tip_ks_os = "";
+    var period_ks_os = "";
+    var jacina_ks_os = "";
+    var bc_ks_os = "";
+    var velicina_ks_os = "";
+    var boja_ks_os = "";
+    var kontrola = "";
+    var napomena_pregleda = "";
+
+    try {
+        radnik = document.getElementById("radnik").textContent;
+    } catch (err) {
+        radnik = "";
+        console.log(err.message);
+    }
+    try {
+        id_radnika = document.getElementById("id_radnika").textContent;
+    } catch (err) {
+        id_radnika = "";
+    }
+
+    sifra_radnika = document.getElementById("sifra_radnika").value;
+    ime_prezime_pacijenta = document.getElementById("search").value;
+    id_pacijenta = $('input[name="id_pacijenta"]').val();
+    datum_pregleda = document.getElementById("datum_pregleda").value;
+    anamneza = document.getElementById("anamneza").value;
+    v1 = document.getElementById("vod").value;
+    v2 = document.getElementById("vos").value;
+    v11 = document.getElementById("vod1").value;
+    v22 = document.getElementById("vos1").value;
+    try {
+        motilitet = document.getElementById("motilitet").value;
+    } catch (err) {
+        motilitet = "";
+    }
+    try {
+        bms_od = document.getElementById("bms_od").value;
+    } catch (err) {
+        bms_od = "";
+    }
+    try {
+        bms_os = document.getElementById("bms_os").value;
+    } catch (err) {
+        bms_os = "";
+    }
+    try {
+        tonus_od = document.getElementById("tonus_od").value;
+    } catch (err) {
+        tonus_od = "";
+    }
+    try {
+        tonus_os = document.getElementById("tonus_os").value;
+    } catch (err) {
+        tonus_os = "";
+    }
+    try {
+        fundus_od = document.getElementById("fundus_od").value;
+    } catch (err) {
+        fundus_od = "";
+    }
+    try {
+        fundus_os = document.getElementById("fundus_os").value;
+    } catch (err) {
+        fundus_os = "";
+    }
+    try {
+        dijagnoza = document.getElementById("dijagnoza").value;
+    } catch (err) {
+        dijagnoza = "";
+    }
+    try {
+        terapija = document.getElementById("terapija").value;
+    } catch (err) {
+        terapija = "";
+    }
+
+    proizvodjac_ks_od = $("#proizvodjac_ks_od option:selected").text();
+    period_ks_od = $("#period_ks_od option:selected").text();
+    tip_ks_od = $("#tip_ks_od option:selected").text();
+    jacina_ks_od = document.getElementById("jacina_ks_od").value;
+    bc_ks_od = document.getElementById("bc_ks_od").value;
+    velicina_ks_od = document.getElementById("velicina_ks_od").value;
+    boja_ks_od = document.getElementById("boja_ks_od").value;
+    proizvodjac_ks_os = $("#proizvodjac_ks_os option:selected").text();
+    period_ks_os = $("#period_ks_os option:selected").text();
+    tip_ks_os = $("#tip_ks_os option:selected").text();
+    jacina_ks_os = document.getElementById("jacina_ks_os").value;
+    bc_ks_os = document.getElementById("bc_ks_os").value;
+    velicina_ks_os = document.getElementById("velicina_ks_os").value;
+    boja_ks_os = document.getElementById("boja_ks_os").value;
+
+    kontrola = document.getElementById("kontrola").value;
+    napomena_pregleda = document.getElementById("napomena_pregleda").value;
+
+    if (radnik.length == 0) {
+        document.getElementById("sifra_radnika").focus();
+        alertify.alert('Informacija', "Niste unijeli šifru radnika koji obavlja pregled!");
+        return false;
+    }
+    if (id_pacijenta.length == 0) {
+        return false;
+    }
+    if (v1.length == 0) {
+        document.getElementById("vod").focus();
+        alertify.alert('Informacija', "Niste unijeli VOD");
+        return false;
+    }
+    if (v11.length == 0) {
+        document.getElementById("vod1").focus();
+        alertify.alert('Informacija', "Niste unijeli VOD");
+        return false;
+    }
+    if (v2.length == 0) {
+        document.getElementById("vos").focus();
+        alertify.alert('Informacija', "Niste unijeli VOS");
+        return false;
+    }
+    if (v22.length == 0) {
+        document.getElementById("vos1").focus();
+        alertify.alert('Informacija', "Niste unijeli VOS");
+        return false;
+    }
+
+    if ((proizvodjac_ks_od.length == 0) && (proizvodjac_ks_os.length == 0)) {
+        alertify.alert('Informacija', "Niste izabrali proizvođača sočiva");
+        return false;
+    }
+
+
+    if (proizvodjac_ks_od.length != 0) {
+        if (period_ks_od.length != 0) {
+            if (tip_ks_od != 0) {
+                if (jacina_ks_od != 0) {
+                    if (bc_ks_od != 0) {
+                        if (velicina_ks_od != 0) {
+                            id_sociva = $('#tip_ks_od').val();
+                        } else {
+                            document.getElementById("velicina_ks_od").focus();
+                            alertify.alert('Informacija', "Niste unijeli veliinu sočiva");
+                            return false;
+                        }
+                    } else {
+                        document.getElementById("bc_ks_od").focus();
+                        alertify.alert('Informacija', "Niste unijeli baznu krivinu sočiva");
+                        return false;
+                    }
+                } else {
+                    document.getElementById("jacina_ks_od").focus();
+                    alertify.alert('Informacija', "Niste unijeli jačinu sočiva");
+                    return false;
+                }
+            } else {
+                document.getElementById("tip_ks_od").focus();
+                alertify.alert('Informacija', "Niste izabrali tip sočiva");
+                return false;
+            }
+        } else {
+            document.getElementById("period_ks_od").focus();
+            alertify.alert('Informacija', "Niste izabrali period sočiva");
+            return false;
+        }
+    }
+
+    if (proizvodjac_ks_os.length != 0) {
+        if (period_ks_os.length != 0) {
+            if (tip_ks_os != 0) {
+                if (jacina_ks_os != 0) {
+                    if (bc_ks_os != 0) {
+                        if (velicina_ks_os != 0) {
+                            id_sociva = $('#tip_ks_os').val();
+                        } else {
+                            document.getElementById("velicina_ks_os").focus();
+                            alertify.alert('Informacija', "Niste unijeli veliinu sočiva");
+                            return false;
+                        }
+                    } else {
+                        document.getElementById("bc_ks_os").focus();
+                        alertify.alert('Informacija', "Niste unijeli baznu krivinu sočiva");
+                        return false;
+                    }
+                } else {
+                    document.getElementById("jacina_ks_os").focus();
+                    alertify.alert('Informacija', "Niste unijeli jačinu sočiva");
+                    return false;
+                }
+            } else {
+                document.getElementById("tip_ks_os").focus();
+                alertify.alert('Informacija', "Niste izabrali tip sočiva");
+                return false;
+            }
+        } else {
+            document.getElementById("period_ks_os").focus();
+            alertify.alert('Informacija', "Niste izabrali period sočiva");
+            return false;
+        }
+    }
+
+    vod = v1 + " sa cc: " + v11
+    vos = v2 + " sa cc: " + v22
+
+    var success = radnik + '@@@' + ime_prezime_pacijenta + '@@@' + datum_pregleda + '@@@' + anamneza + '@@@' + vod + '@@@' + vos.replace(/\+/g, '%2B ') + '@@@' + motilitet + '@@@' + bms_od + '@@@' + bms_os + '@@@' + tonus_od + '@@@' + tonus_os + '@@@' + fundus_od + '@@@' + fundus_os + '@@@' + dijagnoza + '@@@' + terapija + '@@@' + proizvodjac_ks_od + '@@@' + period_ks_od + '@@@' + tip_ks_od + '@@@' + jacina_ks_od + '@@@' + bc_ks_od + '@@@' + velicina_ks_od + '@@@' + boja_ks_od + '@@@' + proizvodjac_ks_os + '@@@' + period_ks_os + '@@@' + tip_ks_os + '@@@' + jacina_ks_os + '@@@' + bc_ks_os + '@@@' + velicina_ks_os + '@@@' + boja_ks_os + '@@@' + kontrola + '@@@' + napomena_pregleda;
+
+    $.ajax({
+        type: 'POST',
+        url: 'addExaminationDB.php',
+        dataType: 'json',
+        data: ({
+            vrsta_pregleda: vrsta_pregleda,
+            id_radnika: id_radnika,
+            ime_prezime_pacijenta: ime_prezime_pacijenta,
+            id_pacijenta: id_pacijenta,
+            anamneza: anamneza,
+            vod: vod,
+            vos: vos,
+            motilitet: motilitet,
+            bms_od: bms_od,
+            bms_os: bms_os,
+            tonus_od: tonus_od,
+            tonus_os: tonus_os,
+            fundus_od: fundus_od,
+            fundus_os: fundus_os,
+            dijagnoza: dijagnoza,
+            terapija: terapija,
+            proizvodjac_ks_od: proizvodjac_ks_od,
+            period_ks_od: period_ks_od,
+            tip_ks_od: tip_ks_od,
+            jacina_ks_od: jacina_ks_od,
+            bc_ks_od: bc_ks_od,
+            velicina_ks_od: velicina_ks_od,
+            boja_ks_od: boja_ks_od,
+            proizvodjac_ks_os: proizvodjac_ks_os,
+            period_ks_os: period_ks_os,
+            tip_ks_os: tip_ks_os,
+            jacina_ks_os: jacina_ks_os,
+            bc_ks_os: bc_ks_os,
+            velicina_ks_os: velicina_ks_os,
+            boja_ks_os: boja_ks_os,
+            kontrola: kontrola,
+            napomena_pregleda: napomena_pregleda,
+            id_sociva: id_sociva
+
+        }),
+        success: function() {
+            location.reload();
+        },
+        error: function() {
+            window.location.href = "../pregled/examinationReportLenses.php?success=" + encodeURIComponent(success);
+        }
+    });
+
+}
+function checkFormExamination() {
+	  var vrsta_pregleda = "naocare";
+	  var radnik = null;
+	  var id_radnika = null;
+	  var sifra_radnika = "";
+	  var ime_prezime_pacijenta="";
+	  var id_pacijenta ="";
+      var datum_pregleda = "";
+	  var anamneza = "";
+      var vod = "";
+      var vos = "";
+	  var vod1 = "";
+	  var vos1 = "";
+	  var v1 = "";
+      var v2 = "";
+	  var v11 = "";
+      var v22 = "";
+      var motilitet = "";
+      var bms_od = "";
+      var bms_os = "";
+      var tonus_od = "";
+      var tonus_os = "";
+      var fundus_od = "";
+      var fundus_os = "";
+      var dijagnoza = "";
+	  var terapija="";
+      var korekcija_daljina_od = "";
+      var korekcija_daljina_os = "";
+	  var korekcija_blizina_od = "";
+      var korekcija_blizina_os = "";
+      var pd = "";
+      var kontrola = "";
+      var napomena_pregleda = "";
+	 
+	  try{
+	  radnik = document.getElementById("radnik").textContent;
+	  } catch(err){
+		  radnik = "";
+		  console.log(err.message);
+	  }
+	  try{
+	  id_radnika = document.getElementById("id_radnika").textContent;
+      } catch(err){
+          id_radnika = "";
+	  }
+	  
+	  sifra_radnika = document.getElementById("sifra_radnika").value;
+	  ime_prezime_pacijenta = document.getElementById("search").value;
+      id_pacijenta =$('input[name="id_pacijenta"]').val();
+      datum_pregleda = document.getElementById("datum_pregleda").value;
+	  anamneza = document.getElementById("anamneza").value;
+      v1 = document.getElementById("vod").value;
+      v2 = document.getElementById("vos").value;
+	  v11 = document.getElementById("vod1").value;
+      v22 = document.getElementById("vos1").value;
+      try{
+		   motilitet = document.getElementById("motilitet").value;
+	  }catch(err){
+		   motilitet="";
+	  }
+	  try{
+		   bms_od = document.getElementById("bms_od").value;
+	  }catch(err){
+		   bms_od="";
+	  }
+	  try{
+		  bms_os = document.getElementById("bms_os").value;
+	  }catch(err){
+		  bms_os="";
+	  }
+	    try{
+		  tonus_od = document.getElementById("tonus_od").value;
+	  }catch(err){
+		  tonus_od="";
+	  }
+	  try{
+		  tonus_os = document.getElementById("tonus_os").value;
+	  }catch(err){
+		  tonus_os="";
+	  }
+	  try{
+		  fundus_od = document.getElementById("fundus_od").value;
+	  }catch(err){
+		  fundus_od="";
+	  }
+	   try{
+		  fundus_os = document.getElementById("fundus_os").value;
+	  }catch(err){
+		  fundus_os="";
+	  }
+	  try{
+		  dijagnoza = document.getElementById("dijagnoza").value;
+	  }catch(err){
+		  dijagnoza="";
+	  }
+	   try{
+		  terapija = document.getElementById("terapija").value;
+	  }catch(err){
+		   terapija="";
+	  }
+      korekcija_daljina_od = document.getElementById("korekcija_daljina_od").value;
+      korekcija_daljina_os = document.getElementById("korekcija_daljina_os").value;
+	  korekcija_blizina_od = document.getElementById("korekcija_blizina_od").value;
+      korekcija_blizina_os = document.getElementById("korekcija_blizina_os").value;
+      
+      pd = document.getElementById("pd").value;
+      kontrola = document.getElementById("kontrola").value;
+      napomena_pregleda = document.getElementById("napomena_pregleda").value;
+
+	  if (radnik.length == 0){
+		  document.getElementById("sifra_radnika").focus();
+		  alertify.alert('Informacija',"Niste unijeli šifru radnika koji obavlja pregled!"); 
+		  return false;
+	  }
+      if(id_pacijenta.length == 0){
+		  alertify.alert('Informacija',"Niste izabrali pacijenta za pregled"); 
+		  return false;
+	  }
+	  if(pd.length == 0){
+		  document.getElementById("pd").focus();
+		  alertify.alert('Informacija',"Niste unijeli pupilarnu distancu (PD)!");
+		  return false;
+	  }
+	  if(v1.length == 0){
+		  document.getElementById("vod").focus();
+		  alertify.alert('Informacija',"Niste unijeli VOD");
+		  return false;
+	  }
+	  if(v11.length == 0){
+		  document.getElementById("vod1").focus();
+		  alertify.alert('Informacija',"Niste unijeli VOD");
+		  return false;
+	  }
+	  if(v2.length == 0){
+		  document.getElementById("vos").focus();
+		  alertify.alert('Informacija',"Niste unijeli VOS");
+		  return false;
+	  }
+	  if(v22.length == 0){
+		  document.getElementById("vos1").focus();
+		  alertify.alert('Informacija',"Niste unijeli VOS");
+		  return false;
+	  }
+	  
+	  vod = v1 +" sa cc: "+v11
+	  vos = v2 +" sa cc: "+v22
+	   
+	 var success = radnik + '@@@'+ ime_prezime_pacijenta + '@@@' + datum_pregleda + '@@@' + anamneza + '@@@' + vod + '@@@' + vos + '@@@' + motilitet + '@@@' + bms_od + '@@@' + bms_os + '@@@' + tonus_od + '@@@' + tonus_os + '@@@' + fundus_od + '@@@' + fundus_os + '@@@' + dijagnoza + '@@@' + terapija +'@@@'+ korekcija_daljina_od + '@@@' + korekcija_daljina_os + '@@@' + korekcija_blizina_od + '@@@' + korekcija_blizina_os + '@@@' + pd + '@@@' + kontrola + '@@@'+napomena_pregleda;
+	 
+      $.ajax({
+        type: 'POST',
+        url: 'addExaminationDB.php',
+        dataType: 'json',
+        data: ({
+		  vrsta_pregleda:vrsta_pregleda,
+		  id_radnika: id_radnika,
+		  ime_prezime_pacijenta : ime_prezime_pacijenta,
+          id_pacijenta: id_pacijenta,
+          anamneza: anamneza,
+          vod: vod,
+          vos: vos,
+          motilitet: motilitet,
+          bms_od: bms_od,
+          bms_os: bms_os,
+          tonus_od: tonus_od,
+          tonus_os: tonus_os,
+          fundus_od: fundus_od,
+          fundus_os: fundus_os,
+          dijagnoza: dijagnoza,
+		  terapija: terapija,
+          korekcija_daljina_od: korekcija_daljina_od,
+          korekcija_daljina_os: korekcija_daljina_os,
+		  korekcija_blizina_od: korekcija_blizina_od,
+          korekcija_blizina_os: korekcija_blizina_os,
+          pd: pd,
+          kontrola: kontrola,
+          napomena_pregleda: napomena_pregleda
+        }),
+        success: function() {
+          location.reload();
+		 
+		 
+        },
+        error: function() {
+		  window.location.href = "../pregled/examinationReport.php?success="+encodeURIComponent(success);
+        }
+      });
+	  
     }
 	
-//Metod za validaciju forme u unosu specijale
-function checkForm() {
-
-var odOsOu = document.getElementById("select1");
-var vrstaSoc = document.getElementById("select2");
-var indeks = document.getElementById("select4");
-var vrstaMat = document.getElementById("select5");
-var precnik1 = document.getElementById("select6");
-var precnik2 = document.getElementById("select7");
-
-var jm = document.getElementById("select11").value;
-var kolicina = document.getElementById("kolicina").value;
-
-var precnik;
-
-if (precnik1.selectedIndex == 0) {
-precnik = document.getElementById("select7").value;
-} else if (precnik2.selectedIndex == 0) {
-precnik = document.getElementById("select6").value;
-}else{
-precnik = 0;
+ function checkUser(sifra, id_pregleda) {
+    alertify.prompt("Potvrda", "Unesite svoj ID", "",
+        function(evt, value) {
+            
+            var sifra_radnika = sifra;
+            if (value == sifra_radnika) {
+                updateFormExamination(id_pregleda);
+            } else {
+                alertify.alert("Greška","Uneseni ID radnika ne odgovara onom koji je kreirao izvještaj").set({onshow:null, onclose:function(){  location.reload();}});
+            }
+        },
+        function() {
+        }).set('type', 'password');;
+		
 }
+	
+function updateFormExamination(id_pregleda) {
+	 
+	  var anamneza = "";
+	  var vod = "";
+	  var vos = "";
+	  var motilitet = "";
+	  var tonus_od = "";
+	  var tonus_os = "";
+	  var bms_od = "";
+	  var bms_os = "";
+	  var tonus_od = "";
+      var tonus_os = "";
+      var fundus_od = "";
+      var fundus_os = "";
+      var dijagnoza = "";
+	  var terapija="";
+      var korekcija_daljina_od = "";
+      var korekcija_daljina_os = "";
+	  var korekcija_blizina_od = "";
+      var korekcija_blizina_os = "";
+      var tip_ks_od = "";
+      var tip_ks_os = "";
+      var jacina_ks_od = "";
+      var bc_ks_od = "";
+      var velicina_ks_od = "";
+      var boja_ks_od = "";
+      var tip_ks_os = "";
+      var jacina_ks_os = "";
+      var bc_ks_os = "";
+      var velicina_ks_os = "";
+      var boja_ks_os = "";
+      var pd = "";
+      var kontrola = "";
+      var napomena_pregleda = "";
+	 
+	  anamneza = document.getElementById("inputAnamenzaReport").value;
+	  vod = document.getElementById("inputVodReport").value;
+	  vos = document.getElementById("inputVosReport").value;
+	  motilitet = document.getElementById("inputMotilitetReport").value;
+	  tonus_od = document.getElementById("inputTonusOdReport").value;
+	  tonus_os = document.getElementById("inputTonusOsReport").value;
+	  bms_od = document.getElementById("inputBmsOdReport").value;
+	  bms_os = document.getElementById("inputBmsOsReport").value;
+	  fundus_od = document.getElementById("inputFundusOdReport").value;
+	  fundus_os = document.getElementById("inputFundusOsReport").value;
+	  dijagnoza = document.getElementById("inputDiagnoseReport").value;
+	  terapija = document.getElementById("inputTherapyReport").value;
+      korekcija_daljina_od = document.getElementById("inputDistanceCorrectionOdReport").value;
+      korekcija_daljina_os = document.getElementById("inputDistanceCorrectionOsReport").value;
+	  korekcija_blizina_od = document.getElementById("inputProximityCorrectionOdReport").value;
+      korekcija_blizina_os = document.getElementById("inputProximityCorrectionOsReport").value;
+	  pd = document.getElementById("inputPdReport").value;
+	  
+	  proizvodjac_ks_od = document.getElementById("proizvodjac_ks_od").value;
+	  period_ks_od = document.getElementById("period_ks_od").value;
+      tip_ks_od = document.getElementById("tip_ks_od").value;
+      jacina_ks_od = document.getElementById("jacina_ks_od").value;
+      bc_ks_od = document.getElementById("bc_ks_od").value;
+      velicina_ks_od = document.getElementById("velicina_ks_od").value;
+      boja_ks_od = document.getElementById("boja_ks_od").value;
+	  proizvodjac_ks_os = document.getElementById("proizvodjac_ks_os").value;
+	  period_ks_os = document.getElementById("period_ks_os").value;
+      tip_ks_os = document.getElementById("tip_ks_os").value;
+      jacina_ks_os = document.getElementById("jacina_ks_os").value;
+      bc_ks_os = document.getElementById("bc_ks_os").value;
+      velicina_ks_os = document.getElementById("velicina_ks_os").value;
+      boja_ks_os = document.getElementById("boja_ks_os").value;
+      kontrola = document.getElementById("inputControlReport").value;
+      napomena_pregleda = document.getElementById("inputNoteExaminationReport").value;
+	  
+	  if(vod.length == 0){
+		  document.getElementById("inputVodReport").focus();
+		  alertify.alert('Informacija',"Polje sa podacima o VOD ne može biti prazno!");
+		  return false;
+	  }
+	  if(vos.length == 0){
+		  document.getElementById("inputVosReport").focus();
+		  alertify.alert('Informacija',"Polje sa podacima o VOS ne može biti prazno!");
+		  return false;
+	  }
+	  
+      $.ajax({
+        type: 'POST',
+        url: 'updateExaminationDB.php',
+        dataType: 'json',
+        data: ({
+		  id_pregleda:id_pregleda,
+          anamneza: anamneza,
+		  vod:vod,
+		  vos:vos,
+		  motilitet:motilitet,
+		  tonus_od:tonus_od,
+		  tonus_os:tonus_os,
+		  bms_od:bms_od,
+		  bms_os:bms_os,
+		  tonus_od: tonus_od,
+          tonus_os: tonus_os,
+          fundus_od: fundus_od,
+          fundus_os: fundus_os,
+          dijagnoza: dijagnoza,
+		  terapija: terapija,
+          korekcija_daljina_od: korekcija_daljina_od,
+          korekcija_daljina_os: korekcija_daljina_os,
+		  korekcija_blizina_od: korekcija_blizina_od,
+          korekcija_blizina_os: korekcija_blizina_os,
+		  proizvodjac_ks_od : proizvodjac_ks_od,
+	      period_ks_od : period_ks_od,
+          tip_ks_od: tip_ks_od,
+          jacina_ks_od: jacina_ks_od,
+          bc_ks_od: bc_ks_od,
+          velicina_ks_od: velicina_ks_od,
+          boja_ks_od: boja_ks_od,
+		  proizvodjac_ks_os : proizvodjac_ks_os,
+	      period_ks_os : period_ks_os,
+          tip_ks_os: tip_ks_os,
+          jacina_ks_os: jacina_ks_os,
+          bc_ks_os: bc_ks_os,
+          velicina_ks_os: velicina_ks_os,
+          boja_ks_os: boja_ks_os,
+          pd: pd,
+          kontrola: kontrola,
+          napomena_pregleda: napomena_pregleda
+        }),
+        success: function() {
+          location.reload();
+        },
+        error: function() {
+			 alertify.alert("Informacija","Izvještaj je uspiješno ažuriran").set({onshow:null, onclose:function(){  location.reload();}});
+			
+        }
+      });
+	  
+    }
+	
+	
 
-if ((odOsOu.selectedIndex == 0) || (vrstaSoc.selectedIndex == 0) || (indeks.selectedIndex == 0) || (vrstaMat.selectedIndex == 0) || (precnik == 0) || (kolicina == 0)) {
-
-alertify.alert('Niste unijeli sve potrebne parametre',"Obavezna polja za unos su:\n - Od/Os/Ou \n- Vrsta sočiva \n- Index \n- Vrsta materijala \n- Prečnik \n- Količina");
-
-return false;
-}
-}
     
