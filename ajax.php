@@ -15,8 +15,10 @@ mysqli_set_charset($conn, "utf8");
 if (isset($_POST['search'])) {
    //Dodjeljivanje prosljeđene vrijednosti promjenljivoj
    $Name = $_POST['search'];
+   //String koji sadrži unesenu vrijednost sa znakom '%' umjesto razmaka. Ovo je dodatni parametar koji unaprijeđuje pretragu pacijenta
+   $string = preg_replace('/\s+/', '%', $Name);
    //Upit za pretragu unesenog pojma
-   $Query = "SELECT ID,generalije_pacijenta,kontakt,napomena,naocare_daljina_od,naocare_daljina_os,naocare_blizina_od,naocare_blizina_os,sociva_od,sociva_os FROM pacijenti WHERE generalije_pacijenta LIKE '%$Name%' OR  generalije_pacijenta LIKE '_$Name%' LIMIT 10";
+   $Query = "SELECT ID,generalije_pacijenta,kontakt,napomena,naocare_daljina_od,naocare_daljina_os,naocare_blizina_od,naocare_blizina_os,sociva_od,sociva_os FROM pacijenti WHERE generalije_pacijenta LIKE '%$Name%' OR generalije_pacijenta LIKE '$string' OR generalije_pacijenta LIKE '$string%' LIMIT 10";
    //Izvršavanje upita
    $ExecQuery = MySQLi_query($conn, $Query);
    //Kreiranje neuređena liste za prikaz rezultata
