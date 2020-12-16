@@ -2,10 +2,7 @@
 <html lang="en">
 <?php include '../pregled/modules/header.php';
 
-if (isset($_COOKIE['login_attempts'])) {
-    unset($_COOKIE['login_attempts']);
-    setcookie('login_attempts', '', time() - 3600, '/');
-}
+setcookie('login_attempts', '', time() - 3600, '/');
 
 require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
