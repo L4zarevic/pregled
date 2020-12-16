@@ -39,8 +39,9 @@ if (!$korisnickoIme && !$lozinka) {
             } else {
                 $error = 1;
             }
+        } else {
+            $error = 0;
         }
-        $error = 0;
     } else {
         $error = 1;
     }
