@@ -21,12 +21,14 @@ mysqli_set_charset($conn, "utf8");
 $sifra_radnika = mysqli_real_escape_string($conn, $_REQUEST['sifra_radnika']);
 
 //Pretraga podataka o radniku na osnovu unesene šifre radnika
-$upit = "SELECT * FROM radnici WHERE sifra_radnika='$sifra_radnika'";
-$result = mysqli_query($conn, $upit);
+$stmt = $conn->prepare("SELECT * FROM radnici WHERE sifra_radnika=?");
+$stmt->bind_param('s', $sifra_radnika);
+$stmt->execute();
+$result = $stmt->get_result();
 
 //Ispis pronađenih rezultata pretrage u vidu labela
 //Label sa ID-om radnika je vizualno sakriven i koristi se priliko zapisa pregleda da se zna koji je radnik obavio pregled.
-while ($row = mysqli_fetch_object($result)) {
+while ($row = $result->fetch_object()) {
     echo "<label id='id_radnika' hidden><strong>$row->ID</strong></label>";
     echo "<label id='radnik'><strong>$row->imePrezimeRadnika</strong></label>";
 }
