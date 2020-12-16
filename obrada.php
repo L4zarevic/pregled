@@ -24,13 +24,12 @@ while ($row = $result->fetch_object()) {
 if (!$korisnickoIme && !$lozinka) {
     $error = 1;
 } else if (!$korisnickoIme) {
-
-    $login_attempt++;
+    $error = 1;
 } else if (!$lozinka) {
     $error = 1;
 } else {
     if (($korisnickoIme == $user) && ($hash_password == $pass)) {
-        if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+        if (isset($_POST['g-recaptcha-response'])) {
             $secret = '6LdbyAgaAAAAAOLrAvSqdlWUrNRoGcJm7iEBm8CA';
             $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response']);
             $responseData = json_decode($verifyResponse);
