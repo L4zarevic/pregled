@@ -55,7 +55,10 @@ if ($error == 1) {
     header("Location:login.php?msg=1");
     exit;
 } else {
+    if (isset($_COOKIE['login_attempts'])) {
+        unset($_COOKIE['login_attempts']);
+        setcookie('login_attempts', '', time() - 3600, '/');
+    }
     $_SESSION['prijavljen'] = $idKorisnika . "#" . $imeKorisnika . "#" . $dataBaseName;
-    unset($_COOKIE['login_attempts']);
     die(header("Location:index.php"));
 }
