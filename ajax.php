@@ -32,7 +32,7 @@ if (isset($_POST['search'])) {
       //Kreiranje stavki neuređene liste.
       //Stavki se dodjeljuje onclick triger koji na "kliknuti" rezultat isti prosljeđuje metodi "fill" koja se nalazi u "js/alertify.min.js"
 ?>
-      <li id="ajaxResults" onclick='fill("<?php echo $Result['ID'] . "#" . $Result['generalije_pacijenta'] . "#" . $Result['kontakt'] . "#" . $Result['napomena'] . "#" . $Result['naocare_daljina_od'] . "#" . $Result['naocare_daljina_os'] . "#" . $Result['naocare_blizina_od'] . "#" . $Result['naocare_blizina_os'] . "#" . $Result['sociva_od'] . "#" . $Result['sociva_os']; ?>")'>
+      <li id="ajaxResults" onclick='fill("<?php echo $Result['ID'] . "#" . $Result['generalije_pacijenta'] . "#" . $Result['kontakt'] . "#" . $Result['napomena'] . "#" . $Result['naocare_daljina_od'] . "#" . $Result['naocare_daljina_os'] . "#" . $Result['naocare_blizina_od'] . "#" . $Result['naocare_blizina_os'] . "#" . $Result['sociva_od'] . "#" . $Result['sociva_os'] ."#"; ?>")'>
          <a value="<?php echo $Result['ID']; ?>">
             <?php echo $Result['generalije_pacijenta']; ?>
       </li></a>

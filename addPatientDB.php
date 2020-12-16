@@ -38,8 +38,10 @@ if (strlen($imeOcaPacijenta) > 0) {
 }
 
 
-$upit = "INSERT INTO pacijenti (IDKorisnika,generalije_pacijenta,kontakt,napomena,naocare_daljina_od,naocare_daljina_os,naocare_blizina_od,naocare_blizina_os,sociva_od,sociva_os) VALUES ('$id_korisnika','$generalije_pacijenta','$kontaktPacijenta','$napomenaPacijenta','$naocare_daljina_od','$naocare_daljina_os','$naocare_blizina_od','$naocare_blizina_os','$sociva_od','$sociva_os')";
-$rezultat = mysqli_query($conn, $upit);
+$stmt = $conn->prepare("INSERT INTO pacijenti (IDKorisnika,generalije_pacijenta,kontakt,napomena,naocare_daljina_od,naocare_daljina_os,naocare_blizina_od,naocare_blizina_os,sociva_od,sociva_os) VALUES (?,?,?,?,?,?,?,?,?,?)");
+$stmt->bind_param('isssssssss', $id_korisnika, $generalije_pacijenta, $kontaktPacijenta, $napomenaPacijenta, $naocare_daljina_od, $naocare_daljina_os, $naocare_blizina_od, $naocare_blizina_os, $sociva_od, $sociva_os);
+$stmt->execute();
+//$rezultat = mysqli_query($conn, $upit);
 if (mysqli_error($conn)) {
     die(mysqli_error($conn));
 }
