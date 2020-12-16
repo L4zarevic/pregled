@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Moja Optika Stanković</title>
     <meta charset="UTF-8">
@@ -15,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="css/alertify.min.css" />
 </head>
+
 <body>
     <div class="limiter">
         <div class="container-login100">
@@ -22,20 +24,24 @@
                 <form class="login100-form validate-form flex-sb flex-w" action="../pregled/obrada.php" method="post"><img id="logo" src="../pregled/images/MO.png"><span class="login100-form-title p-b-51"></span>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Niste unijeli korisničko ime"><input class="input100" type="text" name="korisnicko_ime" placeholder="Korisničko ime"><span class="focus-input100"></span></div>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Niste unijeli lozinku"><input class="input100" type="password" name="lozinka" placeholder="Lozinka"><span class="focus-input100"></span></div>
-                    <div class="container-login100-form-btn m-t-17"><button class="login100-form-btn" type="submit">Prijava</button><br /></br>
+                    <div class="container-login100-form-btn m-t-17"><button class="login100-form-btn" type="submit">Prijava</button><br /><br />
                         <?php
+                        if (isset($_COOKIE["login_attempts"])) {
+                            echo "<br />";
+                            echo "<div class='g-recaptcha' data-sitekey='6LdbyAgaAAAAAFEeuCT_lUBk2mCeuiqYv2e-mEin'></div>";
+                        }
+
                         if (isset($_REQUEST['msg'])) {
                             if ($_REQUEST['msg'] == '1') {
                                 echo "<script src=\"js/alertify.min.js\"></script>";
                                 echo "<script type=\"text/javascript\">alertify.error('Neuspiješno logovanje');</script>";
-                                echo "</br>";
-                                echo "<div class='g-recaptcha' data-sitekey='6LdbyAgaAAAAAFEeuCT_lUBk2mCeuiqYv2e-mEin'></div>";
                             }
                             if ($_REQUEST['msg'] == '2') {
                                 echo "<script src=\"js/alertify.min.js\"></script>";
                                 echo "<script type=\"text/javascript\">alertify.alert('Prekid konekcije','Provjerite Vašu internet konekciju i pokušajte ponovo da se ulogujete na Vaš korisnički nalog. Ukoliko se problem ponavlja kontaktirajte nas na info@mojaoptika.com');</script>";
                             }
                         }
+
                         echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
                         ?>
                     </div>
@@ -51,4 +57,5 @@
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 </body>
 <!-- „Ko traži, naći će. Ko kuca, otvoriće mu se.“ -->
+
 </html>

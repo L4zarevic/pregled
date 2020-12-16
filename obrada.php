@@ -2,6 +2,7 @@
 if (is_null($_SESSION['prijavljen'])) {
     header('Location:../pregled/login.php');
 }
+$login = 0;
 include 'connection.php';
 $con = OpenCon();
 mysqli_set_charset($con, "utf8");
@@ -45,8 +46,12 @@ if (!$korisnickoIme && !$lozinka) {
         $error = 1;
     }
 }
-
+if ($login  > 5) {
+    header("Location:login.php?msg=3");
+    exit;
+}
 if ($error == 1) {
+    setcookie("login_attempts", "kazi_ciki_mjauu", time()+5*60);
     header("Location:login.php?msg=1");
     exit;
 } else {
