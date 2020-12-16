@@ -14,10 +14,12 @@ mysqli_set_charset($conn, "utf8");
 //Metod za prikaz ukupno obavljenih pregleda
 function sumExamination($conn, $idKorisnika)
 {
-    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika='$idKorisnika'";
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika=?");
+    $stmt->bind_param('i', $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
 }
@@ -25,10 +27,12 @@ function sumExamination($conn, $idKorisnika)
 //Metod za prikaz ukupno obavljenih pregleda naočare
 function sumGlassesExamination($conn, $idKorisnika)
 {
-    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika='$idKorisnika' AND vrsta_pregleda='naocare'";
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika =? AND vrsta_pregleda='naocare'");
+    $stmt->bind_param('i', $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
 }
@@ -36,10 +40,12 @@ function sumGlassesExamination($conn, $idKorisnika)
 //Metod za prikaz ukupno obavljenih pregleda sočiva
 function sumLensesExamination($conn, $idKorisnika)
 {
-    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika='$idKorisnika' AND vrsta_pregleda='sociva'";
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika =? AND vrsta_pregleda='sociva'");
+    $stmt->bind_param('i', $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
 }
@@ -52,10 +58,12 @@ function sumMonthsExamination($conn, $idKorisnika)
     $dateSplit = explode("-", $todayDate, 3);
     $dateSplit[1] = rtrim($dateSplit[1], "-");
     $startDate = $dateSplit[0] . "-" . $dateSplit[1] . "-01";
-    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN '$startDate' AND '$todayDate' AND ID_korisnika='$idKorisnika'";
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN ? AND ? AND ID_korisnika =?");
+    $stmt->bind_param('ssi', $startDate, $todayDate, $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
 }
@@ -67,10 +75,12 @@ function sumGlassesMonthsExamination($conn, $idKorisnika)
     $dateSplit = explode("-", $todayDate, 3);
     $dateSplit[1] = rtrim($dateSplit[1], "-");
     $startDate = $dateSplit[0] . "-" . $dateSplit[1] . "-01";
-    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN '$startDate' AND '$todayDate' AND ID_korisnika='$idKorisnika' AND vrsta_pregleda ='naocare'";
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN ? AND ? AND ID_korisnika =? AND vrsta_pregleda ='naocare'");
+    $stmt->bind_param('ssi', $startDate, $todayDate, $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
 }
@@ -82,10 +92,12 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
     $dateSplit = explode("-", $todayDate, 3);
     $dateSplit[1] = rtrim($dateSplit[1], "-");
     $startDate = $dateSplit[0] . "-" . $dateSplit[1] . "-01";
-    $sql = "SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN '$startDate' AND '$todayDate' AND ID_korisnika='$idKorisnika' AND vrsta_pregleda ='sociva'";
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN ? AND ? AND ID_korisnika =? AND vrsta_pregleda ='sociva'");
+    $stmt->bind_param('ssi', $startDate, $todayDate, $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
 }
@@ -235,7 +247,8 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
                         </div>
                     </div>
                 </div>
-            </div><?php include '../pregled/modules/footer.php'; ?>
+            </div>
+            <?php include '../pregled/modules/footer.php'; ?>
 </body>
 
 </html>
