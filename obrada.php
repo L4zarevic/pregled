@@ -51,7 +51,7 @@ if ($login  > 5) {
     exit;
 }
 if ($error == 1) {
-    setcookie("login_attempts", "kazi_ciki_mjauu", time()+5*60);
+    setcookie("login_attempts", "mjauu", time()+5*60);
     header("Location:login.php?msg=1");
     exit;
 } else {
