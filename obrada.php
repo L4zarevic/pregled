@@ -20,19 +20,32 @@ while ($row = $result->fetch_object()) {
     $imeKorisnika = $row->naziv;
     $dataBaseName = $row->db;
 }
+
 if (!$korisnickoIme && !$lozinka) {
     $error = 1;
 } else if (!$korisnickoIme) {
-    $error = 1;
+
+    $login_attempt++;
 } else if (!$lozinka) {
     $error = 1;
 } else {
     if (($korisnickoIme == $user) && ($hash_password == $pass)) {
+        if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+            $secret = '6LdbyAgaAAAAAOLrAvSqdlWUrNRoGcJm7iEBm8CA';
+            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response']);
+            $responseData = json_decode($verifyResponse);
+            if ($responseData->success) {
+                $error = 0;
+            } else {
+                $error = 1;
+            }
+        }
         $error = 0;
     } else {
         $error = 1;
     }
 }
+
 if ($error == 1) {
     header("Location:login.php?msg=1");
     exit;
