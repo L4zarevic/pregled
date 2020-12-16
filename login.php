@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Moja Optika Stanković</title>
     <meta charset="UTF-8">
@@ -15,9 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="css/alertify.min.css" />
-
 </head>
-
 <body>
     <div class="limiter">
         <div class="container-login100">
@@ -41,7 +38,6 @@
                         }
                         echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
                         ?>
-
                     </div>
                 </form>
             </div>
@@ -55,5 +51,4 @@
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 </body>
 <!-- „Ko traži, naći će. Ko kuca, otvoriće mu se.“ -->
-
 </html>
