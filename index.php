@@ -2,6 +2,7 @@
 <html lang="en">
 <?php include '../pregled/modules/header.php';
 
+//Uklanjanje kolačića
 setcookie("login_attempts", "", time() - 3600);
 
 require_once 'connection.php';
