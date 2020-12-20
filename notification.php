@@ -7,7 +7,7 @@
  * 
  * 
  * 
- * Cron job izvšava skriptu svaki dan u 03:00 
+ * Cron job izvšava skriptu svaki dan u 03:00 AM
  */
 
 include 'connection.php';
@@ -29,10 +29,12 @@ foreach ($database_array as $db) {
     //Upit koji selektuje datume notifikacija u opsegu zadnjih 7 dana
     $todayDate = date("Y-m-d");
     $startDate = date("Y-m-d", strtotime("-7 days"));
-    $sql = "SELECT *  FROM pregledi WHERE notifikacija BETWEEN '$startDate' AND '$todayDate'";
-    $result = MySQLi_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT * FROM pregledi WHERE notifikacija BETWEEN ? AND ?");
+    $stmt->bind_param('ss', $startDate, $todayDate);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         $ID = $row->ID;
         $ID_korisnika = $row->ID_korisnika;
         $ID_pacijenta = $row->ID_pacijenta;
@@ -56,17 +58,21 @@ foreach ($database_array as $db) {
 
         //Upit koji na osnovu ID_pacijenta prikazuje ime tog pacijenta
         $generalije_pacijenta = "";
-        $sql1 = "SELECT generalije_pacijenta FROM pacijenti WHERE ID='$ID_pacijenta'";
-        $result1 = MySQLi_query($conn, $sql1);
-        while ($row1 = mysqli_fetch_object($result1)) {
+        $stmt1 = $conn->prepare("SELECT generalije_pacijenta FROM pacijenti WHERE ID =?");
+        $stmt1->bind_param('i', $ID_pacijenta);
+        $stmt1->execute();
+        $result1 = $stmt1->get_result();
+        while ($row1 = $result1->fetch_object()) {
             $generalije_pacijenta = $row1->generalije_pacijenta;
         }
 
         //Upit koji na osnovu ID_korisnika prikazuje njegov email
         $email = "";
         $con2 = OpenCon();
-        $sql2 = "SELECT email FROM korisnici WHERE ID='$ID_korisnika'";
-        $result2 = MySQLi_query($con2, $sql2);
+        $stmt2 = $con2->prepare("SELECT email FROM korisnici WHERE ID =?");
+        $stmt2->bind_param('i', $ID_korisnika);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
         while ($row2 = mysqli_fetch_object($result2)) {
             $email = $row2->email;
         }
@@ -133,8 +139,9 @@ foreach ($database_array as $db) {
         if (mail($to, $title, $message, $header)) {
 
             //Nakon poslatog email-a, vrijednost notifikacije se setuje na nulti datum da se više ne bi ponovila
-            $sql3 = "UPDATE pregledi SET notifikacija = '0000-00-00'  WHERE ID = $ID";
-            $result3 = mysqli_query($conn, $sql3);
+            $stmt3 = $conn->prepare("UPDATE pregledi SET notifikacija = '0000-00-00' WHERE ID =?");
+            $stmt3->bind_param('i', $ID);
+            $stmt3->execute();
         }
     }
 }
