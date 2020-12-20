@@ -17,19 +17,20 @@ mysqli_set_charset($conn, "utf8");
 //Provjera da li je POST metodom poslata vrijednost promjeljive period sociva OD
 if (isset($_POST['period_ks_od'])) {
     //Dodjeljivanje poslatih vrijednosti promjenljivim
-    $period_ks_od = $_POST['period_ks_od'];
-    $proizvodjac_ks_od = $_POST['proizvodjac_ks_od'];
+    $period_ks_od = mysqli_real_escape_string($conn, $_POST['period_ks_od']);
+    $proizvodjac_ks_od = mysqli_real_escape_string($conn, $_POST['proizvodjac_ks_od']);
 
     //Na osnovu dobijenih parametara se vrši upit
-    $sql = "SELECT ID,tip FROM sociva WHERE ID_proizvodjaca='$proizvodjac_ks_od' AND period='$period_ks_od' GROUP BY tip";
-    //Izvršavanje upita
-    $result = MySQLi_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT ID,tip FROM sociva WHERE ID_proizvodjaca =? AND period =? GROUP BY tip");
+    $stmt->bind_param("is", $proizvodjac_ks_od, $period_ks_od);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     //Rezultati upita će biti prikazane kao opcije u select box-u.
     //Definišemo praznu opciju kao podrazumijevanu
     echo "<option default></option>";
     //Ispis pronađenih vrijednosti upita
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         echo "<option value='$row->ID'>$row->tip</option>";
     }
 }
@@ -37,18 +38,18 @@ if (isset($_POST['period_ks_od'])) {
 //Provjera da li je POST metodom poslata vrijednost promjeljive tip sočiva OD
 if (isset($_POST['tip_ks_od'])) {
     //Dodjeljivanje poslatih vrijednosti promjenljivoj
-    $tip_ks_od = $_POST['tip_ks_od'];
+    $tip_ks_od = mysqli_real_escape_string($conn, $_POST['tip_ks_od']);
 
     //Na osnovu dobijenog parametra se vrši upit za čitanje baznih krivina (bc) i veličine sočiva (td)
-    $sql = "SELECT bc,td FROM sociva WHERE ID='$tip_ks_od'";
-    //Izvršavanje upita
-    $result = MySQLi_query($conn, $sql);
-
+    $stmt = $conn->prepare("SELECT bc,td FROM sociva WHERE ID =?");
+    $stmt->bind_param("i", $tip_ks_od);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     $bcValue = "";
     $tdValue = "";
     //Dodjeljivanje rezultata upita definisanim promjenljivim
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         $bcOldValue = $row->bc;
         $tdValue = $row->td;
         //Za svako sočivo može biti definisano više baznih krivina. One su numeričke vrijednosti (sa decimalnim zarezom).
@@ -68,30 +69,32 @@ if (isset($_POST['tip_ks_od'])) {
 
 //Provjera da li je POST metodom poslata vrijednost promjeljie period sočiva OS
 if (isset($_POST['period_ks_os'])) {
-    $period_ks_os = $_POST['period_ks_os'];
-    $proizvodjac_ks_os = $_POST['proizvodjac_ks_os'];
+    $period_ks_os = mysqli_real_escape_string($conn, $_POST['period_ks_os']);
+    $proizvodjac_ks_os = mysqli_real_escape_string($conn, $_POST['proizvodjac_ks_os']);
 
-    $sql = "SELECT ID,tip FROM sociva WHERE ID_proizvodjaca='$proizvodjac_ks_os' AND period='$period_ks_os' GROUP BY tip";
-
-    $result = MySQLi_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT ID,tip FROM sociva WHERE ID_proizvodjaca =? AND period =? GROUP BY tip");
+    $stmt->bind_param("is", $proizvodjac_ks_os, $period_ks_os);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     echo "<option default></option>";
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         echo "<option value='$row->ID'>$row->tip</option>";
     }
 }
 
 //Provjera da li je POST metodom poslata vrijednost promjeljive tip sočiva OS
 if (isset($_POST['tip_ks_os'])) {
-    $tip_ks_os = $_POST['tip_ks_os'];
+    $tip_ks_os =  mysqli_real_escape_string($conn, $_POST['tip_ks_os']);
 
-    $Query = "SELECT bc,td FROM sociva WHERE ID='$tip_ks_os'";
-
-    $result = MySQLi_query($conn, $Query);
+    $stmt = $conn->prepare("SELECT bc,td FROM sociva WHERE ID =?");
+    $stmt->bind_param("i", $tip_ks_os);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     $bcValue = "";
     $tdValue = "";
-    while ($row = mysqli_fetch_object($result)) {
+    while ($row = $result->fetch_object()) {
         $bcOldValue = $row->bc;
         $tdValue = $row->td;
         $bcNewValue = explode("|", $bcOldValue);
