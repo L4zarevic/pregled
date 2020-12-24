@@ -46,7 +46,7 @@ if (!$korisnickoIme && !$lozinka) {
     }
 }
 if ($error == 1) {
-    setcookie("login_attempts", "mjauu", time() + 5 * 60);
+    setcookie("cica_maca", "mjauu", time() + 5 * 60);
     header("Location:login.php?msg=1");
     exit;
 } else {

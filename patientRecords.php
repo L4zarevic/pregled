@@ -66,7 +66,7 @@ include '../pregled/modules/header.php';
 
                 <div class="form-group col-md-7">
                   <label>Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
-                  <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search" autocomplete="off"/>
+                  <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search" autocomplete="off" />
                 </div>
                 <div class="form-group col-md-2">
                   <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
@@ -87,7 +87,7 @@ include '../pregled/modules/header.php';
                 </div>
                 <div class="form-group col-md-8">
                   <label>Napomena:</label>
-                  <input name="notePatientRecords" type="text" class="form-control" id="notePatientRecords">
+                  <textarea name="notePatientRecords" type="text" class="form-control" id="notePatientRecords"></textarea>
                 </div>
                 <div class="row">
                   <div class="form-group col-md-11">

@@ -3,7 +3,7 @@
 <?php include '../pregled/modules/header.php';
 
 //Uklanjanje kolačića
-setcookie("login_attempts", "", time() - 3600);
+setcookie("cica_maca", "", time() - 3600);
 
 require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
