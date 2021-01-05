@@ -456,11 +456,10 @@ function lensesManufactured($conn)
         var period_ks_od = $('#period_ks_od').val();
         var proizvodjac_ks_od = $('#proizvodjac_ks_od').val();
 
-        //Validating, if is empty.
         if (period_ks_od != "") {
           //Poziva se AJAX
           $.ajax({
-            //AJAX metod je "Post".
+            //AJAX metod je POST.
             type: "POST",
             //Podaci će biti poslati prema "ajaxTypeLenses.php".
             url: "ajaxTypeLenses.php",
@@ -488,11 +487,10 @@ function lensesManufactured($conn)
         //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sočiva.
         var tip_ks_od = $("#tip_ks_od").val();
 
-
         if (tip_ks_od != "") {
           //Poziva se AJAX.
           $.ajax({
-            //AJAX metod je "Post".
+            //AJAX metod je POST.
             type: "POST",
             //Podaci će biti poslati prema "ajaxTypeLenses.php".
             url: "ajaxTypeLenses.php",
@@ -523,7 +521,7 @@ function lensesManufactured($conn)
         if (period_ks_os != "") {
           //Poziva se AJAX
           $.ajax({
-            //AJAX metod je "Post".
+            //AJAX metod je POST.
             type: "POST",
             //Podaci će biti poslati prema "ajaxTypeLenses.php".
             url: "ajaxTypeLenses.php",
@@ -542,7 +540,7 @@ function lensesManufactured($conn)
       //Funkcija koja se poziva kada se polje za tip sočiva OS promijeni.
       $("#tip_ks_os").change(function() {
 
-        //čišćenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i veličine sočiva.
+        //Čišćenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i veličine sočiva.
         document.getElementById("bc_ks_os").value = "";
         document.getElementById("velicina_ks_os").value = "";
         $('#ispisBc_os').find('option').remove().end();
@@ -554,7 +552,7 @@ function lensesManufactured($conn)
         if (tip_ks_os != "") {
           //Poziva se AJAX.
           $.ajax({
-            //AJAX metod je "Post".
+            //AJAX metod je POST.
             type: "POST",
             //Podaci će biti poslati prema "ajaxTypeLenses.php".
             url: "ajaxTypeLenses.php",

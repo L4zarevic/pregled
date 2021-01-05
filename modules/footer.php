@@ -1,7 +1,7 @@
 <?php echo "<footer class='sticky-footer bg-white'>";
 echo "<div class='container my-auto'>";
 echo "<div class='copyright text-center my-auto'>";
-echo "<span>Copyright &copy; Moja Optika Stanković " . date("Y") . "</span>";
+echo "<span>Copyright &copy; Moja Optika Stanković " . date("Y") . "| Aplikacija je optimizovana za rad u Google Chrome, Opera i Microsoft Edge</span>";
 echo "</div>";
 echo "</div>";
 echo "</footer>"; ?></div>

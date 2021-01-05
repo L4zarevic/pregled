@@ -32,7 +32,7 @@ $sociva_os = mysqli_real_escape_string($conn, $_REQUEST['sociva_os']);
 //Uslov u kome se provjera da li je unijeto ime oca. Ukoliko jeste zapis generalija pacijenta će biti u formatu "Ime (Ime oca) Prezime godište"
 if (strlen($imeOcaPacijenta) > 0) {
     $generalije_pacijenta = $imePacijenta . " (" . $imeOcaPacijenta . ") " . $prezimePacijenta . " " . $godistePacijenta;
-    //Ukoliko nije format će biti "Ime Prezime godište"
+    //Ukoliko nije, format će biti "Ime Prezime godište"
 } else {
     $generalije_pacijenta = $imePacijenta . " " . $prezimePacijenta . " " . $godistePacijenta;
 }
