@@ -21,7 +21,7 @@
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Niste unijeli lozinku"><input class="input100" type="password" name="lozinka" placeholder="Lozinka"><span class="focus-input100"></span></div>
                     <div class="container-login100-form-btn m-t-17"><button class="login100-form-btn" type="submit">Prijava</button><br /><br />
                         <?php
-                        if (isset($_COOKIE["login_attempts"])) {
+                        if (isset($_COOKIE["cica_maca"])) {
                             echo "<br />";
                             echo "<div class='g-recaptcha' data-sitekey='6LdbyAgaAAAAAFEeuCT_lUBk2mCeuiqYv2e-mEin'></div>";
                         }
