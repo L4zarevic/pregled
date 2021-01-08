@@ -12,7 +12,10 @@ $stmt = $con->prepare("SELECT * FROM korisnici WHERE korisnicko_ime=? AND lozink
 $stmt->bind_param('ss', $korisnickoIme, $hash_password);
 $stmt->execute();
 $result = $stmt->get_result();
-if (!$stmt) die(mysqli_error($con));
+if (!$stmt) {
+    header("Location:login.php?msg=2");
+    die(mysqli_error($con));
+}
 while ($row = $result->fetch_object()) {
     $idKorisnika = $row->ID;
     $user = $row->korisnicko_ime;

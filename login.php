@@ -9,7 +9,8 @@
     <link rel="icon" type="image/png" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" href="css/alertify.min.css" />
+    <link rel="stylesheet" href="css/alertify.min.css">
+    <link rel="stylesheet" href="../pregled/css/themes/default.min.css" />
 </head>
 
 <body>
@@ -33,7 +34,7 @@
                             }
                             if ($_REQUEST['msg'] == '2') {
                                 echo "<script src=\"js/alertify.min.js\"></script>";
-                                echo "<script type=\"text/javascript\">alertify.alert('Prekid konekcije','Provjerite Vašu internet konekciju i pokušajte ponovo da se ulogujete na Vaš korisnički nalog. Ukoliko se problem ponavlja kontaktirajte nas na info@mojaoptika.com');</script>";
+                                echo "<script type=\"text/javascript\">alertify.alert('Prekid konekcije','Nije moguće ostvariti konekciju sa aplikacijom. Pokušajte ponovo da se ulogujete na Vaš korisnički nalog. Ukoliko se problem ponavlja kontaktirajte nas na info@mojaoptika.com');</script>";
                             }
                         }
 
