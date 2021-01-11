@@ -6,16 +6,16 @@ include '../pregled/modules/header.php';
 
 require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode("#", $korisnik, 3);
-$ar[1] = rtrim($ar[1], "#");
+$ar = explode('#', $korisnik, 3);
+$ar[1] = rtrim($ar[1], '#');
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn, "utf8");
+mysqli_set_charset($conn, 'utf8');
 
 //Metod za čitanje liste proizvođača sočiva i dodavanje rezultata u opcije select box-a proizvođača
 function lensesManufactured($conn)
 {
-  $sql = "SELECT * FROM proizvodjaci_sociva";
+  $sql = 'SELECT * FROM proizvodjaci_sociva';
   $result = mysqli_query($conn, $sql);
 
   while ($row = mysqli_fetch_object($result)) {
@@ -55,8 +55,8 @@ function lensesManufactured($conn)
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao
                   <b>
                     <?php $korisnik = $_SESSION['prijavljen'];
-                    $ar = explode("#", $korisnik, 3);
-                    $ar[1] = rtrim($ar[1], "#");
+                    $ar = explode('#', $korisnik, 3);
+                    $ar[1] = rtrim($ar[1], '#');
                     echo $imeKorisnika = $ar[1];
                     ?>
                   </b> <i class="fas fa-user"></i></span>
@@ -450,7 +450,7 @@ function lensesManufactured($conn)
     /*******************************************************************************/
     $(document).ready(function() {
       //Funkcija koja se poziva kada se polje za period OD sočiva promijeni
-      $("#period_ks_od").change(function() {
+      $('#period_ks_od').change(function() {
 
         //Parametri potrebni za pretragu tipova sočiva (period i ID proizvođača sočiva) u tabeli sočiva
         var period_ks_od = $('#period_ks_od').val();
@@ -460,9 +460,9 @@ function lensesManufactured($conn)
           //Poziva se AJAX
           $.ajax({
             //AJAX metod je POST.
-            type: "POST",
+            type: 'POST',
             //Podaci će biti poslati prema "ajaxTypeLenses.php".
-            url: "ajaxTypeLenses.php",
+            url: 'ajaxTypeLenses.php',
             //Podaci koji će biti poslati
             data: {
               period_ks_od: period_ks_od,
@@ -470,30 +470,30 @@ function lensesManufactured($conn)
             },
             //Ako je rezultat pronađen vrijednosti opcija se smiještaju u izbornik tipova sočiva OD.
             success: function(html) {
-              $("#tip_ks_od").html(html).show();
+              $('#tip_ks_od').html(html).show();
             }
           });
         }
       });
 
       //Funkcija koja se poziva kada se polje za tip sočiva OD promijeni.
-      $("#tip_ks_od").change(function() {
+      $('#tip_ks_od').change(function() {
 
         //Čišćenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i velicine sočiva.
-        document.getElementById("bc_ks_od").value = "";
-        document.getElementById("velicina_ks_od").value = "";
+        document.getElementById('bc_ks_od').value = '';
+        document.getElementById('velicina_ks_od').value = '';
         $('#ispisBc_od').find('option').remove().end();
 
         //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sočiva.
-        var tip_ks_od = $("#tip_ks_od").val();
+        var tip_ks_od = $('#tip_ks_od').val();
 
-        if (tip_ks_od != "") {
+        if (tip_ks_od != '') {
           //Poziva se AJAX.
           $.ajax({
             //AJAX metod je POST.
-            type: "POST",
+            type: 'POST',
             //Podaci će biti poslati prema "ajaxTypeLenses.php".
-            url: "ajaxTypeLenses.php",
+            url: 'ajaxTypeLenses.php',
             //Podaci koji će biti poslati
             data: {
               tip_ks_od: tip_ks_od
@@ -503,28 +503,28 @@ function lensesManufactured($conn)
             success: function(html) {
               var bcTd = html.split('@@@');
               //Prvi element se dodaje kao opcija u datalist bazne krivine OD.
-              $("#ispisBc_od").append(bcTd[0]);
+              $('#ispisBc_od').append(bcTd[0]);
               //Drugi element se dodjeljuje kao vrijednost polja za veličinu sočiva OD.
-              document.getElementById("velicina_ks_od").value = bcTd[1];
+              document.getElementById('velicina_ks_od').value = bcTd[1];
             }
           });
         }
       });
 
       //Funkcija koja se poziva kada se polje za period OS sočiva promijeni.
-      $("#period_ks_os").change(function() {
+      $('#period_ks_os').change(function() {
 
         //Parametri potrebni za pretragu tipova sočiva (period i ID proizvođaca sočiva) u tabeli sočiva
         var period_ks_os = $('#period_ks_os').val();
         var proizvodjac_ks_os = $('#proizvodjac_ks_os').val();
 
-        if (period_ks_os != "") {
+        if (period_ks_os != '') {
           //Poziva se AJAX
           $.ajax({
             //AJAX metod je POST.
-            type: "POST",
+            type: 'POST',
             //Podaci će biti poslati prema "ajaxTypeLenses.php".
-            url: "ajaxTypeLenses.php",
+            url: 'ajaxTypeLenses.php',
             //Podaci koji će biti poslati.
             data: {
               period_ks_os: period_ks_os,
@@ -532,30 +532,30 @@ function lensesManufactured($conn)
             },
             //Ako je rezultat pronađen vrijednosti opcija se smiještaju u izbornik tipova sočiva OS.
             success: function(html) {
-              $("#tip_ks_os").html(html).show();
+              $('#tip_ks_os').html(html).show();
             }
           });
         }
       });
       //Funkcija koja se poziva kada se polje za tip sočiva OS promijeni.
-      $("#tip_ks_os").change(function() {
+      $('#tip_ks_os').change(function() {
 
         //Čišćenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i veličine sočiva.
-        document.getElementById("bc_ks_os").value = "";
-        document.getElementById("velicina_ks_os").value = "";
+        document.getElementById('bc_ks_os').value = '';
+        document.getElementById('velicina_ks_os').value = '';
         $('#ispisBc_os').find('option').remove().end();
 
         //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sočiva.
-        var tip_ks_os = $("#tip_ks_os").val();
+        var tip_ks_os = $('#tip_ks_os').val();
 
 
-        if (tip_ks_os != "") {
+        if (tip_ks_os != '') {
           //Poziva se AJAX.
           $.ajax({
             //AJAX metod je POST.
-            type: "POST",
+            type: 'POST',
             //Podaci će biti poslati prema "ajaxTypeLenses.php".
-            url: "ajaxTypeLenses.php",
+            url: 'ajaxTypeLenses.php',
             //Podaci koji će biti poslati.
             data: {
               tip_ks_os: tip_ks_os
@@ -565,9 +565,9 @@ function lensesManufactured($conn)
             success: function(html) {
               var bcTd = html.split('@@@');
               //Prvi element se dodaje kao opcija u datalist bazne krivine OD.
-              $("#ispisBc_os").append(bcTd[0]);
+              $('#ispisBc_os').append(bcTd[0]);
               //Drugi element se dodjeljuje kao vrijednost polja za velicinu sociva OD
-              document.getElementById("velicina_ks_os").value = bcTd[1];
+              document.getElementById('velicina_ks_os').value = bcTd[1];
             }
           });
         }
@@ -580,19 +580,19 @@ function lensesManufactured($conn)
     $proizvodjac_ks_od.on('change', function() {
       $('#tip_ks_od').find('option').remove().end();
       $('#period_ks_od').val('');
-      document.getElementById("bc_ks_od").value = "";
-      document.getElementById("velicina_ks_od").value = "";
-      document.getElementById("jacina_ks_od").value = "";
-      document.getElementById("boja_ks_od").value = "";
+      document.getElementById('bc_ks_od').value = '';
+      document.getElementById('velicina_ks_od').value = '';
+      document.getElementById('jacina_ks_od').value = '';
+      document.getElementById('boja_ks_od').value = '';
       $('#ispisBc_od').find('option').remove().end();
     });
 
     var $period_ks_od = $('#period_ks_od');
     $period_ks_od.on('change', function() {
-      document.getElementById("bc_ks_od").value = "";
-      document.getElementById("velicina_ks_od").value = "";
-      document.getElementById("jacina_ks_od").value = "";
-      document.getElementById("boja_ks_od").value = "";
+      document.getElementById('bc_ks_od').value = '';
+      document.getElementById('velicina_ks_od').value = '';
+      document.getElementById('jacina_ks_od').value = '';
+      document.getElementById('boja_ks_od').value = '';
       $('#ispisBc_od').find('option').remove().end();
     });
 

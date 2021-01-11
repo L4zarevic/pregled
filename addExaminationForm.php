@@ -36,8 +36,8 @@ include '../pregled/modules/header.php';
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao
                   <b>
                     <?php $korisnik = $_SESSION['prijavljen'];
-                    $ar = explode("#", $korisnik, 3);
-                    $ar[1] = rtrim($ar[1], "#");
+                    $ar = explode('#', $korisnik, 3);
+                    $ar[1] = rtrim($ar[1], '#');
                     echo $imeKorisnika = $ar[1];
                     ?>
                   </b> <i class="fas fa-user"></i></span>
@@ -365,23 +365,23 @@ include '../pregled/modules/header.php';
     //Traženje imena radnika na osnovu unesenog ID-a
     $(document).ready(function() {
       //Kada se polje promijeni, aktivira se triger koji poziva AJAX metod
-      $("#sifra_radnika").on('change', function(e) {
+      $('#sifra_radnika').on('change', function(e) {
         //Uzima se vrijednost iz polja za unos
         var sifra_radnika = document.getElementById('sifra_radnika').value;
         //Poziva se AJAX
         $.ajax({
           //AJAX metod je POST
-          type: "POST",
+          type: 'POST',
           //Podaci se šalju prema getWorkersID.php
-          url: "getWorkersID.php",
-          dataType: "html",
+          url: 'getWorkersID.php',
+          dataType: 'html',
           //Podaci koji se šalju
           data: {
             sifra_radnika: sifra_radnika
           },
           //Ukoliko je pronađena vrijednost, ime radnika se prikazuje u div elementu ime_radnika
           success: function(response) {
-            $("#ime_radnika").html(response);
+            $('#ime_radnika').html(response);
           }
         });
       });

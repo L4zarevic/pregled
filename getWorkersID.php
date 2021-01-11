@@ -9,19 +9,19 @@ if (is_null($_SESSION['prijavljen'])) {
 header('Content-Type: text/html; charset=utf-8');
 include 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode("#", $korisnik, 3);
-$ar[1] = rtrim($ar[1], "#");
+$ar = explode('#', $korisnik, 3);
+$ar[1] = rtrim($ar[1], '#');
 $id_korisnika = $ar[0];
 $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn, "utf8");
+mysqli_set_charset($conn, 'utf8');
 
 //Dodjeljivanje promjenljivoj vrijednosti šifre radnika koja je prosljeđena iz form obrasca pregleda
 $sifra_radnika = mysqli_real_escape_string($conn, $_REQUEST['sifra_radnika']);
 
 //Pretraga podataka o radniku na osnovu unesene šifre radnika
-$stmt = $conn->prepare("SELECT * FROM radnici WHERE sifra_radnika=?");
+$stmt = $conn->prepare('SELECT * FROM radnici WHERE sifra_radnika=?');
 $stmt->bind_param('s', $sifra_radnika);
 $stmt->execute();
 $result = $stmt->get_result();

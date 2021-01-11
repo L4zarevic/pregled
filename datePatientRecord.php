@@ -14,16 +14,16 @@
 
     require_once 'connection.php';
     $korisnik = $_SESSION['prijavljen'];
-    $ar = explode("#", $korisnik, 3);
-    $ar[1] = rtrim($ar[1], "#");
+    $ar = explode('#', $korisnik, 3);
+    $ar[1] = rtrim($ar[1], '#');
     $dataBaseName = $ar[2];
     $conn = OpenStoreCon($dataBaseName);
-    mysqli_set_charset($conn, "utf8");
+    mysqli_set_charset($conn, 'utf8');
 
     $id_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['id_pacijenta']);
 
     //Na osnovu ID pacijenta prikazujemo datume pregleda i optike(korisnike) gdje je obavljen pregled
-    $stmt1 = $conn->prepare("SELECT ID,datum_pregleda,ID_korisnika FROM pregledi WHERE ID_pacijenta =? ORDER BY ID DESC");
+    $stmt1 = $conn->prepare('SELECT ID,datum_pregleda,ID_korisnika FROM pregledi WHERE ID_pacijenta =? ORDER BY ID DESC');
     $stmt1->bind_param('i', $id_pacijenta);
     $stmt1->execute();
     $result1 = $stmt1->get_result();
@@ -41,13 +41,13 @@
     //Ispis rezultata upita
     while ($row1 = $result1->fetch_object()) {
         $originalDate = $row1->datum_pregleda;
-        $datum_pregleda = date("d.m.Y", strtotime($originalDate));
+        $datum_pregleda = date('d.m.Y', strtotime($originalDate));
         echo "<tr>";
         echo "<td>" . ($rb = $rb + 1) . "</td>";
         //Datumi su linkovi koji sadrže ID pregleda. Nakon klika se otvara stranica za prikaz i uređivanje izvještaja sa dobijenim ID pregleda
         echo "<td><a target='_blank' href='examinationReportEdit.php?id=$row1->ID'>$datum_pregleda</a></td>";
         //Upit koji na osnovu dobijenog ID korisnika čita naziv korisnika kojem pripada taj ID
-        $stmt2 = $conn->prepare("SELECT mojaopt_optike.korisnici.naziv FROM mojaopt_optike.korisnici WHERE mojaopt_optike.korisnici.ID =?");
+        $stmt2 = $conn->prepare('SELECT mojaopt_optike.korisnici.naziv FROM mojaopt_optike.korisnici WHERE mojaopt_optike.korisnici.ID =?');
         $stmt2->bind_param('i', $row1->ID_korisnika);
         $stmt2->execute();
         $result2 = $stmt2->get_result();
