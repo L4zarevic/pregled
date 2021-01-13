@@ -6,12 +6,12 @@
 include '../pregled/modules/header.php';
 require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode("#", $korisnik, 3);
-$ar[1] = rtrim($ar[1], "#");
+$ar = explode('#', $korisnik, 3);
+$ar[1] = rtrim($ar[1], '#');
 $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn, "utf8");
+mysqli_set_charset($conn, 'utf8');
 
 //Prosljeđen ID pregleda iz patientRecord.php
 $id_pregleda = mysqli_real_escape_string($conn, $_REQUEST['id']);
@@ -61,7 +61,7 @@ while ($row = mysqli_fetch_object($result)) {
 }
 
 //Konvertovanje datuma iz Y-m-d u d.m.Y format
-$datum_pregleda = date("d.m.Y", strtotime($originalDate));
+$datum_pregleda = date('d.m.Y', strtotime($originalDate));
 
 
 //Pretraga imena pacijenta na osnovu njegovog ID-a u tabeli pregled
@@ -129,8 +129,8 @@ CloseCon($conn);
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao
                   <b>
                     <?php $korisnik = $_SESSION['prijavljen'];
-                    $ar = explode("#", $korisnik, 3);
-                    $ar[1] = rtrim($ar[1], "#");
+                    $ar = explode('#', $korisnik, 3);
+                    $ar[1] = rtrim($ar[1], '#');
                     echo $imeKorisnika = $ar[1];
                     ?>
                   </b> <i class="fas fa-user"></i></span>
