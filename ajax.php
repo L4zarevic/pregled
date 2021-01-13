@@ -32,7 +32,7 @@ if (isset($_POST['search'])) {
       //Kreiranje stavki neuređene liste.
       //Stavki se dodjeljuje onclick triger koji na "kliknuti" rezultat isti prosljeđuje metodi "fill" koja se nalazi u "js/alertify.min.js"
 ?>
-      <li id="ajaxResults" onclick='fill("<?php echo $row['ID'] . "#" . $row['generalije_pacijenta'] . "#" . $row['kontakt'] . "#" . $row['napomena'] . "#" . $row['naocare_daljina_od'] . "#" . $row['naocare_daljina_os'] . "#" . $row['naocare_blizina_od'] . "#" . $row['naocare_blizina_os'] . "#" . $row['sociva_od'] . "#" . $row['sociva_os']; ?>")'>
+      <li id="ajaxResults" onclick='fill("<?php echo $row['ID'] . '#' . $row['generalije_pacijenta'] . '#' . $row['kontakt'] . '#' . $row['napomena'] . '#' . $row['naocare_daljina_od'] . '#' . $row['naocare_daljina_os'] . '#' . $row['naocare_blizina_od'] . '#' . $row['naocare_blizina_os'] . '#' . $row['sociva_od'] . '#' . $row['sociva_os']; ?>")'>
          <a value="<?php echo $row['ID']; ?>">
             <?php echo $row['generalije_pacijenta']; ?>
       </li></a>
@@ -41,7 +41,7 @@ if (isset($_POST['search'])) {
 
    //Uslov u kome se provjerava da li je bilo rezulta upita
    if ($numRow == 0) {
-      echo "Nema rezultata pretrage";
+      echo 'Nema rezultata pretrage';
    }
 }
 ?>

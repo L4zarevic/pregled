@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
-
 <body>
-
     <?php
-
     //Skripta za dobijenje datuma kada je izabrati pacijent radio preglede i u kojoj optici(korisnik)
 
     session_start();
@@ -29,21 +26,21 @@
     $result1 = $stmt1->get_result();
 
     //Vrijednosti upita će biti ispisani kao redovi u tabeli
-    echo "<table id='dtDynamicVerticalScrollExample' class='table table-hover  table-sm'>";
-    echo "<thead>";
-    echo "<tr>";
+    echo "<table id='dtDynamicVerticalScrollExample' class='table table-hover table-sm'>";
+    echo '<thead>';
+    echo '<tr>';
     echo "<th scope='col'>#</th>";
     echo "<th scope='col'>Datum pregleda:</th>";
     echo "<th scope='col'>Radnja:</th>";
-    echo "</tr>";
-    echo "</thead>";
+    echo '</tr>';
+    echo '</thead>';
     $rb = 0;
     //Ispis rezultata upita
     while ($row1 = $result1->fetch_object()) {
         $originalDate = $row1->datum_pregleda;
         $datum_pregleda = date('d.m.Y', strtotime($originalDate));
-        echo "<tr>";
-        echo "<td>" . ($rb = $rb + 1) . "</td>";
+        echo '<tr>';
+        echo '<td>' . ($rb = $rb + 1) . '</td>';
         //Datumi su linkovi koji sadrže ID pregleda. Nakon klika se otvara stranica za prikaz i uređivanje izvještaja sa dobijenim ID pregleda
         echo "<td><a target='_blank' href='examinationReportEdit.php?id=$row1->ID'>$datum_pregleda</a></td>";
         //Upit koji na osnovu dobijenog ID korisnika čita naziv korisnika kojem pripada taj ID
@@ -54,9 +51,9 @@
         while ($row2 = $result2->fetch_object()) {
             echo "<td>$row2->naziv</td>";
         }
-        echo "</tr>";
+        echo '</tr>';
     }
-    echo "</table>";
+    echo '</table>';
     CloseCon($conn);
     ?>
 </body>
