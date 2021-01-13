@@ -3,25 +3,24 @@
 <?php include '../pregled/modules/header.php';
 
 //Uklanjanje kolačića
-setcookie("cica_maca", "", time() - 3600);
+setcookie('cica_maca', '', time() - 3600);
 
 require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode("#", $korisnik, 3);
-$ar[1] = rtrim($ar[1], "#");
+$ar = explode('#', $korisnik, 3);
+$ar[1] = rtrim($ar[1], '#');
 $idKorisnika = $ar[0];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn, "utf8");
+mysqli_set_charset($conn, 'utf8');
 
 //Metod za prikaz ukupno obavljenih pregleda
 function sumExamination($conn, $idKorisnika)
 {
-    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika=?");
+    $stmt = $conn->prepare('SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika=?');
     $stmt->bind_param('i', $idKorisnika);
     $stmt->execute();
     $result = $stmt->get_result();
-
     while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
@@ -34,7 +33,6 @@ function sumGlassesExamination($conn, $idKorisnika)
     $stmt->bind_param('i', $idKorisnika);
     $stmt->execute();
     $result = $stmt->get_result();
-
     while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
@@ -47,7 +45,6 @@ function sumLensesExamination($conn, $idKorisnika)
     $stmt->bind_param('i', $idKorisnika);
     $stmt->execute();
     $result = $stmt->get_result();
-
     while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
@@ -57,15 +54,14 @@ function sumLensesExamination($conn, $idKorisnika)
 function sumMonthsExamination($conn, $idKorisnika)
 {
     //Na osnovu današnjeg datum, odbijamo dio stringa koji predstavlja dan i dodajemo stringu "-01". Na ovaj način dobijamo prvi datum u ovom mjesecu koji će biti početni datum za opseg u upitu
-    $todayDate = date("Y-m-d");
-    $dateSplit = explode("-", $todayDate, 3);
-    $dateSplit[1] = rtrim($dateSplit[1], "-");
-    $startDate = $dateSplit[0] . "-" . $dateSplit[1] . "-01";
-    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN ? AND ? AND ID_korisnika =?");
+    $todayDate = date('Y-m-d');
+    $dateSplit = explode('-', $todayDate, 3);
+    $dateSplit[1] = rtrim($dateSplit[1], '-');
+    $startDate = $dateSplit[0] . '-' . $dateSplit[1] . '-01';
+    $stmt = $conn->prepare('SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN ? AND ? AND ID_korisnika =?');
     $stmt->bind_param('ssi', $startDate, $todayDate, $idKorisnika);
     $stmt->execute();
     $result = $stmt->get_result();
-
     while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
@@ -74,15 +70,14 @@ function sumMonthsExamination($conn, $idKorisnika)
 //Metod za prikaz ukupno obavljenih pregleda naočara ovog mjeseca
 function sumGlassesMonthsExamination($conn, $idKorisnika)
 {
-    $todayDate = date("Y-m-d");
-    $dateSplit = explode("-", $todayDate, 3);
-    $dateSplit[1] = rtrim($dateSplit[1], "-");
-    $startDate = $dateSplit[0] . "-" . $dateSplit[1] . "-01";
+    $todayDate = date('Y-m-d');
+    $dateSplit = explode('-', $todayDate, 3);
+    $dateSplit[1] = rtrim($dateSplit[1], '-');
+    $startDate = $dateSplit[0] . '-' . $dateSplit[1] . '-01';
     $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN ? AND ? AND ID_korisnika =? AND vrsta_pregleda ='naocare'");
     $stmt->bind_param('ssi', $startDate, $todayDate, $idKorisnika);
     $stmt->execute();
     $result = $stmt->get_result();
-
     while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
@@ -91,21 +86,19 @@ function sumGlassesMonthsExamination($conn, $idKorisnika)
 //Metod za prikaz ukupno obavljenih pregleda sočiva ovog mjeseca
 function sumLensesMonthsExamination($conn, $idKorisnika)
 {
-    $todayDate = date("Y-m-d");
-    $dateSplit = explode("-", $todayDate, 3);
-    $dateSplit[1] = rtrim($dateSplit[1], "-");
-    $startDate = $dateSplit[0] . "-" . $dateSplit[1] . "-01";
+    $todayDate = date('Y-m-d');
+    $dateSplit = explode('-', $todayDate, 3);
+    $dateSplit[1] = rtrim($dateSplit[1], '-');
+    $startDate = $dateSplit[0] . '-' . $dateSplit[1] . '-01';
     $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE datum_pregleda BETWEEN ? AND ? AND ID_korisnika =? AND vrsta_pregleda ='sociva'");
     $stmt->bind_param('ssi', $startDate, $todayDate, $idKorisnika);
     $stmt->execute();
     $result = $stmt->get_result();
-
     while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
 }
 ?>
-
 <body id="page-top">
     <div id="wrapper">
         <?php include '../pregled/modules/menu.php'; ?>
@@ -117,8 +110,8 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
                         <li class="nav-item dropdown no-arrow"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao
                                     <b>
                                         <?php $korisnik = $_SESSION['prijavljen'];
-                                        $ar = explode("#", $korisnik, 3);
-                                        $ar[1] = rtrim($ar[1], "#");
+                                        $ar = explode('#', $korisnik, 3);
+                                        $ar[1] = rtrim($ar[1], '#');
                                         echo $imeKorisnika = $ar[1];
                                         ?>
                                     </b> <i class="fas fa-user"></i></span> </a>
