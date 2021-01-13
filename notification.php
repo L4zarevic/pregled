@@ -14,7 +14,7 @@ include 'connection.php';
 
 //Kreiranje niza od naziva baza koji su definisani u koloni db u tabeli 'korisnici'
 $con = OpenCon();
-$sql = "SELECT DISTINCT db FROM `korisnici`";
+$sql = 'SELECT DISTINCT db FROM korisnici';
 $result = MySQLi_query($con, $sql);
 $database_array = array();
 while ($row = mysqli_fetch_object($result)) {
@@ -24,12 +24,12 @@ while ($row = mysqli_fetch_object($result)) {
 //Foreach petlja prolazi kroz svaki element niza(naziv baze podataka) kojeg prosljeđuje kao parametar metodi za osvarivanje konekcije
 foreach ($database_array as $db) {
     $conn = OpenStoreCon($db);
-    mysqli_set_charset($conn, "utf8");
+    mysqli_set_charset($conn, 'utf8');
 
     //Upit koji selektuje datume notifikacija u opsegu zadnjih 7 dana
-    $todayDate = date("Y-m-d");
-    $startDate = date("Y-m-d", strtotime("-7 days"));
-    $stmt = $conn->prepare("SELECT * FROM pregledi WHERE notifikacija BETWEEN ? AND ?");
+    $todayDate = date('Y-m-d');
+    $startDate = date('Y-m-d', strtotime('-7 days'));
+    $stmt = $conn->prepare('SELECT * FROM pregledi WHERE notifikacija BETWEEN ? AND ?');
     $stmt->bind_param('ss', $startDate, $todayDate);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -57,8 +57,8 @@ foreach ($database_array as $db) {
         $boja_ks_os = $row->boja_ks_os;
 
         //Upit koji na osnovu ID_pacijenta prikazuje ime tog pacijenta
-        $generalije_pacijenta = "";
-        $stmt1 = $conn->prepare("SELECT generalije_pacijenta FROM pacijenti WHERE ID =?");
+        $generalije_pacijenta = '';
+        $stmt1 = $conn->prepare('SELECT generalije_pacijenta FROM pacijenti WHERE ID =?');
         $stmt1->bind_param('i', $ID_pacijenta);
         $stmt1->execute();
         $result1 = $stmt1->get_result();
@@ -67,9 +67,9 @@ foreach ($database_array as $db) {
         }
 
         //Upit koji na osnovu ID_korisnika prikazuje njegov email
-        $email = "";
+        $email = '';
         $con2 = OpenCon();
-        $stmt2 = $con2->prepare("SELECT email FROM korisnici WHERE ID =?");
+        $stmt2 = $con2->prepare('SELECT email FROM korisnici WHERE ID =?');
         $stmt2->bind_param('i', $ID_korisnika);
         $stmt2->execute();
         $result2 = $stmt2->get_result();
@@ -78,10 +78,10 @@ foreach ($database_array as $db) {
         }
 
         //Konvertovanje datuma iz formata Y-m-d u d.m.Y
-        $datum = date("d.m.Y", strtotime($datum_pregleda));
+        $datum = date('d.m.Y', strtotime($datum_pregleda));
 
         //Definisanje email-a
-        $header = "From: no-reply@mojaoptika.com" . "\r\n";
+        $header = 'From: no-reply@mojaoptika.com' . "\r\n";
         $to     = $email;
         $header .= "MIME-Version: 1.0\r\n";
         $header .= "Content-Type: text/html; charset=utf-8\r\n";
