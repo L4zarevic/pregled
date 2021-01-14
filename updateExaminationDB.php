@@ -1,5 +1,4 @@
 <?php
-
 //Skripta za ažuriranje podataka o pregledu
 
 session_start();
@@ -8,13 +7,13 @@ if (is_null($_SESSION['prijavljen'])) {
 }
 include 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode("#", $korisnik, 3);
-$ar[1] = rtrim($ar[1], "#");
+$ar = explode('#', $korisnik, 3);
+$ar[1] = rtrim($ar[1], '#');
 $id_korisnika = $ar[0];
 $imeKorisnika = $ar[1];
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn, "utf8");
+mysqli_set_charset($conn, 'utf8');
 
 $id_pregleda = mysqli_real_escape_string($conn, $_REQUEST['id_pregleda']);
 $anamneza = mysqli_real_escape_string($conn, $_REQUEST['anamneza']);
@@ -52,8 +51,8 @@ $kontrola = mysqli_real_escape_string($conn, $_REQUEST['kontrola']);
 $napomena_pregleda = mysqli_real_escape_string($conn, $_REQUEST['napomena_pregleda']);
 
 //Upit za ažuiranje podataka o pregledu
-$stmt = $conn->prepare("UPDATE pregledi SET anamneza =?,vod =?,vos =?,motilitet =?,bms_od =?,bms_os =?,tonus_od =?,tonus_os =?,fundus_od =?,fundus_os =?,dijagnoza =?,terapija =?,korekcija_daljina_od =?,korekcija_daljina_os =?,korekcija_blizina_od =?,korekcija_blizina_os =?,proizvodjac_ks_od =?,period_ks_od =?,tip_ks_od =?,jacina_ks_od =?,bc_ks_od =?,velicina_ks_od =?,boja_ks_od =?,proizvodjac_ks_os =?,period_ks_os =?,tip_ks_os =?,jacina_ks_os =?,bc_ks_os =?,velicina_ks_os =?,boja_ks_os =?,pd =?,kontrola =? ,napomena_pregleda =? WHERE ID =?");
-$stmt->bind_param("sssssssssssssssssssssssssssssssssi", $anamneza, $vod, $vos, $motilitet, $bms_od, $bms_os, $tonus_od, $tonus_os, $fundus_od, $fundus_os, $dijagnoza, $terapija, $korekcija_daljina_od, $korekcija_daljina_os, $korekcija_blizina_od, $korekcija_blizina_os, $proizvodjac_ks_od, $period_ks_od, $tip_ks_od, $jacina_ks_od, $bc_ks_od, $velicina_ks_od, $boja_ks_od, $proizvodjac_ks_os, $period_ks_os, $tip_ks_os, $jacina_ks_os, $bc_ks_os, $velicina_ks_os, $boja_ks_os, $pd, $kontrola, $napomena_pregleda, $id_pregleda);
+$stmt = $conn->prepare('UPDATE pregledi SET anamneza =?,vod =?,vos =?,motilitet =?,bms_od =?,bms_os =?,tonus_od =?,tonus_os =?,fundus_od =?,fundus_os =?,dijagnoza =?,terapija =?,korekcija_daljina_od =?,korekcija_daljina_os =?,korekcija_blizina_od =?,korekcija_blizina_os =?,proizvodjac_ks_od =?,period_ks_od =?,tip_ks_od =?,jacina_ks_od =?,bc_ks_od =?,velicina_ks_od =?,boja_ks_od =?,proizvodjac_ks_os =?,period_ks_os =?,tip_ks_os =?,jacina_ks_os =?,bc_ks_os =?,velicina_ks_os =?,boja_ks_os =?,pd =?,kontrola =? ,napomena_pregleda =? WHERE ID =?');
+$stmt->bind_param('sssssssssssssssssssssssssssssssssi', $anamneza, $vod, $vos, $motilitet, $bms_od, $bms_os, $tonus_od, $tonus_os, $fundus_od, $fundus_os, $dijagnoza, $terapija, $korekcija_daljina_od, $korekcija_daljina_os, $korekcija_blizina_od, $korekcija_blizina_os, $proizvodjac_ks_od, $period_ks_od, $tip_ks_od, $jacina_ks_od, $bc_ks_od, $velicina_ks_od, $boja_ks_od, $proizvodjac_ks_os, $period_ks_os, $tip_ks_os, $jacina_ks_os, $bc_ks_os, $velicina_ks_os, $boja_ks_os, $pd, $kontrola, $napomena_pregleda, $id_pregleda);
 $stmt->execute();
 if (mysqli_error($conn)) {
     die(mysqli_error($conn));

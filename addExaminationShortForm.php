@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
 include '../pregled/modules/header.php';
 ?>
@@ -35,8 +34,8 @@ include '../pregled/modules/header.php';
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao
                   <b>
                     <?php $korisnik = $_SESSION['prijavljen'];
-                    $ar = explode("#", $korisnik, 3);
-                    $ar[1] = rtrim($ar[1], "#");
+                    $ar = explode('#', $korisnik, 3);
+                    $ar[1] = rtrim($ar[1], '#');
                     echo $imeKorisnika = $ar[1];
                     ?>
                   </b> <i class="fas fa-user"></i></span>
@@ -80,7 +79,6 @@ include '../pregled/modules/header.php';
               </div>
             </div>
           </div>
-
           <hr>
           <div class="row">
             <div class="patientSearch">
@@ -90,16 +88,13 @@ include '../pregled/modules/header.php';
               </div>
               <div id="display"></div>
             </div>
-
             <div class="todayDate">
               <div class="form-group col-md-10">
                 <label>Današnji datum</label>
                 <input name="datum_pregleda" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
               </div>
-
               <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
             </div>
-
             <div class="noteAboutPatient">
               <div class="form-group col-md-10">
                 <label for="exampleFormControlSelect2">Podaci o pacijentu:</label>
@@ -109,7 +104,6 @@ include '../pregled/modules/header.php';
               </div>
             </div>
           </div>
-
           <hr>
           <div class="row">
             <div class="form-group col-md-7">
@@ -129,14 +123,11 @@ include '../pregled/modules/header.php';
                 <option value="Oko je suvo i svrbi">
               </datalist>
             </div>
-
           </div>
-
           <br>
           <div class="row">
             <strong> <label for="exampleFormControlSelect2">VIDNA OŠTRINA</label></strong>
           </div>
-
           <div class="vidnaOstrina">
             <div class="vidnaOstrina_grupa1">
               <div class="vod1">
@@ -157,7 +148,6 @@ include '../pregled/modules/header.php';
                   </datalist>
                 </div>
               </div>
-
               <div class="vos1">
                 <div class="form-group col-md-5">
                   <label id="label_vos">VOS:</label>
@@ -177,18 +167,15 @@ include '../pregled/modules/header.php';
                 </div>
               </div>
             </div>
-
             <div class="vidnaOstrina_grupa2">
               <div class="sa_cc">
                 <label id="sa_cc">sa cc:</label>
               </div>
             </div>
-
             <div class="vidnaOstrina_grupa3">
               <div class="form-group col-md-12">
                 <input name="vod" title="Unesite VOD" type="text" class="form-control" id="vod1" autocomplete="off">
               </div>
-
               <div class="form-group col-md-12">
                 <input name="vos" title="Unesite VOS" type="text" class="form-control" id="vos1" autocomplete="off">
               </div>
@@ -209,7 +196,6 @@ include '../pregled/modules/header.php';
                 </div>
               </div>
             </div>
-
             <div class="korekcijaBlizina">
               <strong> <label for="exampleFormControlSelect2">BLIZINA - korekcija:</label></strong>
               <div class="form-group col-md-7">
@@ -232,7 +218,6 @@ include '../pregled/modules/header.php';
             </div>
           </div>
           </br>
-
           <div class="row">
             <div class="form-group col-md-7">
               <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
@@ -248,21 +233,18 @@ include '../pregled/modules/header.php';
               </datalist>
             </div>
           </div>
-
           <div class="row">
             <div class="form-group col-md-7">
               <label>Napomena</label>
               <textarea name="napomena_pregleda" class="form-control" type="text" title="Unesite napomenu vezanu za pregled" id="napomena_pregleda" row="9"></textarea>
             </div>
           </div>
-
           <hr>
           <div class="row">
             <button type='button' onclick="checkFormExamination()" id='dugmeDodajPregled' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
           </div>
           </br>
         </div>
-
       </div>
       <!-- Footer -->
       <?php
@@ -315,11 +297,6 @@ include '../pregled/modules/header.php';
       });
     });
   </script>
-
-
-
-
-
 </body>
 
 </html>

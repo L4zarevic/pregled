@@ -17,7 +17,6 @@ function lensesManufactured($conn)
 {
   $sql = 'SELECT * FROM proizvodjaci_sociva';
   $result = mysqli_query($conn, $sql);
-
   while ($row = mysqli_fetch_object($result)) {
     echo "<option value='$row->ID'>$row->naziv_proizvodjaca</option>";
   }
@@ -600,19 +599,19 @@ function lensesManufactured($conn)
     $proizvodjac_ks_os.on('change', function() {
       $('#tip_ks_os').find('option').remove().end();
       $('#period_ks_os').val('');
-      document.getElementById("bc_ks_os").value = "";
-      document.getElementById("velicina_ks_os").value = "";
-      document.getElementById("jacina_ks_os").value = "";
-      document.getElementById("boja_ks_os").value = "";
+      document.getElementById('bc_ks_os').value = '';
+      document.getElementById('velicina_ks_os').value = '';
+      document.getElementById('jacina_ks_os').value = '';
+      document.getElementById('boja_ks_os').value = '';
       $('#ispisBc_os').find('option').remove().end();
     });
 
     var $period_ks_os = $('#period_ks_os');
     $period_ks_os.on('change', function() {
-      document.getElementById("bc_ks_os").value = "";
-      document.getElementById("velicina_ks_os").value = "";
-      document.getElementById("jacina_ks_os").value = "";
-      document.getElementById("boja_ks_os").value = "";
+      document.getElementById('bc_ks_os').value = '';
+      document.getElementById('velicina_ks_os').value = '';
+      document.getElementById('jacina_ks_os').value = '';
+      document.getElementById('boja_ks_os').value = '';
       $('#ispisBc_os').find('option').remove().end();
     });
     /*******************************************************************************/
@@ -620,23 +619,23 @@ function lensesManufactured($conn)
     //Traženje imena radnika na osnovu unesenog ID-a
     $(document).ready(function() {
       //Kada se polje promijeni, aktivira se triger koji poziva AJAX metod
-      $("#sifra_radnika").on('change', function(e) {
+      $('#sifra_radnika').on('change', function(e) {
         //Uzima se vrijednost iz polja za unos
         var sifra_radnika = document.getElementById('sifra_radnika').value;
         //Poziva se AJAX
         $.ajax({
           //AJAX metod je POST
-          type: "POST",
+          type: 'POST',
           //Podaci se šalju prema getWorkersID.php
-          url: "getWorkersID.php",
-          dataType: "html",
+          url: 'getWorkersID.php',
+          dataType: 'html',
           //Podaci koji se šalju
           data: {
             sifra_radnika: sifra_radnika
           },
           //Ukoliko je pronađena vrijednost, ime radnika se prikazuje u div elementu ime_radnika
           success: function(response) {
-            $("#ime_radnika").html(response);
+            $('#ime_radnika').html(response);
           }
         });
       });

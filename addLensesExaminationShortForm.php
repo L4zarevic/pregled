@@ -6,18 +6,17 @@ include '../pregled/modules/header.php';
 
 require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode("#", $korisnik, 3);
-$ar[1] = rtrim($ar[1], "#");
+$ar = explode('#', $korisnik, 3);
+$ar[1] = rtrim($ar[1], '#');
 $dataBaseName = $ar[2];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn, "utf8");
+mysqli_set_charset($conn, 'utf8');
 
 //Metod za čitanje liste proizvođača sočiva i dodavanje rezultata u opcije select box-a proizvođača
 function lensesManufactured($conn)
 {
-    $sql = "SELECT * FROM proizvodjaci_sociva";
+    $sql = 'SELECT * FROM proizvodjaci_sociva';
     $result = mysqli_query($conn, $sql);
-
     while ($row = mysqli_fetch_object($result)) {
         echo "<option value='$row->ID'>$row->naziv_proizvodjaca</option>";
     }
@@ -55,8 +54,8 @@ function lensesManufactured($conn)
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao
                                     <b>
                                         <?php $korisnik = $_SESSION['prijavljen'];
-                                        $ar = explode("#", $korisnik, 3);
-                                        $ar[1] = rtrim($ar[1], "#");
+                                        $ar = explode('#', $korisnik, 3);
+                                        $ar[1] = rtrim($ar[1], '#');
                                         echo $imeKorisnika = $ar[1];
                                         ?>
                                     </b> <i class="fas fa-user"></i></span>
@@ -100,7 +99,6 @@ function lensesManufactured($conn)
                             </div>
                         </div>
                     </div>
-
                     <hr>
                     <div class="row">
                         <div class="patientSearch">
@@ -110,16 +108,13 @@ function lensesManufactured($conn)
                             </div>
                             <div id="display"></div>
                         </div>
-
                         <div class="todayDate">
                             <div class="form-group col-md-10">
                                 <label>Današnji datum</label>
                                 <input name="datum_pregleda" title="" type="text" class="form-control" id="datum_pregleda" value=<?php echo date("d.m.Y"); ?> disabled>
                             </div>
-
                             <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
                         </div>
-
                         <div class="noteAboutPatient">
                             <div class="form-group col-md-10">
                                 <label for="exampleFormControlSelect2">Podaci o pacijentu:</label>
@@ -129,7 +124,6 @@ function lensesManufactured($conn)
                             </div>
                         </div>
                     </div>
-
                     <hr>
                     <div class="row">
                         <div class="form-group col-md-7">
@@ -149,14 +143,11 @@ function lensesManufactured($conn)
                                 <option value="Oko je suvo i svrbi">
                             </datalist>
                         </div>
-
                     </div>
-
                     <br>
                     <div class="row">
                         <strong> <label for="exampleFormControlSelect2">VIDNA OŠTRINA</label></strong>
                     </div>
-
                     <div class="vidnaOstrina">
                         <div class="vidnaOstrina_grupa1">
                             <div class="vod1">
@@ -177,7 +168,6 @@ function lensesManufactured($conn)
                                     </datalist>
                                 </div>
                             </div>
-
                             <div class="vos1">
                                 <div class="form-group col-md-5">
                                     <label id="label_vos">VOS:</label>
@@ -197,13 +187,11 @@ function lensesManufactured($conn)
                                 </div>
                             </div>
                         </div>
-
                         <div class="vidnaOstrina_grupa2">
                             <div class="sa_cc">
                                 <label id="sa_cc">sa cc:</label>
                             </div>
                         </div>
-
                         <div class="vidnaOstrina_grupa3">
                             <div class="form-group col-md-12">
                                 <input name="vod" title="" type="text" class="form-control" id="vod1" autocomplete="off">
@@ -218,13 +206,11 @@ function lensesManufactured($conn)
                     <div class="row">
                         <strong> <label for="exampleFormControlSelect2">KOREKCIJA (kon. sočiva):</label></strong>
                     </div>
-
                     <div class="lensesCorrection">
                         <div class="lensesCorrectionOd">
                             <label>OD:</label>
                             <div class="row">
                                 <div class="form-group col-md-12">
-
                                     <div class="proizvodjac">
                                         <label id='labelManufactured'>Proizvođač:</label>
                                         <select name='proizvodjacOd' class='form-control' id='proizvodjac_ks_od'>
@@ -232,7 +218,6 @@ function lensesManufactured($conn)
                                             <?php lensesManufactured($conn); ?>
                                         </select>
                                     </div>
-
                                     <div class="period">
                                         <label id='labelPeriod'>Period:</label>
                                         <select name="period_ks_od" title="" type="text" class="form-control" id="period_ks_od">
@@ -244,30 +229,25 @@ function lensesManufactured($conn)
                                             <option value="godina">Godina</option>
                                         </select>
                                     </div>
-
                                     <div class="tip">
                                         <label id='labelType'>Tip/vrsta:</label>
                                         <select name="tip_ks_od" title="" class="form-control" id="tip_ks_od">
                                             <option default></option>
                                         </select>
                                     </div>
-
                                     <div class="jacina">
                                         <label id='labelPower'>Jačina:</label>
                                         <input name="jacina_ks_od" title="" type="text" class="form-control" id="jacina_ks_od" autocomplete="off">
                                     </div>
-
                                     <div class="bc">
                                         <label id='labelBc'>BC:</label>
                                         <input list="ispisBc_od" name="bc_ks_od" title="" type="text" class="form-control" id="bc_ks_od" autocomplete="off">
                                         <datalist id="ispisBc_od"></datalist>
                                     </div>
-
                                     <div class="velicina">
                                         <label id='labelSize'>TD:</label>
                                         <input name="velicina_ks_od" title="" type="text" class="form-control" id="velicina_ks_od" autocomplete="off" />
                                     </div>
-
                                     <div class="boja">
                                         <label id='labelColor'>Boja:</label>
                                         <input name="boja_ks_od" title="" type="text" class="form-control" id="boja_ks_od" autocomplete="off">
@@ -275,12 +255,10 @@ function lensesManufactured($conn)
                                 </div>
                             </div>
                         </div>
-
                         <div class="lensesCorrectionOs">
                             <label>OS:</label>
                             <div class="row">
                                 <div class="form-group col-md-12">
-
                                     <div class="proizvodjac">
                                         <label id='labelManufactured'>Proizvođač:</label>
                                         <select name="proizvodjacOs" title="" class="form-control" id="proizvodjac_ks_os">
@@ -288,7 +266,6 @@ function lensesManufactured($conn)
                                             <?php lensesManufactured($conn); ?>
                                         </select>
                                     </div>
-
                                     <div class="period">
                                         <label id='labelPeriod'>Period:</label>
                                         <select name="period_ks_os" title="" type="text" class="form-control" id="period_ks_os">
@@ -300,29 +277,24 @@ function lensesManufactured($conn)
                                             <option value="godina">Godina</option>
                                         </select>
                                     </div>
-
                                     <div class="tip">
                                         <label id='labelType'>Tip/vrsta:</label>
                                         <select name="tip_ks_os" title="" type="text" class="form-control" id="tip_ks_os">
                                         </select>
                                     </div>
-
                                     <div class="jacina">
                                         <label id='labelPower'>Jačina:</label>
                                         <input name="jacina_ks_os" title="" type="text" class="form-control" id="jacina_ks_os" autocomplete="off">
                                     </div>
-
                                     <div class="bc">
                                         <label id='labelBc'>BC:</label>
                                         <input list="ispisBc_os" name="bc_ks_os" title="" type="text" class="form-control" id="bc_ks_os" autocomplete="off" />
                                         <datalist id="ispisBc_os"></datalist>
                                     </div>
-
                                     <div class="velicina">
                                         <label id='labelSize'>TD:</label>
                                         <input name="velicina_ks_os" title="" type="text" class="form-control" id="velicina_ks_os" autocomplete="off" />
                                     </div>
-
                                     <div class="boja">
                                         <label id='labelColor'>Boja:</label>
                                         <input name="boja_ks_os" title="" type="text" class="form-control" id="boja_ks_os" autocomplete="off">
@@ -332,9 +304,6 @@ function lensesManufactured($conn)
                         </div>
                     </div>
                     </br>
-
-
-
                     <div class="row">
                         <div class="form-group col-md-7">
                             <strong><label for="exampleFormControlSelect2">KONTROLA:</label> </strong>
@@ -350,20 +319,17 @@ function lensesManufactured($conn)
                             </datalist>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="form-group col-md-7">
                             <label>Napomena</label>
                             <textarea name="napomena_pregleda" class="form-control" type="text" title="Unesite napomenu vezanu za pregled" id="napomena_pregleda" row="9"></textarea>
                         </div>
                     </div>
-
                     <hr>
                     <div class="row">
                         <button type='button' onclick="checkLensesFormExamination()" id='dugmeDodajPregledSociva' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
                     </div>
                 </div>
-
             </div>
             <!-- Footer -->
             <?php
@@ -374,21 +340,17 @@ function lensesManufactured($conn)
             <!-- /.container-fluid -->
         </div>
     </div>
-
     <script type="text/javascript">
         //Postavljanje fokusa na polje za unos šifre radnika kada se stranica učita
         document.getElementById('sifra_radnika').focus();
-
 
         /*******************************************************************************/
         $(document).ready(function() {
             //Funkcija koja se poziva kada se polje za period OD sočiva promijeni
             $("#period_ks_od").change(function() {
-
                 //Parametri potrebni za pretragu tipova sočiva (period i ID proizvođača sočiva) u tabeli sočiva
                 var period_ks_od = $('#period_ks_od').val();
                 var proizvodjac_ks_od = $('#proizvodjac_ks_od').val();
-
                 if (period_ks_od != "") {
                     //Poziva se AJAX
                     $.ajax({
@@ -411,15 +373,12 @@ function lensesManufactured($conn)
 
             //Funkcija koja se poziva kada se polje za tip sočiva OD promijeni.
             $("#tip_ks_od").change(function() {
-
                 //Čišćenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i velicine sočiva.
                 document.getElementById("bc_ks_od").value = "";
                 document.getElementById("velicina_ks_od").value = "";
                 $('#ispisBc_od').find('option').remove().end();
-
                 //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sočiva.
                 var tip_ks_od = $("#tip_ks_od").val();
-
                 if (tip_ks_od != "") {
                     //Poziva se AJAX.
                     $.ajax({
@@ -446,11 +405,9 @@ function lensesManufactured($conn)
 
             //Funkcija koja se poziva kada se polje za period OS sočiva promijeni.
             $("#period_ks_os").change(function() {
-
                 //Parametri potrebni za pretragu tipova sočiva (period i ID proizvođaca sočiva) u tabeli sočiva
                 var period_ks_os = $('#period_ks_os').val();
                 var proizvodjac_ks_os = $('#proizvodjac_ks_os').val();
-
                 if (period_ks_os != "") {
                     //Poziva se AJAX
                     $.ajax({
@@ -473,16 +430,12 @@ function lensesManufactured($conn)
 
             //Funkcija koja se poziva kada se polje za tip sočiva OS promijeni.
             $("#tip_ks_os").change(function() {
-
                 //Čišćenje vrijednosti polja (starih vrijednosti) bazne krivine, datalist bazne krivine i veličine sočiva.
                 document.getElementById("bc_ks_os").value = "";
                 document.getElementById("velicina_ks_os").value = "";
                 $('#ispisBc_os').find('option').remove().end();
-
                 //Incijalizacija promjenljive koja uzima vrijednost ID-a koji referencira na ID zapisa u tabeli sočiva.
                 var tip_ks_os = $("#tip_ks_os").val();
-
-
                 if (tip_ks_os != "") {
                     //Poziva se AJAX.
                     $.ajax({
