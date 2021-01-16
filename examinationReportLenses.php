@@ -6,13 +6,13 @@
 include '../pregled/modules/header.php';
 require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode("#", $korisnik, 3);
-$ar[1] = rtrim($ar[1], "#");
+$ar = explode('#', $korisnik, 4);
+$ar[1] = rtrim($ar[1], '#');
 $ID_korisnika = $ar[0];
-$imeKorisnika = $ar[1];
-$dataBaseName = $ar[2];
+$imeKorisnika = $ar[2];
+$dataBaseName = $ar[3];
 $conn = OpenStoreCon($dataBaseName);
-mysqli_set_charset($conn, "utf8");
+mysqli_set_charset($conn, 'utf8');
 
 $sql = "SELECT adresa,telefon,website FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
 $result = mysqli_query($conn, $sql);
@@ -58,9 +58,9 @@ CloseCon($conn);
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao
                   <b>
                     <?php $korisnik = $_SESSION['prijavljen'];
-                    $ar = explode("#", $korisnik, 3);
-                    $ar[1] = rtrim($ar[1], "#");
-                    echo $imeKorisnika = $ar[1];
+                    $ar = explode('#', $korisnik, 4);
+                    $ar[1] = rtrim($ar[1], '#');
+                    echo $imeKorisnika = $ar[2];
                     ?>
                   </b> <i class="fas fa-user"></i></span>
               </a>

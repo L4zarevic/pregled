@@ -21,6 +21,7 @@ while ($row = $result->fetch_object()) {
     $idKorisnika = $row->ID;
     $user = $row->korisnicko_ime;
     $pass = $row->lozinka;
+    $optika = $row->optika;
     $imeKorisnika = $row->naziv;
     $dataBaseName = $row->db;
 }
@@ -54,7 +55,7 @@ if ($error == 1) {
     header('Location:login.php?msg=1');
     exit;
 } else {
-    $_SESSION['prijavljen'] = $idKorisnika . '#' . $imeKorisnika . '#' . $dataBaseName;
+    $_SESSION['prijavljen'] = $idKorisnika . '#' . $optika . '#' . $imeKorisnika . '#' . $dataBaseName;
     die(header('Location:index.php'));
 }
 

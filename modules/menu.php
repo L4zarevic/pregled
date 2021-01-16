@@ -1,13 +1,17 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"> <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15"></div>
-        <div class="sidebar-brand-text mx-3">Moja Optika Stanković</div>
+        <div class="sidebar-brand-text mx-3"><?php $korisnik = $_SESSION['prijavljen'];
+                                                $ar = explode('#', $korisnik, 4);
+                                                $ar[1] = rtrim($ar[1], '#');
+                                                echo $optika = $ar[1];
+                                                ?></div>
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active"> <a class="nav-link" href="index.php"> <i class="fas fa-home"></i> <span>Početna</span></a> </li>
     <hr class="sidebar-divider">
-    
+
     <li class="nav-item">
-          
+
         <a class="nav-link collapsed" href="addPatientForm.php" d data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fas fa-user-plus"></i> <span>Dodaj novog pacijenta</span> </a>
         <a class="nav-link collapsed" href="addExaminationShortForm.php" d data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fas fa-glasses"></i> <span>Kratki pregled</span> </a>
         <a class="nav-link collapsed" href="addExaminationForm.php" d data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fas fa-glasses"></i> <span>Pregled</span> </a>

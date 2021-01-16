@@ -4,10 +4,11 @@ if (is_null($_SESSION['prijavljen'])) {
 }
 include 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode("#", $korisnik, 2);
+$ar = explode("#", $korisnik, 4);
 $ar[1] = rtrim($ar[1], "#");
 $idKorisnika = $ar[0];
-$imeKorisnika = $ar[1]; ?>
+$optika = $ar[1];
+$imeKorisnika = $ar[2]; ?>
 
 <head>
     <meta charset="utf-8">

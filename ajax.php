@@ -5,9 +5,9 @@ if (is_null($_SESSION['prijavljen'])) {
 }
 include 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode('#', $korisnik, 3);
+$ar = explode('#', $korisnik, 4);
 $ar[1] = rtrim($ar[1], '#');
-$dataBaseName = $ar[2];
+$dataBaseName = $ar[3];
 $conn = OpenStoreCon($dataBaseName);
 mysqli_set_charset($conn, 'utf8');
 

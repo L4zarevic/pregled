@@ -11,9 +11,9 @@
 
     require_once 'connection.php';
     $korisnik = $_SESSION['prijavljen'];
-    $ar = explode('#', $korisnik, 3);
+    $ar = explode('#', $korisnik, 4);
     $ar[1] = rtrim($ar[1], '#');
-    $dataBaseName = $ar[2];
+    $dataBaseName = $ar[3];
     $conn = OpenStoreCon($dataBaseName);
     mysqli_set_charset($conn, 'utf8');
 
@@ -44,12 +44,12 @@
         //Datumi su linkovi koji sadrže ID pregleda. Nakon klika se otvara stranica za prikaz i uređivanje izvještaja sa dobijenim ID pregleda
         echo "<td><a target='_blank' href='examinationReportEdit.php?id=$row1->ID'>$datum_pregleda</a></td>";
         //Upit koji na osnovu dobijenog ID korisnika čita naziv korisnika kojem pripada taj ID
-        $stmt2 = $conn->prepare('SELECT mojaopt_optike.korisnici.naziv FROM mojaopt_optike.korisnici WHERE mojaopt_optike.korisnici.ID =?');
+        $stmt2 = $conn->prepare('SELECT mojaopt_optike.korisnici.pj FROM mojaopt_optike.korisnici WHERE mojaopt_optike.korisnici.ID =?');
         $stmt2->bind_param('i', $row1->ID_korisnika);
         $stmt2->execute();
         $result2 = $stmt2->get_result();
         while ($row2 = $result2->fetch_object()) {
-            echo "<td>$row2->naziv</td>";
+            echo "<td>$row2->pj</td>";
         }
         echo '</tr>';
     }

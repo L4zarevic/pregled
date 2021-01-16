@@ -6,10 +6,10 @@
 include '../pregled/modules/header.php';
 require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
-$ar = explode('#', $korisnik, 3);
+$ar = explode('#', $korisnik, 4);
 $ar[1] = rtrim($ar[1], '#');
-$imeKorisnika = $ar[1];
-$dataBaseName = $ar[2];
+$imeKorisnika = $ar[2];
+$dataBaseName = $ar[3];
 $conn = OpenStoreCon($dataBaseName);
 mysqli_set_charset($conn, 'utf8');
 
@@ -83,11 +83,11 @@ while ($row = mysqli_fetch_object($result)) {
 
 //Čitanje podataka o optici(korisniku) u kojoj je urađen pregled na osnovu ID korisnika u tabeli pregled
 $con = OpenCon();
-$sql4 = "SELECT naziv,adresa,telefon,website FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
+$sql4 = "SELECT pj,adresa,telefon,website FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
 $result = mysqli_query($con, $sql4);
 if (!$result) die(mysqli_error($con));
 while ($row = mysqli_fetch_object($result)) {
-  $naziv = $row->naziv;
+  $naziv = $row->pj;
   $adresa = $row->adresa;
   $telefon = $row->telefon;
   $website = $row->website;
@@ -129,9 +129,9 @@ CloseCon($conn);
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ulogovani ste kao
                   <b>
                     <?php $korisnik = $_SESSION['prijavljen'];
-                    $ar = explode('#', $korisnik, 3);
+                    $ar = explode('#', $korisnik, 4);
                     $ar[1] = rtrim($ar[1], '#');
-                    echo $imeKorisnika = $ar[1];
+                    echo $imeKorisnika = $ar[2];
                     ?>
                   </b> <i class="fas fa-user"></i></span>
               </a>
@@ -166,7 +166,8 @@ CloseCon($conn);
             <div class='row'>
               <div class='anamnezaReport'>
                 <div class='form-group col-md-9'><strong><label id='labelAnamnezaReport'>ANAMNEZA: </label></strong> &nbsp;
-                  <input name='inputAnamenzaReport' title='' type='text' class='form-control' id='inputAnamenzaReport' autocomplete="off" value='<?php echo $anamneza; ?>'></div>
+                  <input name='inputAnamenzaReport' title='' type='text' class='form-control' id='inputAnamenzaReport' autocomplete="off" value='<?php echo $anamneza; ?>'>
+                </div>
               </div>
             </div>
             <br>
@@ -192,7 +193,8 @@ CloseCon($conn);
                 <div class='tonusReport'>
                   <div class='form-group col-md-10'><strong><label id='labelTonusReport'>TONUS: </label></strong>
                     <label id='labelTonusOdReport'>OD: </label></strong> &nbsp; <input name='inputTonusOdReport' autocomplete="off" type='text' class='form-control' id='inputTonusOdReport' value='<?php echo $tonus_od; ?>'>
-                    &nbsp;<label id='labelTonusOsReport'>OS: </label></strong> &nbsp; <input name='inputTonusOsReport' autocomplete="off" type='text' class='form-control' id='inputTonusOsReport' value='<?php echo $tonus_os; ?>'></div>
+                    &nbsp;<label id='labelTonusOsReport'>OS: </label></strong> &nbsp; <input name='inputTonusOsReport' autocomplete="off" type='text' class='form-control' id='inputTonusOsReport' value='<?php echo $tonus_os; ?>'>
+                  </div>
                 </div>
 
               </div>
