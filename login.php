@@ -22,7 +22,7 @@
                         <?php
                         if (isset($_COOKIE["cica_maca"])) {
                             echo "<br>";
-                            echo "<div class='g-recaptcha' data-sitekey='6LdbyAgaAAAAAFEeuCT_lUBk2mCeuiqYv2e-mEin' style='margin-top:3%;'></div>";
+                            echo "<div class='g-recaptcha' data-sitekey='6LdbyAgaAAAAAFEeuCT_lUBk2mCeuiqYv2e-mEin' style='margin-top:2%;'></div>";
                         }
                         if (isset($_REQUEST['msg'])) {
                             if ($_REQUEST['msg'] == '1') {
