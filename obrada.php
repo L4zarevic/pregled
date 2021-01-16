@@ -15,6 +15,7 @@ $result = $stmt->get_result();
 if (!$stmt) {
     header('Location:login.php?msg=2');
     die(mysqli_error($con));
+    CloseCon($con);
 }
 while ($row = $result->fetch_object()) {
     $idKorisnika = $row->ID;
@@ -56,3 +57,5 @@ if ($error == 1) {
     $_SESSION['prijavljen'] = $idKorisnika . '#' . $imeKorisnika . '#' . $dataBaseName;
     die(header('Location:index.php'));
 }
+
+CloseCon($con);
