@@ -22,7 +22,7 @@ while ($row = $result->fetch_object()) {
     $user = $row->korisnicko_ime;
     $pass = $row->lozinka;
     $optika = $row->optika;
-    $imeKorisnika = $row->naziv;
+    $imeKorisnika = $row->pj;
     $dataBaseName = $row->db;
 }
 
