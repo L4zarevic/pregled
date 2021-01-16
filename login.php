@@ -21,8 +21,8 @@
                     <div class="container-login100-form-btn m-t-17"><button class="login100-form-btn" type="submit">Prijava</button><br /><br />
                         <?php
                         if (isset($_COOKIE["cica_maca"])) {
-                            echo "<br />";
-                            echo "<div class='g-recaptcha' data-sitekey='6LdbyAgaAAAAAFEeuCT_lUBk2mCeuiqYv2e-mEin'></div>";
+                            echo "<br>";
+                            echo "<div class='g-recaptcha' data-sitekey='6LdbyAgaAAAAAFEeuCT_lUBk2mCeuiqYv2e-mEin' style='margin-top:3%;'></div>";
                         }
                         if (isset($_REQUEST['msg'])) {
                             if ($_REQUEST['msg'] == '1') {
