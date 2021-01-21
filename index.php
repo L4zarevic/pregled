@@ -27,42 +27,7 @@ function logo($idKorisnika)
         $logo = '../pregled/images/logo_optika/' . $row->logo;
     }
     echo $logo;
-}
-
-//Metod za prikaz ukupno obavljenih pregleda
-function sumExamination($conn, $idKorisnika)
-{
-    $stmt = $conn->prepare('SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika=?');
-    $stmt->bind_param('i', $idKorisnika);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_object()) {
-        echo $row->brojPregleda;
-    }
-}
-
-//Metod za prikaz ukupno obavljenih pregleda naočare
-function sumGlassesExamination($conn, $idKorisnika)
-{
-    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika =? AND vrsta_pregleda='naocare'");
-    $stmt->bind_param('i', $idKorisnika);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_object()) {
-        echo $row->brojPregleda;
-    }
-}
-
-//Metod za prikaz ukupno obavljenih pregleda sočiva
-function sumLensesExamination($conn, $idKorisnika)
-{
-    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika =? AND vrsta_pregleda='sociva'");
-    $stmt->bind_param('i', $idKorisnika);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_object()) {
-        echo $row->brojPregleda;
-    }
+    CloseCon($con);
 }
 
 //Metod za prikaz ukupno obavljenih pregleda ovog mjeseca
@@ -112,6 +77,43 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
     while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
+}
+
+//Metod za prikaz ukupno obavljenih pregleda
+function sumExamination($conn, $idKorisnika)
+{
+    $stmt = $conn->prepare('SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika=?');
+    $stmt->bind_param('i', $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_object()) {
+        echo $row->brojPregleda;
+    }
+}
+
+//Metod za prikaz ukupno obavljenih pregleda naočare
+function sumGlassesExamination($conn, $idKorisnika)
+{
+    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika =? AND vrsta_pregleda='naocare'");
+    $stmt->bind_param('i', $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_object()) {
+        echo $row->brojPregleda;
+    }
+}
+
+//Metod za prikaz ukupno obavljenih pregleda sočiva
+function sumLensesExamination($conn, $idKorisnika)
+{
+    $stmt = $conn->prepare("SELECT COUNT(ID) AS brojPregleda FROM pregledi WHERE ID_korisnika =? AND vrsta_pregleda='sociva'");
+    $stmt->bind_param('i', $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_object()) {
+        echo $row->brojPregleda;
+    }
+    CloseCon($conn);
 }
 ?>
 

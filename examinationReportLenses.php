@@ -22,6 +22,22 @@ while ($row = mysqli_fetch_object($result)) {
   $telefon = $row->telefon;
   $website = $row->website;
 }
+//Metod za prikaz loga korisnika (optike)
+function logo($idKorisnika)
+{
+    $con = OpenCon();
+    $stmt = $con->prepare('SELECT logo FROM korisnici WHERE ID=?');
+    $stmt->bind_param('i', $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $logo = '../pregled/images/logo_optika/default_logo';
+    while ($row = $result->fetch_object()) {
+        $logo = '../pregled/images/logo_optika/' . $row->logo;
+    }
+    echo $logo;
+    CloseCon($con);
+}
+
 CloseCon($conn);
 
 ?>
@@ -461,7 +477,7 @@ margin-right:5.5%;
 }
 </style>
 <body>
-<div class='logo'><img id='logo' src='../pregled/images/MO.png' /></div>
+<div class='logo'><img id='logo' src='<?php echo logo($idKorisnika); ?>' /></div>
 <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label><?php echo $website; ?></label></div>
 <hr id='linija'>
 <div class='generalije'><label></label>&nbsp;<?php echo $generalije_pacijenta; ?></div>
@@ -711,7 +727,7 @@ margin-right:5.5%;
 }
 </style>
 <body>
-<div class='logo'><img id='logo' src='../pregled/images/MO.png' /></div>
+<div class='logo'><img id='logo' src='<?php echo logo($idKorisnika); ?>' /></div>
 <div class='kontaktPodaciRadnje'><label>Adresa:</label><?php echo $adresa; ?></br><label>Tel:</label><?php echo $telefon; ?></br><label><?php echo $website; ?></label></div>
 <hr id='linija'>
 <div class='generalije'><label></label>&nbsp;<?php echo $generalije_pacijenta; ?></div>
