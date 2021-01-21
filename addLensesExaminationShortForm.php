@@ -296,6 +296,7 @@ function lensesManufactured($conn)
                     <div class="row">
                         <button type='button' onclick="checkLensesFormExamination()" id='dugmeDodajPregledSociva' class='btn btn-success'><i class="fas fa-save"></i>&nbsp;<label class="labelSaveButton">Sačuvaj</label></button>
                     </div>
+                    </br>
                 </div>
             </div>
             <!-- Footer -->
