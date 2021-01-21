@@ -8,7 +8,7 @@ Index page
 Add new patient
 ![start image](https://github.com/L4zarevic/pregled/blob/main/add%20patient.png)
 
-Glasses short examination
+Eyewear short examination
 ![start image](https://github.com/L4zarevic/pregled/blob/main/glasses%20short%20examination.png)
 
 Patient record
