@@ -14,6 +14,21 @@ $dataBaseName = $ar[3];
 $conn = OpenStoreCon($dataBaseName);
 mysqli_set_charset($conn, 'utf8');
 
+//Metod za prikaz loga korisnika (optike)
+function logo($idKorisnika)
+{
+    $con = OpenCon();
+    $stmt = $con->prepare('SELECT logo FROM korisnici WHERE ID=?');
+    $stmt->bind_param('i', $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $logo = '../pregled/images/logo_optika/default_logo';
+    while ($row = $result->fetch_object()) {
+        $logo = '../pregled/images/logo_optika/' . $row->logo;
+    }
+    echo $logo;
+}
+
 //Metod za prikaz ukupno obavljenih pregleda
 function sumExamination($conn, $idKorisnika)
 {
@@ -114,7 +129,7 @@ function sumLensesMonthsExamination($conn, $idKorisnika)
                     <div class="row">
                         <div class="">
                         </div>
-                        <div class="companyInfo"> <img id="logo" src="../pregled/images/MO.png">
+                        <div class="companyInfo"> <img id="logo" src='<?php echo logo($idKorisnika); ?>'>
                         </div>
                     </div>
                     </br>
