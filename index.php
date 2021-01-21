@@ -22,7 +22,6 @@ function logo($idKorisnika)
     $stmt->bind_param('i', $idKorisnika);
     $stmt->execute();
     $result = $stmt->get_result();
-    $logo = '../pregled/images/logo_optika/default_logo';
     while ($row = $result->fetch_object()) {
         $logo = '../pregled/images/logo_optika/' . $row->logo;
     }

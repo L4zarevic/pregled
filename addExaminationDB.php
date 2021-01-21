@@ -77,7 +77,7 @@ if ($vrsta_pregleda == 'naocare') {
     }
 
     //Dobijeni rok se sabira sa današnjim danom i na taj način se dobija datum kada bi pacijent trebao da potroši prepisana sočiva
-    $notifikacija = date('Y-m-d', strtotime('$rok'));
+    $notifikacija = date('Y-m-d', strtotime("$rok"));
 
     $stmt = $conn->prepare('INSERT INTO pregledi (ID_pacijenta,ID_korisnika,ID_radnika,datum_pregleda,anamneza,vod,vos,motilitet,bms_od,bms_os,tonus_od,tonus_os,fundus_od,fundus_os,dijagnoza,terapija,proizvodjac_ks_od,period_ks_od,tip_ks_od,jacina_ks_od,bc_ks_od,velicina_ks_od,boja_ks_od,proizvodjac_ks_os,period_ks_os,tip_ks_os,jacina_ks_os,bc_ks_os,velicina_ks_os,boja_ks_os,kontrola,napomena_pregleda,vrsta_pregleda,notifikacija) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
     $stmt->bind_param('iiisssssssssssssssssssssssssssssss', $id_pacijenta, $id_korisnika, $id_radnika, $datum_pregleda, $anamneza, $vod, $vos, $motilitet, $bms_od, $bms_os, $tonus_od, $tonus_os, $fundus_od, $fundus_os, $dijagnoza, $terapija, $proizvodjac_ks_od, $period_ks_od, $tip_ks_od, $jacina_ks_od, $bc_ks_od, $velicina_ks_od, $boja_ks_od, $proizvodjac_ks_os, $period_ks_os, $tip_ks_os, $jacina_ks_os, $bc_ks_os, $velicina_ks_os, $boja_ks_os, $kontrola, $napomena_pregleda, $vrsta_pregleda, $notifikacija);
