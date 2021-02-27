@@ -1,7 +1,7 @@
 <?php echo "<footer class='sticky-footer bg-white'>";
 echo "<div class='container my-auto'>";
 echo "<div class='copyright text-center my-auto'>";
-echo "<span>Copyright &copy; Moja Optika Stanković " . date("Y") . " | Aplikacija je optimizovana za rad u Google Chrome, Opera i Microsoft Edge</span>";
+echo "<span>Copyright &copy; Moja Optika Stanković " . date("Y") . " | Aplikacija je optimizovana za rad u Google Chrome, Opera i Microsoft Edge</span></br>";
 echo "<span>Za sve probleme u vezi aplikacije, pišite na email: <a href='mailto:nemanja.lazarevic@mojaoptika.com'>nemanja.lazarevic@mojaoptika.com</a></span>";
 echo "</div>";
 echo "</div>";
