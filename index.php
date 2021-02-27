@@ -46,6 +46,7 @@ function sumMonthsExamination($conn, $idKorisnika)
     }
 }
 
+
 //Metod za prikaz ukupno obavljenih pregleda naočara ovog mjeseca
 function sumGlassesMonthsExamination($conn, $idKorisnika)
 {
