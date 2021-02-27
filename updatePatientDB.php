@@ -36,7 +36,7 @@ while ($row = $result->fetch_object()) {
     $stare_generalije = $row->generalije_pacijenta;
 }
 if ($stare_generalije != $generalije_pacijenta) {
-    $datum = date('d.m.Y');
+    $datum = date('d.m.Y H:i');
     //Definisanje email-a
     $header = 'From: no-reply@mojaoptika.com' . "\r\n";
     $to     = 'info@mojaoptika.com';
@@ -47,8 +47,8 @@ if ($stare_generalije != $generalije_pacijenta) {
     $message = '<html><body>';
     $message .= '<label>Generalije u kartonu pacijenta su ažurirane</label>';
     $message .= '<br/>';
-    $message .= '<br/>Pacijent (stari podaci): ' . $stare_generalije . '<br/>';
-    $message .= '<br/>Pacijent (novi podaci): ' . $generalije_pacijenta . '<br/>';
+    $message .= 'Pacijent (stari podaci): ' . $stare_generalije . '<br/>';
+    $message .= 'Pacijent (novi podaci): ' . $generalije_pacijenta . '<br/>';
     $message .= 'Datum izmjene: ' . $datum . '<br/>';
     $message .= 'Optika: ' . $imeKorisnika . '<br/>';
     $ip = "";
@@ -60,8 +60,6 @@ if ($stare_generalije != $generalije_pacijenta) {
         $ip = $_SERVER['REMOTE_ADDR'];
     }
     $message .= 'IP adresa: ' . $ip . '<br/>';
-    $message .= '<br/>';
-    $message .= '<br/>';
     $message .= '<br/>';
     $message .= '<label>--------------------------------------------------</label><br/>';
     $message .= '<label>Ovo je automatski generisana poruka, ne odgovarati na nju. <a href="https://mojaoptika.com/pregled">mojaoptika.com/pregled </a></label>';
