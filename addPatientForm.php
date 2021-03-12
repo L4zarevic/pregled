@@ -48,7 +48,7 @@ include '../pregled/modules/header.php';
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="exampleFormControlSelect2">Godina rođenja</label><label class="obavezna_polja">*</label>
-                  <input name="godiste_pacijenta" placeholder="Unesite godinu rođenja pacijenta" title="Unesite godinu rođenja pacijenta" type="text" class="form-control" id="godiste_pacijenta">
+                  <input name="godiste_pacijenta" maxlength="4" placeholder="Unesite godinu rođenja pacijenta" title="Unesite godinu rođenja pacijenta" type="text" class="form-control" id="godiste_pacijenta">
                 </div>
               </div>
               <div class="row">
