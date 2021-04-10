@@ -1,7 +1,7 @@
 <?php
 
-//Skripta za čuvavanje podataka o pregledu pacijenta
-//Ovu skriptu koristi svi form obrasci za preglede
+//Skripta za kreiranje podataka o pregledu pacijenta
+//Ovu skriptu koriste svi form obrasci za preglede
 
 session_start();
 if (is_null($_SESSION['prijavljen'])) {
