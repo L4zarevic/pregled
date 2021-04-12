@@ -30,9 +30,9 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="workersLog">
               <div class="workers">
-                <div class="form-group col-md-10">
+                <div class="form-group col-md-8">
                   <label>Broj radnog naloga <strong>(№) </strong></label>
-                  <input name="broj_radnog_naloga" class="form-control" type="text" title="Unesite broj radnog naloga" id="broj_radnog_naloga" placeholder="" autocomplete="off" />
+                  <input name="broj_radnog_naloga" maxlength='8' class="form-control" type="text" title="Unesite broj radnog naloga" id="broj_radnog_naloga" placeholder="" autocomplete="off" />
                 </div>
               </div>
 
