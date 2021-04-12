@@ -3,9 +3,7 @@
 <?php
 include '../pregled/modules/header.php';
 ?>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
 
 <body id="page-top">
 
@@ -52,9 +50,10 @@ include '../pregled/modules/header.php';
             <div class="todayDate">
               <div class="form-group col-md-10">
                 <label>Datum</label>
-                <input id="datum" name="datum" placeholder="MM/DD/YYYY" title="Unesite datum u formatu mjesec/dan/godina" />
+                <input id="datum" name="datum" placeholder="DD.MM.YYYY" title="Unesite datum u formatu dam/mjesec/godina" />
                 <script>
                   $('#datum').datepicker({
+                    format: 'dd.mm.yyyy',
                     uiLibrary: 'bootstrap4'
                   });
                 </script>
