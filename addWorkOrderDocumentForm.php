@@ -4,7 +4,6 @@
 include '../pregled/modules/header.php';
 ?>
 
-
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -21,7 +20,6 @@ include '../pregled/modules/header.php';
         include '../pregled/modules/logout.php';
         ?>
 
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -35,7 +33,6 @@ include '../pregled/modules/header.php';
                   <input name="broj_radnog_naloga" maxlength='8' class="form-control" type="text" title="Unesite broj radnog naloga" id="broj_radnog_naloga" placeholder="" autocomplete="off" />
                 </div>
               </div>
-
             </div>
           </div>
           <hr>
@@ -50,20 +47,18 @@ include '../pregled/modules/header.php';
             <div class="todayDate">
               <div class="form-group col-md-10">
                 <label>Datum</label>
-                <input id="datum" name="datum" placeholder="DD.MM.YYYY" title="Unesite datum u formatu dam/mjesec/godina" />
+                <input id="datum" name="datum" maxlength='10' placeholder="DD.MM.YYYY" title="Unesite datum u formatu dam/mjesec/godina" />
                 <script>
                   $('#datum').datepicker({
                     format: 'dd.mm.yyyy',
                     uiLibrary: 'bootstrap4'
                   });
                 </script>
-
               </div>
               <input name="id_pacijenta" type="hidden" class="form-control" id="id_pacijenta">
             </div>
           </div>
           <hr>
-
           </br>
           <div class="row">
             <div class="korekcijaBlizina">
@@ -139,9 +134,9 @@ include '../pregled/modules/header.php';
           </div>
           </br>
           <div class="row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-10">
               <label>Napomena</label>
-              <textarea name="napomena1" class="form-control" type="text" title="Unesite napomenu" id="napomena1" row="9" style="height:100%;"></textarea>
+              <textarea name="napomena" class="form-control" type="text" title="Unesite napomenu" id="napomena" row="9" style="height:100%;"></textarea>
             </div>
           </div>
           </br>
@@ -150,19 +145,29 @@ include '../pregled/modules/header.php';
             <div class="placanje">
               <div class="placanje_napomena">
                 <div class="form-group col-md-12">
-                  <textarea name="napomena2" class="form-control" type="text" title="Unesite napomenu" id="napomena2" rows="3" cols="50" style="height:100%;"></textarea>
+                  <input name="ukupno" class="form-control" type="text" title="Unesite ukupan iznos" id="ukupno">
+                </div>
+                <div class="form-group col-md-12">
+                  <input name="akontacija" class="form-control" type="text" title="Unesite iznos akontacije" id="akontacija">
+                </div>
+                <div class="form-group col-md-12">
+                  <input name="dug" class="form-control" type="text" title="Unesite iznos duga" id="dug">
                 </div>
               </div>
               <div class="placanje_label">
                 <div class="form-group col-md-7">
-                  <label>Ukupno</label></br>
-                  <label>Akontacija</label></br>
-                  <label>Saldo</label>
+                  <label style="margin-top:1%;">Ukupno</label>
+                </div>
+
+                <div class="form-group col-md-7">
+                  <label style="margin-top:1%;">Akontacija</label>
+                </div>
+
+                <div class="form-group col-md-7">
+                  <label style="margin-top:1%;">Dug</label>
                 </div>
               </div>
             </div>
-
-
           </div>
           <hr>
           <div class="row">
@@ -171,7 +176,6 @@ include '../pregled/modules/header.php';
           </br>
         </div>
       </div>
-
       <?php
       if (isset($_REQUEST['msg'])) {
         if ($_REQUEST['msg'] == '1') {
@@ -194,7 +198,6 @@ include '../pregled/modules/header.php';
       <!-- /.container-fluid -->
     </div>
   </div>
-
 </body>
 
 <script type="text/javascript">

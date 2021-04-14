@@ -45,10 +45,10 @@ if ($stare_generalije != $generalije_pacijenta) {
     $title  = 'Notifikacija';
 
     $message = '<html><body>';
-    $message .= '<label>Generalije u kartonu pacijenta su ažurirane</label>';
+    $message .= '<label>Generalije u kartonu klijenta su ažurirane</label>';
     $message .= '<br/>';
-    $message .= 'Pacijent (stari podaci): ' . $stare_generalije . '<br/>';
-    $message .= 'Pacijent (novi podaci): ' . $generalije_pacijenta . '<br/>';
+    $message .= 'Klijent (stari podaci): ' . $stare_generalije . '<br/>';
+    $message .= 'Klijent (novi podaci): ' . $generalije_pacijenta . '<br/>';
     $message .= 'Datum izmjene: ' . $datum . '<br/>';
     $message .= 'Optika: ' . $imeKorisnika . '<br/>';
     $ip = "";

@@ -26,14 +26,14 @@ include '../pregled/modules/header.php';
 
           <!-- Page Heading -->
 
-          <h1 class="h3 mb-4 text-gray-800">Karton pacijenta <i class="fas fa-folder-open"></i></h1>
+          <h1 class="h3 mb-4 text-gray-800">Karton klijenta <i class="fas fa-folder-open"></i></h1>
 
           <div class="row">
             <div class="records">
               <div class="examinationHistory">
 
                 <div class="form-group col-md-7">
-                  <label>Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
+                  <label>Pretraga klijenta</label>&nbsp;<i class="fas fa-search"></i>
                   <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search" autocomplete="off" />
                 </div>
                 <div class="form-group col-md-2">
@@ -43,7 +43,7 @@ include '../pregled/modules/header.php';
                 <div id="responsecontainer"></div>
               </div>
               <div class="patientGenerals">
-                <h5 id="secondTitle" class="h5 mb-4 text-gray-800">Podaci o pacijentu - promjena podataka</h5>
+                <h5 id="secondTitle" class="h5 mb-4 text-gray-800">Podaci o klijentu - promjena podataka</h5>
 
                 <div class="form-group col-md-8">
                   <label>Ime (Ime oca) prezime, godina rođenja:</label><label class="obavezna_polja">*</label>
