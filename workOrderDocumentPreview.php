@@ -185,7 +185,7 @@ CloseCon($conn);
                     <div class="row">
                         <div class="form-group col-md-10">
                             <strong><label>Napomena:</label></strong>
-                            <p><?php echo $napomena; ?></p>
+                            <p><?php echo str_replace('\n', "\n", $napomena); ?></p>
                         </div>
                     </div>
                     <hr>
