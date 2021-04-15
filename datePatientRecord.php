@@ -82,8 +82,8 @@
          echo '<tr>';
          echo '<td>' . ($rb = $rb + 1) . '</td>';
          //Datumi su linkovi koji sadrže ID pregleda. Nakon klika se otvara stranica za prikaz i uređivanje izvještaja sa dobijenim ID pregleda
-         echo "<td><a target='_blank' href='examinationReportEdit.php?id=$row2->ID'>$datum_naloga</a></td>";
-         echo "<td>$row2->broj_radnog_naloga</td>";
+         echo "<td>$datum_naloga</td>";
+         echo "<td><a target='_blank' href='workOrderDocumentPreview.php?id=$row2->ID'>$row2->broj_radnog_naloga</a></td>";
          //Upit koji na osnovu dobijenog ID korisnika čita naziv korisnika kojem pripada taj ID
          $stmt2 = $conn->prepare('SELECT mojaopt_optike.korisnici.pj FROM mojaopt_optike.korisnici WHERE mojaopt_optike.korisnici.ID =?');
          $stmt2->bind_param('i', $row2->ID_korisnika);

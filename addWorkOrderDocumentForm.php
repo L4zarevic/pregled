@@ -76,22 +76,22 @@ include '../pregled/modules/header.php';
                   <tbody>
                     <tr>
                       <th scope="row">D</th>
-                      <td><input name="desno_d_sph" id="desno_d_sph" type="text" class="form-control" autocomplete="off"></td>
-                      <td><input name="desno_d_cyl" id="desno_d_cyl" type="text" class="form-control" autocomplete="off"></td>
-                      <td><input name="desno_d_ax" id="desno_d_ax" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="desno_d_sph" maxlength='25' id="desno_d_sph" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="desno_d_cyl" maxlength='25' id="desno_d_cyl" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="desno_d_ax" maxlength='25' id="desno_d_ax" type="text" class="form-control" autocomplete="off"></td>
                     </tr>
                     <tr>
                       <th scope="row">B</th>
-                      <td><input name="desno_b_sph" id="desno_b_sph" type="text" class="form-control" autocomplete="off"></td>
-                      <td><input name="desno_b_cyl" id="desno_b_cyl" type="text" class="form-control" autocomplete="off"></td>
-                      <td><input name="desno_b_ax" id="desno_b_ax" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="desno_b_sph" maxlength='25' id="desno_b_sph" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="desno_b_cyl" maxlength='25' id="desno_b_cyl" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="desno_b_ax" maxlength='25' id="desno_b_ax" type="text" class="form-control" autocomplete="off"></td>
                     </tr>
                   </tbody>
                 </table>
                 <div class="row">
                   <div class="form-group col-md-5">
-                    <strong><label for="exampleFormControlSelect2">PD blizina u mm</label> </strong>
-                    <input name="pd_blizina" id="pd_blizina" title="Unesite pupilarnu distancu" type="text" class="form-control" autocomplete="off">
+                    <label for="exampleFormControlSelect2">PD blizina u mm</label>
+                    <input name="pd_blizina" maxlength='15' id="pd_blizina" title="Unesite pupilarnu distancu" type="text" class="form-control" autocomplete="off">
                   </div>
                 </div>
               </div>
@@ -111,22 +111,22 @@ include '../pregled/modules/header.php';
                   <tbody>
                     <tr>
                       <th scope="row">D</th>
-                      <td><input name="lijevo_d_sph" id="lijevo_d_sph" type="text" class="form-control" autocomplete="off"></td>
-                      <td><input name="lijevo_d_cyl" id="lijevo_d_cyl" type="text" class="form-control" autocomplete="off"></td>
-                      <td><input name="lijevo_d_ax" id="lijevo_d_ax" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="lijevo_d_sph" maxlength='25' id="lijevo_d_sph" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="lijevo_d_cyl" maxlength='25' id="lijevo_d_cyl" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="lijevo_d_ax" maxlength='25' id="lijevo_d_ax" type="text" class="form-control" autocomplete="off"></td>
                     </tr>
                     <tr>
                       <th scope="row">B</th>
-                      <td><input name="lijevo_b_sph" id="lijevo_b_sph" type="text" class="form-control" autocomplete="off"></td>
-                      <td><input name="lijevo_b_cyl" id="lijevo_b_cyl" type="text" class="form-control" autocomplete="off"></td>
-                      <td><input name="lijevo_b_ax" id="lijevo_b_ax" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="lijevo_b_sph" maxlength='25' id="lijevo_b_sph" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="lijevo_b_cyl" maxlength='25' id="lijevo_b_cyl" type="text" class="form-control" autocomplete="off"></td>
+                      <td><input name="lijevo_b_ax" maxlength='25' id="lijevo_b_ax" type="text" class="form-control" autocomplete="off"></td>
                     </tr>
                   </tbody>
                 </table>
                 <div class="row">
                   <div class="form-group col-md-5">
-                    <strong><label for="exampleFormControlSelect2">PD daljina u mm</label> </strong>
-                    <input name="pd_daljina" id="pd_daljina" title="Unesite pupilarnu distancu" type="text" class="form-control" autocomplete="off">
+                    <label for="exampleFormControlSelect2">PD daljina u mm</label>
+                    <input name="pd_daljina" maxlength='15' id="pd_daljina" title="Unesite pupilarnu distancu" type="text" class="form-control" autocomplete="off">
                   </div>
                 </div>
               </div>
@@ -136,7 +136,7 @@ include '../pregled/modules/header.php';
           <div class="row">
             <div class="form-group col-md-10">
               <label>Napomena</label>
-              <textarea name="napomena" class="form-control" type="text" title="Unesite napomenu" id="napomena" row="9" style="height:100%;"></textarea>
+              <textarea name="napomena" placeholder="Upisati sve bitne stvari, ugrađena stakla, tretmane, dodatne usluge itd..." class="form-control" type="text" title="Unesite napomenu" id="napomena" row="9" style="height:100%;"></textarea>
             </div>
           </div>
           </br>
@@ -156,15 +156,15 @@ include '../pregled/modules/header.php';
               </div>
               <div class="placanje_label">
                 <div class="form-group col-md-7">
-                  <label style="margin-top:1%;">Ukupno</label>
+                <strong><label style="margin-top:1%;">Ukupno</label></strong>
                 </div>
 
                 <div class="form-group col-md-7">
-                  <label style="margin-top:1%;">Akontacija</label>
+                <strong><label style="margin-top:1%;">Akontacija</label></strong>
                 </div>
 
                 <div class="form-group col-md-7">
-                  <label style="margin-top:1%;">Dug</label>
+                <strong><label style="margin-top:1%;">Dug</label></strong>
                 </div>
               </div>
             </div>
@@ -184,7 +184,7 @@ include '../pregled/modules/header.php';
           echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
         } else if ($_REQUEST['msg'] == '0') {
           echo "<script src=\"js/alertify.min.js\"></script>";
-          echo "<script type=\"text/javascript\">alertify.success('Radni nalog je uspiješno kreiran');</script>";
+          echo "<script type=\"text/javascript\">alertify.success('Radni nalog je kreiran');</script>";
           echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
         }
       }
@@ -203,6 +203,14 @@ include '../pregled/modules/header.php';
 <script type="text/javascript">
   //When page load set focus on field
   document.getElementById('broj_radnog_naloga').focus();
+
+  //Copy text
+  $(document).ready(function() {
+    $('#akontacija').on('change', function(e) {
+      var debt = (document.getElementById('ukupno').value) - (document.getElementById('akontacija').value);
+      $('#dug').val(parseFloat(debt, 3));
+    });
+  });
 </script>
 
 </html>
