@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
 
 include '../pregled/modules/header.php';
@@ -17,10 +16,11 @@ mysqli_set_charset($conn, 'utf8');
 $id_pregleda = mysqli_real_escape_string($conn, $_REQUEST['id']);
 
 //Čitanje podataka o pregledu na osnovu ID-a
-$sql1 = "SELECT * FROM pregledi WHERE ID=$id_pregleda";
-$result = mysqli_query($conn, $sql1);
-if (!$result) die(mysqli_error($conn));
-while ($row = mysqli_fetch_object($result)) {
+$stmt = $conn->prepare("SELECT * FROM pregledi WHERE ID=?");
+$stmt->bind_param('i', $id_pregleda);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_object()) {
   $ID_pacijenta = $row->ID_pacijenta;
   $ID_korisnika = $row->ID_korisnika;
   $ID_radnika = $row->ID_radnika;
@@ -65,28 +65,31 @@ $datum_pregleda = date('d.m.Y', strtotime($originalDate));
 
 
 //Pretraga imena pacijenta na osnovu njegovog ID-a u tabeli pregled
-$sql2 = "SELECT generalije_pacijenta FROM pacijenti WHERE ID=$ID_pacijenta";
-$result = mysqli_query($conn, $sql2);
-if (!$result) die(mysqli_error($conn));
-while ($row = mysqli_fetch_object($result)) {
+$stmt = $conn->prepare("SELECT generalije_pacijenta FROM pacijenti WHERE ID=?");
+$stmt->bind_param('i', $ID_pacijenta);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_object()) {
   $generalije_pacijenta = $row->generalije_pacijenta;
 }
 
 //Čitanje podataka o radniku koji je radio pregled na osnovu ID radnika u tabeli pregled
-$sql3 = "SELECT imePrezimeRadnika,sifra_radnika FROM radnici WHERE ID=$ID_radnika";
-$result = mysqli_query($conn, $sql3);
-if (!$result) die(mysqli_error($conn));
-while ($row = mysqli_fetch_object($result)) {
+$stmt = $conn->prepare("SELECT imePrezimeRadnika,sifra_radnika FROM radnici WHERE ID=?");
+$stmt->bind_param('i', $ID_radnika);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_object()) {
   $imePrezimeRadnika = $row->imePrezimeRadnika;
   $sifra_radnika = $row->sifra_radnika;
 }
 
 //Čitanje podataka o optici(korisniku) u kojoj je urađen pregled na osnovu ID korisnika u tabeli pregled
 $con = OpenCon();
-$sql4 = "SELECT pj,adresa,telefon,website FROM mojaopt_optike.korisnici WHERE ID=$ID_korisnika";
-$result = mysqli_query($con, $sql4);
-if (!$result) die(mysqli_error($con));
-while ($row = mysqli_fetch_object($result)) {
+$stmt = $conn->prepare("SELECT pj,adresa,telefon,website FROM mojaopt_optike.korisnici WHERE ID=?");
+$stmt->bind_param('i', $ID_korisnika);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_object()) {
   $naziv = $row->pj;
   $adresa = $row->adresa;
   $telefon = $row->telefon;
