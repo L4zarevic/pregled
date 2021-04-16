@@ -120,7 +120,7 @@ include '../pregled/modules/header.php';
 
                 </br>
                 </br>
-                <label class="obavezna_polja">* Obavezna polja za podatke o pacijentu</label>
+                <label class="obavezna_polja">* Obavezna polja za podatke o klijentu</label>
               </div>
             </div>
 
