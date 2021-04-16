@@ -113,6 +113,18 @@ function sumLensesExamination($conn, $idKorisnika)
     while ($row = $result->fetch_object()) {
         echo $row->brojPregleda;
     }
+}
+
+//Metod za prikaz ukupno urađenih radnih naloga
+function sumWorkOrderDocument($conn, $idKorisnika)
+{
+    $stmt = $conn->prepare('SELECT COUNT(ID) AS brojNaloga FROM radni_nalog WHERE ID_korisnika=?');
+    $stmt->bind_param('i', $idKorisnika);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_object()) {
+        echo $row->brojNaloga;
+    }
     CloseCon($conn);
 }
 ?>
@@ -239,6 +251,31 @@ function sumLensesExamination($conn, $idKorisnika)
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-eye fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </br>
+                    </br>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Statistika urađenih radnih naloga</h1>
+                    </div>
+                    <div class="statistic">
+                        <div class="sumExamination">
+                            <div class="col-xl-9 col-md-6 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Ukupno urađenih radnih naloga</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo sumWorkOrderDocument($conn, $idKorisnika); ?></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+
                                             </div>
                                         </div>
                                     </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <body>
     <?php
     //Skripta za dobijenje datuma kada je izabrati pacijent radio preglede i u kojoj optici(korisnik)
@@ -57,44 +58,44 @@
     echo '</table>';
     echo '</br></br>';
 
-     //Na osnovu ID pacijenta prikazujemo datume pregleda i optike(korisnike) gdje je obavljen pregled
-     $stmt2 = $conn->prepare('SELECT ID,datum,broj_radnog_naloga,ID_korisnika FROM radni_nalog WHERE ID_pacijenta =? ORDER BY ID DESC');
-     $stmt2->bind_param('i', $id_pacijenta);
-     $stmt2->execute();
-     $result2= $stmt2->get_result();
- 
-     //Vrijednosti upita će biti ispisani kao redovi u tabeli
-     echo "<table id='dtDynamicVerticalScrollExample1' class='table table-hover table-sm'>";
-     echo "<h6>Radni nalozi</h6>";
-     echo '<thead>';
-     echo '<tr>';
-     echo "<th scope='col'>#</th>";
-     echo "<th scope='col'>Datum:</th>";
-     echo "<th scope='col'>Br. radnog naloga:</th>";
-     echo "<th scope='col'>Radnja:</th>";
-     echo '</tr>';
-     echo '</thead>';
-     $rb = 0;
-     //Ispis rezultata upita
-     while ($row2 = $result2->fetch_object()) {
-         $originalDate = $row2->datum;
-         $datum_naloga = date('d.m.Y', strtotime($originalDate));
-         echo '<tr>';
-         echo '<td>' . ($rb = $rb + 1) . '</td>';
-         //Datumi su linkovi koji sadrže ID pregleda. Nakon klika se otvara stranica za prikaz i uređivanje izvještaja sa dobijenim ID pregleda
-         echo "<td>$datum_naloga</td>";
-         echo "<td><a target='_blank' href='workOrderDocumentPreview.php?id=$row2->ID'>$row2->broj_radnog_naloga</a></td>";
-         //Upit koji na osnovu dobijenog ID korisnika čita naziv korisnika kojem pripada taj ID
-         $stmt2 = $conn->prepare('SELECT mojaopt_optike.korisnici.pj FROM mojaopt_optike.korisnici WHERE mojaopt_optike.korisnici.ID =?');
-         $stmt2->bind_param('i', $row2->ID_korisnika);
-         $stmt2->execute();
-         $result2 = $stmt2->get_result();
-         while ($row2 = $result2->fetch_object()) {
-             echo "<td>$row2->pj</td>";
-         }
-         echo '</tr>';
-     }
-     echo '</table>';
+    //Na osnovu ID pacijenta prikazujemo datume pregleda i optike(korisnike) gdje je obavljen pregled
+    $stmt2 = $conn->prepare('SELECT ID,datum,broj_radnog_naloga,ID_korisnika FROM radni_nalog WHERE ID_pacijenta =? ORDER BY datum DESC');
+    $stmt2->bind_param('i', $id_pacijenta);
+    $stmt2->execute();
+    $result2 = $stmt2->get_result();
+
+    //Vrijednosti upita će biti ispisani kao redovi u tabeli
+    echo "<table id='dtDynamicVerticalScrollExample1' class='table table-hover table-sm'>";
+    echo "<h6>Radni nalozi</h6>";
+    echo '<thead>';
+    echo '<tr>';
+    echo "<th scope='col'>#</th>";
+    echo "<th scope='col'>Datum:</th>";
+    echo "<th scope='col'>Br. radnog naloga:</th>";
+    echo "<th scope='col'>Radnja:</th>";
+    echo '</tr>';
+    echo '</thead>';
+    $rb = 0;
+    //Ispis rezultata upita
+    while ($row2 = $result2->fetch_object()) {
+        $originalDate = $row2->datum;
+        $datum_naloga = date('d.m.Y', strtotime($originalDate));
+        echo '<tr>';
+        echo '<td>' . ($rb = $rb + 1) . '</td>';
+        //Datumi su linkovi koji sadrže ID pregleda. Nakon klika se otvara stranica za prikaz i uređivanje izvještaja sa dobijenim ID pregleda
+        echo "<td>$datum_naloga</td>";
+        echo "<td><a target='_blank' href='workOrderDocumentPreview.php?id=$row2->ID'>$row2->broj_radnog_naloga</a></td>";
+        //Upit koji na osnovu dobijenog ID korisnika čita naziv korisnika kojem pripada taj ID
+        $stmt3 = $conn->prepare('SELECT mojaopt_optike.korisnici.pj FROM mojaopt_optike.korisnici WHERE mojaopt_optike.korisnici.ID =?');
+        $stmt3->bind_param('i', $row2->ID_korisnika);
+        $stmt3->execute();
+        $result3 = $stmt3->get_result();
+        while ($row3 = $result3->fetch_object()) {
+            echo "<td>$row3->pj</td>";
+        }
+        echo '</tr>';
+    }
+    echo '</table>';
 
     CloseCon($conn);
     ?>

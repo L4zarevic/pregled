@@ -47,7 +47,7 @@ include '../pregled/modules/header.php';
             <div class="todayDate">
               <div class="form-group col-md-10">
                 <label>Datum</label>
-                <input id="datum" name="datum" maxlength='10' placeholder="DD.MM.YYYY" title="Unesite datum u formatu dam/mjesec/godina" />
+                <input id="datum" name="datum" maxlength='10' placeholder="DD.MM.YYYY" title="Unesite datum u formatu dam.mjesec.godina" />
                 <script>
                   $('#datum').datepicker({
                     format: 'dd.mm.yyyy',

@@ -105,7 +105,7 @@ CloseCon($conn);
 
                     <div class="row"><strong><label>Broj radnog naloga: </strong></label>&nbsp;<label><?php echo "№" . " " . $broj_radnog_naloga; ?> </label></div>
                     <div class="row"><strong><label>Radnja: </strong></label>&nbsp;<label><?php echo $naziv; ?> </label></div>
-                    <div class="row"><strong><label>Datum:</label></strong><label><?php echo $datum; ?> </label></div>
+                    <div class="row"><strong><label>Datum:</label></strong>&nbsp;<label><?php echo $datum; ?> </label></div>
                     <div class="row"><strong><label>Ime, prezime i godina rođenja:</label></strong>&nbsp;<label><?php echo $generalije_pacijenta; ?> </label></div>
                     <div class="row"><strong><label>Kontakt:</label></strong>&nbsp;<label><?php echo $kontakt; ?> </label></div>
                     <hr>
