@@ -71,7 +71,7 @@ function lensesManufactured($conn)
                         <div class="patientSearch">
                             <div class="form-group col-md-10">
                                 <label for="#search">Pretraga pacijenta</label>&nbsp;<i class="fas fa-search"></i>
-                                <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu pacijenta" type="text" class="form-control" id="search" autocomplete="off" />
+                                <input name="name" placeholder="npr. Nemanja (Milan) Lazarević 1996" title="Unesite ime,prezime ili godinu rođenja za pretragu klijenta" type="text" class="form-control" id="search" autocomplete="off" />
                             </div>
                             <div id="display"></div>
                         </div>
