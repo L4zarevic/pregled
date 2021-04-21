@@ -51,8 +51,9 @@ if (!$korisnickoIme && !$lozinka) {
     }
 }
 
-if (empty($dataBaseName)) {
-    $error = 1;
+if (empty($dataBaseName) && ($error == 0)) {
+    header('Location:login.php?msg=3');
+    exit;
 }
 
 if ($error == 1) {
