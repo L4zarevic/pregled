@@ -74,28 +74,28 @@ include '../pregled/modules/header.php';
                 <div class="form-group col-md-11">
                   <label for="exampleFormControlSelect2">Daljina: </label>
                   &nbsp; <label for="exampleFormControlSelect2">OD: </label>
-                  <input name="naocare_daljina_od" title="" type="text" class="form-control" id="naocare_daljina_od">
+                  <input name="naocare_daljina_od" maxlength='50' type="text" class="form-control" id="naocare_daljina_od">
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-11">
                   <label for="exampleFormControlSelect2"></label>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label id="daljinaOS" for="exampleFormControlSelect2">OS:</label>
-                  <input name="naocare_daljina_os" type="text" class="form-control" id="naocare_daljina_os">
+                  <input name="naocare_daljina_os"  maxlength='50' type="text" class="form-control" id="naocare_daljina_os">
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-11">
                   <label for="exampleFormControlSelect2">Blizina: </label>
                   &nbsp; <label for="exampleFormControlSelect2">OD: </label>
-                  <input name="naocare_blizina_od" title="" type="text" class="form-control" id="naocare_blizina_od">
+                  <input name="naocare_blizina_od" maxlength='50' type="text" class="form-control" id="naocare_blizina_od">
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-11">
                   <label for="exampleFormControlSelect2"></label>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label id="blizinaOS" for="exampleFormControlSelect2">OS:</label>
-                  <input name="naocare_blizina_os" title="" type="text" class="form-control" id="naocare_blizina_os">
+                  <input name="naocare_blizina_os" maxlength='50' type="text" class="form-control" id="naocare_blizina_os">
                 </div>
               </div>
               <div class="row">
@@ -106,13 +106,13 @@ include '../pregled/modules/header.php';
               <div class="row">
                 <div class="form-group col-md-11">
                   <label for="exampleFormControlSelect2">OD: </label>
-                  <input name="sociva_od" title="" type="text" class="form-control" id="sociva_od">
+                  <input name="sociva_od" maxlength='50' type="text" class="form-control" id="sociva_od">
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-11">
                   <label id="blizinaOS" for="exampleFormControlSelect2">OS: </label>
-                  <input name="sociva_os" title="" type="text" class="form-control" id="sociva_os">
+                  <input name="sociva_os" maxlength='50' type="text" class="form-control" id="sociva_os">
                 </div>
               </div>
               <hr>

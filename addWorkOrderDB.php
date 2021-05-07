@@ -20,8 +20,11 @@ mysqli_set_charset($conn, 'utf8');
 $broj_radnog_naloga = mysqli_real_escape_string($conn, $_REQUEST['broj_radnog_naloga']);
 $id_pacijenta = mysqli_real_escape_string($conn, $_REQUEST['id_pacijenta']);
 $var = mysqli_real_escape_string($conn, $_REQUEST['datum']);
+
+//Format datuma dd.mm.yyyy se konvertuje u yyyy-mm-dd
 $date = str_replace('.', '-', $var);
 $datum = date('Y-m-d', strtotime($date));
+
 $desno_d_sph = mysqli_real_escape_string($conn, $_REQUEST['desno_d_sph']);
 $desno_d_cyl = mysqli_real_escape_string($conn, $_REQUEST['desno_d_cyl']);
 $desno_d_ax = mysqli_real_escape_string($conn, $_REQUEST['desno_d_ax']);
