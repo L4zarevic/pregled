@@ -65,7 +65,7 @@ while ($row = $result->fetch_object()) {
 
 //Čitanje podataka o optici(korisniku) u kojoj je urađen pregled na osnovu ID korisnika u tabeli pregled
 $con = OpenCon();
-$stmt = $conn->prepare("SELECT pj,adresa,telefon,website FROM mojaopt_optike.korisnici WHERE ID=?");
+$stmt = $conn->prepare("SELECT pj,adresa,telefon,valuta FROM mojaopt_optike.korisnici WHERE ID=?");
 $stmt->bind_param('i', $ID_korisnika);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -74,7 +74,7 @@ while ($row = $result->fetch_object()) {
     $naziv = $row->pj;
     $adresa = $row->adresa;
     $telefon = $row->telefon;
-    $website = $row->website;
+    $valuta = $row->valuta;
 }
 
 CloseCon($conn);
@@ -213,6 +213,11 @@ CloseCon($conn);
                                     <strong><label style="margin-top:1%;">Dug</label></strong>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label>*Valuta: <?php echo $valuta; ?></label>
                         </div>
                     </div>
                 </div>
