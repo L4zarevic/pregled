@@ -5,6 +5,8 @@
 //Uklanjanje kolačića
 setcookie('cica_maca', '', time() - 3600);
 
+setcookie('e-pregled', 'application', time() + 5 * 60);
+
 require_once 'connection.php';
 $korisnik = $_SESSION['prijavljen'];
 $ar = explode('#', $korisnik, 4);
