@@ -116,7 +116,7 @@ include '../pregled/modules/header.php';
 
                 </div>
                 <hr>
-                <button type='button' onclick="updatePatientCheckForm()" id="updatePatient" title="Uredi karton pacijenta" class='btn btn-success'><i class="fas fa-edit"></i>&nbsp;<label class="labelSaveButton">Ažuriraj podatke o pacijentu</label></button>
+                <button type='button' onclick="updatePatientCheckForm()" id="updatePatient" title="Uredi karton klijenta" class='btn btn-success'><i class="fas fa-edit"></i>&nbsp;<label class="labelSaveButton">Ažuriraj podatke o klijentu</label></button>
 
                 </br>
                 </br>
@@ -132,7 +132,7 @@ include '../pregled/modules/header.php';
                 echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
               } else if ($_REQUEST['msg'] == '0') {
                 echo "<script src=\"js/alertify.min.js\"></script>";
-                echo "<script type=\"text/javascript\">alertify.success('Podaci o pacijentu su ažurirani');</script>";
+                echo "<script type=\"text/javascript\">alertify.success('Podaci o klijentu su ažurirani');</script>";
                 echo "<script type=\"text/javascript\">window.history.replaceState(null, null, window.location.pathname);</script>";
               }
             }

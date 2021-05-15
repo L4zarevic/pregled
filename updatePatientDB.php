@@ -27,6 +27,7 @@ $sociva_od = mysqli_real_escape_string($conn, $_REQUEST['sociva_od']);
 $sociva_os = mysqli_real_escape_string($conn, $_REQUEST['sociva_os']);
 
 //// Notifikacija za administratora ukoliko dolazi do ažuriranje generalija o pacijentu ////
+
 $stmt = $conn->prepare('SELECT generalije_pacijenta FROM pacijenti WHERE ID =?');
 $stmt->bind_param('i', $id_pacijenta);
 $stmt->execute();
