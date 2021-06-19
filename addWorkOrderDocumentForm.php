@@ -36,7 +36,7 @@ include '../pregled/modules/header.php';
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="sociva_rb">
                 <label class="form-check-label" for="sociva_rb">
-                  Sočiva
+                  Kontaktna sočiva
                 </label>
               </div>
             </div>
