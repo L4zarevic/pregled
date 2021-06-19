@@ -127,7 +127,7 @@ function sumWorkOrderDocument($conn, $idKorisnika)
     while ($row = $result->fetch_object()) {
         echo $row->brojNaloga;
     }
-    CloseCon($conn);
+   
 }
 ?>
 

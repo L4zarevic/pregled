@@ -26,6 +26,22 @@ include '../pregled/modules/header.php';
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Radni nalog <i class="fas fa-clipboard-list"></i></i></h1>
           <div class="row">
+            <div class="form-group col-md-8">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="naocare_rb" checked>
+                <label class="form-check-label" for="naocare_rb">
+                  Naočare
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="sociva_rb">
+                <label class="form-check-label" for="sociva_rb">
+                  Sočiva
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="workersLog">
               <div class="workers">
                 <div class="form-group col-md-8">
@@ -156,15 +172,15 @@ include '../pregled/modules/header.php';
               </div>
               <div class="placanje_label">
                 <div class="form-group col-md-7">
-                <strong><label style="margin-top:1%;">Ukupno</label></strong>
+                  <strong><label style="margin-top:1%;">Ukupno</label></strong>
                 </div>
 
                 <div class="form-group col-md-7">
-                <strong><label style="margin-top:1%;">Akontacija</label></strong>
+                  <strong><label style="margin-top:1%;">Akontacija</label></strong>
                 </div>
 
                 <div class="form-group col-md-7">
-                <strong><label style="margin-top:1%;">Dug</label></strong>
+                  <strong><label style="margin-top:1%;">Dug</label></strong>
                 </div>
               </div>
             </div>
